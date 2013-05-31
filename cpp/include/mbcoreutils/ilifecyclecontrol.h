@@ -10,7 +10,7 @@
 #ifndef ILIFECYCLE_CONTROL_HH
 #define ILIFECYCLE_CONTROL_HH
 
-#include "appparameters.hh"
+#include "appparameters.h"
 
 namespace MakerBot {
 

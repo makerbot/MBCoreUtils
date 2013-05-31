@@ -10,7 +10,7 @@
 #ifndef IRUNNABLE_HH_
 #define IRUNNABLE_HH_
 
-#include "commontypes.hh"
+#include "commontypes.h"
 
 namespace MakerBot {
 
@@ -53,10 +53,11 @@ namespace MakerBot {
 		void operator()() {
 			this->run();
 		}
+
 	private:
 
 		// Maintains running state of a derived instance of this class.
-		bool m_isRunning;
+		volatile bool m_isRunning;
 	};
 
 	typedef shared_ptr<MakerBot::IRunnable>::type RunnablePtr;

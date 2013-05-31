@@ -11,8 +11,9 @@
 #define THREAD_HH_
 
 #include <boost/thread.hpp>
+#include <boost/chrono.hpp>
 #include <boost/shared_ptr.hpp>
-#include "irunnable.hh"
+#include "irunnable.h"
 
 namespace MakerBot {
 
@@ -54,6 +55,10 @@ namespace MakerBot {
 			m_thread.join();
 		}
 
+		static void sleep(int ms) {
+			boost::this_thread::sleep(boost::posix_time::milliseconds(ms));
+
+		}
 	private:
 
 		// Runnable object.  Provides thread entry point and logic.
