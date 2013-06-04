@@ -12,6 +12,8 @@
 
 #include <functional>
 #include <map>
+#include "mutex.h"
+#include "lockguard.h"
 
 namespace MakerBot {
 
@@ -48,7 +50,7 @@ namespace MakerBot {
 		 * Adds a callback to the list of subscribers for an event.
 		 */
 		virtual int subscribe(FnType& func, bool fireOnSubscribe = false) {
-			LockGaurd<Mutex>(m_mutex);
+			LockGuard<Mutex> lock(&m_mutex);
 			m_subscribers.insert(std::pair<int, FnType>(++m_lastHandleId, func));
 			return m_lastHandleId;
 		}
@@ -57,7 +59,7 @@ namespace MakerBot {
 		 * Removes a callback from the list of subscribers
 		 */
 		void unsubscribe(int handle) {
-			LockGaurd<Mutex>(m_mutex);
+			LockGuard<Mutex> lock(&m_mutex);
 			m_subscribers.erase(handle);
 		}
 
