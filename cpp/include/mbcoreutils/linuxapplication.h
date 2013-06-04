@@ -11,7 +11,7 @@
 #define LINUX_APPLICATION_HH
 
 #include <unistd.h>
-#include "appparameters.hh"
+#include "appparameters.h"
 
 namespace MakerBot {
 
