@@ -48,9 +48,8 @@ namespace MakerBot {
 		 * Adds a callback to the list of subscribers for an event.
 		 */
 		virtual int subscribe(FnType& func, bool fireOnSubscribe = false) {
-			m_mutex.acquire();
+			LockGaurd<Mutex>(m_mutex);
 			m_subscribers.insert(std::pair<int, FnType>(++m_lastHandleId, func));
-			m_mutex.release();
 			return m_lastHandleId;
 		}
 
@@ -58,9 +57,8 @@ namespace MakerBot {
 		 * Removes a callback from the list of subscribers
 		 */
 		void unsubscribe(int handle) {
-			m_mutex.acquire();
+			LockGaurd<Mutex>(m_mutex);
 			m_subscribers.erase(handle);
-			m_mutex.release();
 		}
 
 	protected:
