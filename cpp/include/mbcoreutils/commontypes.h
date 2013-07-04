@@ -12,7 +12,8 @@
 #ifndef PRINTERPANEL_TYPES_HH
 #define PRINTERPANEL_TYPES_HH
 
-#include <boost/shared_ptr.hpp>
+//#include <boost/shared_ptr.hpp>
+#include <memory>
 
 namespace MakerBot {
 
@@ -20,7 +21,7 @@ namespace MakerBot {
 	template<class T>
 	class shared_ptr {
 	public:
-		typedef boost::shared_ptr<T> type;
+		typedef std::shared_ptr<T> type;
 	};
 }
 

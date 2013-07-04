@@ -10,10 +10,12 @@
 #ifndef THREAD_HH_
 #define THREAD_HH_
 
-#include <boost/thread.hpp>
-#include <boost/chrono.hpp>
-#include <boost/shared_ptr.hpp>
+//#include <boost/thread.hpp>
+//#include <boost/chrono.hpp>
+//#include <boost/shared_ptr.hpp>
 #include "irunnable.h"
+#include <thread>
+#include <chrono>
 
 namespace MakerBot {
 
@@ -37,7 +39,7 @@ namespace MakerBot {
 		 * Starts the thread.
 		 */
 		void start() {
-			m_thread = boost::thread(&IRunnable::operator(), m_runnable);
+			m_thread = std::thread(&IRunnable::operator(), m_runnable);
 		}
 
 		/*
@@ -56,7 +58,7 @@ namespace MakerBot {
 		}
 
 		static void sleep(int ms) {
-			boost::this_thread::sleep(boost::posix_time::milliseconds(ms));
+			std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 
 		}
 	private:
@@ -65,7 +67,7 @@ namespace MakerBot {
 		IRunnable* m_runnable;
 
 		// Thread object.  Today, it is a boost thread.
-		boost::thread m_thread;
+		std::thread m_thread;
 	};
 
 

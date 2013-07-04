@@ -1,7 +1,8 @@
 #ifndef MB_MUTEX_H_
 #define MB_MUTEX_H_
 
-#include <boost/thread.hpp>
+//#include <boost/thread.hpp>
+#include <mutex>
 #include "ilock.h"
 
 namespace MakerBot {
@@ -23,13 +24,13 @@ namespace MakerBot {
 			m_theMutex.unlock();
 		}
 
-		boost::mutex& getUnderlying() {
+		std::mutex& getUnderlying() {
 			return m_theMutex;
 		}
 	
 	private:
 
-		boost::mutex m_theMutex;
+		std::mutex m_theMutex;
 	};
 
 
