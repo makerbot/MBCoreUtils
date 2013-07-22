@@ -1,5 +1,5 @@
 /*
- * linuxapplication.hh
+ * linuxapplication.h
  *
  *  Created on: Apr 9, 2013
  *      Author: paul
@@ -104,7 +104,6 @@ public:
 			} catch(...) {
 				// If an exception occurs, stop the app and attempt to restart according to m_autoRestart
 				m_theApp.stop();
-
 			}
 
 		} while (m_autoRestart);
