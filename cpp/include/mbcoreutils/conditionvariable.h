@@ -1,7 +1,7 @@
 #ifndef MB_CONDITIONVARIABLE_H_
 #define MB_CONDITIONVARIABLE_H_
 
-#include <boost/thread/condition_variable.hpp>
+#include <condition_variable>
 
 namespace MakerBot {
 
@@ -24,12 +24,12 @@ namespace MakerBot {
 
 		void wait(MakerBot::Mutex* lock) {
 			lock->release();
-			m_condVar.wait(boost::unique_lock<boost::mutex>(lock->getUnderlying()));
+			m_condVar.wait(std::unique_lock<std::mutex>(lock->getUnderlying()));
 		}
 
 	private:
 
-		boost::condition_variable m_condVar;
+		std::condition_variable m_condVar;
 
 	};
 }
