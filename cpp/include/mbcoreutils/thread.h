@@ -14,6 +14,7 @@
 //#include <boost/chrono.hpp>
 //#include <boost/shared_ptr.hpp>
 #include "irunnable.h"
+#include <functional>
 #include <thread>
 #include <chrono>
 
