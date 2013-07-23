@@ -1,5 +1,5 @@
 /*
- * appparameters.hh
+ * appparameters.h
  *
  *  Created on: Apr 9, 2013
  *      Author: paul
@@ -9,6 +9,8 @@
 
 #ifndef APP_PARAMETERS_HH
 #define APP_PARAMETERS_HH
+
+#include <cstddef>
 
 namespace MakerBot {
 
@@ -51,4 +53,4 @@ public:
 
 }
 
-#endif // APP_PARAMETERS_HH
+#endif // APP_PARAMETERS_H
