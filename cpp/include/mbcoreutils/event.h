@@ -42,6 +42,7 @@ namespace MakerBot {
 		/*
 		 * Adds a callback to the list of subscribers for an event.
 		 */
+
 		virtual int subscribe(SubscriberPtr func) {
 			LockGuard<Mutex> lock(&m_mutex);
 			m_subscribers.insert(std::pair<int, SubscriberPtr>(++m_lastHandleId, func));
