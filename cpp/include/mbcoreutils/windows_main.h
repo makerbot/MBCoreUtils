@@ -10,6 +10,7 @@
 #ifndef WINDOWS_MAIN_H_
 #define WINDOWS_MAIN_H_
 
+#ifdef _MSC_VER
 #include <windows.h>
 
 int main(int argc, char **argv);
@@ -20,5 +21,7 @@ int WINAPI wWinMain(HINSTANCE hInstance,
                     int nCmdShow) {
   main(__argc, __argv);
 }
+
+#endif  // _MSC_VER
 
 #endif  // WINDOWS_MAIN_H_
