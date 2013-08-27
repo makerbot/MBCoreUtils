@@ -67,8 +67,8 @@ class IDError : public std::runtime_error {
 ///   };
 ///
 ///   CREATE_TAGGED_ID_TYPE(MyID, MyIDPolicy);
-#define CREATE_TAGGED_ID_TYPE(name_, policy_) \
-  class name_ { \
+#define CREATE_TAGGED_ID_TYPE(name_, policy_, api_) \
+  class api_ name_ { \
    public: \
     typedef policy_ PolicyType; \
     typedef PolicyType::ValueType ValueType; \
