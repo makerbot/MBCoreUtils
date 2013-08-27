@@ -91,6 +91,52 @@ class TaggedID {
  private:
   ValueType m_id;
 };
+
+/// TaggedID equality test
+///
+/// If both IDs are invalid they are considered equal. If one is valid
+/// and the other not, they are not equal. If both are valid their
+/// values are tested for equality.
+template<typename A, typename B, typename C,
+         typename D, typename E, typename F>
+bool operator==(
+    const TaggedID<A, B, C> &id1,
+    const TaggedID<D, E, F> &id2) {
+  const bool id1Valid(id1.valid());
+  const bool id2Valid(id2.valid());
+
+  if (id1Valid && id2Valid) {
+    return id1.get() == id2.get();
+  } else if (!id1Valid && !id2Valid) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/// TaggedID comparison test
+///
+/// An invalid ID considered less than a valid ID. If both are invalid
+/// they are considered equal. If both are valid their values are
+/// tested for equality.
+template<typename A, typename B, typename C,
+         typename D, typename E, typename F>
+bool operator<(
+    const TaggedID<A, B, C> &id1,
+    const TaggedID<D, E, F> &id2) {
+  const bool id1Valid(id1.valid());
+  const bool id2Valid(id2.valid());
+
+  if (id1Valid && id2Valid) {
+    return id1.get() < id2.get();
+  } else if (!id1Valid && id2Valid) {
+    return true;
+  } else if (id1Valid && !id2Valid) {
+    return false;
+  } else {
+    return false;
+  }
+}
 }
 
 #endif  // CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
