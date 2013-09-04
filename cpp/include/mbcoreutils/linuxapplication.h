@@ -78,10 +78,6 @@ public:
 	 */
 	inline void start()
 	{
-		// If the application is a daemon, fork the process and do daemon stuff.
-		if (m_runMode == APPMODE_DAEMON)
-			daemon(0, 0);
-		
 		// Main application loop.  Runs until m_autoRestart is false.
 		do
 		{
@@ -126,7 +122,7 @@ private:
 	{
 		// Do daemon work here
 		while(1) {
-			m_theApp.start(m_params);
+			//m_theApp.start(m_params);
 			sleep(1);
 		}
 		
