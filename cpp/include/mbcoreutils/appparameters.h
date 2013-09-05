@@ -62,12 +62,12 @@ public:
 private:
 
 	void parse() {
+                
+            // Last arg - The last "--" argument detected          
+            std::string lastArg;
             
             // Iterate over the list of provided arguments.
             for (int i = 0; i < m_argc; ++i) {
-                
-                // Last arg - The last "--" argument detected          
-                std::string lastArg;
 
                 // Current argument being evaluated      
 		std::string curVal = m_argv[i];
