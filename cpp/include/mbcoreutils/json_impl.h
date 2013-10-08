@@ -3,6 +3,7 @@
 #ifndef CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
 #define CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
 
+#include <cstdint>
 #include <limits>
 #include <string>
 
