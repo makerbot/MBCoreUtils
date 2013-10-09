@@ -84,6 +84,35 @@ class Version {
       return build;
     }
 
+    int major() const {
+      return m_major;
+    }
+
+    int minor() const {
+      return m_minor;
+    }
+
+    int point() const {
+      return m_point;
+    }
+
+    int build() const {
+      return m_build;
+    }
+
+    std::string toString() const {
+      const std::string sep(".");
+
+      return std::to_string(m_major) + sep +
+             std::to_string(m_minor) + sep +
+             std::to_string(m_point) + sep +
+             std::to_string(m_build);
+    }
+
+    const char * c_str() const {
+      return toString().c_str();
+    }
+
   private:
     int m_major;
     int m_minor;
