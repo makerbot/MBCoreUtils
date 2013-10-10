@@ -20,6 +20,10 @@ class UsbDescriptor {
   typedef uint16_t PID;
   typedef std::string Serial;
 
+  /// Construct an invalid UsbDescriptor
+  UsbDescriptor() {
+  }
+
   /// Construct a UsbDescriptor with an empty serial number
   UsbDescriptor(const VID vid, const PID pid)
       : m_vid(vid),
