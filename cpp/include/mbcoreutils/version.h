@@ -109,10 +109,6 @@ class Version {
              std::to_string(m_build);
     }
 
-    const char * c_str() const {
-      return toString().c_str();
-    }
-
   private:
     int m_major;
     int m_minor;
