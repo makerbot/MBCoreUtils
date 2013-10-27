@@ -35,7 +35,7 @@ class Version {
 
     // Parses a version string in the format #.#.#.#
     explicit Version(const std::string str) {
-      unsigned int found = str.find_last_of("/.");
+      size_t found = str.find_last_of("/.");
       m_build = atoi(str.substr(found + 1).c_str());
       std::string new_str = str.substr(0, found);
 
