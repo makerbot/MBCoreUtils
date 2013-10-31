@@ -3,6 +3,8 @@
 #ifndef CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
 #define CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
 
+#include <boost/algorithm/string/trim.hpp>
+
 #include <cstdint>
 #include <limits>
 #include <string>
@@ -70,6 +72,10 @@ inline uint16_t objectMemberAs<uint16_t>(
   } else {
     throw TypeError(json.toStyledString());
   }
+}
+
+std::string trimStyle(const Json::Value &json) {
+  return boost::trim_copy(json.toStyledString());
 }
 }
 
