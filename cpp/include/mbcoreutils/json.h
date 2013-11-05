@@ -15,21 +15,21 @@
 namespace Json {
 class TypeError : public std::runtime_error {
  public:
-  TypeError(const std::string &what)
+  explicit TypeError(const std::string &what)
       : std::runtime_error(what) {
   }
 };
 
 class KeyError : public std::runtime_error {
  public:
-  KeyError(const std::string &what)
+  explicit KeyError(const std::string &what)
       : std::runtime_error(what) {
   }
 };
 
 class ParseError : public std::runtime_error {
  public:
-  ParseError(const std::string &what)
+  explicit ParseError(const std::string &what)
       : std::runtime_error(what) {
   }
 };
@@ -57,6 +57,9 @@ T &objectMember(T &json, const std::string &key);
 /// of the requested type.
 template<typename Result>
 Result objectMemberAs(const Json::Value &json, const std::string &key);
+
+/// Return a nicely-formatted string without trailing whitespace
+inline std::string trimStyle(const Json::Value &json);
 }
 
 #include "mbcoreutils/json_impl.h"

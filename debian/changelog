@@ -1,5 +1,17 @@
-libmbcoreutils-dev (0.01) precise; urgency=low
+libmbcoreutils-dev (2.3.2) precise; urgency=low
 
-  * Initial Release.
+  * 2.3.2 release
 
- -- MakerBot Industries dev team <dev@makerbot.com>  Wed, 31 Aug 2012 10:39:00 -0400
+ -- MakerBot Industries dev team <dev@makerbot.com>  Thu, 17 Oct 2013 17:44:03 -0400
+
+libmbcoreutils-dev (2.3.1) precise; urgency=low
+
+  * 2.3.1 release
+
+ -- MakerBot Industries dev team <dev@makerbot.com>  Thu, 03 Oct 2013 14:39:22 -0400
+
+libmbcoreutils-dev (2.3.0) precise; urgency=low
+
+  * 2.3.0 release
+
+ -- MakerBot Industries dev team <dev@makerbot.com>  Tue, 27 Sep 2013 14:38:00  -0400
