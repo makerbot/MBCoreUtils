@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
+env = Environment(ENV = os.environ, tools = ['default', 'birdwing_install'])
 
 command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py") + ' -p -c'
 output_files = [
