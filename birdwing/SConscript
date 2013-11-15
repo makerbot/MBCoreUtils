@@ -5,10 +5,10 @@ env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
 
 command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py") + ' -p -c'
 output_files = [
-    'machine_errors.hh',
-    'toolhead_errors.hh',
-    'machine_errors.py',
-    'toolhead_errors.py',
+    'obj/machine_errors.hh',
+    'obj/toolhead_errors.hh',
+    'obj/machine_errors.py',
+    'obj/toolhead_errors.py',
     ]
 input_files = [
     'parse_enums.py',
@@ -17,7 +17,7 @@ input_files = [
     ]
 
 env.Command(output_files, input_files, command)
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "machine_errors.hh")
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "toolhead_errors.hh")
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "machine_errors_stringify.cc")
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "toolhead_errors_stringify.cc")
+env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/machine_errors.hh")
+env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/toolhead_errors.hh")
+env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/machine_errors_stringify.cc")
+env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/toolhead_errors_stringify.cc")

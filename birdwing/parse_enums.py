@@ -37,8 +37,8 @@ if __name__ == "__main__":
         "error": machine_error_data}
     toolhead_enum_data = {
         "error": toolhead_error_data}
-    machine_enum_path = cur_dir + "/machine_errors"
-    toolhead_enum_path = cur_dir + "/toolhead_errors"
+    machine_enum_path = cur_dir + "/obj/machine_errors"
+    toolhead_enum_path = cur_dir + "/obj/toolhead_errors"
 
     if args.python:
         print("Parsing Python...")
