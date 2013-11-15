@@ -20,7 +20,7 @@ debian/*substvars*
 *.rc
 
 
-cpp/include/bwcoreutils
+include/bwcoreutils
 birdwing/*.hh
 birdwing/*.cc
 birdwing/toolhead_errors.py

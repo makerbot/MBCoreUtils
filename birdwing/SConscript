@@ -17,7 +17,7 @@ input_files = [
     ]
 
 env.Command(output_files, input_files, command)
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/machine_errors.hh")
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/toolhead_errors.hh")
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/machine_errors_stringify.cc")
-env.Install(os.path.join(str(Dir("#/")), 'cpp', 'include', 'bwcoreutils'), "obj/toolhead_errors_stringify.cc")
+env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/machine_errors.hh")
+env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/toolhead_errors.hh")
+env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/machine_errors_stringify.cc")
+env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/toolhead_errors_stringify.cc")
