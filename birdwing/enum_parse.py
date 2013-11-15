@@ -23,7 +23,8 @@ def parse_enum_python(filepath, enum_data):
         f.write("%s%s" % ("#", machine_generated_warning))
         for group in enum_data:
             f.write("%s = %r\n" % (group , enum_data[group] ))
-        f.write("%s = %r" % ('error_to_string', reversedict(enum_data['error'])))
+        if 'error' in enum_data:
+            f.write("%s = %r" % ('error_to_string', reversedict(enum_data['error'])))
 
 def make_google_compliant(string):
     string = string.title()
