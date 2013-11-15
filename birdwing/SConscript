@@ -3,7 +3,7 @@ import subprocess
 
 env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
 
-command = ' '.join('"' + [File("#/birdwing/parse_enums.py").abspath + '"', '-p', '-c'])
+command = ' '.join(['"' + File("#/birdwing/parse_enums.py").abspath + '"', '-p', '-c'])
 output_files = [
     'obj/machine_errors.hh',
     'obj/toolhead_errors.hh',
