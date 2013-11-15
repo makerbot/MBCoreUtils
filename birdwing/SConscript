@@ -3,17 +3,6 @@ import subprocess
 
 env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
 
-#if not env.GetOption('clean'):
-#    call = [
-#        'python',
-#        os.path.join('../birdwing','parse_enums.py'),
-#        '-p',
-#        '-c',
-#    ]
-#    subprocess.check_call(call)
-
-print(os.getcwd())
-
 command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py") + ' -p -c'
 output_files = [
     'machine_errors.hh',
