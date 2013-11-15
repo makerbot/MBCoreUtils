@@ -37,8 +37,10 @@ if __name__ == "__main__":
         "error": machine_error_data}
     toolhead_enum_data = {
         "error": toolhead_error_data}
-    machine_enum_path = cur_dir + "/obj/machine_errors"
-    toolhead_enum_path = cur_dir + "/obj/toolhead_errors"
+    machine_filename = "machine_errors"
+    toolhead_filename = "toolhead_errors"
+    machine_enum_path = cur_dir + "/obj/" + machine_filename
+    toolhead_enum_path = cur_dir + "/obj/" + toolhead_filename
 
     if args.python:
         print("Parsing Python...")
@@ -46,7 +48,7 @@ if __name__ == "__main__":
         enum_parse.parse_enum_python(toolhead_enum_path, toolhead_enum_data)
     if args.clang:
         print("Parsing c...")
-        enum_parse.parse_enum_c(machine_enum_path, machine_enum_data, "machine")
-        enum_parse.parse_enum_c(toolhead_enum_path, toolhead_enum_data, "toolhead")
+        enum_parse.parse_enum_c(machine_enum_path, machine_filename, machine_enum_data, "machine")
+        enum_parse.parse_enum_c(toolhead_enum_path, toolhead_filename, toolhead_enum_data, "toolhead")
     if not args.python and not args.clang:
         print("Not parsing anything...")

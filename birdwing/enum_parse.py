@@ -31,16 +31,16 @@ def make_google_compliant(string):
     string = string.replace('_', '')
     return string
 
-def parse_enum_c(filepath, enum_data, namespace):
+def parse_enum_c(filepath, filename, enum_data, namespace):
     cfilepath = "%s.hh" % (filepath)
     stringifypath = "%s_stringify.cc" % (filepath)
     namespace_top = "namespace " + namespace + " {\n"
     stringify_error_top = "std::string StringifyError(Error error){\n"
     stringify_error_bottom = "}\n"
     namespace_bottom = "}"
-    c_define_top = "#ifndef %s_HH\n#define %s_HH\n#ifndef BRONX\n#include <string>\n#endif\n" % (filepath.upper(), filepath.upper())
-    c_define_bottom = "#endif // %s_HH" % (filepath.upper())
-    stringify_file_top = "#ifndef BRONX\n#include <string>\n#include <sstream>\n#include \"" + cfilepath + "\" \n"
+    c_define_top = "#ifndef %s_HH\n#define %s_HH\n#ifndef BRONX\n#include <string>\n#endif\n" % (filename.upper(), filename.upper())
+    c_define_bottom = "#endif // %s_HH" % (filename.upper())
+    stringify_file_top = "#ifndef BRONX\n#include <string>\n#include <sstream>\n#include \"" + filename + ".hh\" \n"
     stringify_file_bottom = "#endif"
     with open(stringifypath, 'w') as f:
         f.write(stringify_file_top)
