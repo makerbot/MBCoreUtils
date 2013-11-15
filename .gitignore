@@ -18,3 +18,12 @@ debian/*substvars*
 *.pdb
 *.vcxproj
 *.rc
+
+
+cpp/include/bwcoreutils
+birdwing/*.hh
+birdwing/*.cc
+birdwing/toolhead_errors.py
+birdwing/machine_errors.py
+*.swp
+*.pyc
