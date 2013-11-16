@@ -43,5 +43,6 @@
     "file_not_found": 1012,
     "homing_timed_out": 1013,
     "tool_not_connected": 1014,
+    "invalid_file_type": 1498,
     "critical_kaiten_error": 1500
 }
