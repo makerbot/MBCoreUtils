@@ -18,6 +18,7 @@
     "toolhead_not_initialized": 16,
     "toolhead_not_connected": 17,
     "z_pause": 18,
+    "z_pause_value_not_found": 19,
     "extrusion_distance_missing": 21,
     "invalid_active_tool_setting": 22,
     "invalid_tool_requested": 23,
