@@ -44,6 +44,7 @@
     "homing_timed_out": 1013,
     "tool_not_connected": 1014,
     "invalid_file_type": 1498,
+    "file_already_open":1499,
 
     "critical_kaiten_error": 1500,
     "machine_driver_failure": 1501

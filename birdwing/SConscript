@@ -4,6 +4,7 @@ import subprocess
 env = Environment(ENV = os.environ, tools = ['default', 'birdwing_install'])
 
 command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py") + ' -p -c'
+print(command)
 output_files = [
     'obj/machine_errors.hh',
     'obj/toolhead_errors.hh',
