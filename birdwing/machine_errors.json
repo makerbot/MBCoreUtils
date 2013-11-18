@@ -29,6 +29,9 @@
     "diagnostis_uknown_test_error" : 42,
     "bad_tool_count_config" : 43,
     "not_implemented" : 44,
+    "load_buffer_invalid" : 45,
+    "cache_not_available" : 46,
+    "load_cache_not_available" : 47,
 
     "kaiten_error": 500,
     "toolhead_not_heating": 1001,
