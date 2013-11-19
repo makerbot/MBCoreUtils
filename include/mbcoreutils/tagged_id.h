@@ -15,6 +15,11 @@ class IDError : public std::runtime_error {
   }
 };
 
+/// Do-nothing argument for third parameter of CREATE_TAGGED_ID_TYPE
+///
+/// Use this for IDs that don't need to be marked for export.
+#define TAGGED_ID_NO_EXPORT
+
 /// Create a new ID type
 ///
 /// This is a generic ID for ID types that can represent both valid
