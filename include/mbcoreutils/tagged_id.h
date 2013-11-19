@@ -115,7 +115,7 @@ class IDError : public std::runtime_error {
     } \
     \
     bool operator!=(const name_ &other) { \
-      return !((*this) == other);
+      return !((*this) == other); \
     } \
     \
     bool operator<(const name_ &other) { \
