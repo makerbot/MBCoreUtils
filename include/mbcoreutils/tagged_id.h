@@ -42,7 +42,8 @@ class IDError : public std::runtime_error {
 /// argument is not a valid ID.)
 ///
 /// The valid() method returns true if the current ID is valid, false
-/// otherwise.
+/// otherwise. The static overload of valid() passes through to the
+/// static valid() method of the policy type.
 ///
 /// The get() method returns the current ID if valid, otherwise an
 /// IDError is thrown.
@@ -86,6 +87,10 @@ class IDError : public std::runtime_error {
     \
     bool valid() const { \
       return PolicyType::valid(m_id); \
+    } \
+    \
+    static bool valid(const ValueType &id) { \
+      return PolicyType::valid(id); \
     } \
     \
     ValueType get() const { \
