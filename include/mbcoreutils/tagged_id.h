@@ -1,7 +1,7 @@
 // Copyright 2013 MakerBot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
-#define CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
+#ifndef INCLUDE_MBCOREUTILS_TAGGED_ID_H_
+#define INCLUDE_MBCOREUTILS_TAGGED_ID_H_
 
 #include <stdexcept>
 
@@ -134,4 +134,4 @@ class IDError : public std::runtime_error {
   }
 }
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
+#endif  // INCLUDE_MBCOREUTILS_TAGGED_ID_H_
