@@ -12,6 +12,7 @@ output_files = [
     'obj/toolhead_errors.py',
     ]
 input_files = [
+    'enum_parse.py',
     'parse_enums.py',
     'machine_errors.json',
     'toolhead_errors.json',
