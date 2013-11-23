@@ -46,6 +46,18 @@ inline std::string objectMemberAs<std::string>(
 }
 
 template<>
+inline bool objectMemberAs<bool>(
+    const Json::Value &json,
+    const std::string &key) {
+  const auto member(objectMember(json, key));
+  if (member.isBool()) {
+    return member.asBool();
+  } else {
+    throw TypeError(json.toStyledString());
+  }
+}
+
+template<>
 inline unsigned int objectMemberAs<unsigned int>(
     const Json::Value &json,
     const std::string &key) {

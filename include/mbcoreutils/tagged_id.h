@@ -1,7 +1,7 @@
 // Copyright 2013 MakerBot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
-#define CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
+#ifndef INCLUDE_MBCOREUTILS_TAGGED_ID_H_
+#define INCLUDE_MBCOREUTILS_TAGGED_ID_H_
 
 #include <stdexcept>
 
@@ -14,6 +14,11 @@ class IDError : public std::runtime_error {
       : std::runtime_error("Invalid ID") {
   }
 };
+
+/// Do-nothing argument for third parameter of CREATE_TAGGED_ID_TYPE
+///
+/// Use this for IDs that don't need to be marked for export.
+#define TAGGED_ID_NO_EXPORT
 
 /// Create a new ID type
 ///
@@ -42,7 +47,8 @@ class IDError : public std::runtime_error {
 /// argument is not a valid ID.)
 ///
 /// The valid() method returns true if the current ID is valid, false
-/// otherwise.
+/// otherwise. The static overload of valid() passes through to the
+/// static valid() method of the policy type.
 ///
 /// The get() method returns the current ID if valid, otherwise an
 /// IDError is thrown.
@@ -88,6 +94,10 @@ class IDError : public std::runtime_error {
       return PolicyType::valid(m_id); \
     } \
     \
+    static bool valid(const ValueType &id) { \
+      return PolicyType::valid(id); \
+    } \
+    \
     ValueType get() const { \
       if (valid()) { \
         return m_id; \
@@ -107,6 +117,10 @@ class IDError : public std::runtime_error {
       } else { \
         return false; \
       } \
+    } \
+    \
+    bool operator!=(const name_ &other) { \
+      return !((*this) == other); \
     } \
     \
     bool operator<(const name_ &other) { \
@@ -129,4 +143,4 @@ class IDError : public std::runtime_error {
   }
 }
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_TAGGED_ID_H_
+#endif  // INCLUDE_MBCOREUTILS_TAGGED_ID_H_
