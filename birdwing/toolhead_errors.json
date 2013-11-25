@@ -6,7 +6,7 @@
     "tool_fan_short" : 51,
     "filament_fan_short" : 52,
     "motor_over_current" : 53,
-    "no_tool_connected" : 96,
+    "no_tool_connected" : 100,
     "thermocouple_out_of_range" : 65, 
     "thermocouple_communication_failure" : 66,	
     "thermocouple_unplugged" : 67, 
