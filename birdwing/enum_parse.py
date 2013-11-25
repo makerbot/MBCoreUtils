@@ -32,8 +32,6 @@ def make_google_compliant(string):
     return string
 
 def parse_enum_c(filepath, filename, enum_data, namespace):
-    for group in enum_data:
-        print(group)
     cfilepath = "%s.hh" % (filepath)
     #stringifypath = "%s_stringify.cc" % (filepath)
     namespace_top = "namespace " + namespace + " {\n"
