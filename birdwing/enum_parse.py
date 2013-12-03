@@ -31,7 +31,8 @@ def make_google_compliant(string):
     string = string.replace('_', '')
     return string
 
-def parse_enum_c(filepath, filename, enum_data, namespace):
+def parse_enum_c(filepath, filename, enum_data, namespace, stringify):
+    print("Stringify: {0}".format(stringify))
     cfilepath = "%s.hh" % (filepath)
     #stringifypath = "%s_stringify.cc" % (filepath)
     namespace_top = "namespace " + namespace + " {\n"
@@ -56,7 +57,6 @@ def parse_enum_c(filepath, filename, enum_data, namespace):
             declaration_bottom = "}; //enum \n"
             for part in [declaration_top, declaration_middle, declaration_bottom]:
                 f.write("%s\n" % part)
-            f.write(stringify_file_top)
             c_codes = {}
             for key in enum_data[group]:
                 c_codes["k%s" % (key)] = enum_data[group][key]
@@ -67,9 +67,11 @@ def parse_enum_c(filepath, filename, enum_data, namespace):
                 stringify_middle += "\tcase %i:\n\t\tretval << \"%s::k%s\";\n\t\tbreak;\n" \
                      % (value,namespace,str(make_google_compliant(key)))
             stringify_bottom = "\tdefault:\n\t\tretval << \"%s::Unknown or not implemented\";\n\t}\n\treturn retval.str();\n} //stringify" % (namespace)
-            for part in [ stringify_top, stringify_middle, stringify_bottom]:
-                f.write("%s\n" % (part))
-            f.write(stringify_file_bottom)
+            if stringify:
+                f.write(stringify_file_top)
+                for part in [ stringify_top, stringify_middle, stringify_bottom]:
+                    f.write("%s\n" % (part))
+                f.write(stringify_file_bottom)
         for part in [namespace_bottom, c_define_bottom]:
             f.write("%s\n" % (part))
 
