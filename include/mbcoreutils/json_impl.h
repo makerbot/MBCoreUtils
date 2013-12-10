@@ -58,6 +58,18 @@ inline bool objectMemberAs<bool>(
 }
 
 template<>
+inline double objectMemberAs<double>(
+    const Json::Value &json,
+    const std::string &key) {
+  const auto member(objectMember(json, key));
+  if (member.isDouble()) {
+    return member.asDouble();
+  } else {
+    throw TypeError(json.toStyledString());
+  }
+}
+
+template<>
 inline unsigned int objectMemberAs<unsigned int>(
     const Json::Value &json,
     const std::string &key) {
