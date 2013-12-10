@@ -17,7 +17,6 @@
     "zero_length_move": 15,
     "toolhead_not_initialized": 16,
     "toolhead_not_connected": 17,
-    "z_pause": 18,
     "z_pause_value_not_found": 19,
     "extrusion_distance_missing": 21,
     "invalid_active_tool_setting": 22,
@@ -32,6 +31,7 @@
     "not_implemented" : 44,
 
     "kaiten_error": 500,
+    "z_pause": 501,
     "toolhead_not_heating": 1001,
     "default_config_not_found": 1003,
     "default_config_parse_failure": 1004,
