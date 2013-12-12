@@ -11,6 +11,12 @@
 
 #include "jsoncpp/json/value.h"
 
+#ifdef _MSC_VER
+// Fucking Microsoft
+#undef min
+#undef max
+#endif
+
 namespace MakerBot {
 
 /// Generic version of arbitrary length containing unsigned integers
