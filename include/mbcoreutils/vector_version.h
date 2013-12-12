@@ -9,6 +9,8 @@
 #include <string>
 #include <vector>
 
+#include "jsoncpp/json/value.h"
+
 namespace MakerBot {
 
 /// Generic version of arbitrary length containing unsigned integers
@@ -50,6 +52,26 @@ class VectorVersion {
     append(e1);
     append(e2);
     append(e3);
+  }
+
+  /// Create a version from a Json::Value
+  ///
+  /// The input must be an array containing zero or more unsigned
+  /// integers, otherwise an exception is thrown.
+  explicit VectorVersion(const Json::Value &json) {
+    if (json.isArray()) {
+      for (const auto &elem : json) {
+        if (elem.isUInt()) {
+          append(elem.asUInt());
+        } else {
+          throw std::runtime_error(
+              "VectorVersion: JSON input array contains invalid type: " +
+              json.toStyledString());
+        }
+      }
+    } else {
+      throw std::runtime_error("VectorVersion: JSON input not an array");
+    }
   }
 
   /// Return true if the version is empty, false otherwise
