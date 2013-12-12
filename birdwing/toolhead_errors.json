@@ -22,7 +22,6 @@
     "invalid_encoder_resolution" : 88,
     "eeprom_checksum_failure" : 95,
     "no_tool_connected" : 100,
-    "toolhead_warning" : 128,
     "thermocouple_adc_busy" : 129,    
     "mismatch_api_version" : 130,
     "eeprom_no_slave_ack" : 131,
