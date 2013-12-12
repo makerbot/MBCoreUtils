@@ -24,11 +24,11 @@
     "no_tool_connected" : 100,
     "toolhead_warning" : 128,
     "thermocouple_adc_busy" : 129,    
-    "mismatch_api_version" : 130
+    "mismatch_api_version" : 130,
     "eeprom_no_slave_ack" : 131,
     "eeprom_start_failure" : 132,
     "eeprom_slave_missed_value" : 133,
     "eeprom_id_verify_fail" : 134,
     "eeprom_unknown_version" : 135,
-    "eeprom_fatal_internal_error" : 136,
+    "eeprom_fatal_internal_error" : 136
 }
