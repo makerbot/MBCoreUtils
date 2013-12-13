@@ -76,7 +76,9 @@ class VectorVersion {
         }
       }
     } else {
-      throw std::runtime_error("VectorVersion: JSON input not an array");
+      throw std::runtime_error(
+          "VectorVersion: JSON input not an array: " +
+          json.toStyledString());
     }
   }
 
