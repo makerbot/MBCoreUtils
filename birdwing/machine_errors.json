@@ -17,6 +17,7 @@
     "zero_length_move": 271,
     "toolhead_not_initialized": 272,
     "toolhead_not_connected": 273,
+    "machine_driver_closed": 274,
     "z_pause_value_not_found": 275,
     "extrusion_distance_missing": 277,
     "invalid_active_tool_setting": 278,
