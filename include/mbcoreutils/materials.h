@@ -55,7 +55,7 @@ inline std::string stringFromMaterial(const Material material) {
 ///
 /// If the material string is invalid, kMaterialUnknown is returned rather than
 /// throwing an exeption.
-inline Material stringToMaterial(std::string &identifier) {
+inline Material stringToMaterial(const std::string &identifier) {
   if (identifier == stringFromMaterial(kMaterialABS)) {
     return kMaterialABS;
   } else if (identifier == stringFromMaterial(kMaterialPLA)) {
