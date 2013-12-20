@@ -22,6 +22,7 @@
     "extrusion_distance_missing": 277,
     "invalid_active_tool_setting": 278,
     "invalid_tool_requested": 279,
+
     "stop_iteration": 287,
     "interface_led_comms_error": 288,
     "power_monitor_i2c_failure": 295,
@@ -32,6 +33,7 @@
     "not_implemented": 300,
     "kaiten_error": 500,
     "z_pause": 501,
+	"heater_watchdog_triggered": 502,
 
     "toolhead_not_heating": 1001,
     "default_config_not_found": 1003,
