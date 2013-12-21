@@ -22,7 +22,7 @@
     "extrusion_distance_missing": 277,
     "invalid_active_tool_setting": 278,
     "invalid_tool_requested": 279,
-
+    "parse_more" : 280,
     "stop_iteration": 287,
     "interface_led_comms_error": 288,
     "power_monitor_i2c_failure": 295,
