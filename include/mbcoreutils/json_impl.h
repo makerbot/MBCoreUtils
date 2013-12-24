@@ -12,6 +12,27 @@
 #include "jsoncpp/json/writer.h"
 
 namespace Json {
+inline TypeError::TypeError(const std::string &what)
+    : std::runtime_error("TypeError: " + what) {
+}
+
+inline TypeError::TypeError(const std::string &what, const Json::Value &json)
+    : std::runtime_error("TypeError: " + what + ": " + json.toStyledString()) {
+}
+
+inline KeyError::KeyError(const std::string &what)
+    : std::runtime_error("KeyError: " + what) {
+}
+
+inline KeyError::KeyError(const std::string &what, const Json::Value &json)
+    : std::runtime_error(
+        "KeyError: " + what + ": " + json.toStyledString()) {
+}
+
+inline ParseError::ParseError(const std::string &what)
+    : std::runtime_error("ParseError: " + what) {
+}
+
 inline Json::Value parse(const std::string &text) {
   Json::Reader reader;
   Json::Value root;
@@ -32,10 +53,10 @@ T &objectMember(T &json, const std::string &key) {
     if (json.isMember(key)) {
       return json[key];
     } else {
-      throw KeyError(json.toStyledString());
+      throw KeyError("member " + key + " not found", json);
     }
   } else {
-    throw TypeError(json.toStyledString());
+    throw TypeError("expected a JSON object", json);
   }
 }
 
@@ -47,7 +68,7 @@ inline std::string objectMemberAs<std::string>(
   if (member.isString()) {
     return member.asString();
   } else {
-    throw TypeError(json.toStyledString());
+    throw TypeError("member " + key + " not a string", json);
   }
 }
 
@@ -59,7 +80,7 @@ inline bool objectMemberAs<bool>(
   if (member.isBool()) {
     return member.asBool();
   } else {
-    throw TypeError(json.toStyledString());
+    throw TypeError("member " + key + " not a bool", json);
   }
 }
 
@@ -71,7 +92,7 @@ inline double objectMemberAs<double>(
   if (member.isDouble()) {
     return member.asDouble();
   } else {
-    throw TypeError(json.toStyledString());
+    throw TypeError("member " + key + " not a double", json);
   }
 }
 
@@ -83,7 +104,7 @@ inline unsigned int objectMemberAs<unsigned int>(
   if (member.isNumeric()) {
     return member.asUInt();
   } else {
-    throw TypeError(json.toStyledString());
+    throw TypeError("member " + key + " not numeric", json);
   }
 }
 
@@ -100,7 +121,7 @@ inline uint16_t objectMemberAs<uint16_t>(
       throw std::out_of_range("objectMemberAs<uint16_t>: range error");
     }
   } else {
-    throw TypeError(json.toStyledString());
+    throw TypeError("member " + key + " not numeric", json);
   }
 }
 

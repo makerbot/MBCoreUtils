@@ -15,23 +15,21 @@
 namespace Json {
 class TypeError : public std::runtime_error {
  public:
-  explicit TypeError(const std::string &what)
-      : std::runtime_error(what) {
-  }
+  inline explicit TypeError(const std::string &what);
+
+  inline TypeError(const std::string &what, const Json::Value &json);
 };
 
 class KeyError : public std::runtime_error {
  public:
-  explicit KeyError(const std::string &what)
-      : std::runtime_error(what) {
-  }
+  explicit KeyError(const std::string &what);
+
+  inline KeyError(const std::string &what, const Json::Value &json);
 };
 
 class ParseError : public std::runtime_error {
  public:
-  explicit ParseError(const std::string &what)
-      : std::runtime_error(what) {
-  }
+  inline explicit ParseError(const std::string &what);
 };
 
 /// Parse a UTF-8 string into JSON
