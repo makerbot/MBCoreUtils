@@ -39,6 +39,9 @@ class ParseError : public std::runtime_error {
 /// Throws a ParseError if unsuccessful.
 inline Json::Value parse(const std::string &text);
 
+/// Write a JSON value to a string with no styling
+inline std::string toUnstyledString(const Json::Value &json);
+
 /// Return the JSON value for the specified key
 ///
 /// Throws a TypeError if the input is not an object or a KeyError if

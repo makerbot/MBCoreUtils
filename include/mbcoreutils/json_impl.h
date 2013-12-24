@@ -9,6 +9,8 @@
 #include <limits>
 #include <string>
 
+#include "jsoncpp/json/writer.h"
+
 namespace Json {
 inline Json::Value parse(const std::string &text) {
   Json::Reader reader;
@@ -18,6 +20,10 @@ inline Json::Value parse(const std::string &text) {
   } else {
     throw ParseError(reader.getFormattedErrorMessages());
   }
+}
+
+inline std::string toUnstyledString(const Json::Value &json) {
+  return Json::FastWriter().write(json);
 }
 
 template<typename T>
