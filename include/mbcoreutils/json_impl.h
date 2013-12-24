@@ -44,7 +44,7 @@ inline Json::Value parse(const std::string &text) {
 }
 
 inline std::string toUnstyledString(const Json::Value &json) {
-  return Json::FastWriter().write(json);
+  return boost::trim_copy(Json::FastWriter().write(json));
 }
 
 template<typename T>
