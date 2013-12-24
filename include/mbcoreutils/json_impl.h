@@ -1,7 +1,7 @@
 // Copyright 2013 MakerBot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
-#define CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
+#ifndef INCLUDE_MBCOREUTILS_JSON_IMPL_H_
+#define INCLUDE_MBCOREUTILS_JSON_IMPL_H_
 
 #include <boost/algorithm/string/trim.hpp>
 
@@ -109,4 +109,4 @@ std::string trimStyle(const Json::Value &json) {
 }
 }
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_JSON_IMPL_H_
+#endif  // INCLUDE_MBCOREUTILS_JSON_IMPL_H_

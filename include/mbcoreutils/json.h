@@ -1,7 +1,7 @@
 // Copyright 2013 MakerBot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_JSON_H_
-#define CPP_INCLUDE_MBCOREUTILS_JSON_H_
+#ifndef INCLUDE_MBCOREUTILS_JSON_H_
+#define INCLUDE_MBCOREUTILS_JSON_H_
 
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/value.h>
@@ -67,4 +67,4 @@ inline std::string trimStyle(const Json::Value &json);
 
 #include "mbcoreutils/json_impl.h"
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_JSON_H_
+#endif  // INCLUDE_MBCOREUTILS_JSON_H_

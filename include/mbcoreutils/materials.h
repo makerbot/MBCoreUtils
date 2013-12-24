@@ -1,7 +1,7 @@
 // Copyright 2013 Makerbot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_MATERIALS_H_
-#define CPP_INCLUDE_MBCOREUTILS_MATERIALS_H_
+#ifndef INCLUDE_MBCOREUTILS_MATERIALS_H_
+#define INCLUDE_MBCOREUTILS_MATERIALS_H_
 
 #include <string>
 
@@ -70,4 +70,4 @@ inline Material stringToMaterial(const std::string &identifier) {
 }
 }  // namespace MakerBot
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_MATERIALS_H_
+#endif  // INCLUDE_MBCOREUTILS_MATERIALS_H_

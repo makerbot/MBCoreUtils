@@ -1,7 +1,7 @@
 // Copyright 2013 Makerbot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_VERSION_H_
-#define CPP_INCLUDE_MBCOREUTILS_VERSION_H_
+#ifndef INCLUDE_MBCOREUTILS_VERSION_H_
+#define INCLUDE_MBCOREUTILS_VERSION_H_
 
 #include <stdlib.h>
 
@@ -117,4 +117,4 @@ class Version {
 };
 }  // MakerBot
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_VERSION_H_
+#endif  // INCLUDE_MBCOREUTILS_VERSION_H_

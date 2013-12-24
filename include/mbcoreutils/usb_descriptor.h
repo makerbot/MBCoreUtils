@@ -1,7 +1,7 @@
 // Copyright 2013 MakerBot Industries
 
-#ifndef CPP_INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
-#define CPP_INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
+#ifndef INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
+#define INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
 
 #include <cstdint>
 #include <string>
@@ -79,4 +79,4 @@ class UsbDescriptor {
 };
 }
 
-#endif  // CPP_INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
+#endif  // INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
