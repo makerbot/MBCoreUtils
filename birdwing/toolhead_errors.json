@@ -29,5 +29,6 @@
     "eeprom_slave_missed_value" : 133,
     "eeprom_id_verify_fail" : 134,
     "eeprom_unknown_version" : 135,
-    "eeprom_fatal_internal_error" : 136
+    "eeprom_fatal_internal_error" : 136,
+    "eeprom_out_of_date" : 137
 }
