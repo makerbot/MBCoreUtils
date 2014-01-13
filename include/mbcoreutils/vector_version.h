@@ -67,8 +67,10 @@ class VectorVersion {
   explicit VectorVersion(const Json::Value &json) {
     if (json.isArray()) {
       for (const auto &elem : json) {
-        if (elem.isUInt()) {
-          append(elem.asUInt());
+        // Note: using isInt instead of isUInt to work around a bug in
+        // older versions of json-cpp (BW-767)
+        if (elem.isInt() && (elem.asInt() >= 0)) {
+          append(elem.asInt());
         } else {
           throw std::runtime_error(
               "VectorVersion: JSON input array contains invalid type: " +
