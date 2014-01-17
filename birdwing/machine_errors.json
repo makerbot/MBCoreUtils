@@ -48,6 +48,7 @@
     "print_tool_not_connected": 1014,
     "invalid_eeprom_filepath": 1015,
     "homing_not_completed": 1016,
+	"toolhead_spi_config_error": 1017,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
 

@@ -14,6 +14,7 @@
     "heater_open" : 71,
     "tool_fan_open" : 72,
     "filament_fan_open" : 73,
+	"heater_over_temp" : 74,
     "filament_slip" : 80,
     "no_filament" : 81,
     "unsupported_tool" : 85,
@@ -30,5 +31,5 @@
     "eeprom_id_verify_fail" : 134,
     "eeprom_unknown_version" : 135,
     "eeprom_fatal_internal_error" : 136,
-    "eeprom_out_of_date" : 137
+	"eeprom_out_of_date" : 137
 }
