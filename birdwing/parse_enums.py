@@ -43,10 +43,17 @@ if __name__ == "__main__":
         "error": machine_error_data}
     toolhead_enum_data = {
         "error": toolhead_error_data}
+    # combine machine and toolhead errors into a single enum for UI applications
+    all_errors_error_data = machine_error_data.copy()
+    all_errors_error_data.update(toolhead_error_data)
+    all_errors_enum_data = {
+        "error": all_errors_error_data}
     machine_filename = "machine_errors"
     toolhead_filename = "toolhead_errors"
+    all_errors_filename = "all_errors"
     machine_enum_path = cur_dir + "/obj/" + machine_filename
     toolhead_enum_path = cur_dir + "/obj/" + toolhead_filename
+    all_errors_enum_path = cur_dir + "/obj/" + all_errors_filename
 
     if args.python:
         print("Parsing Python...")
@@ -60,5 +67,6 @@ if __name__ == "__main__":
             print("Stringifying...")
         enum_parse.parse_enum_c(machine_enum_path, machine_filename, machine_enum_data, "machine", stringify)
         enum_parse.parse_enum_c(toolhead_enum_path, toolhead_filename, toolhead_enum_data, "toolhead", stringify)
+        enum_parse.parse_enum_c(all_errors_enum_path, all_errors_filename, all_errors_enum_data, "bwcoreutils", False)
     if not args.python and not args.clang:
         print("Not parsing anything...")

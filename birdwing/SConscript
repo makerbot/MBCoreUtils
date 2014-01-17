@@ -8,6 +8,7 @@ print(command)
 output_files = [
     'obj/machine_errors.hh',
     'obj/toolhead_errors.hh',
+    'obj/all_errors.hh',
     'obj/machine_errors.py',
     'obj/toolhead_errors.py',
     ]
@@ -21,6 +22,7 @@ input_files = [
 env.Command(output_files, input_files, command)
 env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/machine_errors.hh")
 env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/toolhead_errors.hh")
+env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "obj/all_errors.hh")
 
 # This is here to prevent "cannot find target 'install'"  errors. 
 # There may be a more logical thing to do with this alias 
