@@ -48,30 +48,45 @@ private:
 				break;
 			case kPrintToolNotConnected:
 			case kToolheadNotConnected:
+			case kThermocoupleUnplugged:
+			case kThermocoupleOutOfRange:
+			case kThermocoupleTooHot:
+			case kThermocoupleCommunicationFailure:
 				m_message = QObject::tr("Reconnect this tool");
 				m_type = TOOL_ERROR;
 				break;
 			case kNoToolConnected:
 				m_message = QObject::tr("No tool connected");
 				m_type = TOOL_ERROR;
+				break;		
+			case kHeaterShort:
+			case kToolShort:
+			case kToolFanShort:			
+			case kMotorOverCurrent:
+			case kFilamentFanShort:
+			case kToolOpen:
+			case kUnsupportedTool:
+			case kToolReadError:
+			case kToolChecksumFail:
+				m_message = QObject::tr("Replace this tool - contact support");
+				m_type = TOOL_ERROR;
+				break;
+			case kToolFanOpen:
+			case kFilamentFanOpen:
+				m_message = QObject::tr("Contact support");
+				m_type = TOOL_ERROR;
 				break;			
 			case kDefaultConfigParseFailure:
 			case kHomingNotCompleted:
-			case kFilamentFanShort:
-			case kThermocoupleUnplugged:
 			case kInvalidResponse:
 			case kDefaultConfigNotFound:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
 			case kEepromNoSlaveAck:
 			case kHeaterWatchdogTriggered:
-			case kToolOpen:
 			case kEepromChecksumFailure:
-			case kThermocoupleOutOfRange:
 			case kHeaterAddFailure:
 			case kEepromSlaveMissedValue:
-			case kHeaterShort:
-			case kToolShort:
 			case kMismatchApiVersion:
 			case kInvalidActiveToolSetting:
 			case kToolheadNotInitialized:
@@ -81,36 +96,28 @@ private:
 			case kDefaultConfigMissingValue:
 			case kCriticalKaitenError:
 			case kInvalidFileType:
-			case kUnsupportedTool:
 			case kToolheadNotHeating:
-			case kThermocoupleTooHot:
 			case kUserConfigParseFailure:
 			case kNoToolheadsDetected:
 			case kToolheadProgramFailure:
 			case kZPauseValueNotFound:
 			case kDiagnosticsUnknownStateError:
-			case kFilamentFanOpen:
 			case kInvalidEncoderResolution:
 			case kInvalidAccelerationBufferSize:
 			case kUserConfigNotFound:
 			case kHeaterOpen:
 			case kFileAlreadyOpen:
-			case kMotorOverCurrent:
 			case kToolheadMismatchApiVersion:
 			case kExtrusionDistanceMissing:
 			case kInvalidEepromFilepath:
 			case kJsonToolpathNothingParsed:
-			case kToolFanShort:
-			case kThermocoupleCommunicationFailure:
 			case kParseMore:
 			case kBadToolCountConfig:
 			case kHomingTimedOut:
 			case kPowerMonitorI2CFailure:
 			case kEepromOutOfDate:
 			case kOk:
-			case kToolChecksumFail:
 			case kToolheadNoResponse:
-			case kToolFanOpen:
 			case kKaitenError:
 			case kNone:
 			case kInvalidAxis:
@@ -130,7 +137,6 @@ private:
 			case kMachineDriverFailure:
 			case kDiagnosticsTestFailed:
 			case kEepromFatalInternalError:
-			case kToolReadError:
 			case kInterfaceLedCommsError:
 			case kStopIteration:
 			case kZPause:
