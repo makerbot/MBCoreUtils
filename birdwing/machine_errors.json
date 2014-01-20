@@ -31,6 +31,7 @@
     "diagnostis_uknown_test_error": 298,
     "bad_tool_count_config": 299,
     "not_implemented": 300,
+    "toolhead_disconnected": 301,
     "kaiten_error": 500,
     "z_pause": 501,
 	"heater_watchdog_triggered": 502,
