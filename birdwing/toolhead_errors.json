@@ -1,6 +1,7 @@
 {
     "none" : 0, 
     "invalid_response" : 12,
+    "toolhead_disconnected" : 13,
     "tool_short" : 49,
     "heater_short" : 50,
     "tool_fan_short" : 51,
