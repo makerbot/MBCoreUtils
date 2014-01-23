@@ -75,7 +75,11 @@ private:
 			case kFilamentFanOpen:
 				m_message = QObject::tr("Contact support");
 				m_type = TOOL_ERROR;
-				break;			
+				break;	
+			case kHeaterWatchdogTriggered:
+			    m_message = QObject::tr("Preheat timed out - cooling down");
+			    m_type = NONE;
+			    break;
 			case kDefaultConfigParseFailure:
 			case kHomingNotCompleted:
 			case kInvalidResponse:
@@ -83,7 +87,6 @@ private:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
 			case kEepromNoSlaveAck:
-			case kHeaterWatchdogTriggered:
 			case kEepromChecksumFailure:
 			case kHeaterAddFailure:
 			case kEepromSlaveMissedValue:
