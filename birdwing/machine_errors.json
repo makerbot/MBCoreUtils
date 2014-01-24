@@ -34,7 +34,8 @@
     "kaiten_error": 500,
     "z_pause": 501,
 	"heater_watchdog_triggered": 502,
-
+	"heater_temp_sag" : 503,
+	"heater_not_heating" : 504,
     "toolhead_not_heating": 1001,
     "default_config_not_found": 1003,
     "default_config_parse_failure": 1004,
