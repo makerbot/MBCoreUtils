@@ -43,7 +43,7 @@ private:
 	void init(int errorCode) {		
 		switch(static_cast<Error>(errorCode)) {
 			case kNoFilament:
-				m_message = QObject::tr("Out of filament - unload and reload filament");
+				m_message = QObject::tr("Out of filament. Please unload your remaining filament, and then load new filament to continue printing.");
 				m_type = FILAMENT_ERROR;
 				break;
 			case kPrintToolNotConnected:
@@ -52,13 +52,13 @@ private:
 			case kThermocoupleOutOfRange:
 			case kThermocoupleTooHot:
 			case kThermocoupleCommunicationFailure:
-				m_message = QObject::tr("Reconnect this tool");
+				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1). Please disconnect and reconnect your Smart Extruder.").arg(errorCode);
 				m_type = TOOL_ERROR;
-				break;
+				break;	
 			case kNoToolConnected:
-				m_message = QObject::tr("No tool connected");
+				m_message = QObject::tr("Your Smart Extruder is not connected. Please reconnect your Smart Extruder.").arg(errorCode);
 				m_type = TOOL_ERROR;
-				break;		
+				break;	
 			case kHeaterShort:
 			case kToolShort:
 			case kToolFanShort:			
@@ -68,14 +68,15 @@ private:
 			case kUnsupportedTool:
 			case kToolReadError:
 			case kToolChecksumFail:
-				m_message = QObject::tr("Replace this tool - contact support");
-				m_type = TOOL_ERROR;
-				break;
 			case kToolFanOpen:
 			case kFilamentFanOpen:
-				m_message = QObject::tr("Contact support");
+				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1). Please contact MakerBot support.").arg(errorCode);
 				m_type = TOOL_ERROR;
-				break;			
+				break;	
+			case kHeaterWatchdogTriggered:
+			    m_message = QObject::tr("Preheat timed out - cooling down now.");
+			    m_type = NONE;
+			    break;
 			case kDefaultConfigParseFailure:
 			case kHomingNotCompleted:
 			case kInvalidResponse:
@@ -83,7 +84,6 @@ private:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
 			case kEepromNoSlaveAck:
-			case kHeaterWatchdogTriggered:
 			case kEepromChecksumFailure:
 			case kHeaterAddFailure:
 			case kEepromSlaveMissedValue:
@@ -142,6 +142,7 @@ private:
 			case kZPause:
 			case kFileNotFound:
 			default:
+				m_message = QObject::tr("Oops, we have a problem (Error %1). Please update your firmware using MakerBot Desktop.").arg(errorCode);
 				break;
 		}		
 	}
