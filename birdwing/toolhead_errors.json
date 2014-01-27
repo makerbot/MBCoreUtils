@@ -1,5 +1,6 @@
 {
     "none" : 0, 
+	"watchdog_triggered" : 11,
     "invalid_response" : 12,
     "toolhead_disconnected" : 13,
     "tool_short" : 49,
@@ -7,6 +8,8 @@
     "tool_fan_short" : 51,
     "filament_fan_short" : 52,
     "motor_over_current" : 53,
+	"heater_rise_watchdog_triggered" : 54,
+	"heater_hold_watchdog_triggered" : 55,
     "thermocouple_out_of_range" : 65, 
     "thermocouple_communication_failure" : 66,	
     "thermocouple_unplugged" : 67, 
