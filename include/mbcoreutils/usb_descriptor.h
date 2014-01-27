@@ -4,7 +4,9 @@
 #define INCLUDE_MBCOREUTILS_USB_DESCRIPTOR_H_
 
 #include <cstdint>
+#include <iomanip>
 #include <string>
+#include <sstream>  // NOLINT
 
 namespace MakerBot {
 
@@ -60,6 +62,20 @@ class UsbDescriptor {
     return ((m_vid == other.m_vid) &&
             (m_pid == other.m_pid) &&
             (normalizedSerial() == other.normalizedSerial()));
+  }
+
+  std::string str() const {
+    std::ostringstream ss;
+    ss << std::hex
+       << std::setfill('0')
+       << std::setw(4)
+       << m_vid
+       << ":"
+       << std::setw(4)
+       << m_pid
+       << ":"
+       << m_serial;
+    return ss.str();
   }
 
  private:
