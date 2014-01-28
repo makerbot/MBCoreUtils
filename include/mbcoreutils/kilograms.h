@@ -56,6 +56,10 @@ class Kilograms {
     return *this;
   }
 
+  Kilograms operator+(const Kilograms &other) const {
+    return Kilograms(m_kilograms + other.m_kilograms);
+  }
+
  private:
   /// Initialize with the given kilograms value
   explicit Kilograms(const ValueType kilograms)

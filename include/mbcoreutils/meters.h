@@ -47,6 +47,10 @@ class Meters {
     return *this;
   }
 
+  Meters operator+(const Meters &other) const {
+    return Meters(m_meters + other.m_meters);
+  }
+
  private:
   /// Initialize with the given meters value
   explicit Meters(const ValueType meters)
