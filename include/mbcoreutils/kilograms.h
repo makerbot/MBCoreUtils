@@ -1,7 +1,7 @@
 // Copyright 2014 MakerBot Industries
 
-#ifndef INCLUDE_MBCOREUTILS_WEIGHT_H_
-#define INCLUDE_MBCOREUTILS_WEIGHT_H_
+#ifndef INCLUDE_MBCOREUTILS_KILOGRAMS_H_
+#define INCLUDE_MBCOREUTILS_KILOGRAMS_H_
 
 #include <stdexcept>
 
@@ -24,12 +24,21 @@ class Kilograms {
       : m_kilograms(0.0) {
   }
 
+  static Kilograms grams(const ValueType grams) {
+    return Kilograms(grams * 0.001);
+  }
+
   static Kilograms kilograms(const ValueType kilograms) {
     return Kilograms(kilograms);
   }
 
   static Kilograms pounds(const ValueType pounds) {
     return Kilograms(pounds * 0.453592);
+  }
+
+  /// Get the weight in grams
+  ValueType inGrams() const {
+    return m_kilograms * 1000;
   }
 
   /// Get the weight in kilograms
@@ -61,4 +70,4 @@ class Kilograms {
 };
 }
 
-#endif  // INCLUDE_MBCOREUTILS_WEIGHT_H_
+#endif  // INCLUDE_MBCOREUTILS_KILOGRAMS_H_
