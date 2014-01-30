@@ -10,6 +10,8 @@
     "motor_over_current" : 53,
 	"heater_rise_watchdog_triggered" : 54,
 	"heater_hold_watchdog_triggered" : 55,
+	"heater_temperature_sag_triggered" : 56,
+	"heater_temperature_overrun_triggered" : 57,
     "thermocouple_out_of_range" : 65, 
     "thermocouple_communication_failure" : 66,	
     "thermocouple_unplugged" : 67, 
