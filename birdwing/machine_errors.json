@@ -31,7 +31,6 @@
     "bad_tool_count_config": 299,
     "not_implemented": 300,
     "resume_complete": 301,
-    "suspend_index_not_found": 302,
     "kaiten_error": 500,
     "z_pause": 501,
 	"heater_watchdog_triggered": 502,
@@ -53,6 +52,8 @@
     "invalid_eeprom_filepath": 1015,
     "homing_not_completed": 1016,
 	"toolhead_spi_config_error": 1017,
+    "suspend_index_not_found": 1018,
+    "suspend_no_valid_last_move": 1019,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
 
