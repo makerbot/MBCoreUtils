@@ -22,9 +22,16 @@ public:
 		SAD_BOT
 	};
 	
+	enum ACTION {
+		ACKNOWLEDGE,
+		CHANGE_FILAMENT,
+		PREHEAT_TIMEOUT,
+		ZPAUSED
+	};
+	
 	BotError(int errorCode) :
-		m_message(QObject::tr("An error occurred")),
-		m_type(GENERAL_ERROR) {
+		m_type(GENERAL_ERROR),
+		m_action(ACKNOWLEDGE) {
 		init(errorCode);
 	}
 	
@@ -39,12 +46,34 @@ public:
 		return m_type;
 	}
 
+	const ACTION action() const {
+		return m_action;
+	}
+	
+	const QString title() const {
+		if(!m_title.isEmpty()) {
+			return m_title;
+		} else if(m_type == TOOL_ERROR) {
+			return QObject::tr("Extruder Error");
+		} else {
+			return QObject::tr("System Error");
+		}
+	}
+	
 private:
 	void init(int errorCode) {		
 		switch(static_cast<Error>(errorCode)) {
 			case kNoFilament:
-				m_message = QObject::tr("Out of filament. Please unload your remaining filament, and then load new filament to continue printing.");
+				m_title = QObject::tr("Out of Filament");
+				m_message = QObject::tr("Please unload your remaining filament, and then load new filament to continue printing.");
 				m_type = FILAMENT_ERROR;
+				m_action = CHANGE_FILAMENT;
+				break;
+			case kFilamentSlip:
+				m_title = QObject::tr("Filament Jam");
+				m_message = QObject::tr("Your filament seems to be jammed. Please unload your remaining filament, and then reload it to continue printing.");
+				m_type = FILAMENT_ERROR;
+				m_action = CHANGE_FILAMENT;
 				break;
 			case kPrintToolNotConnected:
 			case kToolheadNotConnected:
@@ -52,11 +81,11 @@ private:
 			case kThermocoupleOutOfRange:
 			case kThermocoupleTooHot:
 			case kThermocoupleCommunicationFailure:
-				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1). Please disconnect and reconnect your Smart Extruder.").arg(errorCode);
+				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1: %2). Please disconnect and reconnect your Smart Extruder.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				m_type = TOOL_ERROR;
 				break;	
 			case kNoToolConnected:
-				m_message = QObject::tr("Your Smart Extruder is not connected. Please reconnect your Smart Extruder.").arg(errorCode);
+				m_message = QObject::tr("Your Smart Extruder is not connected. Please reconnect your Smart Extruder.");
 				m_type = TOOL_ERROR;
 				break;	
 			case kHeaterShort:
@@ -69,37 +98,59 @@ private:
 			case kToolReadError:
 			case kToolChecksumFail:
 			case kToolFanOpen:
+			case kToolheadNoResponse:
+			case kToolheadMismatchApiVersion:
 			case kFilamentFanOpen:
-				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1). Please contact MakerBot support.").arg(errorCode);
+			case kToolheadProgramFailure:
+			case kToolheadNotHeating:
+			case kEepromChecksumFailure:
+			case kToolheadNotInitialized:
+			case kToolheadMalformedPacket:
+				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1: %2). Please contact MakerBot support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				m_type = TOOL_ERROR;
 				break;	
 			case kHeaterWatchdogTriggered:
+			case kHeaterHoldWatchdogTriggered:
+				m_title = QObject::tr("Preheat Timed Out");
 			    m_message = QObject::tr("Preheat timed out - cooling down now.");
 			    m_type = NONE;
+			    m_action = PREHEAT_TIMEOUT;
 			    break;
-			case kDefaultConfigParseFailure:
 			case kHomingNotCompleted:
+			case kHomingTimedOut:
+				m_title = QObject::tr("Homing Error");
+			    m_message = QObject::tr("Homing failed. Please try again.");
+			    m_type = NONE;
+			    break;			
+			case kJsonToolpathNothingParsed:
+			case kJsonToolpathParseError:
+				m_title = QObject::tr("Print Error");
+			    m_message = QObject::tr("Invalid print file. Please try to prepare again in MakerBot Desktop.");
+			    m_type = NONE;
+			    break;	
+			case kZPause:
+				m_title = QObject::tr("Print Paused");
+			    m_message = QObject::tr("Paused your print."); // TODO: height in mm?
+			    m_type = ZPAUSE;
+			    m_action = ZPAUSED;
+			    break;					
+			case kDefaultConfigParseFailure:
 			case kInvalidResponse:
 			case kDefaultConfigNotFound:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
 			case kEepromNoSlaveAck:
-			case kEepromChecksumFailure:
 			case kHeaterAddFailure:
 			case kEepromSlaveMissedValue:
 			case kMismatchApiVersion:
 			case kInvalidActiveToolSetting:
-			case kToolheadNotInitialized:
 			case kThermocoupleAdcBusy:
 			case kToolheadCommandTxFailure:
-			case kFilamentSlip:
 			case kDefaultConfigMissingValue:
 			case kCriticalKaitenError:
 			case kInvalidFileType:
-			case kToolheadNotHeating:
 			case kUserConfigParseFailure:
 			case kNoToolheadsDetected:
-			case kToolheadProgramFailure:
 			case kZPauseValueNotFound:
 			case kDiagnosticsUnknownStateError:
 			case kInvalidEncoderResolution:
@@ -107,25 +158,19 @@ private:
 			case kUserConfigNotFound:
 			case kHeaterOpen:
 			case kFileAlreadyOpen:
-			case kToolheadMismatchApiVersion:
 			case kExtrusionDistanceMissing:
 			case kInvalidEepromFilepath:
-			case kJsonToolpathNothingParsed:
 			case kParseMore:
 			case kBadToolCountConfig:
-			case kHomingTimedOut:
 			case kPowerMonitorI2CFailure:
 			case kEepromOutOfDate:
 			case kOk:
-			case kToolheadNoResponse:
 			case kKaitenError:
 			case kNone:
 			case kInvalidAxis:
-			case kJsonToolpathParseError:
 			case kInvalidHeaterIndex:
 			case kDiagnostisUknownTestError:
 			case kInvalidToolRequested:
-			case kToolheadMalformedPacket:
 			case kMachineDriverClosed:
 			case kPruInitializationFailed:
 			case kEepromUnknownVersion:
@@ -139,16 +184,17 @@ private:
 			case kEepromFatalInternalError:
 			case kInterfaceLedCommsError:
 			case kStopIteration:
-			case kZPause:
 			case kFileNotFound:
 			default:
-				m_message = QObject::tr("Oops, we have a problem (Error %1). Please update your firmware using MakerBot Desktop.").arg(errorCode);
+				m_message = QObject::tr("Oops, we have a problem (Error %1: %2). Please update your firmware using MakerBot Desktop.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
 		}		
 	}
 	
 	QString m_message;
 	TYPE m_type;
+	ACTION m_action;
+	QString m_title;
 };
 
 	

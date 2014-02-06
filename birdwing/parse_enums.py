@@ -67,6 +67,6 @@ if __name__ == "__main__":
             print("Stringifying...")
         enum_parse.parse_enum_c(machine_enum_path, machine_filename, machine_enum_data, "machine", stringify)
         enum_parse.parse_enum_c(toolhead_enum_path, toolhead_filename, toolhead_enum_data, "toolhead", stringify)
-        enum_parse.parse_enum_c(all_errors_enum_path, all_errors_filename, all_errors_enum_data, "bwcoreutils", False)
+        enum_parse.parse_enum_c(all_errors_enum_path, all_errors_filename, all_errors_enum_data, "bwcoreutils", True, True)
     if not args.python and not args.clang:
         print("Not parsing anything...")

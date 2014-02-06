@@ -31,7 +31,12 @@ def make_google_compliant(string):
     string = string.replace('_', '')
     return string
 
-def parse_enum_c(filepath, filename, enum_data, namespace, stringify):
+def make_human_readable(string):
+    string = string.title()
+    string = string.replace('_', ' ')
+    return string
+
+def parse_enum_c(filepath, filename, enum_data, namespace, stringify, readable = False):
     print("Stringify: {0}".format(stringify))
     cfilepath = "%s.hh" % (filepath)
     #stringifypath = "%s_stringify.cc" % (filepath)
@@ -60,13 +65,21 @@ def parse_enum_c(filepath, filename, enum_data, namespace, stringify):
             c_codes = {}
             for key in enum_data[group]:
                 c_codes["k%s" % (key)] = enum_data[group][key]
-            stringify_top = "inline std::string stringify_%s(%s val) {\n\tstd::stringstream retval;\n\tswitch(val){\n" \
-                 % (make_google_compliant(group).lower(), make_google_compliant(group))
-            stringify_middle = ""
-            for key, value in enum_data[group].iteritems():
-                stringify_middle += "\tcase %i:\n\t\tretval << \"%s::k%s\";\n\t\tbreak;\n" \
-                     % (value,namespace,str(make_google_compliant(key)))
-            stringify_bottom = "\tdefault:\n\t\tretval << \"%s::Unknown or not implemented\";\n\t}\n\treturn retval.str();\n} //stringify" % (namespace)
+            if readable:
+                stringify_top = "inline std::string stringify_error(int val) {\n\tstd::stringstream retval;\n\tswitch(val){\n"
+                stringify_middle = ""
+                for key, value in enum_data[group].iteritems():
+                    stringify_middle += "\tcase %i:\n\t\tretval << \"%s\";\n\t\tbreak;\n" \
+                        % (value, str(make_human_readable(key)))
+                stringify_bottom = "\tdefault:\n\t\tretval << \"Unknown Error\";\n\t}\n\treturn retval.str();\n} //stringify"    
+            else:
+                stringify_top = "inline std::string stringify_%s(%s val) {\n\tstd::stringstream retval;\n\tswitch(val){\n" \
+                     % (make_google_compliant(group).lower(), make_google_compliant(group))
+                stringify_middle = ""
+                for key, value in enum_data[group].iteritems():
+                    stringify_middle += "\tcase %i:\n\t\tretval << \"%s::k%s\";\n\t\tbreak;\n" \
+                        % (value,namespace,str(make_google_compliant(key)))
+                stringify_bottom = "\tdefault:\n\t\tretval << \"%s::Unknown or not implemented\";\n\t}\n\treturn retval.str();\n} //stringify" % (namespace)
             if stringify:
                 f.write(stringify_file_top)
                 for part in [ stringify_top, stringify_middle, stringify_bottom]:
