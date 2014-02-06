@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     if args.python:
         print("Parsing Python...")
-        enum_parse.parse_enum_python(machine_enum_path, machine_enum_data)
+        enum_parse.parse_enum_python(machine_enum_path, all_errors_enum_data)
         enum_parse.parse_enum_python(toolhead_enum_path, toolhead_enum_data)
     if args.clang:
         print("Parsing c...")
