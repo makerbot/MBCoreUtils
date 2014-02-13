@@ -118,6 +118,9 @@ private:
 			    break;
 			case kHomingNotCompleted:
 			case kHomingTimedOut:
+            case kNoValidHesSlope:
+            case kHesRebaseFailed:
+            case kBinarySearchOutOfRange:
 				m_title = QObject::tr("Homing Error");
 			    m_message = QObject::tr("Homing failed. Please try again.");
 			    m_type = NONE;

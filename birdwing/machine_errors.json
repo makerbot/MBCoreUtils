@@ -54,6 +54,9 @@
 	"toolhead_spi_config_error": 1017,
     "suspend_index_not_found": 1018,
     "suspend_no_valid_last_move": 1019,
+    "no_valid_hes_slope": 1020,
+    "binary_search_out_of_range": 1021,
+    "hes_rebase_failed": 1022,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
 
