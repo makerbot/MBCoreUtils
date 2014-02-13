@@ -122,7 +122,7 @@ private:
             case kHesRebaseFailed:
             case kBinarySearchOutOfRange:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed. Please try again.");
+			    m_message = QObject::tr("Homing failed (Error %1: %2). Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
 			    m_type = NONE;
 			    break;			
 			case kJsonToolpathNothingParsed:
