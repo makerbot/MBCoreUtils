@@ -106,15 +106,17 @@ private:
 			case kEepromChecksumFailure:
 			case kToolheadNotInitialized:
 			case kToolheadMalformedPacket:
+			case kHeaterRiseWatchdogTriggered:
+			case kHeaterTemperatureSagTriggered:
+            case kHeaterTemperatureOverrunTriggered:
+            case kWatchdogTriggered:
 				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1: %2). Please contact MakerBot support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				m_type = TOOL_ERROR;
 				break;	
-			case kHeaterWatchdogTriggered:
 			case kHeaterHoldWatchdogTriggered:
-				m_title = QObject::tr("Preheat Timed Out");
-			    m_message = QObject::tr("Preheat timed out - cooling down now.");
+				m_title = QObject::tr("Heating Timeout");
+			    m_message = QObject::tr("Heaters were turned off due to inactivity");
 			    m_type = NONE;
-			    m_action = PREHEAT_TIMEOUT;
 			    break;
 			case kHomingNotCompleted:
 			case kHomingTimedOut:
