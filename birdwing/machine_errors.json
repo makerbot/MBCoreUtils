@@ -33,8 +33,6 @@
     "resume_complete": 301,
     "kaiten_error": 500,
     "z_pause": 501,
-	"heater_watchdog_triggered": 502,
-	"heater_temp_sag" : 503,
 	"heater_not_heating" : 504,
     "toolhead_not_heating": 1001,
     "toolhead_not_connected": 1002,
