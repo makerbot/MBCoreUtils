@@ -138,21 +138,28 @@ private:
 			    m_message = QObject::tr("Paused your print."); // TODO: height in mm?
 			    m_type = ZPAUSE;
 			    m_action = ZPAUSED;
-			    break;					
-			case kDefaultConfigParseFailure:
-			case kInvalidResponse:
+			    break;				
+			case kMismatchApiVersion:
+			case kDefaultConfigMissingValue:
 			case kDefaultConfigNotFound:
+			case kDefaultConfigParseFailure:
+			case kInvalidEepromFilepath:			    
+			    m_message = QObject::tr("Oops, we have a problem (Error %1: %2). Please update your firmware using MakerBot Desktop.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+				break;	
+			case kKaitenError:
+			case kCriticalKaitenError:
+				// don't show users the term 'Kaiten'
+				m_message = QObject::tr("Oops, we have a problem (Error %1). ").arg(errorCode);
+				break;
+			case kInvalidResponse:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
 			case kEepromNoSlaveAck:
 			case kHeaterAddFailure:
 			case kEepromSlaveMissedValue:
-			case kMismatchApiVersion:
 			case kInvalidActiveToolSetting:
 			case kThermocoupleAdcBusy:
 			case kToolheadCommandTxFailure:
-			case kDefaultConfigMissingValue:
-			case kCriticalKaitenError:
 			case kInvalidFileType:
 			case kUserConfigParseFailure:
 			case kNoToolheadsDetected:
@@ -164,13 +171,11 @@ private:
 			case kHeaterOpen:
 			case kFileAlreadyOpen:
 			case kExtrusionDistanceMissing:
-			case kInvalidEepromFilepath:
 			case kParseMore:
 			case kBadToolCountConfig:
 			case kPowerMonitorI2CFailure:
 			case kEepromOutOfDate:
 			case kOk:
-			case kKaitenError:
 			case kNone:
 			case kInvalidAxis:
 			case kInvalidHeaterIndex:
@@ -191,7 +196,7 @@ private:
 			case kStopIteration:
 			case kFileNotFound:
 			default:
-				m_message = QObject::tr("Oops, we have a problem (Error %1: %2). Please update your firmware using MakerBot Desktop.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+				m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
 		}		
 	}
