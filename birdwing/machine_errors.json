@@ -22,6 +22,7 @@
     "invalid_active_tool_setting": 278,
     "invalid_tool_requested": 279,
     "parse_more" : 280,
+    "buffer_full" : 281,
     "stop_iteration": 287,
     "interface_led_comms_error": 288,
     "power_monitor_i2c_failure": 295,
@@ -55,6 +56,9 @@
     "no_valid_hes_slope": 1020,
     "binary_search_out_of_range": 1021,
     "hes_rebase_failed": 1022,
+    "no_hes_log": 1023,
+    "no_hes_change": 1024,
+    "unknown_homing_method": 1025,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
 
