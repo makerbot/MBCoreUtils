@@ -106,7 +106,7 @@ class IDError : public std::runtime_error {
       } \
     } \
     \
-    bool operator==(const name_ &other) { \
+    bool operator==(const name_ &other) const { \
       const bool meValid(valid()); \
       const bool otherValid(other.valid()); \
       \
@@ -119,11 +119,11 @@ class IDError : public std::runtime_error {
       } \
     } \
     \
-    bool operator!=(const name_ &other) { \
+    bool operator!=(const name_ &other) const { \
       return !((*this) == other); \
     } \
     \
-    bool operator<(const name_ &other) { \
+    bool operator<(const name_ &other) const { \
       const bool meValid(valid()); \
       const bool otherValid(other.valid()); \
       \
