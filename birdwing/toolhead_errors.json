@@ -3,6 +3,7 @@
 	"watchdog_triggered" : 11,
     "invalid_response" : 12,
     "toolhead_disconnected" : 13,
+    "command_index_mismatch" : 14,
     "tool_short" : 49,
     "heater_short" : 50,
     "tool_fan_short" : 51,
