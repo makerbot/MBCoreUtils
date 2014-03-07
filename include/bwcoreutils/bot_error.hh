@@ -96,7 +96,7 @@ private:
 			case kToolShort:
 			case kToolFanShort:			
 			case kMotorOverCurrent:
-			case kFilamentFanShort:s
+			case kFilamentFanShort:
 			case kToolOpen:
 			case kUnsupportedTool:
 			case kToolReadError:
