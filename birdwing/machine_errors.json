@@ -55,6 +55,7 @@
     "no_valid_hes_slope": 1020,
     "binary_search_out_of_range": 1021,
     "hes_rebase_failed": 1022,
+	"leveling_timed_out": 1023,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
 
