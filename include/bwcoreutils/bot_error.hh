@@ -118,6 +118,9 @@ private:
 			    m_message = QObject::tr("Heaters were turned off due to inactivity");
 			    m_type = NONE;
 			    break;
+            case kNoHesChange:
+            case kNoHesLog:
+            case kUnknownHomingMethod:
 			case kHomingNotCompleted:
 			case kHomingTimedOut:
             case kNoValidHesSlope:
