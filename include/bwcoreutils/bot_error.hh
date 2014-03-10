@@ -87,7 +87,12 @@ private:
 			case kNoToolConnected:
 				m_message = QObject::tr("Your Smart Extruder is not connected. Please reconnect your Smart Extruder.");
 				m_type = TOOL_ERROR;
-				break;	
+				break;
+            case kLevelingTimedOut:
+            	m_title = QObject::tr("Leveling Timeout");
+			    m_message = QObject::tr("Leveling has ended due to inactivity.");
+			    m_type = NONE;
+                break;
 			case kHeaterShort:
 			case kToolShort:
 			case kToolFanShort:			
