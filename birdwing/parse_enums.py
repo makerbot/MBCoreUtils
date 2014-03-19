@@ -93,12 +93,6 @@ def parse_enum_c(filepath, filename, enum_data, namespace, stringify, readable =
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-s",
-        "--stringify",
-        action="store_true",
-        help="generate stringify functions"
-    )
     args = parser.parse_args()
     cur_dir = os.path.abspath(os.path.dirname(__file__))
     with open(os.path.join(cur_dir, "machine_errors.json")) as f:
@@ -126,10 +120,7 @@ if __name__ == "__main__":
     parse_enum_python(toolhead_enum_path, toolhead_enum_data)
 
     print("Parsing c...")
-    stringify = False
-    if args.stringify:
-        stringify = True
-        print("Stringifying...")
+    stringify = True
     parse_enum_c(machine_enum_path, machine_filename, machine_enum_data, "machine", stringify)
     parse_enum_c(toolhead_enum_path, toolhead_filename, toolhead_enum_data, "toolhead", stringify)
     parse_enum_c(all_errors_enum_path, all_errors_filename, all_errors_enum_data, "bwcoreutils", True, True)
