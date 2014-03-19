@@ -191,18 +191,18 @@ private:
 			case kInvalidToolRequested:
 			case kMachineDriverClosed:
 			case kPruInitializationFailed:
-			case kEepromUnknownVersion:
-			case kEepromStartFailure:
-			case kEepromIdVerifyFail:
-			case kZeroLengthMove:
-			case kNotImplemented:
-			case kNotReady:
-			case kMachineDriverFailure:
-			case kDiagnosticsTestFailed:
-			case kEepromFatalInternalError:
-			case kInterfaceLedCommsError:
-			case kStopIteration:
-			case kFileNotFound:
+	        case kEepromUnknownVersion:
+            case kEepromStartFailure:
+            case kEepromIdVerifyFail:
+            case kZeroLengthMove:
+            case kNotImplemented:
+            case kNotReady:
+            case kMachineDriverFailure:
+            case kDiagnosticsTestFailed:
+            case kEepromFatalInternalError:
+            case kInterfaceLedCommsError:
+            case kStopIteration:
+            case kFileNotFound:
             case kDoorInterlockTriggered:
             case kToolheadDisconnected:
             case kBothSidesTooHigh:
@@ -214,8 +214,8 @@ private:
             case kHeaterOverTemp:
             case kCommandIndexMismatch:
             case kSuspendIndexNotFound:
-			default:
-				m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+            default:
+                m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
 		}		
 	}
