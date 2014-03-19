@@ -19,12 +19,5 @@ debian/*substvars*
 *.vcxproj
 *.rc
 
-include/bwcoreutils/all_errors.hh
-include/bwcoreutils/machine_errors.hh
-include/bwcoreutils/toolhead_errors.hh
-birdwing/*.hh
-birdwing/*.cc
-birdwing/toolhead_errors.py
-birdwing/machine_errors.py
 *.swp
 *.pyc
