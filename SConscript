@@ -8,12 +8,17 @@ env.Append(
         'birdwing_code_gen':
         Builder(action = birdwing_code_gen.gen_files)})
 
+# Note: the order of these headers matters in birdwing_code_gen.py
+output_headers = [
+    'include/bwcoreutils/machine_errors.hh',
+    'include/bwcoreutils/toolhead_errors.hh',
+    'include/bwcoreutils/all_errors.hh'
+]
+
 env.birdwing_code_gen(
     # Output files
-    ['include/bwcoreutils/machine_errors.hh',
-     'include/bwcoreutils/toolhead_errors.hh',
-     'include/bwcoreutils/all_errors.hh',
-     'birdwing/machine_errors.py',
+    output_headers +
+    ['birdwing/machine_errors.py',
      'birdwing/toolhead_errors.py'],
 
     # Input files
@@ -46,5 +51,5 @@ else:
 
     # make_current_link=True is necessary for header-only libraries on mac
     mw_env.MBInstallHeaders(mw_env.MBGlob('#/include/mbcoreutils/*'), 'mbcoreutils', make_current_link=True)
-    mw_env.MBInstallHeaders(mw_env.MBGlob('#/include/bwcoreutils/*'), 'bwcoreutils', make_current_link=True)
+    mw_env.MBInstallHeaders(mw_env.MBGlob('#/include/bwcoreutils/*') + output_headers, 'bwcoreutils', make_current_link=True)
     mw_env.MBCreateInstallTarget()
