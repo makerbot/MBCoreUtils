@@ -14,7 +14,6 @@ output_files = [
     'birdwing/obj/toolhead_errors.py',
     ]
 input_files = [
-    'birdwing/enum_parse.py',
     'birdwing/parse_enums.py',
     'birdwing/machine_errors.json',
     'birdwing/toolhead_errors.json',
