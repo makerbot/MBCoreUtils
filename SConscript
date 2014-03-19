@@ -1,5 +1,6 @@
 import birdwing_code_gen
 import os
+from SCons.Script import AddOption
 
 env = Environment(ENV = os.environ, tools = ['default'])
 
@@ -37,6 +38,20 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     # This is here to prevent "cannot find target 'install'"  errors. 
     # There may be a more logical thing to do with this alias 
     Alias("install", path)
+    # This is here to prevent "no such option" errors, need a better
+    # solution. We don't actually use any of these.
+    AddOption('--install_dir')
+    AddOption('--home_dir')
+    AddOption('--gantry')
+    AddOption('--board')
+    AddOption('--limit_detect')
+    AddOption('--logging')
+    AddOption('--binary')
+    AddOption('--machine')
+    AddOption('--ubifs_settings')
+    AddOption('--python33_dir')
+    AddOption('--connman')
+
 else:
     mw_env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
 
