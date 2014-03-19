@@ -203,6 +203,17 @@ private:
 			case kInterfaceLedCommsError:
 			case kStopIteration:
 			case kFileNotFound:
+            case kDoorInterlockTriggered:
+            case kToolheadDisconnected:
+            case kBothSidesTooHigh:
+            case kBufferFull:
+            case kSuspendNoValidLastMove:
+            case kToolheadSpiConfigError:
+            case kHeaterNotHeating:
+            case kResumeComplete:
+            case kHeaterOverTemp:
+            case kCommandIndexMismatch:
+            case kSuspendIndexNotFound:
 			default:
 				m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
