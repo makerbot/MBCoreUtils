@@ -38,19 +38,19 @@ public:
 	~BotError() {
 	}
 	
-	const QString message() const {
+	QString message() const {
 		return m_message;
 	}
 	
-	const TYPE type() const {
+	TYPE type() const {
 		return m_type;
 	}
 
-	const ACTION action() const {
+	ACTION action() const {
 		return m_action;
 	}
 	
-	const QString title() const {
+	QString title() const {
 		if(!m_title.isEmpty()) {
 			return m_title;
 		} else if(m_type == TOOL_ERROR) {
