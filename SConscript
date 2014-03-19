@@ -3,7 +3,7 @@ import os
 
 env = Environment(ENV = os.environ, tools = ['default'])
 
-command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py") + ' -p -c -s'
+command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py") + ' -s'
 print(command)
 
 output_files = [
