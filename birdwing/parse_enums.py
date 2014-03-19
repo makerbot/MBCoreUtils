@@ -5,7 +5,6 @@ Parses some metafiles into .py and .hh files.  We currently parse two different
 types of data: enums and structs.
 """
 
-import argparse
 import copy
 import ctypes
 import json
@@ -92,8 +91,6 @@ def parse_enum_c(filepath, filename, enum_data, namespace, stringify, readable =
             f.write("%s\n" % (part))
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    args = parser.parse_args()
     cur_dir = os.path.abspath(os.path.dirname(__file__))
     with open(os.path.join(cur_dir, "machine_errors.json")) as f:
         machine_error_data = json.load(f)
