@@ -1,29 +1,28 @@
-
+import birdwing_code_gen
 import os
 
 env = Environment(ENV = os.environ, tools = ['default'])
 
-command = os.path.join(str(Dir("#/")),  "birdwing/parse_enums.py")
-print(command)
+env.Append(
+    BUILDERS = {
+        'birdwing_code_gen':
+        Builder(action = birdwing_code_gen.gen_files)})
 
-output_files = [
-    'birdwing/obj/machine_errors.hh',
-    'birdwing/obj/toolhead_errors.hh',
-    'birdwing/obj/all_errors.hh',
-    'birdwing/obj/machine_errors.py',
-    'birdwing/obj/toolhead_errors.py',
-    ]
-input_files = [
-    'birdwing/parse_enums.py',
-    'birdwing/machine_errors.json',
-    'birdwing/toolhead_errors.json',
-    ]
+env.birdwing_code_gen(
+    # Output files
+    ['include/bwcoreutils/machine_errors.hh',
+     'include/bwcoreutils/toolhead_errors.hh',
+     'include/bwcoreutils/all_errors.hh',
+     'birdwing/machine_errors.py',
+     'birdwing/toolhead_errors.py'],
 
-env.Command(output_files, input_files, command)
-env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "birdwing/obj/machine_errors.hh")
-env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "birdwing/obj/toolhead_errors.hh")
-env.Install(os.path.join(str(Dir("#/")), 'include', 'bwcoreutils'), "birdwing/obj/all_errors.hh")
-    
+    # Input files
+    ['birdwing/machine_errors.json',
+     'birdwing/toolhead_errors.json',
+
+     # Not used by the script, just for correct dependencies
+     'site_scons/birdwing_code_gen.py'])
+
 #
 # This is my huge hack, sorry Ted
 # TODO(pshaw): get Ted to help fix this

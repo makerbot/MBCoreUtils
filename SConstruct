@@ -1,3 +1,3 @@
+env = Environment(tools = ['mb_sconstruct'])
 
-
-SConscript('SConscript')
+env.MBSConscript('SConscript')
