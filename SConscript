@@ -38,7 +38,11 @@ else:
     # Add an empty command that makes the top-level directory target
     # depend on the header files. This ensures the header files are copied
     # into the variant dir.
-    mw_env.Command('.', mw_env.MBRecursiveFileGlob('include', '*.h'), '')
+    mw_env.Command(
+        '.',
+        mw_env.MBRecursiveFileGlob('include', '*.h') +
+        ['include/bwcoreutils/bot_error.hh'],
+        '')
 
     # make_current_link=True is necessary for header-only libraries on mac
     mw_env.MBInstallHeaders(mw_env.MBGlob('#/include/mbcoreutils/*'), 'mbcoreutils', make_current_link=True)
