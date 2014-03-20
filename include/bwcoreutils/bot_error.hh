@@ -159,6 +159,10 @@ private:
 				// don't show users the term 'Kaiten'
 				m_message = QObject::tr("Oops, we have a problem (Error %1). ").arg(errorCode);
 				break;
+            case kLevelingWithFilament:
+                m_title = QObject::tr("Filament Loaded");
+                m_message = QObject::tr("Please unload filament before leveling your build plate.");
+                break;
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
