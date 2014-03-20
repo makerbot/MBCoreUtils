@@ -26,7 +26,8 @@ public:
 		ACKNOWLEDGE,
 		CHANGE_FILAMENT,
 		PREHEAT_TIMEOUT,
-		ZPAUSED
+		ZPAUSED,
+        UNLOAD_FILAMENT
 	};
 	
 	BotError(int errorCode) :
@@ -160,8 +161,10 @@ private:
 				m_message = QObject::tr("Oops, we have a problem (Error %1). ").arg(errorCode);
 				break;
             case kLevelingWithFilament:
-                m_title = QObject::tr("Filament Loaded");
-                m_message = QObject::tr("Please unload filament before leveling your build plate.");
+                m_title = QObject::tr("Clear Filament");
+                m_message = QObject::tr("Please remove filament from the Smart Extruder before proceeding with assisted leveling.");
+                m_type = NONE;
+                m_action = UNLOAD_FILAMENT;
                 break;
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
