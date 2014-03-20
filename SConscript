@@ -65,6 +65,6 @@ else:
         '')
 
     # make_current_link=True is necessary for header-only libraries on mac
-    mw_env.MBInstallHeaders(mw_env.MBGlob('#/include/mbcoreutils/*'), 'mbcoreutils', make_current_link=True)
-    mw_env.MBInstallHeaders(mw_env.MBGlob('#/include/bwcoreutils/*') + output_headers, 'bwcoreutils', make_current_link=True)
+    mw_env.MBInstallHeaders(mw_env.MBGlob('include/mbcoreutils/*'), 'mbcoreutils', make_current_link=True)
+    mw_env.MBInstallHeaders(mw_env.MBGlob('include/bwcoreutils/*'), 'bwcoreutils', make_current_link=True)
     mw_env.MBCreateInstallTarget()
