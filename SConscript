@@ -34,7 +34,7 @@ env.birdwing_code_gen(
 # TODO(pshaw): get Ted to help fix this
 #
 if ("MBCOREUTILS_BIRDWING" in os.environ):
-    path = os.path.join(str(Dir("#/")), 'include', 'bwcoreutils')
+    path = os.path.join(str(Dir("#/")), 'obj', 'include')
     # This is here to prevent "cannot find target 'install'"  errors. 
     # There may be a more logical thing to do with this alias 
     Alias("install", path)
