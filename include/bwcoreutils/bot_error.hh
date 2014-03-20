@@ -124,15 +124,23 @@ private:
 			    m_type = NONE;
 			    break;
             case kNoHesChange:
+				m_title = QObject::tr("Homing Error");
+			    m_message = QObject::tr("Homing failed. Your Smart Extruder is not communicating. Please try again or contact Makerbot support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_type = NONE;
+			    break;			
             case kNoHesLog:
             case kUnknownHomingMethod:
 			case kHomingNotCompleted:
 			case kHomingTimedOut:
+				m_title = QObject::tr("Homing Error");
+			    m_message = QObject::tr("Homing failed (Error %1: %2). Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_type = NONE;
+			    break;			
             case kNoValidHesSlope:
             case kHesRebaseFailed:
             case kBinarySearchOutOfRange:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed (Error %1: %2). Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_message = QObject::tr("Homing failed. Your extruder nozzle may be stuck. Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
 			    m_type = NONE;
 			    break;			
 			case kJsonToolpathNothingParsed:
@@ -163,6 +171,11 @@ private:
                 m_title = QObject::tr("Filament Loaded");
                 m_message = QObject::tr("Please unload filament before leveling your build plate.");
                 break;
+            case kBothSidesTooHigh:
+				m_title = QObject::tr("Leveling Error");
+			    m_message = QObject::tr("Leveling failed. Your extruder nozzle may be stuck. Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_type = NONE;
+			    break;			
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
@@ -209,7 +222,6 @@ private:
             case kFileNotFound:
             case kDoorInterlockTriggered:
             case kToolheadDisconnected:
-            case kBothSidesTooHigh:
             case kBufferFull:
             case kSuspendNoValidLastMove:
             case kToolheadSpiConfigError:
