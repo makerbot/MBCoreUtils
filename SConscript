@@ -65,11 +65,7 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     AddOption('--python33_dir')
     AddOption('--connman')
 else:
-    env.MBCreateInstallTarget()
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'), 'mbcoreutils', make_current_link=True)
     env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'), 'bwcoreutils', make_current_link=True)
-    
-
-
-
+    env.MBCreateInstallTarget()
