@@ -126,7 +126,7 @@ private:
 			    break;
             case kNoHesChange:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed. Your Smart Extruder is not communicating. Please try again or contact Makerbot support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_message = QObject::tr("Homing failed. Your Smart Extruder is not communicating. Please try again or contact Makerbot support.");
 			    m_type = NONE;
 			    break;			
             case kNoHesLog:
@@ -141,7 +141,7 @@ private:
             case kHesRebaseFailed:
             case kBinarySearchOutOfRange:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed. Your extruder nozzle may be stuck. Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_message = QObject::tr("Homing failed. Your extruder nozzle may be stuck. Please try again.");
 			    m_type = NONE;
 			    break;			
 			case kJsonToolpathNothingParsed:
