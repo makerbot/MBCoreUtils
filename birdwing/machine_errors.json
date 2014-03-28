@@ -62,6 +62,7 @@
 	"leveling_timed_out": 1026,
     "both_sides_too_high": 1027,
     "leveling_with_filament": 1028,
+    "file_transfer_timeout": 1029,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
     "critical_kaiten_error": 1500,
