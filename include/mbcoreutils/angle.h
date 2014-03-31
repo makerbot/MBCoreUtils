@@ -95,6 +95,10 @@ class Angle {
     return Angle(m_radians + other.m_radians);
   }
 
+  inline Angle operator-(const Angle &other) const {
+    return Angle(m_radians - other.m_radians);
+  }
+
   inline void operator+=(const Angle &other) {
     m_radians += other.m_radians;
   }
