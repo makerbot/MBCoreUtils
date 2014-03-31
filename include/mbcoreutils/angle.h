@@ -30,8 +30,10 @@ class Angle {
     return Angle(degrees * (pi() / 180.0));
   }
 
-  /// Wrap 'angle' into the circle starting at 'minimumAngle'
-  static inline Angle wrapped(const Angle minimumAngle, Angle angle) {
+  /// Return new angle wrapped into the circle starting at minimumAngle
+  inline Angle wrapped(const Angle minimumAngle) const {
+    Angle angle(*this);
+
     const auto pi2(fromRadians(2.0 * pi()));
 
     while (angle < minimumAngle) {
@@ -45,6 +47,22 @@ class Angle {
     }
 
     return angle;
+  }
+
+  /// Return new angle clamped into the range [minimumAngle, maximumAngle]
+  ///
+  /// Precondition: minimumAngle must be less than or equal to
+  /// maximumAngle.
+  inline Angle clamped(
+      const Angle minimumAngle,
+      const Angle maximumAngle) const {
+    if ((*this) < minimumAngle) {
+      return minimumAngle;
+    } else if ((*this) > maximumAngle) {
+      return maximumAngle;
+    } else {
+      return *this;
+    }
   }
 
   void setRadians(const ValueType radians) {
@@ -67,6 +85,10 @@ class Angle {
 
   inline bool operator<(const Angle &other) const {
     return m_radians < other.m_radians;
+  }
+
+  inline bool operator>(const Angle &other) const {
+    return m_radians > other.m_radians;
   }
 
   inline Angle operator+(const Angle &other) const {
