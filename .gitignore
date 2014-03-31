@@ -6,7 +6,7 @@ debian/mb-*
 debian/tmp
 debian/*debhelper*
 debian/*substvars*
-
+*~
 
 .sconsign.dblite
 
@@ -19,11 +19,5 @@ debian/*substvars*
 *.vcxproj
 *.rc
 
-
-include/bwcoreutils
-birdwing/*.hh
-birdwing/*.cc
-birdwing/toolhead_errors.py
-birdwing/machine_errors.py
 *.swp
 *.pyc
