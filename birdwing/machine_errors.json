@@ -64,6 +64,7 @@
     "leveling_with_filament": 1028,
     "no_build_plate": 1029,
     "file_transfer_timeout": 1030,
+    "corrupted_firmware_file": 1031,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
     "critical_kaiten_error": 1500,
