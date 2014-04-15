@@ -54,6 +54,7 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     # It would be a pain to include all of bw-scons-tools just for this,
     # but maybe that is the way to go.
     AddOption('--install_dir')
+    AddOption('--install_ghost')
     AddOption('--home_dir')
     AddOption('--gantry')
     AddOption('--board')
