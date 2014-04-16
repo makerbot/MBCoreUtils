@@ -239,6 +239,9 @@ private:
             case kCommandIndexMismatch:
             case kSuspendIndexNotFound:
             case kFileTransferTimeout:
+            case kCorruptedFirmwareFile:
+            case kHesLogOverflow:
+            case kBadHesWaveforms:
             default:
                 m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
