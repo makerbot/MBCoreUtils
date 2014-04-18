@@ -176,9 +176,14 @@ private:
                 break;
             case kBothSidesTooHigh:
 				m_title = QObject::tr("Leveling Error");
-			    m_message = QObject::tr("Leveling failed. Your extruder nozzle may be stuck. Please try again.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));;
+			    m_message = QObject::tr("Leveling failed. Your extruder nozzle may be stuck. Please try again.");
 			    m_type = NONE;
-			    break;			
+			    break;		
+			case kNoBuildPlate:
+				m_title = QObject::tr("No Build Plate");
+			    m_message = QObject::tr("Please ensure your build plate is properly attached.");
+			    m_type = NONE;
+			    break;						
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
@@ -233,6 +238,10 @@ private:
             case kHeaterOverTemp:
             case kCommandIndexMismatch:
             case kSuspendIndexNotFound:
+            case kFileTransferTimeout:
+            case kCorruptedFirmwareFile:
+            case kHesLogOverflow:
+            case kBadHesWaveforms:
             default:
                 m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
