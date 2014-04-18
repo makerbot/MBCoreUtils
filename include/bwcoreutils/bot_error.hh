@@ -19,7 +19,8 @@ public:
 		FILAMENT_ERROR,
 		GENERAL_ERROR,
 		ZPAUSE,
-		SAD_BOT
+		SAD_BOT,
+        CHAMBER_ERROR
 	};
 	
 	enum ACTION {
@@ -76,6 +77,11 @@ private:
 				m_type = FILAMENT_ERROR;
 				m_action = CHANGE_FILAMENT;
 				break;
+            case kDoorInterlockTriggered:
+                m_title = QObject::tr("Chamber Open");
+                m_message = QObject::tr("The heated build chamber is open. Your print has been paused. Please close the door to continue printing.");
+                m_type = CHAMBER_ERROR;
+                break;
 			case kPrintToolNotConnected:
 			case kToolheadNotConnected:
 			case kThermocoupleUnplugged:
@@ -228,7 +234,6 @@ private:
             case kInterfaceLedCommsError:
             case kStopIteration:
             case kFileNotFound:
-            case kDoorInterlockTriggered:
             case kToolheadDisconnected:
             case kBufferFull:
             case kSuspendNoValidLastMove:
