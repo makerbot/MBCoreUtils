@@ -67,6 +67,8 @@
     "corrupted_firmware_file": 1031,
     "bad_hes_waveforms" : 1032,
     "hes_log_overflow" : 1033,
+	"knob_not_tightened" : 1034,
+	"invalid_endstop_type" : 1035,
     "invalid_file_type": 1498,
     "file_already_open": 1499,
     "critical_kaiten_error": 1500,
