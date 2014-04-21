@@ -242,6 +242,8 @@ private:
             case kCorruptedFirmwareFile:
             case kHesLogOverflow:
             case kBadHesWaveforms:
+            case kKnobNotTightened:
+            case kInvalidEndstopType:
             default:
                 m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
