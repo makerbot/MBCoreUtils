@@ -244,6 +244,7 @@ private:
             case kBadHesWaveforms:
             case kKnobNotTightened:
             case kInvalidEndstopType:
+            case kNoMacAddressSet:
             default:
                 m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
