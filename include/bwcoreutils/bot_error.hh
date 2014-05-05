@@ -184,6 +184,14 @@ private:
 			    m_message = QObject::tr("Please ensure your build plate is properly attached.");
 			    m_type = NONE;
 			    break;						
+		    case kChamberThermistorDisconnected:
+		    case kChamberHeaterDisconnected:
+		    case kChamberHeaterFailure:
+		    case kChamberFanFailure:
+		    case kChamberTemperatureOverrun:
+            case kHeaterOverTemp:
+				m_message = QObject::tr("There is a serious problem with your chamber heater (Error %1: %2). Please contact support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+				break;
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
 			case kHeatZeroTemperature:
@@ -235,7 +243,6 @@ private:
             case kToolheadSpiConfigError:
             case kHeaterNotHeating:
             case kResumeComplete:
-            case kHeaterOverTemp:
             case kCommandIndexMismatch:
             case kSuspendIndexNotFound:
             case kFileTransferTimeout:
