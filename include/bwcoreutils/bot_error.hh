@@ -192,7 +192,7 @@ private:
 		    case kChamberFanFailure:
 		    case kChamberTemperatureOverrun:
             case kHeaterOverTemp:
-				m_message = QObject::tr("There is a serious problem with your chamber heater (Error %1: %2). Please contact support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+				m_message = QObject::tr("There is a problem with your chamber heater (Error %1: %2). Please contact support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
