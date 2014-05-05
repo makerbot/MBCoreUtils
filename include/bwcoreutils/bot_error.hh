@@ -140,6 +140,8 @@ private:
             case kNoValidHesSlope:
             case kHesRebaseFailed:
             case kBinarySearchOutOfRange:
+            case kHesLogOverflow:
+            case kBadHesWaveforms:
 				m_title = QObject::tr("Homing Error");
 			    m_message = QObject::tr("Homing failed. Your extruder nozzle may be stuck. Please try again.");
 			    m_type = NONE;
@@ -247,8 +249,9 @@ private:
             case kSuspendIndexNotFound:
             case kFileTransferTimeout:
             case kCorruptedFirmwareFile:
-            case kHesLogOverflow:
-            case kBadHesWaveforms:
+            case kKnobNotTightened:
+            case kInvalidEndstopType:
+            case kNoMacAddressSet:
             default:
                 m_message = QObject::tr("Oops, we have a problem (Error %1: %2). ").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
