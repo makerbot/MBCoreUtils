@@ -178,7 +178,7 @@ private:
 				break;
             case kLevelingWithFilament:
                 m_title = QObject::tr("Clear Filament");
-                m_message = QObject::tr("Please remove filament from the Smart Extruder before proceeding with assisted leveling.");
+                m_message = QObject::tr("Please remove filament from the Smart Extruder before proceeding.");
                 m_type = NONE;
                 m_action = UNLOAD_FILAMENT;
                 break;
