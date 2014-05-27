@@ -79,7 +79,7 @@ private:
 				break;
             case kDoorInterlockTriggered:
                 m_title = QObject::tr("Chamber Open");
-                m_message = QObject::tr("The heated build chamber is open. Your print has been paused. Please close the door to continue printing.");
+                m_message = QObject::tr("The heated build chamber is open. The current process has been paused. Please close the door to continue.");
                 m_type = CHAMBER_ERROR;
                 break;
 			case kPrintToolNotConnected:
