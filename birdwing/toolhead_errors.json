@@ -2,7 +2,6 @@
     "none" : 0, 
 	"watchdog_triggered" : 11,
     "invalid_response" : 12,
-    "toolhead_disconnected" : 13,
     "command_index_mismatch" : 14,
 	"door_interlock_triggered" : 48,
     "tool_short" : 49,
