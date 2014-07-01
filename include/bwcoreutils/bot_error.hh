@@ -98,7 +98,10 @@ private:
 				m_title = QObject::tr("Carriage Disconnected");
 				m_message = QObject::tr("The extruder carriage is disconnected from the machine. Please contact support.");
 				break;
-			case kPrintToolNotConnected:
+			case kPrintToolConnectFailed:
+				m_message = QObject::tr("Smart Extruder Connect Failed.  Please disconnect your Smart Extruder and try again.");
+				m_type = TOOL_ERROR;
+				break;
 			case kThermocoupleUnplugged:
 			case kThermocoupleOutOfRange:
 			case kThermocoupleTooHot:
