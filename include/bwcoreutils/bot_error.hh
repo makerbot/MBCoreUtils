@@ -79,11 +79,29 @@ private:
 				break;
             case kDoorInterlockTriggered:
                 m_title = QObject::tr("Chamber Open");
-                m_message = QObject::tr("The heated build chamber is open. The current process has been paused. Please close the door to continue.");
+                m_message = QObject::tr("The heated build chamber is open. Please close the door to continue.");
                 m_type = CHAMBER_ERROR;
                 break;
-			case kPrintToolNotConnected:
-			case kToolheadNotConnected:
+		    case kChamberProgramFailure:
+				m_title = QObject::tr("Chamber Program Failed");
+				m_message = QObject::tr("The build chamber heater controller cannot be programmed. Please contact support.");
+				break;
+		    case kCarriageProgramFailure:
+				m_title = QObject::tr("Carriage Program Failed");
+				m_message = QObject::tr("The extruder carriage cannot be programmed. Please contact support.");
+				break;
+		    case kChamberNotConnected:
+				m_title = QObject::tr("Chamber Heater Disconnect");
+				m_message = QObject::tr("The build chamber heater controller is disconnected. Please contact support.");
+				break;
+		    case kCarriageNotConnected:
+				m_title = QObject::tr("Carriage Disconnected");
+				m_message = QObject::tr("The extruder carriage is disconnected from the machine. Please contact support.");
+				break;
+			case kPrintToolConnectFailed:
+				m_message = QObject::tr("Smart Extruder Connect Failed.  Please disconnect your Smart Extruder and try again.");
+				m_type = TOOL_ERROR;
+				break;
 			case kThermocoupleUnplugged:
 			case kThermocoupleOutOfRange:
 			case kThermocoupleTooHot:
@@ -113,7 +131,6 @@ private:
 			case kToolheadNoResponse:
 			case kToolheadMismatchApiVersion:
 			case kFilamentFanOpen:
-			case kToolheadProgramFailure:
 			case kToolheadNotHeating:
 			case kEepromChecksumFailure:
 			case kToolheadNotInitialized:
@@ -244,7 +261,6 @@ private:
             case kInterfaceLedCommsError:
             case kStopIteration:
             case kFileNotFound:
-            case kToolheadDisconnected:
             case kBufferFull:
             case kSuspendNoValidLastMove:
             case kToolheadSpiConfigError:
