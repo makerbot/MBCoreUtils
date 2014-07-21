@@ -1,0 +1,54 @@
+{
+	"python": {
+		"type_MAPPINGS": {
+			"bool": "ctypes.c_bool",
+			"int16": "ctypes.c_int16",
+			"int32": "ctypes.c_int32",
+			"int64": "ctypes.c_int64",
+			"int8": "ctypes.c_int8",
+			"uint16": "ctypes.c_uint16",
+			"uint32": "ctypes.c_uint32",
+			"uint64": "ctypes.c_uint64",
+			"uint8": "ctypes.c_uint8"
+		},
+
+		"structs": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Struct'",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
+			}
+		}
+	},
+
+	"cpp": {
+		"type_MAPPINGS": {
+			"int8": "int8_t",
+			"uint8": "uint8_t",
+			"int16": "int16_t",
+			"uint16": "uint16_t",
+			"int32": "int32_t",
+			"uint32": "uint32_t",
+			"int64": "int64_t",
+			"uint64": "uint64_t"
+		},
+
+		"structs": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Status'",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
+			}
+		},
+		"enums": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.title().replace('_', '')",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["type"]
+			},
+			"values": {
+				"name_TRANSFORM": {
+					"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+					"REPLACE_MATCHING_VALS_IN_KEYS": false
+				}
+			}
+		}
+	}
+}
