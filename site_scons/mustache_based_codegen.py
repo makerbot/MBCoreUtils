@@ -114,10 +114,7 @@ def transform(context, transformation_dict):
     return new_context
 
 def gen_files(env, target, source):
-    print('GEN_FILES DEBUG targets: {0}'.format(target))
-    print('GEN_FILES DEBUG sources: {0}'.format(source))
     def get_parent_dirname(node):
-        print('get_parent_dirname dbg: {0}'.format(os.path.split(os.path.dirname(str(node)))[-1]))
         return os.path.split(os.path.dirname(str(node)))[-1]
     def find_dest_in_targets(dirname, filename):
         dest = [t for t in target if dirname == get_parent_dirname(t) and filename == os.path.basename(str(t))]
@@ -160,4 +157,4 @@ def gen_files(env, target, source):
 
             with open(str(src_node), 'r') as in_template:
                 outf.write(pystache.render(in_template.read(), template_context))
-                print('Mustache Codegen DBG: Rendered {0}/{1} (tranforms: {2})'.format(parent_dirname, filename, parent_dirname in transformation_meta))
+                print('Mustache Codegen: Rendered {0}/{1} (tranforms: {2})'.format(parent_dirname, filename, parent_dirname in transformation_meta))

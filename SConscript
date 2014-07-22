@@ -7,6 +7,7 @@ env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
 
 # Mustache-based codegen stuff
 BWCGEN_ROOT_DIR = 'birdwing_codegen'
+BWCGEN_OUTPUT_DIR = 'birdwing'
 
 env.Append(BUILDERS = {
     'birdwing_code_gen': Builder(action = mc.gen_files)
@@ -25,18 +26,18 @@ bw_template_files = [os.path.join(d, f) for d in os.listdir(os.path.join(str(Dir
 env.birdwing_code_gen(
     ## Output Files ##
     # these are the rendered templates - saved to <variantdir>/birdwing/<lang>/<file>
-    map(lambda relpath: os.path.join('birdwing', relpath), bw_template_files),
+    [os.path.join(BWCGEN_OUTPUT_DIR, relpath) for relpath in bw_template_files],
 
     ## Input Files ##
     # Special file used to extend mustache's functionality. See docs.
     [os.path.join(BWCGEN_ROOT_DIR, mc.TRANSFORMATIONS_FILE),
     # Script to process transformations file & render templates.
     'site_scons/mustache_based_codegen.py'] +
-    # Context dictionary(s) containing the data used to render templates.
+    # Context json file(s) containing the data used to render templates.
     [os.path.join(BWCGEN_ROOT_DIR, mc.CONTEXT_DIR_NAME, f) for f in os.listdir(os.path.join(str(Dir("#/")), BWCGEN_ROOT_DIR, mc.CONTEXT_DIR_NAME))
-                                         if os.path.isfile(os.path.join(str(Dir("#/")), BWCGEN_ROOT_DIR, mc.CONTEXT_DIR_NAME, f)) and f.endswith('.json')] +
+                                                           if os.path.isfile(os.path.join(str(Dir("#/")), BWCGEN_ROOT_DIR, mc.CONTEXT_DIR_NAME, f)) and f.endswith('.json')] +
     # Template files to be rendered.
-    map(lambda relpath: os.path.join(BWCGEN_ROOT_DIR, mc.TEMPLATES_DIR_NAME, relpath), bw_template_files)
+    [os.path.join(BWCGEN_ROOT_DIR, mc.TEMPLATES_DIR_NAME, relpath) for relpath in bw_template_files]
 )
 
 # TODO(jacksonh) -- add in a hack to copy the genn'd cpp files to the include dir in the variantdir
