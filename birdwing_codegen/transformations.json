@@ -38,6 +38,7 @@
 				"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
 			}
 		},
+
 		"enums": {
 			"name_TRANSFORM": {
 				"LAMBDA": "lambda s: s.title().replace('_', '')",
@@ -48,6 +49,31 @@
 					"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
 					"REPLACE_MATCHING_VALS_IN_KEYS": false
 				}
+			}
+		},
+
+		"machine_errors": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+				"REPLACE_MATCHING_VALS_IN_KEYS": false
+			}
+		},
+		"toolhead_errors": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+				"REPLACE_MATCHING_VALS_IN_KEYS": false
+			}
+		},
+		"error_type_enum": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.upper()",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["error_type"]
+			}
+		},
+		"error_action_enum": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.upper()",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["error_action"]
 			}
 		}
 	}

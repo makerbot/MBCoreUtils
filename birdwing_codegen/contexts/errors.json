@@ -1,0 +1,993 @@
+{
+    "machine_errors": [
+        {
+            "name": "hes_rebase_failed",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed. Your extruder nozzle may be stuck. Please try again.",
+            "id": 1022,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_build_plate",
+            "title": "No Build Plate",
+            "error_type": "none",
+            "message": "Please ensure your build plate is properly attached.",
+            "id": 1029,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "pru_initialization_failed",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1006: Pru Initialization Failed). ",
+            "id": 1006,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "homing_not_completed",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed (Error 1016: Homing Not Completed). Please try again.",
+            "id": 1016,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "hes_log_overflow",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed. Your extruder nozzle may be stuck. Please try again.",
+            "id": 1033,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "default_config_not_found",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1003: Default Config Not Found). Please update your firmware using MakerBot Desktop.",
+            "id": 1003,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "user_config_missing_value",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 259: User Config Missing Value). ",
+            "id": 259,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heat_zero_temperature",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 267: Heat Zero Temperature). ",
+            "id": 267,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "suspend_no_valid_last_move",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1019: Suspend No Valid Last Move). ",
+            "id": 1019,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_mac_address_set",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1036: No Mac Address Set). ",
+            "id": 1036,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "carriage_program_failure",
+            "title": "Carriage Program Failed",
+            "error_type": "general_error",
+            "message": "The extruder carriage cannot be programmed. Please contact support.",
+            "id": 1009,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_not_connected",
+            "title": "Chamber Heater Disconnect",
+            "error_type": "general_error",
+            "message": "The build chamber heater controller is disconnected. Please contact support.",
+            "id": 1002,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_add_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 269: Heater Add Failure). ",
+            "id": 269,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "knob_not_tightened",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1034: Knob Not Tightened). ",
+            "id": 1034,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_active_tool_setting",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 278: Invalid Active Tool Setting). ",
+            "id": 278,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_spi_config_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1017: Toolhead Spi Config Error). ",
+            "id": 1017,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_hes_change",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed. Your Smart Extruder is not communicating. Please try again or contact Makerbot support.",
+            "id": 1024,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "leveling_timed_out",
+            "title": "Leveling Timeout",
+            "error_type": "none",
+            "message": "Leveling has ended due to inactivity.",
+            "id": 1026,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_not_heating",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 504: Heater Not Heating). ",
+            "id": 504,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_command_tx_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1008: Toolhead Command Tx Failure). ",
+            "id": 1008,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "default_config_missing_value",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1005: Default Config Missing Value). Please update your firmware using MakerBot Desktop.",
+            "id": 1005,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "critical_kaiten_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1500). ",
+            "id": 1500,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "stop_iteration",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 287: Stop Iteration). ",
+            "id": 287,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_eeprom_filepath",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1015: Invalid Eeprom Filepath). Please update your firmware using MakerBot Desktop.",
+            "id": 1015,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_file_type",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1498: Invalid File Type). ",
+            "id": 1498,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "carriage_not_connected",
+            "title": "Carriage Disconnected",
+            "error_type": "general_error",
+            "message": "The extruder carriage is disconnected from the machine. Please contact support.",
+            "id": 1007,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "both_sides_too_high",
+            "title": "Leveling Error",
+            "error_type": "none",
+            "message": "Leveling failed. Your extruder nozzle may be stuck. Please try again.",
+            "id": 1027,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_not_heating",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 1001: Toolhead Not Heating). Please contact MakerBot support.",
+            "id": 1001,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "leveling_with_filament",
+            "title": "Clear Filament",
+            "error_type": "none",
+            "message": "Please remove filament from the Smart Extruder before proceeding.",
+            "id": 1028,
+            "error_action": "unload_filament"
+        },
+        {
+            "name": "user_config_parse_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 258: User Config Parse Failure). ",
+            "id": 258,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_toolheads_detected",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 260: No Toolheads Detected). ",
+            "id": 260,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "corrupted_firmware_file",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1031: Corrupted Firmware File). ",
+            "id": 1031,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "z_pause_value_not_found",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 275: Z Pause Value Not Found). ",
+            "id": 275,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "bad_hes_waveforms",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed. Your extruder nozzle may be stuck. Please try again.",
+            "id": 1032,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "unknown_homing_method",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed (Error 1025: Unknown Homing Method). Please try again.",
+            "id": 1025,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "diagnostics_test_failed",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 297: Diagnostics Test Failed). ",
+            "id": 297,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_acceleration_buffer_size",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 261: Invalid Acceleration Buffer Size). ",
+            "id": 261,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "user_config_not_found",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 257: User Config Not Found). ",
+            "id": 257,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "print_tool_connect_failed",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Smart Extruder Connect Failed.  Please disconnect your Smart Extruder and try again.",
+            "id": 1014,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "file_already_open",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1499: File Already Open). ",
+            "id": 1499,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "buffer_full",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 281: Buffer Full). ",
+            "id": 281,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "extrusion_distance_missing",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 277: Extrusion Distance Missing). ",
+            "id": 277,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "kaiten_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 500). ",
+            "id": 500,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "parse_more",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 280: Parse More). ",
+            "id": 280,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "json_toolpath_nothing_parsed",
+            "title": "Print Error",
+            "error_type": "none",
+            "message": "Invalid print file. Please try to prepare again in MakerBot Desktop.",
+            "id": 264,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "binary_search_out_of_range",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed. Your extruder nozzle may be stuck. Please try again.",
+            "id": 1021,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_hes_log",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed (Error 1023: No Hes Log). Please try again.",
+            "id": 1023,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_tool_requested",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 279: Invalid Tool Requested). ",
+            "id": 279,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "bad_tool_count_config",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 299: Bad Tool Count Config). ",
+            "id": 299,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "homing_timed_out",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed (Error 1013: Homing Timed Out). Please try again.",
+            "id": 1013,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "resume_complete",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 301: Resume Complete). ",
+            "id": 301,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "power_monitor_i2c_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 295: Power Monitor I2C Failure). ",
+            "id": 295,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "json_toolpath_parse_error",
+            "title": "Print Error",
+            "error_type": "none",
+            "message": "Invalid print file. Please try to prepare again in MakerBot Desktop.",
+            "id": 1011,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_no_response",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 263: Toolhead No Response). Please contact MakerBot support.",
+            "id": 263,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "suspend_index_not_found",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1018: Suspend Index Not Found). ",
+            "id": 1018,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "diagnostics_unknown_state_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 296: Diagnostics Unknown State Error). ",
+            "id": 296,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_axis",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 265: Invalid Axis). ",
+            "id": 265,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "ok",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 256: Ok). ",
+            "id": 256,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "diagnostis_uknown_test_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 298: Diagnostis Uknown Test Error). ",
+            "id": 298,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_heater_index",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 268: Invalid Heater Index). ",
+            "id": 268,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "zero_length_move",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 271: Zero Length Move). ",
+            "id": 271,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_malformed_packet",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 270: Toolhead Malformed Packet). Please contact MakerBot support.",
+            "id": 270,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "file_transfer_timeout",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1030: File Transfer Timeout). ",
+            "id": 1030,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "machine_driver_closed",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 274: Machine Driver Closed). ",
+            "id": 274,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "default_config_parse_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1004: Default Config Parse Failure). Please update your firmware using MakerBot Desktop.",
+            "id": 1004,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_program_failure",
+            "title": "Chamber Program Failed",
+            "error_type": "general_error",
+            "message": "The build chamber heater controller cannot be programmed. Please contact support.",
+            "id": 1010,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_valid_hes_slope",
+            "title": "Homing Error",
+            "error_type": "none",
+            "message": "Homing failed. Your extruder nozzle may be stuck. Please try again.",
+            "id": 1020,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "not_implemented",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 300: Not Implemented). ",
+            "id": 300,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "not_ready",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 266: Not Ready). ",
+            "id": 266,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "machine_driver_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1501: Machine Driver Failure). ",
+            "id": 1501,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_mismatch_api_version",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 262: Toolhead Mismatch Api Version). Please contact MakerBot support.",
+            "id": 262,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_endstop_type",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1035: Invalid Endstop Type). ",
+            "id": 1035,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "file_not_found",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 1012: File Not Found). ",
+            "id": 1012,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "toolhead_not_initialized",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 272: Toolhead Not Initialized). Please contact MakerBot support.",
+            "id": 272,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "z_pause",
+            "title": "Print Paused",
+            "error_type": "zpause",
+            "message": "Paused your print.",
+            "id": 501,
+            "error_action": "zpaused"
+        },
+        {
+            "name": "interface_led_comms_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 288: Interface Led Comms Error). ",
+            "id": 288,
+            "error_action": "acknowledge"
+        }
+    ],
+
+    "toolhead_errors": [
+        {
+            "name": "heater_short",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 50: Heater Short). Please contact MakerBot support.",
+            "id": 50,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "filament_fan_short",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 52: Filament Fan Short). Please contact MakerBot support.",
+            "id": 52,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_open",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 71: Heater Open). ",
+            "id": 71,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_response",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 12: Invalid Response). ",
+            "id": 12,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "no_filament",
+            "title": "Out of Filament",
+            "error_type": "filament_error",
+            "message": "Please unload your remaining filament, and then load new filament to continue printing.",
+            "id": 80,
+            "error_action": "change_filament"
+        },
+        {
+            "name": "filament_fan_open",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 73: Filament Fan Open). Please contact MakerBot support.",
+            "id": 73,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "thermocouple_out_of_range",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 66: Thermocouple Out Of Range). Please disconnect and reconnect your Smart Extruder.",
+            "id": 66,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "door_interlock_triggered",
+            "title": "Chamber Open",
+            "error_type": "chamer_error",
+            "message": "The heated build chamber is open. Please close the door to continue.",
+            "id": 48,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_slave_missed_value",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 133: Eeprom Slave Missed Value). ",
+            "id": 133,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "mismatch_api_version",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 130: Mismatch Api Version). Please update your firmware using MakerBot Desktop.",
+            "id": 130,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_temperature_overrun_triggered",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 58: Heater Temperature Overrun Triggered). Please contact MakerBot support.",
+            "id": 58,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "tool_short",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 49: Tool Short). Please contact MakerBot support.",
+            "id": 49,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_fatal_internal_error",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 136: Eeprom Fatal Internal Error). ",
+            "id": 136,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_hold_watchdog_triggered",
+            "title": "Heating Timeout",
+            "error_type": "none",
+            "message": "Heaters were turned off due to inactivity",
+            "id": 56,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "unsupported_tool",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 85: Unsupported Tool). Please contact MakerBot support.",
+            "id": 85,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "tool_fan_short",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 51: Tool Fan Short). Please contact MakerBot support.",
+            "id": 51,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_temperature_sag_triggered",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 57: Heater Temperature Sag Triggered). Please contact MakerBot support.",
+            "id": 57,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "tool_fan_open",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 72: Tool Fan Open). Please contact MakerBot support.",
+            "id": 72,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_rise_watchdog_triggered",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 55: Heater Rise Watchdog Triggered). Please contact MakerBot support.",
+            "id": 55,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "invalid_encoder_resolution",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 88: Invalid Encoder Resolution). ",
+            "id": 88,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "watchdog_triggered",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 11: Watchdog Triggered). Please contact MakerBot support.",
+            "id": 11,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "thermocouple_unplugged",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 67: Thermocouple Unplugged). Please disconnect and reconnect your Smart Extruder.",
+            "id": 67,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "motor_over_current",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 53: Motor Over Current). Please contact MakerBot support.",
+            "id": 53,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "thermocouple_too_hot",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 68: Thermocouple Too Hot). Please disconnect and reconnect your Smart Extruder.",
+            "id": 68,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_heater_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "There is a problem with your chamber heater (Error 98: Chamber Heater Failure). Please contact support.",
+            "id": 98,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_fan_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "There is a problem with your chamber heater (Error 99: Chamber Fan Failure). Please contact support.",
+            "id": 99,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_start_failure",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 132: Eeprom Start Failure). ",
+            "id": 132,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_heater_disconnected",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "There is a problem with your chamber heater (Error 97: Chamber Heater Disconnected). Please contact support.",
+            "id": 97,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "tool_checksum_fail",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 87: Tool Checksum Fail). Please contact MakerBot support.",
+            "id": 87,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_out_of_date",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 137: Eeprom Out Of Date). ",
+            "id": 137,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "tool_read_error",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 86: Tool Read Error). Please contact MakerBot support.",
+            "id": 86,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "none",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 0: None). ",
+            "id": 0,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "filament_slip",
+            "title": "Filament Jam",
+            "error_type": "filament_error",
+            "message": "Your filament seems to be jammed. Please unload your remaining filament, and then reload it to continue printing.",
+            "id": 81,
+            "error_action": "change_filament"
+        },
+        {
+            "name": "no_tool_connected",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Your Smart Extruder is not connected. Please reconnect your Smart Extruder.",
+            "id": 54,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "tool_open",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 70: Tool Open). Please contact MakerBot support.",
+            "id": 70,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "thermocouple_adc_busy",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 129: Thermocouple Adc Busy). ",
+            "id": 129,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_unknown_version",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 135: Eeprom Unknown Version). ",
+            "id": 135,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_checksum_failure",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 95: Eeprom Checksum Failure). Please contact MakerBot support.",
+            "id": 95,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_id_verify_fail",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 134: Eeprom Id Verify Fail). ",
+            "id": 134,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "command_index_mismatch",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 14: Command Index Mismatch). ",
+            "id": 14,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_thermistor_disconnected",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "There is a problem with your chamber heater (Error 96: Chamber Thermistor Disconnected). Please contact support.",
+            "id": 96,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "heater_over_temp",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "There is a problem with your chamber heater (Error 74: Heater Over Temp). Please contact support.",
+            "id": 74,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "thermocouple_communication_failure",
+            "title": "Extruder Error",
+            "error_type": "tool_error",
+            "message": "Oops, we have a problem with your Smart Extruder (Error 65: Thermocouple Communication Failure). Please disconnect and reconnect your Smart Extruder.",
+            "id": 65,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "chamber_temperature_overrun",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "There is a problem with your chamber heater (Error 100: Chamber Temperature Overrun). Please contact support.",
+            "id": 100,
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "eeprom_no_slave_ack",
+            "title": "System Error",
+            "error_type": "general_error",
+            "message": "Oops, we have a problem (Error 131: Eeprom No Slave Ack). ",
+            "id": 131,
+            "error_action": "acknowledge"
+        }
+    ],
+
+    "error_type_enum": [
+        {"name": "none", "value": 0},
+        {"name": "tool_error", "value": 1},
+        {"name": "filament_error", "value": 2},
+        {"name": "general_error", "value": 3},
+        {"name": "zpause", "value": 4},
+        {"name": "sad_bot", "value": 5},
+        {"name": "chamber_error", "value": 6}
+    ],
+
+    "error_action_enum": [
+        {"name": "acknowledge", "value": 0},
+        {"name": "change_filament", "value": 1},
+        {"name": "preheat_timeout", "value": 2},
+        {"name": "zpaused", "value": 3},
+        {"name": "unload_filament", "value": 4}
+    ]
+}
