@@ -40,23 +40,16 @@ env.birdwing_code_gen(
     [os.path.join(BWCGEN_ROOT_DIR, mc.TEMPLATES_DIR_NAME, relpath) for relpath in bw_template_files]
 )
 
-# TODO(jacksonh) -- add in a hack to copy the genn'd cpp files to the include dir in the variantdir
-#output_headers = [
-#    'include/bwcoreutils/machine_errors.hh',
-#    'include/bwcoreutils/toolhead_errors.hh',
-#    'include/bwcoreutils/all_errors.hh'
-#]
-
-
-# Add an empty command that makes the top-level directory target
-# depend on the header files. This ensures the header files are copied
-# into the variant dir.
-env.Command(
-    '.',
-    env.MBRecursiveFileGlob('include', '*.h') +
-    ['include/bwcoreutils/bot_error.hh'],
-    '')
-
+# Hack to copy codegen'd cpp files from obj/birdwing/cpp to obj/include/bwcoreutils,
+# since a bunch of projects already expect shared cpp birdwing headers to be there.
+# TODO(jacksonh) - remove this awful hack
+for header in bw_template_files:
+    if os.path.dirname(header) == 'cpp' and (header.endswith('.hh') or header.endswith('.h')):
+        env.Command(
+            os.path.join(str(Dir("#/")), 'obj', 'include', 'bwcoreutils', os.path.basename(header)),
+            os.path.join(str(Dir("#/")), 'obj', BWCGEN_OUTPUT_DIR, 'cpp', os.path.basename(header)),
+            Copy("$TARGET", "$SOURCE")
+        )
 
 #
 # Swap out some things if we are building for birdwing or desktop.
