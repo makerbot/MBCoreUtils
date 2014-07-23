@@ -135,7 +135,8 @@ def gen_files(env, target, source):
         return dest[0]
 
     templates = []
-    context = {}
+    original_context = {}
+    transformed_contexts = {}
     transformation_meta = {}
 
     # Populate our template, context and transformation_meta dicts/lists
@@ -143,7 +144,7 @@ def gen_files(env, target, source):
         if CONTEXT_DIR_NAME == get_parent_dirname(s):
             with open(str(s), 'r') as f:
                 try:
-                    context.update(json.load(f))
+                    original_context.update(json.load(f))
                 except Exception as e:
                     raise Exception('Failed to parse context {0} : {1}'.format(str(s), e))
 
@@ -167,10 +168,13 @@ def gen_files(env, target, source):
 
         with open(str(dest_node), 'w') as outf:
             # We use the template's parent directory to select the appropriate transformation meta dict
-            if parent_dirname in transformation_meta:
-                template_context = transform(context, transformation_meta[parent_dirname])
+            if parent_dirname in transformed_contexts:
+                template_context = transformed_contexts[parent_dirname]
+            elif parent_dirname in transformation_meta:
+                template_context = transform(original_context, transformation_meta[parent_dirname])
+                transformed_contexts[parent_dirname] = template_context
             else:
-                template_context = context
+                template_context = original_context
 
             with open(str(src_node), 'r') as in_template:
                 try:
