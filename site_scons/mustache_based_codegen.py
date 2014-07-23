@@ -111,6 +111,15 @@ def transform(context, transformation_dict):
                 if endpt_key in keys_with_transform and endpoint in keys_with_transform[endpt_key]:
                     replace(new_context, path, keys_with_transform[endpt_key][endpoint])
 
+    if keys_with_transform:
+        # Need to regenerate the context paths and iterate over them a second time
+        # to ensure no values that need to be replaced were missed.  This could happen
+        # if we applied a transformation after iterating over keys listed in it's REPLACE_MATCHING_VALS_IN_KEYS
+        for endpoint, path in cxt_paths(new_context):
+            endpt_key = path[0]
+            if endpt_key in keys_with_transform and endpoint in keys_with_transform[endpt_key]:
+                replace(new_context, path, keys_with_transform[endpt_key][endpoint])
+
     return new_context
 
 def gen_files(env, target, source):
@@ -133,13 +142,21 @@ def gen_files(env, target, source):
     for s in source:
         if CONTEXT_DIR_NAME == get_parent_dirname(s):
             with open(str(s), 'r') as f:
-                context.update(json.load(f))
+                try:
+                    context.update(json.load(f))
+                except Exception as e:
+                    raise Exception('Failed to parse context {0} : {1}'.format(str(s), e))
+
         elif TEMPLATES_DIR_NAME in str(s).split(os.sep):
             templates.append(s)
         elif TRANSFORMATIONS_FILE == os.path.basename(str(s)):
             with open(str(s), 'r') as f:
-                transformation_meta = json.load(f)
+                try:
+                    transformation_meta = json.load(f)
+                except Exception as e:
+                    raise Exception('Failed to parse transformation.json : {0}'.format(e))
 
+    # Render our templates with the appropriate transformed contexts
     for src_node in templates:
         parent_dirname, filename = get_parent_dirname(src_node), os.path.basename(str(src_node))
         dest_node = find_dest_in_targets(parent_dirname, filename)
