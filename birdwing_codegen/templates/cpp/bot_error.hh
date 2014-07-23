@@ -89,8 +89,8 @@ private:
         switch(static_cast<Error>(errorCode)) {
             {{#toolhead_errors}}
             case {{name}}:
-                {{#inherits}}
-                ErrorDefaults d = get_base_defaults({{inherits}});
+                {{#use_base}}
+                ErrorDefaults d = get_base_defaults({{use_base}});
                 {{^title}}
                 m_title = d.title;
                 {{/title}}
@@ -103,7 +103,7 @@ private:
                 {{^error_action}}
                 m_action = d.action;
                 {{/error_action}}
-                {{/inherits}}
+                {{/use_base}}
                 {{#title}}
                 m_title = QObject::tr("{{title}}");
                 {{/title}}
@@ -120,8 +120,8 @@ private:
             {{/toolhead_errors}}
             {{#machine_errors}}
             case {{name}}:
-                {{#inherits}}
-                ErrorDefaults d = get_base_defaults({{inherits}});
+                {{#use_base}}
+                ErrorDefaults d = get_base_defaults({{use_base}});
                 {{^title}}
                 m_title = d.title;
                 {{/title}}
@@ -134,7 +134,7 @@ private:
                 {{^error_action}}
                 m_action = d.action;
                 {{/error_action}}
-                {{/inherits}}
+                {{/use_base}}
                 {{#title}}
                 m_title = QObject::tr("{{title}}");
                 {{/title}}
