@@ -53,23 +53,100 @@ public:
 
 private:
 
+
+    enum ErrorBases {
+        {{#error_bases}}
+        {{name}},
+        {{/error_bases}}
+    }
+
+    struct ErrorDefaults {
+
+        ErrorDefaults(const QString& title, const QString& message, TYPE type, ACTION action) :
+        title(title),
+        message(message),
+        type(type),
+        action(action) {}
+        ~ErrorDefaults() {}
+
+        QString title;
+        QString message;
+        TYPE type;
+        ACTION action;
+
+    };
+
+    static ErrorDefaults get_base_defaults(ErrorBases b) const {
+        switch (b) {
+            {{#error_bases}}
+            case {{name}}:
+                return ErrorDefaults(QObject::tr("{{title}}"), QObject::tr("{{message}}"), {{error_type}}, {{error_action}});
+            {{/error_bases}}
+        }
+    }
+
     void init(int errorCode) {
-        // TODO(jacksonh) - fix this string duplication
         switch(static_cast<Error>(errorCode)) {
             {{#toolhead_errors}}
             case {{name}}:
+                {{#inherits}}
+                ErrorDefaults d = get_base_defaults({{inherits}});
+                {{^title}}
+                m_title = d.title;
+                {{/title}}
+                {{^message}}
+                m_message = d.message.arg(errorCode).arg(QObject::tr("{{pretty_name}}"));
+                {{/message}}
+                {{^error_type}}
+                m_type = d.type;
+                {{/error_type}}
+                {{^error_action}}
+                m_action = d.action;
+                {{/error_action}}
+                {{/inherits}}
+                {{#title}}
                 m_title = QObject::tr("{{title}}");
+                {{/title}}
+                {{#message}}
                 m_message = QObject::tr("{{message}}");
+                {{/message}}
+                {{#error_type}}
                 m_type = {{error_type}};
+                {{/error_type}}
+                {{#error_action}}
                 m_action = {{error_action}};
+                {{/error_action}}
                 break;
             {{/toolhead_errors}}
             {{#machine_errors}}
             case {{name}}:
+                {{#inherits}}
+                ErrorDefaults d = get_base_defaults({{inherits}});
+                {{^title}}
+                m_title = d.title;
+                {{/title}}
+                {{^message}}
+                m_message = d.message.arg(errorCode).arg(QObject::tr("{{pretty_name}}"));
+                {{/message}}
+                {{^error_type}}
+                m_type = d.type;
+                {{/error_type}}
+                {{^error_action}}
+                m_action = d.action;
+                {{/error_action}}
+                {{/inherits}}
+                {{#title}}
                 m_title = QObject::tr("{{title}}");
+                {{/title}}
+                {{#message}}
                 m_message = QObject::tr("{{message}}");
+                {{/message}}
+                {{#error_type}}
                 m_type = {{error_type}};
+                {{/error_type}}
+                {{#error_action}}
                 m_action = {{error_action}};
+                {{/error_action}}
                 break;
             {{/machine_errors}}
             default:
