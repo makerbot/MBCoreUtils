@@ -156,5 +156,9 @@ def gen_files(env, target, source):
                 template_context = context
 
             with open(str(src_node), 'r') as in_template:
-                outf.write(pystache.render(in_template.read(), template_context))
+                try:
+                    outf.write(pystache.render(in_template.read(), template_context))
+                except Exception as e:
+                    raise Exception("Failed to render {0} : {1}".format(str(src_node), e))
+
                 print('Mustache Codegen: Rendered {0}/{1} (tranforms: {2})'.format(parent_dirname, filename, parent_dirname in transformation_meta))
