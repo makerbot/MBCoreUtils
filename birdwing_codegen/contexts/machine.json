@@ -51,7 +51,7 @@
                 {"name": "preheat_percent", "type": "uint8"},
                 {"name": "move_buffer_available_space", "type": "uint8"},
                 {"name": "machine_error", "type": "uint16"},
-                {"name": "toolhead_0_heating_status", "type": "toolhead"},
+                {"name": "toolhead_0_heating_status", "type": "toolhead_heating"},
                 {"name": "toolhead_0_status", "type": "bronx_toolhead"}
             ]
         }
