@@ -156,6 +156,16 @@
             "error_type": "zpause",
             "error_action": "zpaused",
             "id": 501
+        },
+        {
+            "use_base": false,
+            "name": "move_command_outside_axis_bounds",
+            "pretty_name": "Move Command Outside Axis Bounds",
+            "title": "File Error",
+            "message": "Error 1039: Move Command Outside Axis Bounds.  Please check that your .makerbot file is configured for the correct printer type.",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1039
         }
     ],
 
