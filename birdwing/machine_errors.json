@@ -58,7 +58,6 @@
     "no_hes_log": 1023,
     "no_hes_change": 1024,
     "unknown_homing_method": 1025,
-	"leveling_timed_out": 1026,
     "both_sides_too_high": 1027,
     "leveling_with_filament": 1028,
     "no_build_plate": 1029,
