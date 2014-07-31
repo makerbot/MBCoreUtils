@@ -190,7 +190,7 @@ private:
 				break;	
             case kMoveCommandOutsideAxisBounds:
                 m_title = QObject::tr("File Error");
-			    m_message = QObject::tr("Error %1: %2. Please check that your .makerbot file is configured for the correct printer type.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+			    m_message = QObject::tr("Error %1: Please make sure that your .makerbot file is prepared for the correct printer type.").arg(errorCode);
 				break;	
 			case kKaitenError:
 			case kCriticalKaitenError:
