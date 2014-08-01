@@ -2,6 +2,7 @@
 import os, sys
 import json
 import copy
+import imp
 
 # Use our local copy of pystache
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'lib', 'pystache'))
@@ -142,11 +143,19 @@ def gen_files(env, target, source):
     # Populate our template, context and transformation_meta dicts/lists
     for s in source:
         if CONTEXT_DIR_NAME == get_parent_dirname(s):
-            with open(str(s), 'r') as f:
-                try:
-                    original_context.update(json.load(f))
-                except Exception as e:
-                    raise Exception('Failed to parse context {0} : {1}'.format(str(s), e))
+            try:
+                fname, fext = os.path.splitext(os.path.split(str(s))[-1])
+                if fext == '.py':
+                    # BIG HACK - enable dynamically generated contexts (to do hacky machine-specific codegen for things like toolhead structs)
+                    dynamic_context_gen = imp.load_source(fname, str(s))
+                    # dynamic context generators must implement a generate_context method that takes a SCons env and returns a dict.
+                    original_context.update(dynamic_context_gen.generate_context(env, target, source))
+                    print('Mustache Codegen: Loaded dynamic context from: {0}'.format(str(s)))
+                elif fext == '.json':
+                    with open(str(s), 'r') as f:
+                        original_context.update(json.load(f))
+            except Exception as e:
+                raise Exception('Failed to load context {0} : {1}'.format(str(s), e))
 
         elif TEMPLATES_DIR_NAME in str(s).split(os.sep):
             templates.append(s)

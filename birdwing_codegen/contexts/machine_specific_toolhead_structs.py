@@ -1,8 +1,8 @@
-{
+base_structs_dict = {
     "structs": [
         {
             "name": "toolhead",
-            "inherits": false,
+            "inherits": False,
             "fields": [
                 {"name": "tool_id", "type": "uint8"},
                 {"name": "error","type": "uint8"}
@@ -37,7 +37,7 @@
         },
         {
             "name": "toolhead_heating",
-            "inherits": false,
+            "inherits": False,
             "fields": [
                 {"name": "preheating", "type": "uint8"},
                 {"name": "target_temperature", "type": "int16"},
@@ -46,47 +46,40 @@
         },
         {
             "name": "machine_response",
-            "inherits": false,
+            "inherits": False,
             "fields": [
                 {"name": "preheat_percent", "type": "uint8"},
                 {"name": "move_buffer_available_space", "type": "uint8"},
-                {"name": "machine_error", "type": "uint16"},
-                {"name": "toolhead_0_heating_status", "type": "toolhead_heating"},
-                {"name": "toolhead_0_status", "type": "bronx_toolhead"}
-            ]
-        }
-    ],
-
-    "enums": [
-        {
-            "name": "leveling_states",
-            "values": [
-                {"name": "too_high", "value": 1},
-                {"name": "too_low", "value": 0},
-                {"name": "wrong_way", "value": 3},
-                {"name": "just_right", "value": 2}
-            ]
-        },
-        {
-            "name": "leveling_knobs",
-            "values": [
-                {"name": "Knob1", "value": 1},
-                {"name": "Fixed", "value": 0},
-                {"name": "Knob2", "value": 2}
-            ]
-        },
-        {
-            "name": "constants",
-            "values": [
-                {"name": "axis_count", "value": 4},
-                {"name": "warning_threshold", "value": 500},
-                {"name": "toolhead_warning_threshold", "value": 128},
-                {"name": "pru_buffer_size", "value": 1170},
-                {"name": "machine_error_threshold", "value": 2000},
-                {"name": "toolhead_version_bytes", "value": 2},
-                {"name": "process_error_threshold", "value": 1000},
-                {"name": "expected_toolhead_count", "value": 1}
+                {"name": "machine_error", "type": "uint16"}
+                # Machine-specific toolhead struct fields will be appended here.
             ]
         }
     ]
 }
+
+import json
+
+def append_machine_response_field(field):
+    for struct in base_structs_dict['structs']:
+        if struct['name'] == 'machine_response':
+            struct['fields'].append(field)
+
+def generate_context(env, target, source):
+    if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
+        with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
+            machine_settings_config = json.load(f)
+            if 'Toolheads' in machine_settings_config:
+                for tool in machine_settings_config['Toolheads']:
+                    for tool_num in machine_settings_config['Toolheads'][tool]['Locations']:
+                        tool_struct_field = {
+                            "name": "toolhead_{0}_status".format(tool_num),
+                            "type": "{0}_toolhead".format(tool.lower())
+                        }
+                        tool_heating_struct_field = {
+                            "name": "toolhead_{0}_heating_status".format(tool_num),
+                            "type": "toolhead_heating"
+                        }
+                        append_machine_response_field(tool_struct_field)
+                        append_machine_response_field(tool_heating_struct_field)
+
+    return base_structs_dict
