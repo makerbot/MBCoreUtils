@@ -27,8 +27,8 @@ public:
     };
 
     BotError(int errorCode) :
-        m_type(0),
-        m_action(0) {
+        m_type(static_cast<TYPE>(0)),
+        m_action(static_cast<ACTION>(0)) {
         init(errorCode);
     }
 
@@ -58,7 +58,7 @@ private:
         {{#error_bases}}
         {{name}},
         {{/error_bases}}
-    }
+    };
 
     struct ErrorDefaults {
 
@@ -67,7 +67,9 @@ private:
         message(message),
         type(type),
         action(action) {}
+	ErrorDefaults() {}
         ~ErrorDefaults() {}
+
 
         QString title;
         QString message;
@@ -76,21 +78,23 @@ private:
 
     };
 
-    static ErrorDefaults get_base_defaults(ErrorBases b) const {
+    static ErrorDefaults get_base_defaults(ErrorBases b) {
         switch (b) {
             {{#error_bases}}
             case {{name}}:
                 return ErrorDefaults(QObject::tr("{{title}}"), QObject::tr("{{message}}"), {{error_type}}, {{error_action}});
             {{/error_bases}}
         }
+	return ErrorDefaults();
     }
 
     void init(int errorCode) {
+	ErrorDefaults d;
         switch(static_cast<Error>(errorCode)) {
             {{#toolhead_errors}}
             case {{name}}:
                 {{#use_base}}
-                ErrorDefaults d = get_base_defaults({{use_base}});
+                d = get_base_defaults({{use_base}});
                 {{^title}}
                 m_title = d.title;
                 {{/title}}
@@ -121,7 +125,7 @@ private:
             {{#machine_errors}}
             case {{name}}:
                 {{#use_base}}
-                ErrorDefaults d = get_base_defaults({{use_base}});
+                d = get_base_defaults({{use_base}});
                 {{^title}}
                 m_title = d.title;
                 {{/title}}
