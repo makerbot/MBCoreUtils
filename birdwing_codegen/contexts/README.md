@@ -1,3 +1,6 @@
+# THIS IS OUTDATED
+
+
 # Birdwing Metaparsing
 This directory contains several files defined in a meta language (.json) that are converted into both C and Python code.  The converted .hh and .py files are then linked in to various projects int the makerware/birdwing stack.
 
