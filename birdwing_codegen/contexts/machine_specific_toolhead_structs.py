@@ -36,6 +36,33 @@ base_structs_dict = {
             ]
         },
         {
+            "name": "u1extruder_toolhead",
+            "inherits": "toolhead",
+            "fields": [
+                {"name": "extrusion_percent", "type": "uint8"},
+                {"name": "filament_presence", "type": "bool"},
+                {"name": "filament_jam", "type": "bool"},
+                {"name": "current_mag", "type": "int32"},
+                {"name": "filament_fan_running", "type": "bool"},
+                {"name": "encoder_adc", "type": "uint16"},
+            ]
+        },
+        {
+            "name": "u1chamber_toolhead",
+            "inherits": "toolhead",
+            "fields": [
+                {"name": "fan_status", "type": "bool"},
+                {"name": "w200_heater_status", "type": "bool"},
+                {"name": "w400_heater_status", "type": "bool"},
+                {"name": "w200_heater_temp", "type": "uint16"},
+                {"name": "w400_heater_temp", "type": "uint16"},
+                {"name": "fan_setpoint_pc", "type": "uint8"},
+                {"name": "w200_heater_setpoint_c", "type": "uint8"},
+                {"name": "w400_heater_setpoint_c", "type": "uint8"},
+                {"name": "control_regime", "type": "uint8"}
+            ]
+        },
+        {
             "name": "toolhead_heating",
             "inherits": False,
             "fields": [
