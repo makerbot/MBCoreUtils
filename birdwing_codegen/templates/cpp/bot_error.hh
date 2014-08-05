@@ -112,7 +112,7 @@ private:
                 m_title = QObject::tr("{{title}}");
                 {{/title}}
                 {{#message}}
-                m_message = QObject::tr("{{message}}");
+                m_message = QObject::tr("{{message}}").arg(errorCode);
                 {{/message}}
                 {{#error_type}}
                 m_type = {{error_type}};
@@ -143,7 +143,7 @@ private:
                 m_title = QObject::tr("{{title}}");
                 {{/title}}
                 {{#message}}
-                m_message = QObject::tr("{{message}}");
+                m_message = QObject::tr("{{message}}").arg(errorCode);
                 {{/message}}
                 {{#error_type}}
                 m_type = {{error_type}};
