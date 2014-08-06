@@ -309,7 +309,7 @@ For an example template, see anything in *[birdwing_codegen/templates](templates
 The scripts responsible for producing the code-generated output from the supplied contexts, transformations, and templates are primarily:
 
 
-- <a name="machine_settings_builder"></a>*[site_scons/machine_specific_settings.py](../site_scons/machine_specific_settings.py)*
+- <a name="machine_settings_builder"></a>*[site_scons/machine_specific_settings_gen.py](../site_scons/machine_specific_settings_gen.py)*
   - Part of a [hack to enable machine-specific code generation](#machine_specific_hack), this SCons builder will generate a machine-specific printer_settings.json file in the same manner that Birdwing-Software/firmware/settings/SConscript does.
 - *[site_scons/mustache_based_codegen.py](../site_scons/mustache_based_codegen.py)*
 	- Given a set of input files containing templates, contexts, and transformations, and a list of output locations matching the supplied template names, this SCons builder will render and save the code generated output.
