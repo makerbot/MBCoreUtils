@@ -7,7 +7,7 @@ base_toolhead_metadata_dict = {
         #    "name": "Bronx",
         #    "index": 0,
         #    "program_floc": "/usr/firmware/Bronx.hex",
-        #    "toolhead_manager_include": "bronx_toolhead_manager"
+        #    "toolhead_manager_include": "bronx_toolhead_manager.hh"
         #},
     ]
 }
