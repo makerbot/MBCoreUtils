@@ -19,6 +19,7 @@
     "thermocouple_out_of_range" : 66, 
     "thermocouple_unplugged" : 67, 
     "thermocouple_too_hot" : 68,
+    "thermocouple_data_invalid" : 69,
     "tool_open" : 70,
     "heater_open" : 71,
     "tool_fan_open" : 72,
