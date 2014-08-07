@@ -12,8 +12,9 @@ base_enums_dict = {
         {
             "name": "leveling_knobs",
             "values": [
-                # These names are capitalized here because the python bindings specifically need
-                # them to be, while every other enum name for python is formatted like "enum_name"
+                # These names are capitalized here because the python bindings
+                # specifically need them to be, while every other enum name for
+                # python is formatted like "enum_name".
                 {"name": "Knob1", "value": 1},
                 {"name": "Fixed", "value": 0},
                 {"name": "Knob2", "value": 2}
@@ -44,7 +45,8 @@ base_enums_dict = {
                 {"name": "machine_error_threshold", "value": 2000},
                 {"name": "toolhead_version_bytes", "value": 2},
                 {"name": "process_error_threshold", "value": 1000},
-                # Machine-specific constants will be appended here (currently only expected_toolhead_count)
+                # Machine-specific constants will be appended here.
+                # (currently only expected_toolhead_count)
             ]
         }
     ]
@@ -52,10 +54,12 @@ base_enums_dict = {
 
 import json
 
+
 def append_constant(c):
     for enum in base_enums_dict['enums']:
         if enum['name'] == 'constants':
             enum['values'].append(c)
+
 
 def generate_context(env, target, source):
     if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
@@ -64,7 +68,9 @@ def generate_context(env, target, source):
             tool_count = 0
             if "Toolheads" in machine_settings_config:
                 for tool in machine_settings_config['Toolheads']:
-                    tool_count += len(machine_settings_config["Toolheads"][tool]["Locations"])
+                    tool_count += len(
+                        machine_settings_config["Toolheads"][tool]["Locations"]
+                    )
             expected_toolhead_count_constant = {
                 "name": "expected_toolhead_count",
                 "value": tool_count

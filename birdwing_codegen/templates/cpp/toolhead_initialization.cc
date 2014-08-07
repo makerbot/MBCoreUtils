@@ -4,7 +4,7 @@
 #include "pins.hh"
 #include "heater_manager.hh"
 {{#machine_toolheads}}
-#include "{{toolhead_manager_include}}"
+#include "{{toolhead_include}}"
 {{/machine_toolheads}}
 
 

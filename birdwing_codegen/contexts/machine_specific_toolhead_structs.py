@@ -5,7 +5,7 @@ base_structs_dict = {
             "inherits": False,
             "fields": [
                 {"name": "tool_id", "type": "uint8"},
-                {"name": "error","type": "uint8"}
+                {"name": "error", "type": "uint8"}
             ]
         },
         {
@@ -78,7 +78,7 @@ base_structs_dict = {
                 {"name": "preheat_percent", "type": "uint8"},
                 {"name": "move_buffer_available_space", "type": "uint8"},
                 {"name": "machine_error", "type": "uint16"}
-                # Machine-specific toolhead struct fields will be appended here.
+                # Machine-specific toolhead struct fields will be appended here
             ]
         }
     ]
@@ -86,10 +86,12 @@ base_structs_dict = {
 
 import json
 
+
 def append_machine_response_field(field):
     for struct in base_structs_dict['structs']:
         if struct['name'] == 'machine_response':
             struct['fields'].append(field)
+
 
 def generate_context(env, target, source):
     if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
@@ -97,16 +99,18 @@ def generate_context(env, target, source):
             machine_settings_config = json.load(f)
             if 'Toolheads' in machine_settings_config:
                 for tool in machine_settings_config['Toolheads']:
-                    for tool_num in machine_settings_config['Toolheads'][tool]['Locations']:
-                        tool_struct_field = {
+                    tool_dict = machine_settings_config['Toolheads'][tool]
+                    for tool_num in tool_dict['Locations']:
+                        struct_field = {
                             "name": "toolhead_{0}_status".format(tool_num),
                             "type": "{0}_toolhead".format(tool.lower())
                         }
-                        tool_heating_struct_field = {
-                            "name": "toolhead_{0}_heating_status".format(tool_num),
+                        heating_struct_field = {
+                            "name": "toolhead_{0}_heating_status"
+                                    .format(tool_num),
                             "type": "toolhead_heating"
                         }
-                        append_machine_response_field(tool_struct_field)
-                        append_machine_response_field(tool_heating_struct_field)
+                        append_machine_response_field(struct_field)
+                        append_machine_response_field(heating_struct_field)
 
     return base_structs_dict
