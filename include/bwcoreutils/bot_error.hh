@@ -67,23 +67,41 @@ private:
 		switch(static_cast<Error>(errorCode)) {
 			case kNoFilament:
 				m_title = QObject::tr("Out of Filament");
-				m_message = QObject::tr("Please unload your remaining filament, and then load new filament to continue printing.");
+				m_message = QObject::tr("Please unload your remaining filament, and then load new filament to continue printing (Warning %1).").arg(errorCode);
 				m_type = FILAMENT_ERROR;
 				m_action = CHANGE_FILAMENT;
 				break;
 			case kFilamentSlip:
 				m_title = QObject::tr("Filament Jam");
-				m_message = QObject::tr("Your filament seems to be jammed. Please unload your remaining filament, and then reload it to continue printing.");
+				m_message = QObject::tr("Your filament seems to be jammed (Error %1). Please unload your remaining filament, and then reload it to continue printing.").arg(errorCode);
 				m_type = FILAMENT_ERROR;
 				m_action = CHANGE_FILAMENT;
 				break;
             case kDoorInterlockTriggered:
                 m_title = QObject::tr("Chamber Open");
-                m_message = QObject::tr("The heated build chamber is open. The current process has been paused. Please close the door to continue.");
+                m_message = QObject::tr("The heated build chamber is open (Warning %1). Please close the door to continue.").arg(errorCode);
                 m_type = CHAMBER_ERROR;
                 break;
-			case kPrintToolNotConnected:
-			case kToolheadNotConnected:
+		    case kChamberProgramFailure:
+				m_title = QObject::tr("Chamber Program Failed");
+				m_message = QObject::tr("The build chamber heater controller cannot be programmed (Error %1). Please contact support.").arg(errorCode);
+				break;
+		    case kCarriageProgramFailure:
+				m_title = QObject::tr("Carriage Program Failed");
+				m_message = QObject::tr("The extruder carriage cannot be programmed (Error %1). Please contact support.").arg(errorCode);
+				break;
+		    case kChamberNotConnected:
+				m_title = QObject::tr("Chamber Heater Disconnect");
+				m_message = QObject::tr("The build chamber heater controller is disconnected (Error %1). Please contact support.").arg(errorCode);
+				break;
+		    case kCarriageNotConnected:
+				m_title = QObject::tr("Carriage Disconnected");
+				m_message = QObject::tr("The extruder carriage is disconnected from the machine (Error %1). Please contact support.").arg(errorCode);
+				break;
+			case kPrintToolConnectFailed:
+				m_message = QObject::tr("Smart Extruder Connect Failed (Error %1).  Please disconnect your Smart Extruder and try again.").arg(errorCode);
+				m_type = TOOL_ERROR;
+				break;
 			case kThermocoupleUnplugged:
 			case kThermocoupleOutOfRange:
 			case kThermocoupleTooHot:
@@ -92,14 +110,9 @@ private:
 				m_type = TOOL_ERROR;
 				break;	
 			case kNoToolConnected:
-				m_message = QObject::tr("Your Smart Extruder is not connected. Please reconnect your Smart Extruder.");
+				m_message = QObject::tr("Your Smart Extruder is not connected (Error %1). Please reconnect your Smart Extruder.").arg(errorCode);
 				m_type = TOOL_ERROR;
 				break;
-            case kLevelingTimedOut:
-            	m_title = QObject::tr("Leveling Timeout");
-			    m_message = QObject::tr("Leveling has ended due to inactivity.");
-			    m_type = NONE;
-                break;
 			case kHeaterShort:
 			case kToolShort:
 			case kToolFanShort:			
@@ -113,7 +126,6 @@ private:
 			case kToolheadNoResponse:
 			case kToolheadMismatchApiVersion:
 			case kFilamentFanOpen:
-			case kToolheadProgramFailure:
 			case kToolheadNotHeating:
 			case kEepromChecksumFailure:
 			case kToolheadNotInitialized:
@@ -127,12 +139,12 @@ private:
 				break;	
 			case kHeaterHoldWatchdogTriggered:
 				m_title = QObject::tr("Heating Timeout");
-			    m_message = QObject::tr("Heaters were turned off due to inactivity");
+			    m_message = QObject::tr("Heaters were turned off due to inactivity (Warning %1)").arg(errorCode);
 			    m_type = NONE;
 			    break;
             case kNoHesChange:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed. Your Smart Extruder is not communicating. Please try again or contact Makerbot support.");
+			    m_message = QObject::tr("Homing failed (Error %1). Your Smart Extruder is not communicating. Please try again or contact Makerbot support.").arg(errorCode);
 			    m_type = NONE;
 			    break;			
             case kNoHesLog:
@@ -149,13 +161,13 @@ private:
             case kHesLogOverflow:
             case kBadHesWaveforms:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed. Your extruder nozzle may be stuck. Please try again.");
+			    m_message = QObject::tr("Homing failed (Error %1). Your extruder nozzle may be stuck. Please try again.").arg(errorCode);
 			    m_type = NONE;
 			    break;			
 			case kJsonToolpathNothingParsed:
 			case kJsonToolpathParseError:
 				m_title = QObject::tr("Print Error");
-			    m_message = QObject::tr("Invalid print file. Please try to prepare again in MakerBot Desktop.");
+			    m_message = QObject::tr("Invalid print file (Error %1). Please try to prepare again in MakerBot Desktop.").arg(errorCode);
 			    m_type = NONE;
 			    break;	
 			case kZPause:
@@ -171,6 +183,10 @@ private:
 			case kInvalidEepromFilepath:			    
 			    m_message = QObject::tr("Oops, we have a problem (Error %1: %2). Please update your firmware using MakerBot Desktop.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;	
+            case kMoveCommandOutsideAxisBounds:
+                m_title = QObject::tr("File Error");
+			    m_message = QObject::tr("Error %1: Please make sure that your .makerbot file is prepared for the correct printer type.").arg(errorCode);
+				break;	
 			case kKaitenError:
 			case kCriticalKaitenError:
 				// don't show users the term 'Kaiten'
@@ -178,18 +194,18 @@ private:
 				break;
             case kLevelingWithFilament:
                 m_title = QObject::tr("Clear Filament");
-                m_message = QObject::tr("Please remove filament from the Smart Extruder before proceeding.");
+                m_message = QObject::tr("Please remove filament from the Smart Extruder before proceeding (Warning %1).").arg(errorCode);
                 m_type = NONE;
                 m_action = UNLOAD_FILAMENT;
                 break;
             case kBothSidesTooHigh:
 				m_title = QObject::tr("Leveling Error");
-			    m_message = QObject::tr("Leveling failed. Your extruder nozzle may be stuck. Please try again.");
+			    m_message = QObject::tr("Leveling failed (Error %1). Your extruder nozzle may be stuck. Please try again.").arg(errorCode);
 			    m_type = NONE;
 			    break;		
 			case kNoBuildPlate:
 				m_title = QObject::tr("No Build Plate");
-			    m_message = QObject::tr("Please ensure your build plate is properly attached.");
+			    m_message = QObject::tr("Please ensure your build plate is properly attached (Warning %1).").arg(errorCode);
 			    m_type = NONE;
 			    break;						
 		    case kChamberThermistorDisconnected:
@@ -244,7 +260,6 @@ private:
             case kInterfaceLedCommsError:
             case kStopIteration:
             case kFileNotFound:
-            case kToolheadDisconnected:
             case kBufferFull:
             case kSuspendNoValidLastMove:
             case kToolheadSpiConfigError:
