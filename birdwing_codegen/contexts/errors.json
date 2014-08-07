@@ -164,6 +164,7 @@
         {"use_base": "tool_problem", "name": "thermocouple_unplugged", "pretty_name": "Thermocouple Unplugged", "id": 67},
         {"use_base": "tool_problem", "name": "thermocouple_too_hot", "pretty_name": "Thermocouple Too Hot", "id": 68},
         {"use_base": "tool_problem", "name": "thermocouple_communication_failure", "pretty_name": "Thermocouple Communication Failure", "id": 65},
+        {"use_base": "tool_problem", "name": "thermocouple_data_invalid", "pretty_name": "Thermocouple Data Invalid", "id": 69},
         {"use_base": "tool_critical", "name": "heater_short", "pretty_name": "Heater Short", "id": 50},
         {"use_base": "tool_critical", "name": "filament_fan_short", "pretty_name": "Filament Fan Short", "id": 52},
         {"use_base": "tool_critical", "name": "filament_fan_open", "pretty_name": "Filament Fan Open", "id": 73},
