@@ -135,13 +135,13 @@ codegen_output_files = [os.path.join(BWCGEN_OUTPUT_DIR, get_relpath(path))
 env.birdwing_code_gen(codegen_output_files, codegen_input_files)
 
 
-def valid_cpp_headers(file_list):
+def valid_shared_cpp_headers(file_list):
     """Yield valid cpp headers from a list of files"""
     def valid_ext(f):
         return f.endswith('.hh') or f.endswith('.h')
 
     def valid_dir(d):
-        return os.path.basename(os.path.dirname(d)) == 'cpp'
+        return os.path.basename(os.path.dirname(d)) == 'shared_cpp'
 
     for header in file_list:
         if valid_dir(header) and valid_ext(header):
@@ -151,7 +151,7 @@ def valid_cpp_headers(file_list):
 # obj/include/bwcoreutils. This is necessary since a bunch of projects already
 # expect shared cpp birdwing headers to be there.
 # TODO(jacksonh) - remove this awful hack
-for header in valid_cpp_headers(bw_template_files):
+for header in valid_shared_cpp_headers(bw_template_files):
     env.Command(
         os.path.join(str(Dir("#/")),
                      'obj',
@@ -161,7 +161,7 @@ for header in valid_cpp_headers(bw_template_files):
         os.path.join(str(Dir("#/")),
                      'obj',
                      BWCGEN_OUTPUT_DIR,
-                     'cpp',
+                     'shared_cpp',
                      os.path.basename(header)),
         Copy("$TARGET", "$SOURCE")
     )

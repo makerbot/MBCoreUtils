@@ -20,7 +20,51 @@
 		}
 	},
 
-	"cpp": {
+	"shared_cpp": {
+		"type_MAPPINGS": {
+			"int8": "int8_t",
+			"uint8": "uint8_t",
+			"int16": "int16_t",
+			"uint16": "uint16_t",
+			"int32": "int32_t",
+			"uint32": "uint32_t",
+			"int64": "int64_t",
+			"uint64": "uint64_t"
+		},
+
+		"machine_errors": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+				"REPLACE_MATCHING_VALS_IN_KEYS": false
+			}
+		},
+		"toolhead_errors": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+				"REPLACE_MATCHING_VALS_IN_KEYS": false
+			}
+		},
+		"error_bases": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.upper()",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["use_base"]
+			}
+		},
+		"error_type_enum": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.upper()",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["error_type"]
+			}
+		},
+		"error_action_enum": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.upper()",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["error_action"]
+			}
+		}
+	},
+
+	"machine_cpp": {
 		"type_MAPPINGS": {
 			"int8": "int8_t",
 			"uint8": "uint8_t",
@@ -62,24 +106,6 @@
 			"name_TRANSFORM": {
 				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
 				"REPLACE_MATCHING_VALS_IN_KEYS": false
-			}
-		},
-		"error_bases": {
-			"name_TRANSFORM": {
-				"LAMBDA": "lambda s: s.upper()",
-				"REPLACE_MATCHING_VALS_IN_KEYS": ["use_base"]
-			}
-		},
-		"error_type_enum": {
-			"name_TRANSFORM": {
-				"LAMBDA": "lambda s: s.upper()",
-				"REPLACE_MATCHING_VALS_IN_KEYS": ["error_type"]
-			}
-		},
-		"error_action_enum": {
-			"name_TRANSFORM": {
-				"LAMBDA": "lambda s: s.upper()",
-				"REPLACE_MATCHING_VALS_IN_KEYS": ["error_action"]
 			}
 		}
 	}
