@@ -5,7 +5,7 @@ from SCons.Script import AddOption
 env = Environment(
     ENV=os.environ,
     tools=['default', 'mb_install'],
-    toolpath=['../mw-scons-tools'])
+    toolpath=['#/../mw-scons-tools'])
 
 env.Append(
     BUILDERS = {
