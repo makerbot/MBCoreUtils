@@ -21,3 +21,10 @@ debian/*substvars*
 
 *.swp
 *.pyc
+
+# birdwing autogen
+birdwing/machine_errors.py
+birdwing/toolhead_errors.py
+include/bwcoreutils/all_errors.hh
+include/bwcoreutils/machine_errors.hh
+include/bwcoreutils/toolhead_errors.hh

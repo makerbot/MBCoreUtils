@@ -2,7 +2,10 @@ import birdwing_code_gen
 import os
 from SCons.Script import AddOption
 
-env = Environment(ENV = os.environ, tools = ['default', 'mb_install'])
+env = Environment(
+    ENV=os.environ,
+    tools=['default', 'mb_install'],
+    toolpath=['#/../mw-scons-tools'])
 
 env.Append(
     BUILDERS = {
@@ -45,7 +48,7 @@ env.Command(
 # This could probably be handled more elegantly.
 #
 if ("MBCOREUTILS_BIRDWING" in os.environ):
-    # This is here to prevent "cannot find target 'install'"  errors. 
+    # This is here to prevent "cannot find target 'install'"  errors.
     # There may be a more logical thing to do with this alias
     path = os.path.join(str(Dir("#/")), 'obj', 'include')
     Alias("install", path)
