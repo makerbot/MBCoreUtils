@@ -3,7 +3,10 @@ import machine_specific_settings_gen
 import os
 from SCons.Script import AddOption
 
-env = Environment(ENV=os.environ, tools=['default', 'mb_install'])
+env = Environment(
+    ENV=os.environ,
+    tools=['default', 'mb_install'],
+    toolpath=['#../mw-scons-tools'])
 
 
 ### Mustache-based codegen stuff ###
