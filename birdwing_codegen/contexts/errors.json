@@ -202,6 +202,7 @@
         {"use_base": "misc_error", "name": "eeprom_id_verify_fail", "pretty_name": "Eeprom Id Verify Fail", "id": 134},
         {"use_base": "misc_error", "name": "command_index_mismatch", "pretty_name": "Command Index Mismatch", "id": 14},
         {"use_base": "misc_error", "name": "eeprom_no_slave_ack", "pretty_name": "Eeprom No Slave Ack", "id": 131},
+        {"use_base": "misc_error", "name": "ac_power_disconnected", "pretty_name": "AC Power Disconnected", "id": 47},
         {
             "use_base": false,
             "name": "no_filament",
