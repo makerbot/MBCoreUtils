@@ -1,7 +1,12 @@
 #ifndef ERROR_QSTRINGS_HH
 #define ERROR_QSTRINGS_HH
 
-#include <QString>
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+  #include <QString>
+#else
+  #include <QtCore/QString>
+#endif
+
 #include "bwcoreutils/all_errors.hh"
 
 namespace bwcoreutils {
