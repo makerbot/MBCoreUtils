@@ -180,21 +180,11 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     # There may be a more logical thing to do with this alias
     path = os.path.join(str(Dir("#/")), 'obj', 'include')
     Alias("install", path)
-    # This is here to prevent "no such option" errors, need a better
-    # solution. We don't actually use any of these.\
-    # It would be a pain to include all of bw-scons-tools just for this,
-    # but maybe that is the way to go.
-    AddOption('--install_dir')
-    AddOption('--install_ghost')
-    AddOption('--home_dir')
-    AddOption('--gantry')
-    AddOption('--board')
-    AddOption('--limit_detect')
-    AddOption('--logging')
-    AddOption('--binary')
-    AddOption('--ubifs_settings')
-    AddOption('--python33_dir')
-    AddOption('--connman')
+    # This is here to prevent "no such option" errors by clearing out
+    # all options that have not yet been parsed.
+    from SCons.Script.Main import OptionsParser
+    OptionsParser.largs = []
+    OptionsParser.rargs = []
 else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
