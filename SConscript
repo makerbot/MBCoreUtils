@@ -1,73 +1,48 @@
 import mustache_based_codegen as mc
-import machine_specific_settings_gen
 import os
 from SCons.Script import AddOption
 
 env = Environment(
     ENV=os.environ,
-    tools=['default', 'mb_install'],
-    toolpath=['#../mw-scons-tools'])
+    tools=['default', 'mb_install', 'birdwing_settingsgen'],
+    toolpath=['#../mw-scons-tools', os.environ.get('BWSCONSTOOLS_PATH',
+                                                   '#/../bw-scons-tools')])
 
 
 ### Mustache-based codegen stuff ###
 
-AddOption('--bwsoftware',
-          dest='bwsoftware',
-          type='string',
-          default=os.path.join(str(Dir("#/")), '../../', 'Birdwing-Software'),
-          help='Set Birdwing-Software repo location'
-               ' (if not ../../Birdwing-Software).')
 AddOption('--machine', dest='machine')
 
 BWCGEN_ROOT_DIR = 'birdwing_codegen'
 BWCGEN_OUTPUT_DIR = 'birdwing'
-bw_machine_settings_path = os.path.join(GetOption('bwsoftware'),
-                                        'firmware',
-                                        'settings')
 
 env.Append(BUILDERS={
     'birdwing_code_gen': Builder(action=mc.gen_files),
-    'generate_machine_settings': Builder(
-        action=machine_specific_settings_gen.gen_machine_specific_settings)
 })
 
 try:
     machine = GetOption('machine')
 except AttributeError:
-    machine, machine_printer_settingsf = None, None
-finally:
-    if machine and os.path.exists(bw_machine_settings_path):
-        # We're building birdwing firmware for a specific machine, so have to
-        # do machine specific code-generation based off the
-        # printer_settings.json file for that machine.  Birdwing-Software gets
-        # built after MBCoreUtils, so we have to generate the right
-        # printer_settings.json file here too. This is so hacky but I don't see
-        # any less hacky way of doing it that doesn't require big refactors. :(
-        machine_printer_settingsf = [
-            f for f in os.listdir(bw_machine_settings_path) if
-            f == 'printer_settings.json.{0}'.format(machine)
-        ]
-        if not machine_printer_settingsf:
-            raise Exception('Unable to find printer_settings.json.{0}'
-                            .format(machine))
-        env.generate_machine_settings(
-            os.path.join(BWCGEN_OUTPUT_DIR, 'printer_settings.json'),
-            [
-                os.path.join(bw_machine_settings_path,
-                             'printer_settings.json'),
-                os.path.join(bw_machine_settings_path,
-                             machine_printer_settingsf[0])
-            ]
-        )
-        env['MBCOREUTILS_BWMACHINE_SETTINGS'] = os.path.join(
-            str(Dir("#/")),
-            'obj',
-            BWCGEN_OUTPUT_DIR,
-            'printer_settings.json'
-        )
-    else:
-        print('[WARNING] Mustache Codegen: Not building for a specific machine'
-              ', codegen output will be missing machine-specific components.')
+    machine = None
+
+if machine:
+    # We're building birdwing firmware for a specific machine, so have to
+    # do machine specific code-generation based off the
+    # printer_settings.json file for that machine.  Birdwing-Software gets
+    # built after MBCoreUtils, so we have to generate the right
+    # printer_settings.json file here too. This is so hacky but I don't see
+    # any less hacky way of doing it that doesn't require big refactors. :(
+    env['MBCOREUTILS_BWMACHINE_SETTINGS'] = os.path.join(
+        str(Dir("#/")),
+        'obj',
+        BWCGEN_OUTPUT_DIR,
+        'printer_settings.json'
+    )
+    env.BWGenSettings('printer_settings.json',
+                      env['MBCOREUTILS_BWMACHINE_SETTINGS'])
+else:
+    print('[WARNING] Mustache Codegen: Not building for a specific machine'
+          ', codegen output will be missing machine-specific components.')
 
 
 def valid_template_files(root_template_dir):
@@ -115,12 +90,7 @@ codegen_input_files = list(
 # Append the machine-specific settings file to the input list if we're doing
 # codegen for a specific bot.
 if machine:
-    codegen_input_files += [
-        os.path.join(str(Dir("#/")),
-                     'obj',
-                     BWCGEN_OUTPUT_DIR,
-                     'printer_settings.json')
-    ]
+    codegen_input_files.append(env['MBCOREUTILS_BWMACHINE_SETTINGS'])
 
 
 def get_relpath(full_template_path):
