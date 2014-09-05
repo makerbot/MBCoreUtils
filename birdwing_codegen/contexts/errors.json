@@ -1,6 +1,5 @@
 {
     "machine_errors": [
-        {"use_base": "tool_critical", "name": "toolhead_not_heating", "pretty_name": "Toolhead Not Heating", "id": 1001},
         {"use_base": "tool_critical", "name": "toolhead_no_response", "pretty_name": "Toolhead No Response", "id": 263},
         {"use_base": "tool_critical", "name": "toolhead_malformed_packet", "pretty_name": "Toolhead Malformed Packet", "id": 270},
         {"use_base": "tool_critical", "name": "toolhead_mismatch_api_version", "pretty_name": "Toolhead Mismatch Api Version", "id": 262},
@@ -82,7 +81,7 @@
             "name": "carriage_program_failure",
             "pretty_name": "Carriage Program Failure",
             "title": "Carriage Program Failed",
-            "message": "The extruder carriage cannot be programmed (Error %1). Please contact support.",
+            "message": "The extruder carriage cannot be programmed (Error %1). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1009
@@ -92,7 +91,7 @@
             "name": "no_hes_change",
             "pretty_name": "No Hes Change",
             "title": "Homing Error",
-            "message": "Homing failed (Error %1). Your Smart Extruder is not communicating. Please try again or contact Makerbot support.",
+            "message": "Homing failed (Error %1). Your Smart Extruder is not communicating. Please try again.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1024
@@ -132,7 +131,7 @@
             "name": "chamber_program_failure",
             "pretty_name": "Chamber Program Failure",
             "title": "Chamber Program Failed",
-            "message": "The build chamber heater controller cannot be programmed (Error %1). Please contact support.",
+            "message": "The build chamber heater controller cannot be programmed (Error %1). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1010
@@ -156,6 +155,16 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1039
+        },
+        {
+            "use_base": false,
+            "name": "toolhead_not_heating",
+            "pretty_name": "Toolhead Not Heating",
+            "title": "Heating Error",
+            "message": "DO NOT touch the extruder as it may be very hot (Error %1). Please visit our Support page at Makerbot.com/support.",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1001
         }
     ],
 
@@ -258,7 +267,7 @@
             "name": "chamber_not_connected",
             "pretty_name": "Chamber Not Connected",
             "title": "Chamber Heater Disconnect",
-            "message": "The build chamber heater controller is disconnected (Error %1). Please contact support.",
+            "message": "The build chamber heater controller is disconnected (Error %1). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 15
@@ -268,7 +277,7 @@
             "name": "carriage_not_connected",
             "pretty_name": "Carriage Not Connected",
             "title": "Carriage Disconnected",
-            "message": "The extruder carriage is disconnected from the machine (Error %1). Please contact support.",
+            "message": "The extruder carriage is disconnected from the machine (Error %1). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 16
@@ -286,7 +295,7 @@
         {
             "name": "tool_critical",
             "title": "Extruder Error",
-            "message": "Oops, we have a problem with your Smart Extruder (Error %1: %2). Please contact MakerBot support.",
+            "message": "Oops, we have a problem with your Smart Extruder (Error %1: %2). Please visit our Support page at Makerbot.com/support.",
             "error_type": "tool_error",
             "error_action": "acknowledge"
         },
@@ -328,7 +337,7 @@
         {
             "name": "chamber_problem",
             "title": "Chamber Error",
-            "message": "There is a problem with your chamber heater (Error %1: %2). Please contact support.",
+            "message": "There is a problem with your chamber heater (Error %1: %2). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge"
         },
