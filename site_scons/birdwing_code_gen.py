@@ -4,7 +4,7 @@
 Parses some metafiles into .py and .hh files.  We currently parse two different
 types of data: enums and structs.
 """
-
+import argparse
 import copy
 import ctypes
 import json
@@ -97,14 +97,15 @@ def gen_cxx_enum_file(output_path, enum_data, namespace, readable = False):
 
 def gen_files(env, target, source):
     # Name output paths
-    if len(target) != 5:
-        raise Exception('unexpected number of targets')
+    print target
+   # if len(target) != 5:
+    #    raise Exception('unexpected number of targets')
     machine_errors_hh = target[0].get_abspath()
     toolhead_errors_hh = target[1].get_abspath()
     all_errors_hh = target[2].get_abspath()
     machine_errors_py = target[3].get_abspath()
     toolhead_errors_py = target[4].get_abspath()
-
+    print source
     # Read inputs
     with open(str(source[0])) as f:
         machine_error_data = json.load(f)
@@ -131,3 +132,57 @@ def gen_files(env, target, source):
     gen_cxx_enum_file(machine_errors_hh, machine_enum_data, "machine")
     gen_cxx_enum_file(toolhead_errors_hh, toolhead_enum_data, "toolhead")
     gen_cxx_enum_file(all_errors_hh, all_errors_enum_data, "bwcoreutils", True)
+
+
+if __name__ == '__main__':
+    arg_parser = argparse.ArgumentParser()
+    arg_parser.add_argument(
+        '-o',
+        action='append',
+        default = "No input",
+        help='The location of the files to be generated.')
+    arg_parser.add_argument(
+        '-i',
+        action='append',
+        default = "No input",
+        help='The location of the input json files.')
+    arguments = arg_parser.parse_args(sys.argv[1:])
+    
+    class FauxSconsFile():
+        def __init__(self, path):
+            self.path = path
+
+        def get_abspath(self):
+            return self.path
+
+    if (arguments.i == "No input"):
+        inputs=[
+            'birdwing/machine_errors.json',
+            'birdwing/toolhead_errors.json']
+    else:
+        inputs = []
+        for f in arguments.i:
+            inputs.append(f)
+
+
+    if (arguments.o == "No input"):
+        outputs = [
+            FauxSconsFile('include/bwcoreutils/machine_errors.hh'),
+            FauxSconsFile('include/bwcoreutils/toolhead_errors.hh'),
+            FauxSconsFile('include/bwcoreutils/all_errors.hh'),
+            FauxSconsFile('birdwing/machine_errors.py'),
+            FauxSconsFile('birdwing/toolhead_errors.py')]
+    else:
+        outputs = []
+        for f in arguments.o:
+            outputs.append(FauxSconsFile(f))
+    gen_files(None,outputs,inputs)
+
+
+
+
+
+
+
+
+
