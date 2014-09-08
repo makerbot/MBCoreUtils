@@ -6,6 +6,7 @@
     "command_index_mismatch" : 14,
     "chamber_not_connected": 15,
     "carriage_not_connected": 16,
+    "ac_power_disconnected" : 47,
 	"door_interlock_triggered" : 48,
     "tool_short" : 49,
     "heater_short" : 50,

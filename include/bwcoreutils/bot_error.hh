@@ -84,19 +84,19 @@ private:
                 break;
 		    case kChamberProgramFailure:
 				m_title = QObject::tr("Chamber Program Failed");
-				m_message = QObject::tr("The build chamber heater controller cannot be programmed (Error %1). Please contact support.").arg(errorCode);
+				m_message = QObject::tr("The build chamber heater controller cannot be programmed (Error %1). Please visit our Support page at Makerbot.com/support.").arg(errorCode);
 				break;
 		    case kCarriageProgramFailure:
 				m_title = QObject::tr("Carriage Program Failed");
-				m_message = QObject::tr("The extruder carriage cannot be programmed (Error %1). Please contact support.").arg(errorCode);
+				m_message = QObject::tr("The extruder carriage cannot be programmed (Error %1). Please visit our Support page at Makerbot.com/support.").arg(errorCode);
 				break;
 		    case kChamberNotConnected:
 				m_title = QObject::tr("Chamber Heater Disconnect");
-				m_message = QObject::tr("The build chamber heater controller is disconnected (Error %1). Please contact support.").arg(errorCode);
+				m_message = QObject::tr("The build chamber heater controller is disconnected (Error %1). Please visit our Support page at Makerbot.com/support.").arg(errorCode);
 				break;
 		    case kCarriageNotConnected:
 				m_title = QObject::tr("Carriage Disconnected");
-				m_message = QObject::tr("The extruder carriage is disconnected from the machine (Error %1). Please contact support.").arg(errorCode);
+				m_message = QObject::tr("The extruder carriage is disconnected from the machine (Error %1). Please visit our Support page at Makerbot.com/support.").arg(errorCode);
 				break;
 			case kPrintToolConnectFailed:
 				m_message = QObject::tr("Smart Extruder Connect Failed (Error %1).  Please disconnect your Smart Extruder and try again.").arg(errorCode);
@@ -126,7 +126,6 @@ private:
 			case kToolheadNoResponse:
 			case kToolheadMismatchApiVersion:
 			case kFilamentFanOpen:
-			case kToolheadNotHeating:
 			case kEepromChecksumFailure:
 			case kToolheadNotInitialized:
 			case kToolheadMalformedPacket:
@@ -134,9 +133,14 @@ private:
 			case kHeaterTemperatureSagTriggered:
             case kHeaterTemperatureOverrunTriggered:
             case kWatchdogTriggered:
-				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1: %2). Please contact MakerBot support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+				m_message = QObject::tr("Oops, we have a problem with your Smart Extruder (Error %1: %2). Please visit our Support page at Makerbot.com/support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				m_type = TOOL_ERROR;
 				break;	
+			case kToolheadNotHeating:
+				m_title = QObject::tr("Heating Error");
+			    m_message = QObject::tr("DO NOT touch the extruder as it may be very hot (Error %1). Please visit our Support page at Makerbot.com/support.").arg(errorCode);
+			    m_type = NONE;
+			    break;
 			case kHeaterHoldWatchdogTriggered:
 				m_title = QObject::tr("Heating Timeout");
 			    m_message = QObject::tr("Heaters were turned off due to inactivity (Warning %1)").arg(errorCode);
@@ -144,7 +148,7 @@ private:
 			    break;
             case kNoHesChange:
 				m_title = QObject::tr("Homing Error");
-			    m_message = QObject::tr("Homing failed (Error %1). Your Smart Extruder is not communicating. Please try again or contact Makerbot support.").arg(errorCode);
+			    m_message = QObject::tr("Homing failed (Error %1). Your Smart Extruder is not communicating. Please try again.").arg(errorCode);
 			    m_type = NONE;
 			    break;			
             case kNoHesLog:
@@ -214,7 +218,7 @@ private:
 		    case kChamberFanFailure:
 		    case kChamberTemperatureOverrun:
             case kHeaterOverTemp:
-				m_message = QObject::tr("There is a problem with your chamber heater (Error %1: %2). Please contact support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
+				m_message = QObject::tr("There is a problem with your chamber heater (Error %1: %2). Please visit our Support page at Makerbot.com/support.").arg(errorCode).arg(QString::fromStdString(stringify_error(errorCode)));
 				break;
 			case kInvalidResponse:
 			case kUserConfigMissingValue:
