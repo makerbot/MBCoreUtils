@@ -11,7 +11,12 @@ env = Environment(
 
 ### Mustache-based codegen stuff ###
 
-AddOption('--machine', dest='machine')
+if 'MBCOREUTILS_BIRDWING' in os.environ:
+    # If we're building for birdwing, pull in the birdwing_install
+    # tool so default arguments like 'machine' are properly initialized.
+    env.Tool('birdwing_install')
+else:
+    AddOption('--machine', dest='machine')
 
 BWCGEN_ROOT_DIR = 'birdwing_codegen'
 BWCGEN_OUTPUT_DIR = 'birdwing'
@@ -94,11 +99,6 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     # There may be a more logical thing to do with this alias
     path = os.path.join(str(Dir("#/")), 'obj', 'include')
     Alias("install", path)
-    # This is here to prevent "no such option" errors by clearing out
-    # all options that have not yet been parsed.
-    from SCons.Script.Main import OptionsParser
-    OptionsParser.largs = []
-    OptionsParser.rargs = []
 else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
