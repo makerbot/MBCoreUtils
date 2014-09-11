@@ -77,22 +77,26 @@ env.MustacheCodegen(context_dir=os.path.join(str(Dir("#/")),
 # obj/include/bwcoreutils. This is necessary since a bunch of projects already
 # expect shared cpp birdwing headers to be there.
 # TODO(jacksonh) - remove this awful hack
+copyfrom = os.path.join(str(Dir("#/")),
+         'obj',
+         BWCGEN_OUTPUT_DIR,
+         'shared_cpp')
+if (("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac()):
+    copyto = os.path.join(str(Dir("#/")),
+         'obj',
+         'include',
+         'bwcoreutils')
+else:
+    copyto = os.path.join(str(Dir("#/")),
+            'include',
+            'bwcoreutils')
 for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
     if header.endswith('.hh') or header.endswith('.h'):
         env.Command(
-            os.path.join(str(Dir("#/")),
-                         'obj',
-                         'include',
-                         'bwcoreutils',
-                         os.path.basename(header)),
-            os.path.join(str(Dir("#/")),
-                         'obj',
-                         BWCGEN_OUTPUT_DIR,
-                         'shared_cpp',
-                         os.path.basename(header)),
+            os.path.join(copyto,os.path.basename(header)),
+            os.path.join(copyfrom,os.path.basename(header)),
             Copy("$TARGET", "$SOURCE")            
         )
-
 ### End Mustache-based codegen stuff ###
 
 #
