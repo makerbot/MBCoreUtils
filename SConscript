@@ -107,6 +107,8 @@ else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
                          'mbcoreutils', make_current_link=True)
+    for f in env.Glob('include/bwcoreutils/*'):    
+      print(f.get_abspath())
     env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
     env.MBCreateInstallTarget()
