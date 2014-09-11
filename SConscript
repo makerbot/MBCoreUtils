@@ -28,6 +28,7 @@ try:
         env.Tool('birdwing_settingsgen')
         machine = GetOption('machine')
 except AttributeError, ImportError:
+    print("error")
     pass
 
 if machine:
@@ -80,7 +81,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
     if header.endswith('.hh') or header.endswith('.h'):
         env.Command(
             os.path.join(str(Dir("#/")),
-                         #'obj',
+                         'obj',
                          'include',
                          'bwcoreutils',
                          os.path.basename(header)),
@@ -89,7 +90,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
                          BWCGEN_OUTPUT_DIR,
                          'shared_cpp',
                          os.path.basename(header)),
-            Copy("$TARGET", "$SOURCE")
+            Copy("$TARGET", "$SOURCE")            
         )
 
 ### End Mustache-based codegen stuff ###
