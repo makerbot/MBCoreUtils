@@ -80,8 +80,8 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
     if header.endswith('.hh') or header.endswith('.h'):
         env.Command(
             os.path.join(str(Dir("#/")),
-                         'obj',
-                #         'include',
+                         #'obj',
+                         'include',
                          'bwcoreutils',
                          os.path.basename(header)),
             os.path.join(str(Dir("#/")),
@@ -105,8 +105,8 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     Alias("install", path)
 else:
     # make_current_link=True is necessary for header-only libraries on mac
-    env.MBInstallHeaders(env.Glob('mbcoreutils/*'),
+    env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
                          'mbcoreutils', make_current_link=True)
-    env.MBInstallHeaders(env.Glob('bwcoreutils/*'),
+    env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
     env.MBCreateInstallTarget()
