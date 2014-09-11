@@ -81,7 +81,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
         env.Command(
             os.path.join(str(Dir("#/")),
                          'obj',
-                         'include',
+                #         'include',
                          'bwcoreutils',
                          os.path.basename(header)),
             os.path.join(str(Dir("#/")),
