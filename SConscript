@@ -105,8 +105,8 @@ if ("MBCOREUTILS_BIRDWING" in os.environ):
     Alias("install", path)
 else:
     # make_current_link=True is necessary for header-only libraries on mac
-    env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
+    env.MBInstallHeaders(env.Glob('mbcoreutils/*'),
                          'mbcoreutils', make_current_link=True)
-    env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
+    env.MBInstallHeaders(env.Glob('bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
     env.MBCreateInstallTarget()
