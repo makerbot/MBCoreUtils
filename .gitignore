@@ -28,3 +28,5 @@ birdwing/toolhead_errors.py
 include/bwcoreutils/all_errors.hh
 include/bwcoreutils/machine_errors.hh
 include/bwcoreutils/toolhead_errors.hh
+include/bwcoreutils/bot_error.hh
+include/bwcoreutils/tool_mappings.hh
