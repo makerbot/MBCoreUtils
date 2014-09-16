@@ -8,6 +8,11 @@ env = Environment(
     toolpath=['#../mw-scons-tools', 'site_scons', os.environ.setdefault('BWSCONSTOOLS_PATH',
                                                                         '#/../bw-scons-tools')])
 
+# MBRecursiveFileGlob is defined in both the mb_install tool, and the
+# birdwing_install tool, and both implementations work slightly differently.
+# We always want to use the one from mb_install, so grab it here before the
+# birdwing_install tool is loaded.
+_recursive_file_glob = env.MBRecursiveFileGlob
 
 ### Mustache-based codegen stuff ###
 
@@ -77,7 +82,7 @@ if ("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac():
     # Add an empty command that makes the top-level directory target
     # depend on the header files. This ensures the static header files
     # are copied into the variant dir.
-    env.Command('.', env.MBRecursiveFileGlob('include', '*.h'), '')
+    env.Command('.', _recursive_file_glob('include', '*.h'), '')
 
     copyto = os.path.join(str(Dir("#/")),
                           'obj',
