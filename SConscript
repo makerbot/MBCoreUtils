@@ -82,6 +82,10 @@ copyfrom = os.path.join(str(Dir("#/")),
          BWCGEN_OUTPUT_DIR,
          'shared_cpp')
 if (("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac()):
+    # Add an empty command that makes the top-level directory target
+    # depend on the header files. This ensures the static header files
+    # are copied into the variant dir.
+    env.Command('.', env.MBRecursiveFileGlob('include', '*.h'), '')
     copyto = os.path.join(str(Dir("#/")),
          'obj',
          'include',
