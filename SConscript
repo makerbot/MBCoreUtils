@@ -73,33 +73,35 @@ env.MustacheCodegen(context_dir=os.path.join(str(Dir("#/")),
                     ext_deps=external_sources)
 
 
-# Hack to copy codegen'd cpp files from obj/birdwing/shared_cpp to
-# obj/include/bwcoreutils. This is necessary since a bunch of projects already
-# expect shared cpp birdwing headers to be there.
-# TODO(jacksonh) - remove this awful hack
-copyfrom = os.path.join(str(Dir("#/")),
-         'obj',
-         BWCGEN_OUTPUT_DIR,
-         'shared_cpp')
-if (("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac()):
+if ("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac():
     # Add an empty command that makes the top-level directory target
     # depend on the header files. This ensures the static header files
     # are copied into the variant dir.
     env.Command('.', env.MBRecursiveFileGlob('include', '*.h'), '')
+
     copyto = os.path.join(str(Dir("#/")),
-         'obj',
-         'include',
-         'bwcoreutils')
+                          'obj',
+                          'include',
+                          'bwcoreutils')
 else:
     copyto = os.path.join(str(Dir("#/")),
-            'include',
-            'bwcoreutils')
+                          'include',
+                          'bwcoreutils')
+
+# Hack to copy codegen'd cpp files from obj/birdwing/shared_cpp to
+# the include/bwcoreutils directorty. This is necessary since a bunch
+# of projects already expect shared cpp birdwing headers to be there.
+# TODO(jacksonh) - remove this awful hack
+copyfrom = os.path.join(str(Dir("#/")),
+                        'obj',
+                        BWCGEN_OUTPUT_DIR,
+                        'shared_cpp')
 for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
     if header.endswith('.hh') or header.endswith('.h'):
         env.Command(
-            os.path.join(copyto,os.path.basename(header)),
-            os.path.join(copyfrom,os.path.basename(header)),
-            Copy("$TARGET", "$SOURCE")            
+            os.path.join(copyto, os.path.basename(header)),
+            os.path.join(copyfrom, os.path.basename(header)),
+            Copy("$TARGET", "$SOURCE")
         )
 ### End Mustache-based codegen stuff ###
 
@@ -116,8 +118,6 @@ else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
                          'mbcoreutils', make_current_link=True)
-    for f in env.Glob('include/bwcoreutils/*'):    
-      print(f.get_abspath())
     env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
     env.MBCreateInstallTarget()
