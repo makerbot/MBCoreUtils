@@ -165,6 +165,26 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1001
+        },
+        {
+            "use_base": false,
+            "name": "out_of_filament",
+            "pretty_name": "Out of Filament",
+            "title": "Out of Filament",
+            "message": "Please wait while your Smart Extruder unloads any leftover filament. (Warning %1)",
+            "error_type": "filament_error",
+            "error_action": "change_filament",
+            "id": 1041 
+        },
+        {
+            "use_base": false,
+            "name": "no_filament_loaded",
+            "pretty_name": "No Filament",
+            "title": "No Filament",
+            "message": "Please load filament before starting your print. (Warning %1)",
+            "error_type": "filament_error",
+            "error_action": "change_filament",
+            "id": 1040
         }
     ],
 
@@ -221,7 +241,7 @@
             "name": "no_filament",
             "pretty_name": "No Filament",
             "title": "Out of Filament",
-            "message": "Please unload your remaining filament, and then load new filament to continue printing (Warning %1).",
+            "message": "This process requires filament to proceed. (Warning %1)",
             "error_type": "filament_error",
             "error_action": "change_filament",
             "id": 80
