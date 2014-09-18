@@ -20,7 +20,13 @@ add_custom_command(
     COMMAND cp ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh ${INCLUDE_OUTPUT_PATH}/bwcoreutils
     COMMAND cp ${PROJECT_SOURCE_DIR}/include/bwcoreutils/toolhead_errors.hh ${INCLUDE_OUTPUT_PATH}/bwcoreutils
     COMMAND cp ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh ${INCLUDE_OUTPUT_PATH}/bwcoreutils)
-
+add_custom_target(bwfiles
+    DEPENDS
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/toolhead_errors.hh
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh
+        ${PROJECT_SOURCE_DIR}/birdwing/machine_errors.py
+        ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py)
 set_shared(false)
 install_headers(include/)
 
