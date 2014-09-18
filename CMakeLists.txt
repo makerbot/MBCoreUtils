@@ -1,9 +1,23 @@
 message("configureing mbcoreutils")
 project(MBCoreUtils)
-execute_process(COMMAND ${PYTHON_EXECUTABLE}
-    ${PROJECT_SOURCE_DIR}/birdwing_code_gen.py)
-execute_process(COMMAND ${PYTHON_EXECUTABLE}
-    ./birdwing_code_gen.py -o include/bwcoreutils/machine_errors.hh -o include/bwcoreutils/toolhead_errors.hh -o include/bwcoreutils/all_errors.hh -i include/birdwing/machine_errors.json -i include/birdwing/toolhead_errors.json)
+
+add_custom_command(
+    OUTPUT
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/toolhead_errors.hh
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh
+        ${PROJECT_SOURCE_DIR}/birdwing/machine_errors.py
+        ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py
+    COMMAND ${PYTHON_EXECUTABLE}
+        ${PROJECT_SOURCE_DIR}/birdwing_code_gen.py
+        -o ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh
+        -o ${PROJECT_SOURCE_DIR}/include/bwcoreutils/toolhead_errors.hh
+        -o ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh
+        -o ${PROJECT_SOURCE_DIR}/birdwing/machine_errors.py
+        -o ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py
+        -i ${PROJECT_SOURCE_DIR}/birdwing/machine_errors.json
+        -i ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.json)
+
 set_shared(false)
 install_headers(include/)
 

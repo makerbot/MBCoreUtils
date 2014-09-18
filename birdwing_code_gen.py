@@ -138,12 +138,10 @@ if __name__ == '__main__':
     arg_parser.add_argument(
         '-o',
         action='append',
-        default = "No input",
         help='The location of the files to be generated.')
     arg_parser.add_argument(
         '-i',
         action='append',
-        default = "No input",
         help='The location of the input json files.')
     arguments = arg_parser.parse_args(sys.argv[1:])
     
