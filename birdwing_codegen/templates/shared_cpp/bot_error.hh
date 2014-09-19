@@ -7,6 +7,10 @@
 #include <string>
 #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
   #include <QString>
+  // The QStringLiteral macro is only available in Qt5+
+  #ifndef QStringLiteral
+    #define QStringLiteral(str) QString::fromUtf8(str)
+  #endif
 #else
   #include <QtCore/QString>
 #endif
@@ -101,7 +105,7 @@ private:
         switch (b) {
             {{#error_bases}}
             case {{name}}:
-                return ErrorDefaults("{{{title}}}", "{{{message}}}", {{error_type}}, {{error_action}});
+                return ErrorDefaults(QStringLiteral("{{{title}}}"), "{{{message}}}", {{error_type}}, {{error_action}});
             {{/error_bases}}
         }
 	return ErrorDefaults();
@@ -129,7 +133,7 @@ private:
                 {{/error_action}}
                 {{/use_base}}
                 {{#title}}
-                m_title = "{{{title}}}";
+                m_title = QStringLiteral("{{{title}}}");
                 {{/title}}
                 {{#message}}
                 m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
@@ -160,7 +164,7 @@ private:
                 {{/error_action}}
                 {{/use_base}}
                 {{#title}}
-                m_title = "{{{title}}}";
+                m_title = QStringLiteral("{{{title}}}");
                 {{/title}}
                 {{#message}}
                 m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
@@ -174,8 +178,8 @@ private:
                 break;
             {{/machine_errors}}
             default:
-                m_title = "System Error";
-                m_message = "Oops, we have a problem. Please update your firmware using MakerBot Desktop.";
+                m_title = QStringLiteral("System Error");
+                m_message = QStringLiteral("Oops, we have a problem. Please update your firmware using MakerBot Desktop.");
                 break;
         }
     }
