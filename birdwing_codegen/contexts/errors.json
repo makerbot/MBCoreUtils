@@ -71,7 +71,7 @@
             "name": "no_build_plate",
             "pretty_name": "No Build Plate",
             "title": "No Build Plate",
-            "message": "Please ensure your build plate is properly attached (Warning %1).",
+            "message": "Please ensure your build plate is properly attached (Warning %d).",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1029
@@ -81,7 +81,7 @@
             "name": "carriage_program_failure",
             "pretty_name": "Carriage Program Failure",
             "title": "Carriage Program Failed",
-            "message": "The extruder carriage cannot be programmed (Error %1). Please visit our Support page at Makerbot.com/support.",
+            "message": "The extruder carriage cannot be programmed (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1009
@@ -91,7 +91,7 @@
             "name": "no_hes_change",
             "pretty_name": "No Hes Change",
             "title": "Homing Error",
-            "message": "Homing failed (Error %1). Your Smart Extruder is not communicating. Please try again.",
+            "message": "Homing failed (Error %d). Your Smart Extruder is not communicating. Please try again.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1024
@@ -101,7 +101,7 @@
             "name": "both_sides_too_high",
             "pretty_name": "Both Sides Too High",
             "title": "Leveling Error",
-            "message": "Leveling failed (Error %1). Your extruder nozzle may be stuck. Please try again.",
+            "message": "Leveling failed (Error %d). Your extruder nozzle may be stuck. Please try again.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1027
@@ -111,7 +111,7 @@
             "name": "leveling_with_filament",
             "pretty_name": "Leveling With Filament",
             "title": "Clear Filament",
-            "message": "Please remove filament from the Smart Extruder before proceeding (Warning %1).",
+            "message": "Please remove filament from the Smart Extruder before proceeding (Warning %d).",
             "error_type": "none",
             "error_action": "unload_filament",
             "id": 1028
@@ -121,7 +121,7 @@
             "name": "print_tool_connect_failed",
             "pretty_name": "Print Tool Connect Failed",
             "title": "Extruder Error",
-            "message": "Smart Extruder Connect Failed (Error %1).  Please disconnect your Smart Extruder and try again.",
+            "message": "Smart Extruder Connect Failed (Error %d).  Please disconnect your Smart Extruder and try again.",
             "error_type": "tool_error",
             "error_action": "acknowledge",
             "id": 1014
@@ -131,7 +131,7 @@
             "name": "chamber_program_failure",
             "pretty_name": "Chamber Program Failure",
             "title": "Chamber Program Failed",
-            "message": "The build chamber heater controller cannot be programmed (Error %1). Please visit our Support page at Makerbot.com/support.",
+            "message": "The build chamber heater controller cannot be programmed (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1010
@@ -141,7 +141,7 @@
             "name": "z_pause",
             "pretty_name": "Z Pause",
             "title": "Print Paused",
-            "message": "Paused your print. (TODO-This probably shouldn't be an error? #checkoutmysushitho %1)",
+            "message": "Paused your print. (TODO-This probably shouldn't be an error? #checkoutmysushitho %d)",
             "error_type": "zpause",
             "error_action": "zpaused",
             "id": 501
@@ -151,7 +151,7 @@
             "name": "move_command_outside_axis_bounds",
             "pretty_name": "Move Command Outside Axis Bounds",
             "title": "File Error",
-            "message": "Error %1: Please make sure that your .makerbot file is prepared for the correct printer type.",
+            "message": "Error %d: Please make sure that your .makerbot file is prepared for the correct printer type.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1039
@@ -161,7 +161,7 @@
             "name": "toolhead_not_heating",
             "pretty_name": "Toolhead Not Heating",
             "title": "Heating Error",
-            "message": "DO NOT touch the extruder as it may be very hot (Error %1). Please visit our Support page at Makerbot.com/support.",
+            "message": "DO NOT touch the extruder as it may be very hot (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1001
@@ -171,7 +171,7 @@
             "name": "out_of_filament",
             "pretty_name": "Out of Filament",
             "title": "Out of Filament",
-            "message": "Please wait while your Smart Extruder unloads any leftover filament. (Warning %1)",
+            "message": "Please wait while your Smart Extruder unloads any leftover filament. (Warning %d)",
             "error_type": "filament_error",
             "error_action": "change_filament",
             "id": 1041 
@@ -181,7 +181,7 @@
             "name": "no_filament_loaded",
             "pretty_name": "No Filament",
             "title": "No Filament",
-            "message": "Please load filament before starting your print. (Warning %1)",
+            "message": "Please load filament before starting your print. (Warning %d)",
             "error_type": "filament_error",
             "error_action": "change_filament",
             "id": 1040
@@ -241,7 +241,7 @@
             "name": "no_filament",
             "pretty_name": "No Filament",
             "title": "Out of Filament",
-            "message": "This process requires filament to proceed. (Warning %1)",
+            "message": "This process requires filament to proceed. (Warning %d)",
             "error_type": "filament_error",
             "error_action": "change_filament",
             "id": 80
@@ -251,7 +251,7 @@
             "name": "door_interlock_triggered",
             "pretty_name": "Door Interlock Triggered",
             "title": "Chamber Open",
-            "message": "The heated build chamber is open (Warning %1). Please close the door to continue.",
+            "message": "The heated build chamber is open (Warning %d). Please close the door to continue.",
             "error_type": "chamber_error",
             "error_action": "acknowledge",
             "id": 48
@@ -261,7 +261,7 @@
             "name": "heater_hold_watchdog_triggered",
             "pretty_name": "Heater Hold Watchdog Triggered",
             "title": "Heating Timeout",
-            "message": "Heaters were turned off due to inactivity (Warning %1)",
+            "message": "Heaters were turned off due to inactivity (Warning %d)",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 56
@@ -271,7 +271,7 @@
             "name": "filament_slip",
             "pretty_name": "Filament Slip",
             "title": "Filament Jam",
-            "message": "Your filament seems to be jammed (Error %1). Please unload your remaining filament, and then reload it to continue printing.",
+            "message": "Your filament seems to be jammed (Error %d). Please unload your remaining filament, and then reload it to continue printing.",
             "error_type": "filament_error",
             "error_action": "change_filament",
             "id": 81
@@ -281,7 +281,7 @@
             "name": "no_tool_connected",
             "pretty_name": "No Tool Connected",
             "title": "Extruder Error",
-            "message": "Your Smart Extruder is not connected (Error %1). Please reconnect your Smart Extruder.",
+            "message": "Your Smart Extruder is not connected (Error %d). Please reconnect your Smart Extruder.",
             "error_type": "tool_error",
             "error_action": "acknowledge",
             "id": 54
@@ -291,7 +291,7 @@
             "name": "chamber_not_connected",
             "pretty_name": "Chamber Not Connected",
             "title": "Chamber Heater Disconnect",
-            "message": "The build chamber heater controller is disconnected (Error %1). Please visit our Support page at Makerbot.com/support.",
+            "message": "The build chamber heater controller is disconnected (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 15
@@ -301,7 +301,7 @@
             "name": "carriage_not_connected",
             "pretty_name": "Carriage Not Connected",
             "title": "Carriage Disconnected",
-            "message": "The extruder carriage is disconnected from the machine (Error %1). Please visit our Support page at Makerbot.com/support.",
+            "message": "The extruder carriage is disconnected from the machine (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 16
@@ -312,63 +312,63 @@
         {
             "name": "tool_problem",
             "title": "Extruder Error",
-            "message": "Oops, we have a problem with your Smart Extruder (Error %1: %2). Please disconnect and reconnect your Smart Extruder.",
+            "message": "Oops, we have a problem with your Smart Extruder (Error %d: %s). Please disconnect and reconnect your Smart Extruder.",
             "error_type": "tool_error",
             "error_action": "acknowledge"
         },
         {
             "name": "tool_critical",
             "title": "Extruder Error",
-            "message": "Oops, we have a problem with your Smart Extruder (Error %1: %2). Please visit our Support page at Makerbot.com/support.",
+            "message": "Oops, we have a problem with your Smart Extruder (Error %d: %s). Please visit our Support page at Makerbot.com/support.",
             "error_type": "tool_error",
             "error_action": "acknowledge"
         },
         {
             "name": "homing_problem",
             "title": "Homing Error",
-            "message": "Homing failed (Error %1: %2). Please try again.",
+            "message": "Homing failed (Error %d: %s). Please try again.",
             "error_type": "none",
             "error_action": "acknowledge"
         },
         {
             "name": "homing_problem_stuck",
             "title": "Homing Error",
-            "message": "Homing failed (Error %1: %2). Your extruder nozzle may be stuck. Please try again.",
+            "message": "Homing failed (Error %d: %s). Your extruder nozzle may be stuck. Please try again.",
             "error_type": "none",
             "error_action": "acknowledge"
         },
         {
             "name": "print_file_error",
             "title": "Print Error",
-            "message": "Invalid print file (Error %1: %2). Please try to prepare again in MakerBot Desktop.",
+            "message": "Invalid print file (Error %d: %s). Please try to prepare again in MakerBot Desktop.",
             "error_type": "none",
             "error_action": "acknowledge"
         },
         {
             "name": "fw_fundamentally_broken",
             "title": "System Error",
-            "message": "Oops, we have a problem (Error %1: %2). Please update your firmware using MakerBot Desktop.",
+            "message": "Oops, we have a problem (Error %d: %s). Please update your firmware using MakerBot Desktop.",
             "error_type": "none",
             "error_action": "acknowledge"
         },
         {
             "name": "kaiten_error",
             "title": "System Error",
-            "message": "Oops, we have a problem (Error %1: %2).",
+            "message": "Oops, we have a problem (Error %d: %s).",
             "error_type": "none",
             "error_action": "acknowledge"
         },
         {
             "name": "chamber_problem",
             "title": "Chamber Error",
-            "message": "There is a problem with your chamber heater (Error %1: %2). Please visit our Support page at Makerbot.com/support.",
+            "message": "There is a problem with your chamber heater (Error %d: %s). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge"
         },
         {
             "name": "misc_error",
             "title": "System Error",
-            "message": "Oops, we have a problem (Error %1: %2).",
+            "message": "Oops, we have a problem (Error %d: %s).",
             "error_type": "none",
             "error_action": "acknowledge"
         }
