@@ -46,10 +46,19 @@ public:
         init();
     }
 
-    explicit BotError(int errorCode) : BotError(static_cast<Error>(errorCode)) {}
+    // TODO(ted): Ideally we would do this with constructor delegation, like:
+    // explicit BotError(int errorCode) : BotError(static_cast<Error>(errorCode)) {}
+    // but MSVC 11 (2012) doesn't support that feature of c++11, so we'll have to
+    // update this when we switch to a newer MSVC
+    explicit BotError(int errorCode) :
+        m_type(static_cast<TYPE>(0)),
+        m_action(static_cast<ACTION>(0)),
+        m_error(static_cast<Error>(errorCode)) {
+        init();
+    }
 
     // TODO(jacksonh): support custom error messages for toolhead-specific errors
-    // BotError(Error errorCode, int toolhead_index, ToolheadType toolhead_type) {} 
+    // BotError(Error errorCode, int toolhead_index, ToolheadType toolhead_type) {}
 
     ~BotError() {}
 
