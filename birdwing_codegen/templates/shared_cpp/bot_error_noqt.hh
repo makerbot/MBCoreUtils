@@ -39,7 +39,7 @@ public:
     // explicit BotError(int errorCode) : BotError(static_cast<Error>(errorCode)) {}
     // but MSVC 11 (2012) doesn't support that feature of c++11, so we'll have to
     // update this when we switch to a newer MSVC
-    explicit BotError(Error errorCode) :
+    explicit BotError(int errorCode) :
         m_message("Oops, we have a problem. Please update your firmware using MakerBot Desktop."),
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
@@ -75,22 +75,56 @@ public:
     }
 
 private:
+
+    enum ErrorBases {
+        {{#error_bases}}
+        {{name}},
+        {{/error_bases}}
+    };
+
+    struct ErrorDefaults {
+        ErrorDefaults(const std::string& title, const std::string& message, TYPE type, ACTION action) :
+        title(title),
+        message(message),
+        type(type),
+        action(action) {}
+        ErrorDefaults() {}
+        ~ErrorDefaults() {}
+
+        std::string title;
+        std::string message;
+        TYPE type;
+        ACTION action;
+    };
+
+    static ErrorDefaults get_base_defaults(ErrorBases b) {
+        switch (b) {
+            {{#error_bases}}
+            case {{name}}:
+                return ErrorDefaults("{{{title}}}", "{{{message}}}", {{error_type}}, {{error_action}});
+            {{/error_bases}}
+        }
+    return ErrorDefaults();
+    }
+
     void init() {
+    ErrorDefaults d;
         switch(m_error) {
             {{#toolhead_errors}}
             case {{name}}:
                 {{#use_base}}
+                d = get_base_defaults({{use_base}});
                 {{^title}}
-                m_title = {{{use_base}}}_TITLE;
+                m_title = d.title;
                 {{/title}}
                 {{^message}}
-                m_message = (boost::format({{{use_base}}}_MESSAGE) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
+                m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
                 {{/message}}
                 {{^error_type}}
-                m_type = {{{use_base}}}_TYPE;
+                m_type = d.type;
                 {{/error_type}}
                 {{^error_action}}
-                m_action = {{{use_base}}}_ACTION;
+                m_action = d.action;
                 {{/error_action}}
                 {{/use_base}}
                 {{#title}}
@@ -110,17 +144,18 @@ private:
             {{#machine_errors}}
             case {{name}}:
                 {{#use_base}}
+                d = get_base_defaults({{use_base}});
                 {{^title}}
-                m_title = {{{use_base}}}_TITLE;
+                m_title = d.title;
                 {{/title}}
                 {{^message}}
-                m_message = (boost::format({{{use_base}}}_MESSAGE) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
+                m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
                 {{/message}}
                 {{^error_type}}
-                m_type = {{{use_base}}}_TYPE;
+                m_type = d.type;
                 {{/error_type}}
                 {{^error_action}}
-                m_action = {{{use_base}}}_ACTION;
+                m_action = d.action;
                 {{/error_action}}
                 {{/use_base}}
                 {{#title}}
@@ -148,13 +183,6 @@ private:
     std::string m_title;
     Error m_error;
 
-    // Error base constants
-    {{#error_bases}}
-    static constexpr const char* {{{name}}}_TITLE = "{{{title}}}";
-    static constexpr const char* {{{name}}}_MESSAGE = "{{{message}}}";
-    static const TYPE {{{name}}}_TYPE = {{{error_type}}};
-    static const ACTION {{{name}}}_ACTION = {{{error_action}}};
-    {{/error_bases}}
 };
 
 inline bool operator==(const BotError &lhs, const BotError &rhs) {return lhs.error() == rhs.error();}
