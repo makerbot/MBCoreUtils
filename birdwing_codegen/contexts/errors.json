@@ -185,16 +185,6 @@
             "error_type": "filament_error",
             "error_action": "change_filament",
             "id": 1040
-        },
-        {
-            "use_base": false,
-            "name": "printing_network_error",
-            "pretty_name": "Network Error",
-            "title": "Network Error",
-            "message": "Your print has been canceled because there was a problem with your internet connection. (Warning %d)",
-            "error_type": "none",
-            "error_action": "acknowledge",
-            "id": 1042
         }
     ],
 
