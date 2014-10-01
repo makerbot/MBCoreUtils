@@ -1,9 +1,11 @@
 {
     "tools": [
-        {"name": "invalid_id", "pretty_name": "Unknown Smart Extruder", "id": 0},
+        {"name": "invalid_id", "pretty_name": "Unknown", "id": 0},
         {"name": "mark_11", "pretty_name": "Smart Extruder 11.0", "id": 1},
         {"name": "mark_11_mod_1", "pretty_name": "Smart Extruder 11.1", "id": 2},
         {"name": "mark_11_mod_2", "pretty_name": "Smart Extruder 11.2", "id": 3},
-        {"name": "mark_11_mod_3", "pretty_name": "Smart Extruder 11.3", "id": 4}
+        {"name": "mark_11_mod_3", "pretty_name": "Smart Extruder 11.3", "id": 4},
+        {"name": "mark_12", "pretty_name": "Smart Extruder 12.0", "id": 5},
+        {"name": "mark_12_5", "pretty_name": "Smart Extruder 12.5", "id": 6}
     ]
 }
