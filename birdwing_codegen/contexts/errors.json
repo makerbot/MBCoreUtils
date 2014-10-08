@@ -293,7 +293,7 @@
             "title": "Extruder Error",
             "message": "Your Smart Extruder is not connected (Error %d). Please reconnect your Smart Extruder.",
             "error_type": "tool_error",
-            "error_action": "acknowledge",
+            "error_action": "attach_tool",
             "id": 54
         },
         {
@@ -399,6 +399,7 @@
         {"name": "change_filament", "value": 1},
         {"name": "preheat_timeout", "value": 2},
         {"name": "zpaused", "value": 3},
-        {"name": "unload_filament", "value": 4}
+        {"name": "unload_filament", "value": 4},
+        {"name": "attach_tool", "value": 5}
     ]
 }
