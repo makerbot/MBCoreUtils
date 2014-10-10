@@ -27,7 +27,6 @@ add_custom_target(bwfiles
         ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh
         ${PROJECT_SOURCE_DIR}/birdwing/machine_errors.py
         ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py)
-#set_shared(false)
-set_shared(true)
+
 install_headers(include/)
 
