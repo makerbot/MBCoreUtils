@@ -17,7 +17,6 @@ void Machine::InitializeToolheads(){
 
     toolhead_[{{index}}] = new {{name}}ToolheadManager(pins::kToolheadInterrupt[{{index}}], pins::kToolheadEnable[{{index}}], pins::kToolheadCS[{{index}}], pins::kToolheadBus[{{index}}], pins::kToolheadPower12V[{{index}}], pins::kToolheadPower5V[{{index}}]);
     heater_manager_->AddHeater(toolhead_[{{index}}]);
-    heater_manager_->SetStatusStruct({{index}}, &machine_status_.toolhead_{{index}}_heating_status);
     toolhead_[{{index}}]->SetStatusStruct(&machine_status_.toolhead_{{index}}_status);
     toolhead_[{{index}}]->SetToolheadNumber({{index}});
     toolhead_[{{index}}]->SetFilepath("{{program_floc}}");
