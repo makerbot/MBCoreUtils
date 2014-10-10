@@ -17,9 +17,15 @@ add_custom_command(
         -o ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py
         -i ${PROJECT_SOURCE_DIR}/birdwing/machine_errors.json
         -i ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.json
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh ${INCLUDE_OUTPUT_PATH}/bwcoreutils
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/include/bwcoreutils/toolhead_errors.hh ${INCLUDE_OUTPUT_PATH}/bwcoreutils
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh ${INCLUDE_OUTPUT_PATH}/bwcoreutils)
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/toolhead_errors.hh
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/include/bwcoreutils/all_errors.hh
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils)
 add_custom_target(bwfiles
     DEPENDS
         ${PROJECT_SOURCE_DIR}/include/bwcoreutils/machine_errors.hh
@@ -29,4 +35,3 @@ add_custom_target(bwfiles
         ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py)
 
 install_headers(include/)
-
