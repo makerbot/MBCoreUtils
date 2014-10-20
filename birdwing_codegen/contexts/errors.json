@@ -270,8 +270,8 @@
             "use_base": false,
             "name": "heater_hold_watchdog_triggered",
             "pretty_name": "Heater Hold Watchdog Triggered",
-            "title": "Heating Timeout",
-            "message": "Heaters were turned off due to inactivity (Warning %d)",
+            "title": "Heaters Inactive",
+            "message": "Heaters are cooling down because they are not currently active.  They'll heat up again when you resume.",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 56
