@@ -30,13 +30,13 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
         case kAnchor:
             return "Anchor";
         case kBacklashCompensation:
-            return "Backlash_Compensation";
+            return "Backlash Compensation";
         case kBridge:
             return "Bridge";
         case kConnection:
             return "Connection";
         case kFlickMove:
-            return "Flick_Move";
+            return "Flick Move";
         case kInfill:
             return "Infill";
         case kInset:
@@ -44,11 +44,11 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
         case kOutline:
             return "Outline";
         case kLeakyTravelMove:
-            return "Leaky_Travel_Move";
+            return "Leaky Travel Move";
         case kTravelMove:
-            return "Travel_Move";
+            return "Travel Move";
         case kTrailingExtrusionMove:
-            return "Trailing_Extrusion_Move";
+            return "Trailing Extrusion Move";
         case kSpur:
             return "Spur";
         case kSupport:
@@ -60,9 +60,9 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
         case kFlick:
             return "Flick";
         case kLongRetract:
-            return "Long_Retract";
+            return "Long Retract";
         case kLongRestart:
-            return "Long_Restart";
+            return "Long Restart";
         default:
             return "";
     }
@@ -74,7 +74,6 @@ inline int stringToToolpathTag(const std::string &str) {
             return i;
         }
     }
-    fprintf(stderr, "\n%s\n", str.c_str());
     return -1;
 }
 
