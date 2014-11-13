@@ -195,6 +195,16 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1042
+        },
+        {
+            "use_base": false,
+            "name": "cloud_slicing_error",
+            "pretty_name": "Slicing Error",
+            "title": "Slicing Error",
+            "message": "Failed to slice your layout for printing. Please try again later. (Warning %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1043
         }
     ],
 
