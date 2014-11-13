@@ -35,3 +35,5 @@ add_custom_target(bwfiles
         ${PROJECT_SOURCE_DIR}/birdwing/toolhead_errors.py)
 
 install_headers(include/)
+
+add_subdirectory(libmbeigen)
