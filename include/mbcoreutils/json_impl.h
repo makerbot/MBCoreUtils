@@ -115,6 +115,7 @@ inline uint16_t objectMemberAs<uint16_t>(
   const auto member(objectMember(json, key));
   if (member.isNumeric()) {
     const auto v(member.asUInt());
+    #undef max
     if (v <= std::numeric_limits<uint16_t>::max()) {
       return static_cast<uint16_t>(v);
     } else {
