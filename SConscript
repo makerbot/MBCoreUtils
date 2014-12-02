@@ -8,6 +8,11 @@ env = Environment(
     toolpath=['#../mw-scons-tools', 'site_scons', os.environ.setdefault('BWSCONSTOOLS_PATH',
                                                                         '#/../bw-scons-tools')])
 
+# MBRecursiveFileGlob is defined in both the mb_install tool, and the
+# birdwing_install tool, and both implementations work slightly differently.
+# We always want to use the one from mb_install, so grab it here before the
+# birdwing_install tool is loaded.
+_recursive_file_glob = env.MBRecursiveFileGlob
 
 ### Mustache-based codegen stuff ###
 
@@ -28,6 +33,7 @@ try:
         env.Tool('birdwing_settingsgen')
         machine = GetOption('machine')
 except AttributeError, ImportError:
+    print("error")
     pass
 
 if machine:
@@ -72,26 +78,36 @@ env.MustacheCodegen(context_dir=os.path.join(str(Dir("#/")),
                     ext_deps=external_sources)
 
 
+if ("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac():
+    # Add an empty command that makes the top-level directory target
+    # depend on the header files. This ensures the static header files
+    # are copied into the variant dir.
+    env.Command('.', _recursive_file_glob('include', '*.h'), '')
+
+    copyto = os.path.join(str(Dir("#/")),
+                          'obj',
+                          'include',
+                          'bwcoreutils')
+else:
+    copyto = os.path.join(str(Dir("#/")),
+                          'include',
+                          'bwcoreutils')
+
 # Hack to copy codegen'd cpp files from obj/birdwing/shared_cpp to
-# obj/include/bwcoreutils. This is necessary since a bunch of projects already
-# expect shared cpp birdwing headers to be there.
+# the include/bwcoreutils directorty. This is necessary since a bunch
+# of projects already expect shared cpp birdwing headers to be there.
 # TODO(jacksonh) - remove this awful hack
+copyfrom = os.path.join(str(Dir("#/")),
+                        'obj',
+                        BWCGEN_OUTPUT_DIR,
+                        'shared_cpp')
 for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
     if header.endswith('.hh') or header.endswith('.h'):
         env.Command(
-            os.path.join(str(Dir("#/")),
-                         'obj',
-                         'include',
-                         'bwcoreutils',
-                         os.path.basename(header)),
-            os.path.join(str(Dir("#/")),
-                         'obj',
-                         BWCGEN_OUTPUT_DIR,
-                         'shared_cpp',
-                         os.path.basename(header)),
+            os.path.join(copyto, os.path.basename(header)),
+            os.path.join(copyfrom, os.path.basename(header)),
             Copy("$TARGET", "$SOURCE")
         )
-
 ### End Mustache-based codegen stuff ###
 
 #

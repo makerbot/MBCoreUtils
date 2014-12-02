@@ -5,7 +5,10 @@ base_structs_dict = {
             "inherits": False,
             "fields": [
                 {"name": "tool_id", "type": "uint8"},
-                {"name": "error", "type": "uint8"}
+                {"name": "error", "type": "uint8"},
+                {"name": "preheating", "type": "uint8"},
+                {"name": "target_temperature", "type": "int16"},
+                {"name": "current_temperature", "type": "int16"}
             ]
         },
         {
@@ -63,15 +66,6 @@ base_structs_dict = {
             ]
         },
         {
-            "name": "toolhead_heating",
-            "inherits": False,
-            "fields": [
-                {"name": "preheating", "type": "uint8"},
-                {"name": "target_temperature", "type": "int16"},
-                {"name": "current_temperature", "type": "int16"}
-            ]
-        },
-        {
             "name": "machine_response",
             "inherits": False,
             "fields": [
@@ -105,12 +99,6 @@ def generate_context(env, target, source):
                             "name": "toolhead_{0}_status".format(tool_num),
                             "type": "{0}_toolhead".format(tool.lower())
                         }
-                        heating_struct_field = {
-                            "name": "toolhead_{0}_heating_status"
-                                    .format(tool_num),
-                            "type": "toolhead_heating"
-                        }
                         append_machine_response_field(struct_field)
-                        append_machine_response_field(heating_struct_field)
 
     return base_structs_dict

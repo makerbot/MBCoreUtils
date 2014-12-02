@@ -1,28 +1,15 @@
-//  THIS FILE IS DEPRECATED!  Please use bot_error_noqt.hh instead.
-//  This exists because we planned to use Qt's tr() for translation, but that never happened.
-
-#ifndef ERROR_QSTRINGS_HH
-#define ERROR_QSTRINGS_HH
+#ifndef BOT_ERROR_NOQT_HH
+#define BOT_ERROR_NOQT_HH
 
 #include <string>
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
-  #include <QString>
-  // The QStringLiteral macro is only available in Qt5+
-  #ifndef QStringLiteral
-    #define QStringLiteral(str) QString::fromUtf8(str)
-  #endif
-#else
-  #include <QtCore/QString>
-#endif
-
+#include <boost/format.hpp>
 #include "bwcoreutils/all_errors.hh"
 
 namespace bwcoreutils {
 
 /*
  * This class takes an error code integer and provides details for UI
- * error handling, including Qt translatable strings.
- * Requires Qt and C++11
+ * error handling.  Does not support string translation.  Requires C++11 and boost::format.
  */
 class BotError {
 public:
@@ -40,8 +27,10 @@ public:
     };
 
     explicit BotError(Error errorCode) :
+        m_message("Oops, we have a problem. Please update your firmware using MakerBot Desktop."),
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
+        m_title("System Error"),
         m_error(errorCode) {
         init();
     }
@@ -51,8 +40,10 @@ public:
     // but MSVC 11 (2012) doesn't support that feature of c++11, so we'll have to
     // update this when we switch to a newer MSVC
     explicit BotError(int errorCode) :
+        m_message("Oops, we have a problem. Please update your firmware using MakerBot Desktop."),
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
+        m_title("System Error"),
         m_error(static_cast<Error>(errorCode)) {
         init();
     }
@@ -62,7 +53,7 @@ public:
 
     ~BotError() {}
 
-    QString message() const {
+    std::string message() const {
         return m_message;
     }
 
@@ -75,7 +66,7 @@ public:
         return m_action;
     }
 
-    QString title() const {
+    std::string title() const {
         return m_title;
     }
 
@@ -85,7 +76,6 @@ public:
 
 private:
 
-
     enum ErrorBases {
         {{#error_bases}}
         {{name}},
@@ -93,36 +83,32 @@ private:
     };
 
     struct ErrorDefaults {
-
-        ErrorDefaults(const QString& title, const std::string& message, TYPE type, ACTION action) :
+        ErrorDefaults(const std::string& title, const std::string& message, TYPE type, ACTION action) :
         title(title),
         message(message),
         type(type),
         action(action) {}
-	ErrorDefaults() {}
+        ErrorDefaults() {}
         ~ErrorDefaults() {}
 
-
-        QString title;
+        std::string title;
         std::string message;
         TYPE type;
         ACTION action;
-
     };
 
     static ErrorDefaults get_base_defaults(ErrorBases b) {
         switch (b) {
             {{#error_bases}}
             case {{name}}:
-                return ErrorDefaults(QStringLiteral("{{{title}}}"), "{{{message}}}", {{error_type}}, {{error_action}});
+                return ErrorDefaults("{{{title}}}", "{{{message}}}", {{error_type}}, {{error_action}});
             {{/error_bases}}
         }
-	return ErrorDefaults();
+    return ErrorDefaults();
     }
 
     void init() {
-	ErrorDefaults d;
-    QString dummy;
+    ErrorDefaults d;
         switch(m_error) {
             {{#toolhead_errors}}
             case {{name}}:
@@ -132,7 +118,7 @@ private:
                 m_title = d.title;
                 {{/title}}
                 {{^message}}
-                m_message = dummy.sprintf(d.message.c_str(), static_cast<int>(m_error), "{{{pretty_name}}}");
+                m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
                 {{/message}}
                 {{^error_type}}
                 m_type = d.type;
@@ -142,16 +128,16 @@ private:
                 {{/error_action}}
                 {{/use_base}}
                 {{#title}}
-                m_title = QStringLiteral("{{{title}}}");
+                m_title = "{{{title}}}";
                 {{/title}}
                 {{#message}}
-                m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
+                m_message = (boost::format("{{{message}}}") % static_cast<int>(m_error)).str();
                 {{/message}}
                 {{#error_type}}
-                m_type = {{error_type}};
+                m_type = {{{error_type}}};
                 {{/error_type}}
                 {{#error_action}}
-                m_action = {{error_action}};
+                m_action = {{{error_action}}};
                 {{/error_action}}
                 break;
             {{/toolhead_errors}}
@@ -163,7 +149,7 @@ private:
                 m_title = d.title;
                 {{/title}}
                 {{^message}}
-                m_message = dummy.sprintf(d.message.c_str(), static_cast<int>(m_error), "{{{pretty_name}}}");
+                m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
                 {{/message}}
                 {{^error_type}}
                 m_type = d.type;
@@ -173,30 +159,28 @@ private:
                 {{/error_action}}
                 {{/use_base}}
                 {{#title}}
-                m_title = QStringLiteral("{{{title}}}");
+                m_title = "{{{title}}}";
                 {{/title}}
                 {{#message}}
-                m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
+                m_message = (boost::format("{{{message}}}") % static_cast<int>(m_error)).str();
                 {{/message}}
                 {{#error_type}}
-                m_type = {{error_type}};
+                m_type = {{{error_type}}};
                 {{/error_type}}
                 {{#error_action}}
-                m_action = {{error_action}};
+                m_action = {{{error_action}}};
                 {{/error_action}}
                 break;
             {{/machine_errors}}
             default:
-                m_title = QStringLiteral("System Error");
-                m_message = QStringLiteral("Oops, we have a problem. Please update your firmware using MakerBot Desktop.");
                 break;
         }
     }
 
-    QString m_message;
+    std::string m_message;
     TYPE m_type;
     ACTION m_action;
-    QString m_title;
+    std::string m_title;
     Error m_error;
 
 };
@@ -210,4 +194,4 @@ inline bool operator!=(Error lhs, const BotError &rhs) {return !(lhs == rhs);}
 
 } // namespace
 
-#endif // ERROR_QSTRINGS_HH
+#endif /* BOT_ERROR_NOQT_HH */

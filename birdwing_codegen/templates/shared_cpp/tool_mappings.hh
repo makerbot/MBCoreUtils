@@ -31,7 +31,7 @@ public:
                 return "{{pretty_name}}";
             {{/tools}}
             default:
-                return "Unknown Smart Extruder";
+                return "Unknown";
         }
     }
 
