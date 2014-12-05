@@ -31,6 +31,7 @@
         {"use_base": "misc_error", "name": "heater_add_failure", "pretty_name": "Heater Add Failure", "id": 269},
         {"use_base": "misc_error", "name": "knob_not_tightened", "pretty_name": "Knob Not Tightened", "id": 1034},
         {"use_base": "misc_error", "name": "invalid_active_tool_setting", "pretty_name": "Invalid Active Tool Setting", "id": 278},
+        {"use_base": "misc_error", "name": "unsupported_eeprom_version", "pretty_name": "Upload candidate EEPROM map is unsupported by the current tool", "id": 1044},
         {"use_base": "misc_error", "name": "toolhead_spi_config_error", "pretty_name": "Toolhead Spi Config Error", "id": 1017},
         {"use_base": "misc_error", "name": "heater_not_heating", "pretty_name": "Heater Not Heating", "id": 504},
         {"use_base": "misc_error", "name": "toolhead_command_tx_failure", "pretty_name": "Toolhead Command Tx Failure", "id": 1008},
@@ -195,6 +196,16 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1042
+        },
+        {
+            "use_base": false,
+            "name": "cloud_slicing_error",
+            "pretty_name": "Slicing Error",
+            "title": "Slicing Error",
+            "message": "Failed to slice your layout for printing. Please try again later. (Warning %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1043
         }
     ],
 

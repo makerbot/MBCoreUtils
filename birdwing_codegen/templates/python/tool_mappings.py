@@ -6,3 +6,9 @@ tool_to_string = {
                    'short_name' : u'{{name}}'},
     {{/tools}}
 }
+
+name_to_id = {
+    {{#tools}}
+        "{{name}}": {{id}},
+    {{/tools}}
+}
