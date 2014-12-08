@@ -4,7 +4,7 @@ import sys
 import json
 import copy
 import imp
-
+import argparse
 # Use our local copy of pystache
 sys.path.insert(
     0,
@@ -253,14 +253,14 @@ def gen_files(env, target, source):
 
 # Hacky SCons tool and associated utils to wrap around the above hacky builder:
 # Everything below this line can safely be removed without breaking the builder
-from SCons.Script import Builder
+#from SCons.Script import Builder
 
 
 def _valid_template_files(root_template_dir):
     """Yield valid template files given a root template dir"""
     lang_dirs = [os.path.join(root_template_dir, f) for f in
                  os.listdir(root_template_dir) if
-                 os.path.isdir(os.path.join(root_template_dir, f))]
+                 os.path.isdir(os.path.join(root_template_dir, f))]#
 
     for d in lang_dirs:
         for f in os.listdir(d):
@@ -273,7 +273,6 @@ def _valid_context_files(root_context_dir):
     """Yield valid context files given a root context dir"""
     def _valid_ext(f):
         return f.endswith('.json') or f.endswith('.py')
-
     for f in os.listdir(root_context_dir):
         full_path = os.path.join(root_context_dir, f)
         if os.path.isfile(full_path) and _valid_ext(f):
@@ -287,7 +286,7 @@ def _get_relpath(full_template_path):
     return os.path.join(lang_dir, name)
 
 
-_mustache_codegen_builder = Builder(action=gen_files)
+#_mustache_codegen_builder = Builder(action=gen_files)
 
 
 def mustache_codegen(env, context_dir, template_dir,
@@ -322,17 +321,34 @@ def mustache_codegen(env, context_dir, template_dir,
 
     codegen_output_files = [os.path.join(out_dir, _get_relpath(path))
                             for path in template_files]
-    return _mustache_codegen_builder.__call__(env,
-                                              codegen_output_files,
-                                              codegen_input_files)
+    return gen_files(env,codegen_output_files,codegen_input_files)
 
 
-def generate(env):
-    print('Loading Mustache code generation tool')
-    env.AddMethod(mustache_codegen, "MustacheCodegen")
+#def generate(env):
+#    print('Loading Mustache code generation tool')
+#    env.AddMethod(mustache_codegen, "MustacheCodegen")
 
 
-def exists(env):
+#def exists(env):
     # We require pystache to be available, however there's no point in checking
     # that here since an exception will get thrown from the import at the top.
-    return True
+#    return True
+
+if __name__ == '__main__':
+    print(sys.argv)
+    arg_parser = argparse.ArgumentParser()
+    arg_parser.add_argument(
+        '-contexts',
+        action='append',
+        help='The location of the context.')
+    arg_parser.add_argument(
+        '-templates',
+        action='append',
+        help='The location of the templates.')
+    arg_parser.add_argument(
+        '-transformations',
+        action='append',
+        help='The location of the transformation file.')
+    arguments = arg_parser.parse_args(sys.argv[1:])
+    
+    mustache_codegen({},arguments.contexts[0],arguments.templates[0],'./',arguments.transformations[0])
