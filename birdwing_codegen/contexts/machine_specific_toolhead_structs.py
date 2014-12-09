@@ -19,8 +19,7 @@ base_structs_dict = {
                 {"name": "encoder_adc", "type": "uint16"},
                 {"name": "filament_presence", "type": "bool"},
                 {"name": "extrusion_percent", "type": "uint8"},
-                {"name": "filament_jam", "type": "bool"},
-                {"name": "current_mag", "type": "int32"}
+                {"name": "filament_jam", "type": "bool"}
             ]
         },
         {
