@@ -13,5 +13,14 @@ namespace machine {
     };
 {{/structs}}
 
+{{#utility}}
+
+    struct {{name}} {
+        {{#fields}}
+        {{type}} {{name}};
+        {{/fields}}
+    };
+{{/utility}}
+    
 }
 #endif // MACHINE_STRUCTS_HH

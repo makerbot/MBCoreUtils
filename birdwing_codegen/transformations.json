@@ -17,6 +17,12 @@
 				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Struct'",
 				"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
 			}
+		},
+		"utility": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Struct'",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["type"]
+			}
 		}
 	},
 
@@ -86,6 +92,13 @@
 		"structs": {
 			"name_TRANSFORM": {
 				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Status'",
+				"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
+			}
+		},
+
+		"utility": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: s.title().replace('_', '')",
 				"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
 			}
 		},

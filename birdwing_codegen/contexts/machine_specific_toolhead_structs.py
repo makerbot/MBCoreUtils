@@ -54,9 +54,9 @@ base_structs_dict = {
             "name": "u1chamber_toolhead",
             "inherits": "toolhead",
             "fields": [
-                {"name": "fan_status", "type": "bool"},
-                {"name": "w200_heater_status", "type": "bool"},
-                {"name": "w400_heater_status", "type": "bool"},
+                {"name": "fan", "type": "bool"},
+                {"name": "w200_heater", "type": "bool"},
+                {"name": "w400_heater", "type": "bool"},
                 {"name": "w200_heater_temp", "type": "uint16"},
                 {"name": "w400_heater_temp", "type": "uint16"},
                 {"name": "fan_setpoint_pc", "type": "uint8"},
@@ -73,6 +73,16 @@ base_structs_dict = {
                 {"name": "move_buffer_available_space", "type": "uint8"},
                 {"name": "machine_error", "type": "uint16"}
                 # Machine-specific toolhead struct fields will be appended here
+            ]
+        }
+    ],
+    "utility" : [
+        {
+            "name": "tool_usage",
+            "fields": [
+                {"name": "retract_count", "type": "uint32"},
+                {"name": "extrusion_time_s", "type": "uint32"},
+                {"name": "extrusion_distance_mm", "type":"uint32"}
             ]
         }
     ]

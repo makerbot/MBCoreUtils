@@ -11,3 +11,12 @@ class {{name}}(ctypes.LittleEndianStructure):
 		{{/fields}}
 	)
 {{/structs}}
+
+{{#utility}}
+class {{name}}(ctypes.LittleEndianStructure):
+    _fields_ = (
+        {{#fields}}
+        ("{{name}}", {{type}}),
+        {{/fields}}
+    )
+{{/utility}}
