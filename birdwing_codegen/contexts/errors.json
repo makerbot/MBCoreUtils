@@ -316,7 +316,7 @@
             "message": "Your Smart Extruder is not connected (Error %d). Please reconnect your Smart Extruder.",
             "error_type": "tool_error",
             "error_action": "attach_tool",
-            "id": 240
+            "id": 54
         },
         {
             "use_base": false,
