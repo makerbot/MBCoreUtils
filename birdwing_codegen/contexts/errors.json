@@ -319,6 +319,16 @@
             "id": 54
         },
         {
+            "use_base" : false,
+            "name" : "bad_tool_connected",
+            "pretty_name" : "Bad Tool Connected",
+            "title" : "Extruder Error",
+            "message": "You Smart Extruder has been corrupted (Error %d). Please contact support.",
+            "error_type": "tool_error",
+            "error_action":"acknowledge",
+            "id": 46
+        },
+        {
             "use_base": false,
             "name": "chamber_not_connected",
             "pretty_name": "Chamber Not Connected",
