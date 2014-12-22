@@ -323,7 +323,7 @@
             "name" : "bad_tool_connected",
             "pretty_name" : "Bad Tool Connected",
             "title" : "Extruder Error",
-            "message": "You Smart Extruder has been corrupted (Error %d). Please contact support.",
+            "message": "Your Smart Extruder has been corrupted (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "tool_error",
             "error_action":"acknowledge",
             "id": 46
