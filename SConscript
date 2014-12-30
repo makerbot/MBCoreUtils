@@ -1,12 +1,20 @@
 import os
 from SCons.Script import AddOption
 
+# if we're cross-compiling for birdwing, we need to explicitly set the
+# Environment platform to 'posix' to have the correct params passed to gcc/ld
+# when the system hosting the cc is something other than linux (e.g. darwin)
+platform_args = {}
+if os.environ.get('MBCOREUTILS_BIRDWING') and not os.environ.get('BW_NATIVE_BUILD'):
+    platform_args['platform'] = 'posix'
+
 env = Environment(
     ENV=os.environ,
     tools=['default', 'mb_install',
            'mustache_codegen'],
     toolpath=['#../mw-scons-tools', 'site_scons', os.environ.setdefault('BWSCONSTOOLS_PATH',
-                                                                        '#/../bw-scons-tools')])
+                                                                        '#/../bw-scons-tools')],
+    **platform_args)
 
 # MBRecursiveFileGlob is defined in both the mb_install tool, and the
 # birdwing_install tool, and both implementations work slightly differently.
