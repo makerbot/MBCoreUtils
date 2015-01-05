@@ -1,9 +1,19 @@
 message("configureing mbcoreutils")
+cmake_minimum_required(VERSION 2.8.3)
 project(MBCoreUtils)
+set(utils ${CMAKE_SOURCE_DIR}/../../mw-cmake-tools/utils.cmake)
+if(EXISTS "${utils}")
+    include("../../mw-cmake-tools/utils.cmake")
+    set(TR_BUILD true)
+else()
+    include("build/mw-cmake-tools/utils.cmake")
+endif()
+setup_environment()
 
 add_custom_command(
     OUTPUT
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/bot_error.hh
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils/bot_error_noqt.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/tool_mappings.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/all_errors.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/toolhead_toolidentifier.hh
@@ -27,7 +37,9 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E copy
         ${PROJECT_BINARY_DIR}/shared_cpp/all_errors.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils
-
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_BINARY_DIR}/shared_cpp/bot_error_noqt.hh
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils
     COMMAND ${CMAKE_COMMAND} -E copy
         ${PROJECT_BINARY_DIR}/machine_cpp/machine_definitions.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils
@@ -49,6 +61,7 @@ add_custom_command(
 add_custom_target(bwfiles ALL
     DEPENDS
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/bot_error.hh
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils/bot_error_noqt.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/tool_mappings.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/all_errors.hh
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/toolhead_toolidentifier.hh
