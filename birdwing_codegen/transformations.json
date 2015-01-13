@@ -134,6 +134,12 @@
 				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
 				"REPLACE_MATCHING_VALS_IN_KEYS": false
 			}
+		},
+		"homing_types": {
+			"name_TRANSFORM": {
+				"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+				"REPLACE_MATCHING_VALS_IN_KEYS": false
+			}
 		}
 	}
 }
