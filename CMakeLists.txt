@@ -57,7 +57,34 @@ add_custom_command(
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils
     COMMAND ${CMAKE_COMMAND} -E copy
         ${PROJECT_BINARY_DIR}/machine_cpp/toolhead_toolidentifier.hh
-        ${INCLUDE_OUTPUT_PATH}/bwcoreutils)
+        ${INCLUDE_OUTPUT_PATH}/bwcoreutils
+    DEPENDS
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/contexts/errors.json
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/contexts/machine_specific_enums.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/contexts/machine_specific_toolhead_metadata.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/contexts/machine_specific_toolhead_structs.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/contexts/tool_metadata.json
+
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/transformations.json
+
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/machine_cpp/machine_definitions.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/machine_cpp/machine_errors.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/machine_cpp/machine_structs.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/machine_cpp/toolhead_errors.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/machine_cpp/toolhead_initialization.cc
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/machine_cpp/toolhead_toolidentifier.hh
+       
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/python/machine_definitions.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/python/machine_errors.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/python/machine_structs.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/python/toolhead_errors.py
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/python/tool_mappings.py
+
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/all_errors.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/bot_error.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/bot_error_noqt.hh
+        ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/tool_mappings.hh
+)
 add_custom_target(bwfiles ALL
     DEPENDS
         ${INCLUDE_OUTPUT_PATH}/bwcoreutils/bot_error.hh
