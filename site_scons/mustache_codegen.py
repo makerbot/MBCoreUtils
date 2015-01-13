@@ -202,7 +202,7 @@ def gen_files(env, target, source):
                 raise Exception('Failed to load context {0} : {1}'
                                 .format(str(s), e))
 
-        elif TEMPLATES_DIR_NAME in str(s).split(os.sep):
+        elif TEMPLATES_DIR_NAME in os.path.normpath(str(s)).split(os.sep):
             templates.append(s)
         elif TRANSFORMATIONS_FILE == os.path.basename(str(s)):
             with open(str(s), 'r') as f:
