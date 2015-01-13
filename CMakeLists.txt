@@ -1,13 +1,11 @@
-message("configureing mbcoreutils")
+
 cmake_minimum_required(VERSION 2.8.3)
+
 project(MBCoreUtils)
-set(utils ${CMAKE_SOURCE_DIR}/../../mw-cmake-tools/utils.cmake)
-if(EXISTS "${utils}")
-    include("../../mw-cmake-tools/utils.cmake")
-    set(TR_BUILD true)
-else()
-    include("build/mw-cmake-tools/utils.cmake")
-endif()
+
+find_package(
+    MBCMakeTools
+    REQUIRED)
 setup_environment()
 
 add_custom_command(
