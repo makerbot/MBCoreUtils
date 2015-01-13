@@ -84,6 +84,7 @@ add_custom_command(
         ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/bot_error.hh
         ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/bot_error_noqt.hh
         ${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp/tool_mappings.hh
+        ${PROJECT_SOURCE_DIR}/site_scons/mustache_codegen.py
 )
 add_custom_target(bwfiles ALL
     DEPENDS
