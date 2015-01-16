@@ -1,8 +1,9 @@
 {
     "homing_types": [
-        {"name": "invalid", "id": 0},
-        {"name": "switch", "id": 1},
-        {"name": "toolhead", "id": 2},
-        {"name": "load_sense","id": 3}
-    ]
+        {"name": "invalid", "id": 0, "name_str": "invalid"},
+        {"name": "switch", "id": 1, "name_str": "switch"},
+        {"name": "toolhead", "id": 2, "name_str": "toolhead"},
+        {"name": "load_sense","id": 3, "name_str": "load_sense"}
+    ],
+    "number_homing_types" : 4
 }
