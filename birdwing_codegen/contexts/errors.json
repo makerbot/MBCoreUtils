@@ -68,6 +68,15 @@
         {"use_base": "misc_error", "name": "file_not_found", "pretty_name": "File Not Found", "id": 1012},
         {"use_base": "misc_error", "name": "interface_led_comms_error", "pretty_name": "Interface Led Comms Error", "id": 288},
         {"use_base": "misc_error", "name": "power_monitor_i2c_failure", "pretty_name": "Power Monitor I2C Failure", "id": 295},
+        {"use_base": false,
+         "name": "tool_not_calibrated",
+         "pretty_name":"Smart Extruder Not Calibrated",
+         "title": "Smart Extruder Not Calibrated",
+         "message": "Please run Z-Calibration before printing with this Smart Extruder",
+         "error_type" : "tool_error",
+         "error_action": "calibrate_z",
+         "id": 1046
+        },
         {
             "use_base": false,
             "name": "no_build_plate",
@@ -432,6 +441,7 @@
         {"name": "preheat_timeout", "value": 2},
         {"name": "zpaused", "value": 3},
         {"name": "unload_filament", "value": 4},
-        {"name": "attach_tool", "value": 5}
+        {"name": "attach_tool", "value": 5},
+        {"name": "calibrate_z", "value": 6}
     ]
 }
