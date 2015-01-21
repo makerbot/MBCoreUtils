@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 
 project(MBCoreUtils)
-
+set(MBCMakeTools_DIR ${PROJECT_SOURCE_DIR}/../../mw-cmake-tools/)
 find_package(
     MBCMakeTools
     REQUIRED)
