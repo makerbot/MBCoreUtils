@@ -81,7 +81,8 @@ base_structs_dict = {
             "fields": [
                 {"name": "retract_count", "type": "uint32"},
                 {"name": "extrusion_time_s", "type": "uint32"},
-                {"name": "extrusion_distance_mm", "type":"uint32"}
+                {"name": "extrusion_distance_mm", "type":"uint32"},
+                {"name": "refurb_count", "type":"uint8"}
             ]
         }
     ]
