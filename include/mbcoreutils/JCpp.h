@@ -6,6 +6,8 @@
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/value.h>
 #include <jsoncpp/json/writer.h>
+#include <stdint.h>
+#include <inttypes.h>
 #include <assert.h>
 #include <string>
 #include <map>
@@ -133,11 +135,11 @@ namespace JCpp {
             static_cast<void>(What);
             return nullptr;
         }
-        virtual int64 LocalLong(std::string What, int64 deflt = 0) {
+        virtual int32_t LocalLong(std::string What, int32_t deflt = 0) {
             static_cast<void>(What);
             return deflt;
         }
-        virtual float LocalFloat(std::string What, int64 deflt = 0) {
+        virtual float LocalFloat(std::string What, int32_t deflt = 0) {
             static_cast<void>(What);
             return deflt;
         }
@@ -292,7 +294,7 @@ namespace JCpp {
                 return atof(v.c_str());
             }
 
-            virtual int64 LocalLong(std::string What, int64 deflt = 0) {
+            virtual int32_t LocalLong(std::string What, int32_t deflt = 0) {
                 static_cast<void>(deflt);
                 const PNK key(What, Json::stringValue, -1);
                 typename PrimitiveNode<PNK>::iterator
@@ -500,7 +502,7 @@ namespace JCpp {
                 return true;
             }
 
-            explicit JSonTree(const std::std::string& _input)
+            explicit JSonTree(const std::string& _input)
                 : PrimitiveBase(NULL), Root(this), input(_input) {}
             virtual void Create(
                 Json::Value& json, const int _depth = 0, int order = -1) {
