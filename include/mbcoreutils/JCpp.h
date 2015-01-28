@@ -12,6 +12,8 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <iostream>
+#include <stdexcept>
 
 
 namespace CallBacker {
@@ -109,12 +111,12 @@ namespace JCpp {
             return false;
         }
         virtual operator bool () {return false;}
-        virtual ostream& print(ostream& o,
+        virtual std::ostream& print(std::ostream& o,
             const Json::ValueType& _type) const {
                 static_cast<void>(_type);
                 return o;
         }
-        virtual ostream& printxml(ostream& o,
+        virtual std::ostream& printxml(std::ostream& o,
             const Json::ValueType& _type) const {
                 static_cast<void>(_type);
                 return o;
@@ -158,8 +160,8 @@ namespace JCpp {
         PrimitiveBase* parent;
 
         private:
-        friend ostream& operator<<(ostream&, const PrimitiveBase&);
-        virtual ostream& operator<<(ostream& o) const  {return o;}
+        friend std::ostream& operator<<(std::ostream&, const PrimitiveBase&);
+        virtual std::ostream& operator<<(std::ostream& o) const  {return o;}
     };
 
     struct PrimitiveKey : protected std::string {
@@ -173,7 +175,7 @@ namespace JCpp {
             return _t == type;
         }
         operator Json::ValueType () const {return type;}
-        virtual ostream& print(ostream& o,
+        virtual std::ostream& print(std::ostream& o,
             const Json::ValueType& _type) const {
                 if (_type != Json::arrayValue)
                     o << quoted(c_str());
@@ -195,7 +197,7 @@ namespace JCpp {
         //    { type=_type;} // SHOULD THIS BE SETTABLE??
 
         private:
-        friend ostream& operator<<(ostream&, const PrimitiveKey&);
+        friend std::ostream& operator<<(std::ostream&, const PrimitiveKey&);
 
         protected:
         const Json::ValueType type;  // SHOULD THIS BE MUTABLE??
@@ -203,10 +205,10 @@ namespace JCpp {
     };
 
     template <typename PNK>
-        struct PrimitiveNode : map<PNK, PrimitiveBase*>,
+        struct PrimitiveNode : std::map<PNK, PrimitiveBase*>,
             public PrimitiveBase {
             typedef PNK KeyType;
-            typedef map<PNK, PrimitiveBase*> ContainerType;
+            typedef std::map<PNK, PrimitiveBase*> ContainerType;
             explicit PrimitiveNode(PrimitiveBase* _parent)
                 : PrimitiveBase(_parent), depth(0) {}
 
@@ -221,7 +223,7 @@ namespace JCpp {
                     depth = _depth;
                     if ( (json.type() != Json::objectValue)
                             && (json.type() != Json::arrayValue) ) {
-                        stringstream ssv;
+                        std::stringstream ssv;
                         ssv << json;
                         value = jtrim(ssv.str());
                     }
@@ -234,13 +236,13 @@ namespace JCpp {
                     for ( Json::ValueIterator it = json.begin();
                         it != json.end(); it++ ) {
                         Json::Value& val(*it);
-                        stringstream ssname;
+                        std::stringstream ssname;
                         ssname << it.key();
                         const std::string name(jtrim(ssname.str()));
                         const PNK key(name, val.type(), order);
                         if (order>-1) order++;
                         if (this->find(key) != this->end())
-                            throw runtime_error(
+                            throw std::runtime_error(
                                 "More than one exists->" + name);
                         PrimitiveNode<PNK>* n(static_cast<PrimitiveNode<PNK>*>(
                             generate(this, name)));
@@ -255,7 +257,7 @@ namespace JCpp {
                 const PNK key(What, Json::stringValue, -1);
                 typename ContainerType::iterator found(this->find(key));
                 if (found == this->end())
-                    throw runtime_error("Cannot find " + What);
+                    throw std::runtime_error("Cannot find " + What);
                 return *found->second;
             }
 
@@ -263,7 +265,7 @@ namespace JCpp {
                 const PNK key(What, Json::stringValue, -1);
                 typename ContainerType::iterator found(this->find(key));
                 if (found == this->end())
-                    throw runtime_error("Cannot find " + What);
+                    throw std::runtime_error("Cannot find " + What);
                 return found->first;
             }
 
@@ -354,24 +356,24 @@ namespace JCpp {
             virtual const std::string CData(const std::string what) const {
                 if (what.empty())
                     return what;
-                stringstream ss;
+                std::stringstream ss;
                 ss << "<![CDATA[" << what << "]]>";
                 std::string ret;
                 ret = ss.str();
                 return ret;
             }
 
-            virtual ostream& print(ostream& o,
+            virtual std::ostream& print(std::ostream& o,
                 const Json::ValueType& _type) const {
                 if (_type == Json::objectValue)
-                    o << endl << tabs(depth) << "{";
+                    o << std::endl << tabs(depth) << "{";
                 if (_type == Json::arrayValue)
-                    o << endl << tabs(depth) << "[";
+                    o << std::endl << tabs(depth) << "[";
                 o << GetValue(_type);
                 for (typename ContainerType::const_iterator
                         it = this->begin(); it != this->end(); it++) {
                     if (it != this->begin()) o << ",";
-                    o << endl << tabs(depth+1);
+                    o << std::endl << tabs(depth+1);
                     const std::string _name(it->first.name());
                     if (_type != Json::arrayValue) o << quoted(Name(_name));
                     if (_type != Json::arrayValue) o << ":";
@@ -380,13 +382,13 @@ namespace JCpp {
                 }
 
                 if (_type == Json::arrayValue)
-                    o << endl << tabs(depth) << "]";
+                    o << std::endl << tabs(depth) << "]";
                 if (_type == Json::objectValue)
-                    o << endl << tabs(depth) << "}";
+                    o << std::endl << tabs(depth) << "}";
                 return o;
             }
 
-            virtual ostream& printxml(ostream& o,
+            virtual std::ostream& printxml(std::ostream& o,
                 const Json::ValueType&) const {
                 o << CData(value);
                 for (typename ContainerType::const_iterator
@@ -398,7 +400,7 @@ namespace JCpp {
                     o << "<" << _name << ">";
                     const Json::ValueType type(it->first);
                     (*it->second).printxml(o, type);
-                    o << "</" << _name << ">" << endl;
+                    o << "</" << _name << ">" << std::endl;
                 }
                 return o;
             }
@@ -413,7 +415,7 @@ namespace JCpp {
             std::string value;
             protected:
             virtual const std::string tabs(int _depth) const {
-                stringstream ss;
+                std::stringstream ss;
                 for (int j = 0; j < _depth; j++)
                     ss << " ";
                 std::string ret(ss.str());
@@ -422,12 +424,13 @@ namespace JCpp {
             mutable int depth;
 
             protected:
-            friend ostream& operator<<(ostream&, const PrimitiveBase&);
-            virtual ostream& operator<<(ostream& o) const
+            friend std::ostream& operator<<(std::ostream&,
+                const PrimitiveBase&);
+            virtual std::ostream& operator<<(std::ostream& o) const
                 { return print(o, Json::objectValue); }
         };
 
-    inline ostream& operator<<(ostream& o, const PrimitiveBase& n)
+    inline std::ostream& operator<<(std::ostream& o, const PrimitiveBase& n)
         {return n.operator<<(o);}
 
     template <typename KT>
@@ -489,7 +492,8 @@ namespace JCpp {
                 Json::Value jsonroot;
                 Json::Reader reader;
                 if (!reader.parse(input.c_str(), jsonroot))
-                    throw runtime_error(reader.getFormattedErrorMessages());
+                    throw std::runtime_error(
+                        reader.getFormattedErrorMessages());
                 Root.Create(jsonroot);
                 return true;
             }
@@ -497,7 +501,8 @@ namespace JCpp {
                 Json::Value jsonroot;
                 Json::Reader reader;
                 if (!reader.parse(txt.c_str(), jsonroot))
-                    throw runtime_error(reader.getFormattedErrorMessages());
+                    throw std::runtime_error(
+                        reader.getFormattedErrorMessages());
                 Root.Create(jsonroot);
                 return true;
             }
@@ -513,7 +518,7 @@ namespace JCpp {
             }
 
             operator NODETYPE& () {return Root;}
-            virtual ostream& printxml(ostream& o) const {
+            virtual std::ostream& printxml(std::ostream& o) const {
                 return Root.printxml(o, Json::objectValue);
             }
 
