@@ -1,4 +1,4 @@
-// Copyright 2014 MakerBot Industries
+// Copyright 2015 MakerBot Industries
 
 #ifndef INCLUDE_MBCOREUTILS_JCPP_H_
 #define INCLUDE_MBCOREUTILS_JCPP_H_
