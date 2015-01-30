@@ -10,3 +10,9 @@ Section: libdevel
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: MakerBot core utils development headers
+
+Package: mb-libstdc++6
+Section: lib
+Architecture: any
+Depends:
+Description: MakerBot distribution specific package for non-standard c++ runtime
