@@ -141,7 +141,7 @@ namespace JCpp {
             static_cast<void>(What);
             return deflt;
         }
-        virtual float LocalFloat(std::string What, int32_t deflt = 0) {
+        virtual float LocalFloat(std::string What, float deflt = 0) {
             static_cast<void>(What);
             return deflt;
         }
