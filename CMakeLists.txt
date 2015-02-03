@@ -70,4 +70,8 @@ install(
     DIRECTORY ${PROJECT_SOURCE_DIR}/include/mbcoreutils
     DESTINATION ${HEADER_INSTALL_DESTINATION})
 
+install_docs(
+    README.md
+    PREFIX mbcoreutils)
+
 add_subdirectory(libmbeigen)
