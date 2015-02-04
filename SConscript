@@ -1,19 +1,24 @@
 import os
+import platform
+
 from SCons.Script import AddOption
 
 # if we're cross-compiling for birdwing, we need to explicitly set the
 # Environment platform to 'posix' to have the correct params passed to gcc/ld
 # when the system hosting the cc is something other than linux (e.g. darwin)
 platform_args = {}
-if os.environ.get('MBCOREUTILS_BIRDWING') and not os.environ.get('BW_NATIVE_BUILD'):
+if os.environ.get('MBCOREUTILS_BIRDWING') and not \
+        os.environ.get('BW_NATIVE_BUILD'):
     platform_args['platform'] = 'posix'
 
 env = Environment(
     ENV=os.environ,
     tools=['default', 'mb_install',
            'mustache_codegen'],
-    toolpath=['#../mw-scons-tools', 'site_scons', os.environ.setdefault('BWSCONSTOOLS_PATH',
-                                                                        '#/../bw-scons-tools')],
+    toolpath=['#../mw-scons-tools',
+              'site_scons',
+              os.environ.setdefault('BWSCONSTOOLS_PATH',
+                                    '#/../bw-scons-tools')],
     **platform_args)
 
 # MBRecursiveFileGlob is defined in both the mb_install tool, and the
@@ -22,7 +27,7 @@ env = Environment(
 # birdwing_install tool is loaded.
 _recursive_file_glob = env.MBRecursiveFileGlob
 
-### Mustache-based codegen stuff ###
+# -- Mustache-based codegen stuff -- #
 
 if 'MBCOREUTILS_BIRDWING' in os.environ:
     # If we're building for birdwing, pull in the birdwing_install
@@ -116,7 +121,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
             os.path.join(copyfrom, os.path.basename(header)),
             Copy("$TARGET", "$SOURCE")
         )
-### End Mustache-based codegen stuff ###
+# -- End Mustache-based codegen stuff -- #
 
 #
 # Swap out some things if we are building for birdwing or desktop.
@@ -134,3 +139,53 @@ else:
     env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
     env.MBCreateInstallTarget()
+    if env.MBIsLinux():
+        (distname, distversion, distid) = platform.linux_distribution()
+        if 'Ubuntu' == distname:
+            # On Ubuntu 12.04 we use GCC 4.8, which requires a c++ runtime
+            # incompatible with the system default.
+            # To make this work, we package the runtime library libstdc++6
+            # from our jenkins slave in the package mb-libstdc++6 that
+            # installs the library in /usr/lib/makerbot.
+            # That directory is in the runpath for all of our executables,
+            # so the OS will check it for libraries to laod before looking in
+            # the system default directory.
+            # For all other ubuntu versions, mb-libstdc++6 is an empty
+            # package that installs nothing, allowing the OS to use the
+            # default system runtime library as it normally would.
+            def procfile(elem, fd):
+                '''
+                Write the paths of files or scons nodes from a nested list
+                to a debian *.install file
+
+                @param elem The current list, scons node, or path to write
+                @param fd a file handle open for writing
+                '''
+                prefix = '/usr/lib/makerbot/'
+                if isinstance(elem, list) or \
+                        isinstance(elem, SCons.Node.NodeList):
+                    for el in elem:
+                        procfile(el, fd)
+                elif isinstance(elem, str):
+                    fd.write(prefix + os.path.basename(elem) + '\n')
+                else:
+                    fd.write(prefix + os.path.basename(basepath(elem)) + '\n')
+
+            def basepath(x):
+                return File(x).srcnode().abspath
+
+            if distversion == '12.04':
+                # on 12.04 we must package the gcc 4.8 runtime
+                stdcpplibsraw = Glob('/usr/lib/*-linux-gnu/libstdc++.so*')
+                stdcpplibs = [elem for elem in stdcpplibsraw
+                              if not os.path.islink(basepath(elem))]
+                stdcpplibs = stdcpplibs[-1]
+                stdcpptargets = env.MBInstallLib(stdcpplibs, None, 'makerbot')
+                with open(basepath('#/debian/mb-libstdc++6.install'),
+                          'w') as stdcppinstall:
+                    procfile(stdcpptargets, stdcppinstall)
+            else:
+                # on other platforms this is empty package
+                with open(basepath('#/debian/mb-libstdc++6.install'),
+                          'w') as stdcppinstall:
+                    stdcppinstall.write('\n')
