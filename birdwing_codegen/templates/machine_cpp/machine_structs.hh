@@ -16,6 +16,10 @@ namespace machine {
 {{#utility}}
 
     struct {{name}} {
+        {{name}} () {
+        {{#fields}}
+        {{name}} = {{default}};
+        {{/fields}}}
         {{#fields}}
         {{type}} {{name}};
         {{/fields}}
