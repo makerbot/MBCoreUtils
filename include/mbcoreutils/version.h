@@ -109,6 +109,14 @@ class Version {
              std::to_string(m_build);
     }
 
+    std::string toStringNoBuildNumber() const {
+      const std::string sep(".");
+
+      return std::to_string(m_major) + sep +
+             std::to_string(m_minor) + sep +
+             std::to_string(m_point);
+    }
+
   private:
     int m_major;
     int m_minor;
