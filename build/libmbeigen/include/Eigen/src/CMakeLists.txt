@@ -1,7 +1,0 @@
-file(GLOB Eigen_src_subdirectories "*")
-escape_string_as_regex(ESCAPED_CMAKE_CURRENT_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-foreach(f ${Eigen_src_subdirectories})
-  if(IS_DIRECTORY ${f} AND NOT ${f} MATCHES CMakeFiles)
-    add_subdirectory(${f})
-  endif()
-endforeach()
