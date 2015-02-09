@@ -12,8 +12,8 @@ foreach(f ${Eigen_directory_files})
   endif()
 endforeach()
 
-install_directory(${PROJECT_SOURCE_DIR}/ ${HEADER_INSTALL_DESTINATION}/Eigen)
-
 install(FILES
   ${Eigen_directory_files_to_install}
-  DESTINATION ${HEADER_INSTALL_DESTINATION}/Eigen COMPONENT Devel)
+  DESTINATION ${HEADER_INSTALL_DESTINATION}/Eigen)
+
+add_subdirectory(src)

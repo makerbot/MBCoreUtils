@@ -71,7 +71,7 @@ install(
     DESTINATION ${HEADER_INSTALL_DESTINATION})
 
 install_docs(
-    ${PROJECT_SOURCE_DIR}/README.md
+    FILES "${PROJECT_SOURCE_DIR}/README.md"
     PREFIX mbcoreutils)
 
 add_subdirectory(libmbeigen)
