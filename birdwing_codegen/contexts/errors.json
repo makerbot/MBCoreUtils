@@ -202,7 +202,7 @@
             "name": "printing_network_error",
             "pretty_name": "Network Error",
             "title": "Network Error",
-            "message": "Your print has been canceled because there was a problem with your internet connection. (Warning %d)",
+            "message": "There was a problem communicating with MakerBot Cloud Services. Please try your print again later. (Warning %d)",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1042
