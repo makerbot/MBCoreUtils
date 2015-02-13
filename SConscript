@@ -2,6 +2,7 @@ import os
 import platform
 
 from SCons.Script import AddOption
+from SCons.Node import NodeList
 
 env = Environment(
     ENV=os.environ,
@@ -154,7 +155,7 @@ else:
                 '''
                 prefix = '/usr/lib/makerbot/'
                 if isinstance(elem, list) or \
-                        isinstance(elem, SCons.Node.NodeList):
+                        isinstance(elem, NodeList):
                     for el in elem:
                         procfile(el, fd)
                 elif isinstance(elem, str):
