@@ -130,7 +130,6 @@ else:
                          'mbcoreutils', make_current_link=True)
     env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
-    env.MBCreateInstallTarget()
     if env.MBIsLinux():
         (distname, distversion, distid) = platform.linux_distribution()
         if 'Ubuntu' == distname:
@@ -181,3 +180,4 @@ else:
                 with open(basepath('#/debian/mb-libstdc++6.install'),
                           'w') as stdcppinstall:
                     stdcppinstall.write('\n')
+    env.MBCreateInstallTarget()
