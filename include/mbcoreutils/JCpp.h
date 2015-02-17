@@ -94,6 +94,10 @@ namespace JCpp {
         virtual PrimitiveBase& operator()(std::string What) = 0;
         virtual PrimitiveBase* generate
             (PrimitiveBase* creator, const std::string& _name) = 0;
+        virtual PrimitiveBase* generate
+            (PrimitiveBase* creator, const std::string& _name,
+		const Json::ValueType& _type)
+		    { return generate(creator, _name); } 
         virtual PrimitiveBase& operator()
             (std::string name, std::string value,
              const Json::ValueType& _type = Json::stringValue,
@@ -246,7 +250,7 @@ namespace JCpp {
                             throw std::runtime_error(
                                 "More than one exists->" + name);
                         PrimitiveNode<PNK>* n(static_cast<PrimitiveNode<PNK>*>(
-                            generate(this, name)));
+                            generate(this, name, val.type())));
                         PrimitiveNode<PNK>& newnode(*n);
                         PrimitiveNode<PNK>& me(*this);
                         me[key]=n;
