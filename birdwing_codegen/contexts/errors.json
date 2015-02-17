@@ -1,4 +1,7 @@
 {
+    "per_source": true,
+    "per_process": true,
+    "per_process_step": true,
     "machine_errors": [
         {"use_base": "tool_critical", "name": "toolhead_no_response", "pretty_name": "Toolhead No Response", "id": 263},
         {"use_base": "tool_critical", "name": "toolhead_malformed_packet", "pretty_name": "Toolhead Malformed Packet", "id": 270},
@@ -242,7 +245,6 @@
         {"use_base": "tool_critical", "name": "tool_read_error", "pretty_name": "Tool Read Error", "id": 86},
         {"use_base": "tool_critical", "name": "tool_open", "pretty_name": "Tool Open", "id": 70},
         {"use_base": "tool_critical", "name": "eeprom_checksum_failure", "pretty_name": "Eeprom Checksum Failure", "id": 95},
-        {"use_base": "tool_critical", "name": "not_connected", "pretty_name": "Not Connected", "id": 13},
         {"use_base": "fw_fundamentally_broken", "name": "mismatch_api_version", "pretty_name": "Mismatch Api Version", "id": 130},
         {"use_base": "chamber_problem", "name": "chamber_heater_failure", "pretty_name": "Chamber Heater Failure", "id": 98},
         {"use_base": "chamber_problem", "name": "chamber_fan_failure", "pretty_name": "Chamber Fan Failure", "id": 99},
@@ -330,23 +332,29 @@
         },
         {
             "use_base": false,
-            "name": "chamber_not_connected",
-            "pretty_name": "Chamber Not Connected",
-            "title": "Chamber Heater Disconnect",
-            "message": "The build chamber heater controller is disconnected (Error %d). Please visit our Support page at Makerbot.com/support.",
+            "name": "not_connected",
+            "pretty_name": "Toolhead Not Connected",
+            "title": "Toolhead Disconnect",
+            "message": "Toolhead disconnected (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "none",
             "error_action": "acknowledge",
-            "id": 15
-        },
-        {
-            "use_base": false,
-            "name": "carriage_not_connected",
-            "pretty_name": "Carriage Not Connected",
-            "title": "Carriage Disconnected",
-            "message": "The extruder carriage is disconnected from the machine (Error %d). Please visit our Support page at Makerbot.com/support.",
-            "error_type": "none",
-            "error_action": "acknowledge",
-            "id": 16
+            "id": 13,
+            "alt_ids" : [{"id": 15}, {"id": 16}],
+            "per_source": [
+                {
+                    "source_type": "chamber",
+                    "pretty_name": "Chamber Not Connected",
+                    "title": "Chamber Heater Disconnect",
+                    "message": "The build chamber heater controller is disconnected (Error %d). Please visit our Support page at Makerbot.com/support."
+                },
+                {
+                    "source_type": "extruder",
+                    "pretty_name": "Carriage Not Connected",
+                    "title": "Carriage Disconnected",
+                    "message": "The extruder carriage is disconnected from the machine (Error %d). Please visit our Support page at Makerbot.com/support."
+                },
+                {}
+            ]
         }
     ],
 

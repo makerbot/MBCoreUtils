@@ -1,0 +1,6 @@
+{
+    "toolhead_types": [
+        {"name": "extruder", "str": "extruder"},
+        {"name": "chamber", "str": "chamber"}
+    ]
+}

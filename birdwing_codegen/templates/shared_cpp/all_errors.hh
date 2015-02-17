@@ -13,6 +13,9 @@ enum Error {
     {{/machine_errors}}
     {{#toolhead_errors}}
     {{name}} = {{id}},
+    {{#alt_ids}}
+    {{name}}AltId{{id}} = {{id}},
+    {{/alt_ids}}
     {{/toolhead_errors}}
 
 }; // enum

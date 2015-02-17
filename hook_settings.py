@@ -11,3 +11,5 @@ pre_commit_checks = [
     hook_tools.pep8lint_check,
     hook_tools.jsonlint_check
 ]
+
+hook_tools.cpplint_check.ignore.append('birdwing_codegen/*')
