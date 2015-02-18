@@ -1,6 +1,10 @@
 #ifndef PROCESS_ENUMS_HH
 #define PROCESS_ENUMS_HH
 
+#include <stdexcept>
+#include <string>
+#include <unordered_map>
+
 namespace bwcoreutils {
 
 enum ProcessType {
