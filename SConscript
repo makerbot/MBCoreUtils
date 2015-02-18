@@ -2,6 +2,7 @@ import os
 import platform
 
 from SCons.Script import AddOption
+from SCons.Node import NodeList
 
 # if we're cross-compiling for birdwing, we need to explicitly set the
 # Environment platform to 'posix' to have the correct params passed to gcc/ld
@@ -138,7 +139,6 @@ else:
                          'mbcoreutils', make_current_link=True)
     env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
                          'bwcoreutils', make_current_link=True)
-    env.MBCreateInstallTarget()
     if env.MBIsLinux():
         (distname, distversion, distid) = platform.linux_distribution()
         if 'Ubuntu' == distname:
@@ -163,7 +163,7 @@ else:
                 '''
                 prefix = '/usr/lib/makerbot/'
                 if isinstance(elem, list) or \
-                        isinstance(elem, SCons.Node.NodeList):
+                        isinstance(elem, NodeList):
                     for el in elem:
                         procfile(el, fd)
                 elif isinstance(elem, str):
@@ -189,3 +189,4 @@ else:
                 with open(basepath('#/debian/mb-libstdc++6.install'),
                           'w') as stdcppinstall:
                     stdcppinstall.write('\n')
+    env.MBCreateInstallTarget()
