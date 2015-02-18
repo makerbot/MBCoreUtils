@@ -135,5 +135,14 @@
 				"REPLACE_MATCHING_VALS_IN_KEYS": false
 			}
 		}
+	},
+
+	"fwclient_cpp": {
+		"type_MAPPINGS": {
+			"str": "std::string",
+			"int": "uint32_t",
+			"list": "Json::Value",
+			"dict": "Json::Value"
+		}
 	}
 }
