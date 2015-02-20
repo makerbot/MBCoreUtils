@@ -11,10 +11,53 @@
 #include <string>
 
 // This header exposes functions for calling top-level kaiten API functions.
-// examples:
-// print(std::string filepath, bool ensure_build_plate_clear, std::shared_ptr<JsonRpcCallback> callback)
-// print(print::args(filepath).cb(callback))
-// TODO(jacksonh): document interface
+// API calls can be made in two ways:
+// 1. Using positional arguments:
+// e.g. rpc::print("sushi.makerbot", boost::none, printCallback);
+// 2. By passing an rpc::[func]::args object to the rpc::[func]:
+// e.g. rpc::print(rpc::print::args("sushi.makerbot").cb(printCallback));
+
+// The above examples assume the print function has the following attributes:
+// "name": "print",
+// "parameters": [
+//     {
+//         "doc": "Filepath to print",
+//         "name": "filepath",
+//         "type": "str"
+//     },
+//     {
+//         "default": null,
+//         "doc": "optional bool that overrides any other logic determining"
+//                " whether to show a clear build plate dialog prior to"
+//                " starting a print.",
+//         "name": "ensure_build_plate_clear",
+//         "type": "bool"
+//     }
+// and that the passed printCallback is a std::shared_ptr<JsonRpcCallback>.
+
+// Optional rpc arguments are encapsulated by boost::optional, so passing
+// boost::none when calling an rpc func using positional args denotes that that
+// param shouldn't be included in the call.
+
+// The rpc::[func]::args object attempts to provide some approximation of
+// named arguments in c++, so functions with many optional args can be called
+// without passing lots of boost::none's.  Its constructor takes the same
+// positional params as the corresponding rpc::[func].  Once constructed,
+// specific optional params can be setup by calling [param name]([param val])
+// methods on the rpc::[func]::args object. Each of these calls returns a
+// reference to the rpc::[func]::args obj, so the calls can be chained (in any
+// order).  For example, passing the ensure_build_plate_clear param to a
+// rpc::print call would look like:
+// rpc::print(rpc::print::args("sushi.makerbot").ensure_build_plate_clear(true)
+//     .cb(printCallback));
+
+// Each rpc func takes an optional std::shared_ptr<JsonRpcCallback> that will
+// be called when kaiten responds.  This is always the last param for
+// positional rpc calls, and can be set by calling the cb() method on an
+// rpc::[func]::args object.  If it's not specified, no callback will be made.
+
+// See the "fwclient_cpp" section of birdwing_codegen/transfomations.json for
+// the mappings of python types in rpc call parameters to c++ types.
 
 namespace PrinterPanel {
 namespace rpc {
@@ -28,12 +71,12 @@ class {{{fn_name}}} {
 {{#parameters}}              m_{{{name}}} = {{{name}}};
 {{/parameters}}              m_callback = cb;
         }
-{{#parameters}}
+{{#parameters}}{{#optional}}
         args& {{{name}}}(const {{{type}}} val) {
             m_{{{name}}} = val;
             return *this;
         }
-{{/parameters}}
+{{/optional}}{{/parameters}}
         args& cb(std::shared_ptr<JsonRpcCallback> cb) {
             m_callback = cb;
             return *this;
