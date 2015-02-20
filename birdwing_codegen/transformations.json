@@ -140,7 +140,6 @@
 	"fwclient_cpp": {
 		"type_MAPPINGS": {
 			"str": "std::string",
-			"int": "uint32_t",
 			"list": "Json::Value",
 			"dict": "Json::Value"
 		}
