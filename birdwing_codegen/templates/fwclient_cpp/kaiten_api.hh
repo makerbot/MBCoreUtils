@@ -59,7 +59,6 @@
 // See the "fwclient_cpp" section of birdwing_codegen/transfomations.json for
 // the mappings of python types in rpc call parameters to c++ types.
 
-namespace PrinterPanel {
 namespace rpc {
 {{#kaiten_api}}
 class {{{fn_name}}} {
@@ -67,7 +66,7 @@ class {{{fn_name}}} {
     class args {
         friend class {{{fn_name}}};
      public:
-        args({{#parameters}}{{#optional}}boost::optional<{{/optional}}const {{{type}}}{{#optional}}>{{/optional}} {{{name}}}{{#optional}}=boost::none{{/optional}},{{/parameters}}std::shared_ptr<JsonRpcCallback> cb = std::make_shared<NoCallback>()) {
+        args({{#parameters}}{{#optional}}boost::optional<{{/optional}}const {{{type}}}{{#optional}}>{{/optional}} {{{name}}}{{#optional}}=boost::none{{/optional}},{{/parameters}}std::shared_ptr<JsonRpcCallback> cb = std::make_shared<PrinterPanel::NoCallback>()) {
 {{#parameters}}              m_{{{name}}} = {{{name}}};
 {{/parameters}}              m_callback = cb;
         }
@@ -88,12 +87,12 @@ class {{{fn_name}}} {
         std::shared_ptr<JsonRpcCallback> m_callback;
     };
 
-    {{{fn_name}}}({{#parameters}}const {{#optional}}boost::optional<{{/optional}}{{{type}}}{{#optional}}>{{/optional}} {{{name}}}{{#optional}}=boost::none{{/optional}},{{/parameters}}const std::shared_ptr<JsonRpcCallback>& cb = std::make_shared<NoCallback>()) {
+    {{{fn_name}}}({{#parameters}}const {{#optional}}boost::optional<{{/optional}}{{{type}}}{{#optional}}>{{/optional}} {{{name}}}{{#optional}}=boost::none{{/optional}},{{/parameters}}const std::shared_ptr<JsonRpcCallback>& cb = std::make_shared<PrinterPanel::NoCallback>()) {
       Json::Value rpc_params;
 {{#parameters}}{{#optional}}      if ({{{name}}} != boost::none)
       {{/optional}}  rpc_params["{{{name}}}"] = {{{name}}}{{#optional}}.get(){{/optional}};
 {{/parameters}}
-      PrinterPanelController::instance()->rpcCall("{{{fn_name}}}", rpc_params, cb);
+      PrinterPanel::PrinterPanelController::instance()->rpcCall("{{{fn_name}}}", rpc_params, cb);
     }
 
     {{{fn_name}}}(const args& p) : {{{fn_name}}}({{#parameters}}p.m_{{{name}}},{{/parameters}}p.m_callback) {}
@@ -101,6 +100,5 @@ class {{{fn_name}}} {
 
 {{/kaiten_api}}
 }  // namespace rpc
-}  // namespace PrinterPanel
 
 #endif  // CLIENT_KAITEN_API_HH_
