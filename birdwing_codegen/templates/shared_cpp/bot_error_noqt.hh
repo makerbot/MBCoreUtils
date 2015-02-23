@@ -125,7 +125,7 @@ private:
     void init() {
       ErrorDefaults d;
       switch(m_error) {
-        {{#toolhead_errors}}
+        {{#all_errors}}
         case {{name}}:
         {{#alt_ids}}
         case {{id}}:
@@ -148,12 +148,12 @@ private:
                 {{/process_type}}
                   switch (m_process_step) {
                     {{#per_process_step}}
-                    {{#process_step}}
-                    case {{process_step}}:
-                    {{/process_step}}
-                    {{^process_step}}
+                    {{#process_step_type}}
+                    case {{process_step_type}}:
+                    {{/process_step_type}}
+                    {{^process_step_type}}
                     default:
-                    {{/process_step}}
+                    {{/process_step_type}}
                       {{#use_base}}
                       d = get_base_defaults({{use_base}});
                       {{^title}}
@@ -191,60 +191,7 @@ private:
             {{/per_source}}
           }
           break;
-        {{/toolhead_errors}}
-        {{#machine_errors}}
-        case {{name}}:
-          switch (m_process_type) {
-            {{#per_process}}
-            {{#process_type}}
-            case {{process_type}}:
-            {{/process_type}}
-            {{^process_type}}
-            default:
-            {{/process_type}}
-              switch (m_process_step) {
-                {{#per_process_step}}
-                {{#process_step}}
-                case {{process_step}}:
-                {{/process_step}}
-                {{^process_step}}
-                default:
-                {{/process_step}}
-                  {{#use_base}}
-                  d = get_base_defaults({{use_base}});
-                  {{^title}}
-                  m_title = d.title;
-                  {{/title}}
-                  {{^message}}
-                  m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
-                  {{/message}}
-                  {{^error_type}}
-                  m_type = d.type;
-                  {{/error_type}}
-                  {{^error_action}}
-                  m_action = d.action;
-                  {{/error_action}}
-                  {{/use_base}}
-                  {{#title}}
-                  m_title = "{{{title}}}";
-                  {{/title}}
-                  {{#message}}
-                  m_message = (boost::format("{{{message}}}") % static_cast<int>(m_error)).str();
-                  {{/message}}
-                  {{#error_type}}
-                  m_type = {{{error_type}}};
-                  {{/error_type}}
-                  {{#error_action}}
-                  m_action = {{{error_action}}};
-                  {{/error_action}}
-                  break;
-                {{/per_process_step}}
-              }
-              break;
-            {{/per_process}}
-          }
-          break;
-        {{/machine_errors}}
+        {{/all_errors}}
         default:
           break;
       }

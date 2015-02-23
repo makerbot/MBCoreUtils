@@ -1,7 +1,4 @@
-{
-    "per_source": true,
-    "per_process": true,
-    "per_process_step": true,
+error_dict = {
     "machine_errors": [
         {"use_base": "tool_critical", "name": "toolhead_no_response", "pretty_name": "Toolhead No Response", "id": 263},
         {"use_base": "tool_critical", "name": "toolhead_malformed_packet", "pretty_name": "Toolhead Malformed Packet", "id": 270},
@@ -9,7 +6,7 @@
         {"use_base": "tool_critical", "name": "could_not_send_toolhead_command", "pretty_name": "Could Not Send Toolhead Command", "id": 1038},
         {"use_base": "tool_critical", "name": "toolhead_not_initialized", "pretty_name": "Toolhead Not Initialized", "id": 272},
         {"use_base": "tool_critical", "name": "toolhead_feeder_sleep_interrupted", "pretty_name": "Toolhead Feeder Sleep Interrupted", "id": 1037},
-        {"use_base" : "tool_critical", "name" : "eeprom_update_failed", "pretty_name": "Smart Extruder Update Failed", "id":1045},
+        {"use_base": "tool_critical", "name": "eeprom_update_failed", "pretty_name": "Smart Extruder Update Failed", "id": 1045},
         {"use_base": "homing_problem", "name": "homing_not_completed", "pretty_name": "Homing Not Completed", "id": 1016},
         {"use_base": "homing_problem", "name": "unknown_homing_method", "pretty_name": "Unknown Homing Method", "id": 1025},
         {"use_base": "homing_problem", "name": "no_hes_log", "pretty_name": "No Hes Log", "id": 1023},
@@ -71,17 +68,18 @@
         {"use_base": "misc_error", "name": "file_not_found", "pretty_name": "File Not Found", "id": 1012},
         {"use_base": "misc_error", "name": "interface_led_comms_error", "pretty_name": "Interface Led Comms Error", "id": 288},
         {"use_base": "misc_error", "name": "power_monitor_i2c_failure", "pretty_name": "Power Monitor I2C Failure", "id": 295},
-        {"use_base": false,
-         "name": "tool_not_calibrated",
-         "pretty_name":"Smart Extruder Not Calibrated",
-         "title": "Run Calibration",
-         "message": "Please run Z-Calibration before printing with this Smart Extruder",
-         "error_type" : "tool_error",
-         "error_action": "calibrate_z",
-         "id": 1046
+        {
+            "use_base": False,
+            "name": "tool_not_calibrated",
+            "pretty_name": "Smart Extruder Not Calibrated",
+            "title": "Run Calibration",
+            "message": "Please run Z-Calibration before printing with this Smart Extruder",
+            "error_type": "tool_error",
+            "error_action": "calibrate_z",
+            "id": 1046
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "no_build_plate",
             "pretty_name": "No Build Plate",
             "title": "No Build Plate",
@@ -91,7 +89,7 @@
             "id": 1029
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "carriage_program_failure",
             "pretty_name": "Carriage Program Failure",
             "title": "Carriage Program Failed",
@@ -101,7 +99,7 @@
             "id": 1009
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "no_hes_change",
             "pretty_name": "No Hes Change",
             "title": "Homing Error",
@@ -111,7 +109,7 @@
             "id": 1024
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "both_sides_too_high",
             "pretty_name": "Both Sides Too High",
             "title": "Leveling Error",
@@ -121,7 +119,7 @@
             "id": 1027
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "leveling_with_filament",
             "pretty_name": "Leveling With Filament",
             "title": "Clear Filament",
@@ -131,7 +129,7 @@
             "id": 1028
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "print_tool_connect_failed",
             "pretty_name": "Print Tool Connect Failed",
             "title": "Extruder Error",
@@ -141,7 +139,7 @@
             "id": 1014
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "chamber_program_failure",
             "pretty_name": "Chamber Program Failure",
             "title": "Chamber Program Failed",
@@ -151,7 +149,7 @@
             "id": 1010
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "z_pause",
             "pretty_name": "Z Pause",
             "title": "Print Paused",
@@ -161,7 +159,7 @@
             "id": 501
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "move_command_outside_axis_bounds",
             "pretty_name": "Move Command Outside Axis Bounds",
             "title": "File Error",
@@ -171,7 +169,7 @@
             "id": 1039
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "toolhead_not_heating",
             "pretty_name": "Toolhead Not Heating",
             "title": "Heating Error",
@@ -181,17 +179,17 @@
             "id": 1001
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "out_of_filament",
             "pretty_name": "Out of Filament",
             "title": "Out of Filament",
             "message": "Please wait while your Smart Extruder unloads any leftover filament. (Warning %d)",
             "error_type": "filament_error",
             "error_action": "change_filament",
-            "id": 1041 
+            "id": 1041
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "no_filament_loaded",
             "pretty_name": "No Filament",
             "title": "No Filament",
@@ -201,7 +199,7 @@
             "id": 1040
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "printing_network_error",
             "pretty_name": "Network Error",
             "title": "Network Error",
@@ -211,7 +209,7 @@
             "id": 1042
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "cloud_slicing_error",
             "pretty_name": "Slicing Error",
             "title": "Slicing Error",
@@ -221,13 +219,13 @@
             "id": 1043
         },
         {
-            "use_base" : false,
-            "name" : "operation_timed_out",
-            "pretty_name" : "Internal Timeout",
+            "use_base": False,
+            "name": "operation_timed_out",
+            "pretty_name": "Internal Timeout",
             "message": "Internal operation timed out. Please contact Support.",
             "error_type": "none",
-            "error_action" : "acknowledge",
-            "id":1100
+            "error_action": "acknowledge",
+            "id": 1100
         }
     ],
 
@@ -236,7 +234,7 @@
         {"use_base": "tool_problem", "name": "thermocouple_unplugged", "pretty_name": "Thermocouple Unplugged", "id": 67},
         {"use_base": "tool_problem", "name": "thermocouple_too_hot", "pretty_name": "Thermocouple Too Hot", "id": 68},
         {"use_base": "tool_problem", "name": "thermocouple_communication_failure", "pretty_name": "Thermocouple Communication Failure", "id": 65},
-        {"use_base": "tool_problem", "name" : "thermocouple_data_unchanging", "pretty_name" : "Thermocouple Data Not Changing", "id" : 75},
+        {"use_base": "tool_problem", "name": "thermocouple_data_unchanging", "pretty_name": "Thermocouple Data Not Changing", "id": 75},
         {"use_base": "tool_problem", "name": "thermocouple_data_invalid", "pretty_name": "Thermocouple Data Invalid", "id": 69},
         {"use_base": "tool_critical", "name": "heater_short", "pretty_name": "Heater Short", "id": 50},
         {"use_base": "tool_critical", "name": "filament_fan_short", "pretty_name": "Filament Fan Short", "id": 52},
@@ -280,7 +278,7 @@
         {"use_base": "misc_error", "name": "eeprom_write_failure", "pretty_name": "EEPROM Write Failure", "id": 140},
         {"use_base": "misc_error", "name": "eeprom_verify_failure", "pretty_name": "EEPROM Verify Failure", "id": 141},
         {
-            "use_base": false,
+            "use_base": False,
             "name": "no_filament",
             "pretty_name": "No Filament",
             "title": "Out of Filament",
@@ -290,7 +288,7 @@
             "id": 80
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "door_interlock_triggered",
             "pretty_name": "Door Interlock Triggered",
             "title": "Chamber Open",
@@ -300,7 +298,7 @@
             "id": 48
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "heater_hold_watchdog_triggered",
             "pretty_name": "Heater Hold Watchdog Triggered",
             "title": "Extruder Cooling",
@@ -310,7 +308,7 @@
             "id": 56
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "filament_slip",
             "pretty_name": "Filament Slip",
             "title": "Filament Jam",
@@ -320,7 +318,7 @@
             "id": 81
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "no_tool_connected",
             "pretty_name": "No Tool Connected",
             "title": "Extruder Error",
@@ -330,17 +328,17 @@
             "id": 54
         },
         {
-            "use_base" : false,
-            "name" : "bad_tool_connected",
-            "pretty_name" : "Bad Tool Connected",
-            "title" : "Extruder Error",
+            "use_base": False,
+            "name": "bad_tool_connected",
+            "pretty_name": "Bad Tool Connected",
+            "title": "Extruder Error",
             "message": "Your Smart Extruder has been corrupted (Error %d). Please visit our Support page at Makerbot.com/support.",
             "error_type": "tool_error",
-            "error_action":"acknowledge",
+            "error_action": "acknowledge",
             "id": 46
         },
         {
-            "use_base": false,
+            "use_base": False,
             "name": "not_connected",
             "pretty_name": "Toolhead Not Connected",
             "title": "Toolhead Disconnect",
@@ -348,7 +346,7 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 13,
-            "alt_ids" : [{"id": 15}, {"id": 16}],
+            "alt_ids": [{"id": 15}, {"id": 16}],
             "per_source": [
                 {
                     "source_type": "chamber",
@@ -361,8 +359,7 @@
                     "pretty_name": "Carriage Not Connected",
                     "title": "Carriage Disconnected",
                     "message": "The extruder carriage is disconnected from the machine (Error %d). Please visit our Support page at Makerbot.com/support."
-                },
-                {}
+                }
             ]
         }
     ],
@@ -453,3 +450,74 @@
         {"name": "calibrate_z", "value": 6}
     ]
 }
+
+
+def has_key(obj, key):
+    if isinstance(obj, dict):
+        return key in obj or any(has_key(v, key) for v in obj.itervalues())
+    elif isinstance(obj, list):
+        return any(has_key(o, key) for o in obj)
+    else:
+        return False
+
+
+# Switch keys are used to specialize errors based on additional
+# information.  To use a key <KEY> in a given error, a "per_<KEY>"
+# field must be present and contain a list of dicts that contain
+# a "<KEY>_type" field and one of more overrides for other error
+# fields.  To use multiple keys, they must be nested in the
+# following order:
+SWITCH_KEYS = ('source', 'process', 'process_step')
+
+
+def validate_error(error, loc_msg, switch_keys=SWITCH_KEYS):
+    """
+    Verify that switch keys are used correctly.  This also adds an empty
+    dict to the end of every switch list to generate default cases.
+    """
+    def nest_error(key):
+        raise Exception('In %s, %s improperly nested' % (loc_msg, key))
+    top_key = 'per_'+switch_keys[0]
+    if top_key in error:
+        switch_list = error[top_key]
+        del error[top_key]
+        for key in ['per_'+s for s in switch_keys]:
+            if has_key(error, key):
+                nest_error(key)
+        if not isinstance(switch_list, list):
+            raise Exception('In %s, %s must be a list' % (loc_msg, top_key))
+        type_name = switch_keys[0]+'_type'
+        for sub_dict in switch_list:
+            if type_name not in sub_dict:
+                raise Exception('In %s, all %s entries must contain %s' %
+                                (loc_msg, top_key, type_name))
+            if has_key(sub_dict, top_key):
+                nest_error(top_key)
+            if len(switch_keys) > 1:
+                validate_error(sub_dict, loc_msg, switch_keys[1:])
+        switch_list.append({})
+        error[top_key] = switch_list
+    elif has_key(error, top_key):
+        nest_error(top_key)
+    elif len(switch_keys) > 1:
+        validate_error(error, loc_msg, switch_keys[1:])
+
+
+def generate_context(env, target, source):
+    for key in SWITCH_KEYS:
+        error_dict['per_'+key] = True
+
+    for error in error_dict['machine_errors']:
+        if has_key(error, 'per_source'):
+            raise Exception('Machine error %s cannot depend on toolhead source'
+                            % error.get('name', repr(error)))
+
+    all_errors = []
+    for dname in ('machine_errors', 'toolhead_errors'):
+        for error in error_dict[dname]:
+            loc_msg = '%s in %s' % (error.get('name', repr(error)), dname)
+            validate_error(error, loc_msg)
+            all_errors.append(error)
+    error_dict['all_errors'] = all_errors
+
+    return error_dict
