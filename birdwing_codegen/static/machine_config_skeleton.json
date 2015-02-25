@@ -45,14 +45,14 @@
     "extra_slicer_settings": {
         "plate_variability": null
     },
-    “extruder_profiles”: {
+    "extruder_profiles": {
         "*EXT_TYPE_NAME*" : {
             "nozzle_diameter": null,
             "id": null,
             "materials": {
                 "*MAT_NAME*": {
                     "feedstock_diameter": null,
-                    “temperature”: null,
+                    "temperature": null,
                     "ooze_feedstock_distance": null,
                     "hop_distance": null,
                     "retract_distance": null,
@@ -64,10 +64,10 @@
                         "min_speed_change": null,
                         "max_speed_change": null,
                         "impulse_speed_limit": null,
-                        "slip_compensation": null,
+                        "slip_compensation": null
                     }
-                },
-            },
+                }
+            }
         },
         "supported_extruders" : {
             "*EXT_MARK_NAME*" : "*EXT_TYPE_NAME*"
@@ -76,7 +76,7 @@
             {
                 "type": null,
                 "calibrated": null
-            },
+            }
         ]
     }
 }
