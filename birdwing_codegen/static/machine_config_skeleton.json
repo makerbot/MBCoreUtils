@@ -15,7 +15,8 @@
     "gantry_configuration": {
         "max_outer_shell_speed": null,
         "max_inner_shell_speed": null,
-        "max_travel_speed": null,
+        "rapid_move_feed_rate_xy": null,
+        "rapid_move_feed_rate_z" : null,
         "max_fill_speed": null
     },
     "acceleration": {
@@ -50,10 +51,9 @@
             "nozzle_diameter": null,
             "materials": {
                 "*": {
-                    "feedstock_diameter": null,
+                    "feed_diameter": null,
                     "temperature": null,
                     "ooze_feedstock_distance": null,
-                    "hop_distance": null,
                     "retract_distance": null,
                     "retract_rate": null,
                     "restart_rate": null,
