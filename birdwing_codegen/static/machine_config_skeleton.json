@@ -18,25 +18,25 @@
         "max_travel_speed": null,
         "max_fill_speed": null
     },
-    "acceleration_settings": {
-        "split_move_distance": null,
+    "acceleration": {
+        "split_move_distance_mm": null,
         "split_move_recursion_count": null,
-        "rate": {
+        "rate_mm_per_s_sq": {
             "x": null,
             "y": null,
             "z": null
         },
-        "min_speed_change": {
+        "min_speed_change_mm_per_s": {
             "x": null,
             "y": null,
             "z": null
         },
-        "max_speed_change": {
+        "max_speed_change_mm_per_s": {
             "x": null,
             "y": null,
             "z": null
         },
-        "impulse_speed_limit": {
+        "impulse_speed_limit_mm_per_s": {
             "x": null,
             "y": null,
             "z": null
@@ -46,11 +46,10 @@
         "plate_variability": null
     },
     "extruder_profiles": {
-        "*EXT_TYPE_NAME*" : {
+        "*" : {
             "nozzle_diameter": null,
-            "id": null,
             "materials": {
-                "*MAT_NAME*": {
+                "*": {
                     "feedstock_diameter": null,
                     "temperature": null,
                     "ooze_feedstock_distance": null,
@@ -59,24 +58,17 @@
                     "retract_rate": null,
                     "restart_rate": null,
                     "max_flow_rate": null,
-                    "acceleration_settings": {
-                        "rate": null,
-                        "min_speed_change": null,
-                        "max_speed_change": null,
-                        "impulse_speed_limit": null,
-                        "slip_compensation": null
+                    "acceleration": {
+                        "rate_mm_per_s_sq": null,
+                        "min_speed_change_mm_per_s": null,
+                        "max_speed_change_mm_per_s": null,
+                        "impulse_speed_limit_mm_per_s": null,
+                        "slip_compensation_table": null
                     }
                 }
             }
         },
-        "supported_extruders" : {
-            "*EXT_MARK_NAME*" : "*EXT_TYPE_NAME*"
-        },
-        "attached_extruders" : [
-            {
-                "type": null,
-                "calibrated": null
-            }
-        ]
+        "supported_extruders" : "--generated--",
+        "attached_extruders" : "--generated--"
     }
 }
