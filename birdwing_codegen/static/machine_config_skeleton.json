@@ -1,6 +1,6 @@
 {
     "version": 1.0,
-    "machine_type" : "--generated--",
+    "bot_type": null,
     "makerbot_generation" : 5,
     "build_volume": {
         "x": null,
