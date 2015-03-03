@@ -12,4 +12,5 @@ pre_commit_checks = [
     hook_tools.jsonlint_check
 ]
 
-hook_tools.cpplint_check.ignore.append('birdwing_codegen/*')
+for check in pre_commit_checks:
+    check.ignore.append('birdwing_codegen/templates/*')
