@@ -173,7 +173,7 @@ private:
                       m_title = "{{{title}}}";
                       {{/title}}
                       {{#message}}
-                      m_message = (boost::format("{{{message}}}") % static_cast<int>(m_error)).str();
+                      m_message = "{{{message}}}";
                       {{/message}}
                       {{#error_type}}
                       m_type = {{{error_type}}};

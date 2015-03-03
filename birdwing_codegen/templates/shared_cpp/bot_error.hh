@@ -113,7 +113,7 @@ private:
         message(message),
         type(type),
         action(action) {}
-	ErrorDefaults() {}
+        ErrorDefaults() {}
         ~ErrorDefaults() {}
 
 
@@ -131,7 +131,7 @@ private:
                 return ErrorDefaults(QStringLiteral("{{{title}}}"), "{{{message}}}", {{error_type}}, {{error_action}});
             {{/error_bases}}
         }
-	return ErrorDefaults();
+        return ErrorDefaults();
     }
 
     // Because of the way we do codegen this function has to be indented to
@@ -189,7 +189,7 @@ private:
                       m_title = QStringLiteral("{{{title}}}");
                       {{/title}}
                       {{#message}}
-                      m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
+                      m_message = QStringLiteral("{{{message}}}");
                       {{/message}}
                       {{#error_type}}
                       m_type = {{{error_type}}};

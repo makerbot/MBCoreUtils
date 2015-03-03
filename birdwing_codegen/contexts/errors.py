@@ -503,6 +503,18 @@ def validate_error(error, loc_msg, switch_keys=SWITCH_KEYS):
         validate_error(error, loc_msg, switch_keys[1:])
 
 
+def err_id_fill(error, loc_msg, id=None):
+    """ Fill in the error id at codegen time. """
+    if id is None and 'id' in error:
+        id = error['id']
+    if 'message' in error and '%d' in error['message']:
+        error['message'] = error['message'] % id
+    for val in error.values():
+        if isinstance(val, list):
+            for sub_dict in val:
+                err_id_fill(sub_dict, loc_msg, id)
+
+
 def generate_context(env, target, source):
     for key in SWITCH_KEYS:
         error_dict['per_'+key] = True
@@ -517,6 +529,7 @@ def generate_context(env, target, source):
         for error in error_dict[dname]:
             loc_msg = '%s in %s' % (error.get('name', repr(error)), dname)
             validate_error(error, loc_msg)
+            err_id_fill(error, loc_msg)
             all_errors.append(error)
     error_dict['all_errors'] = all_errors
 

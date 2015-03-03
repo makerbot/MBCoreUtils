@@ -8,15 +8,12 @@
 namespace bwcoreutils {
 
 enum Error {
-    {{#machine_errors}}
-    {{name}} = {{id}},
-    {{/machine_errors}}
-    {{#toolhead_errors}}
+    {{#all_errors}}
     {{name}} = {{id}},
     {{#alt_ids}}
     {{name}}AltId{{id}} = {{id}},
     {{/alt_ids}}
-    {{/toolhead_errors}}
+    {{/all_errors}}
 
 }; // enum
 
