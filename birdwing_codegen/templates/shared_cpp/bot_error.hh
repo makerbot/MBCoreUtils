@@ -64,13 +64,17 @@ public:
 
     explicit BotError(int errorCode, int toolhead_index, ToolheadType toolhead_type) :
         BotError(static_cast<Error>(errorCode), toolhead_index, toolhead_type) {}
-                
 
-    // DEPRECATED
+    explicit BotError(Error errorCode, ProcessType process_type, ProcessStep process_step) :
+        BotError(errorCode, -1, ToolheadType::kUnknownToolheadType,
+                 process_type, process_step) {}
+
+    explicit BotError(int errorCode, ProcessType process_type, ProcessStep process_step) :
+        BotError(static_cast<Error>(errorCode), process_type, process_step) {}
+
     explicit BotError(Error errorCode) :
         BotError(errorCode, -1, ToolheadType::kUnknownToolheadType) {}
 
-    // DEPRECATED
     explicit BotError(int errorCode) :
         BotError(static_cast<Error>(errorCode)) {}
        

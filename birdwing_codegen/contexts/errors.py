@@ -291,11 +291,23 @@ error_dict = {
             "use_base": False,
             "name": "door_interlock_triggered",
             "pretty_name": "Door Interlock Triggered",
-            "title": "Chamber Open",
+            "title": "Door Open",
             "message": "The heated build chamber is open (Warning %d). Please close the door to continue.",
             "error_type": "chamber_error",
             "error_action": "acknowledge",
-            "id": 48
+            "id": 48,
+            "per_process": [
+                {
+                    "process_type": "PrintProcess",
+                    "per_process_step": [
+                        {
+                            "process_step_type": "suspending",
+                            "message": "Please close the door to continue printing.",
+                            "error_action": "close_door"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "use_base": False,
@@ -447,7 +459,8 @@ error_dict = {
         {"name": "zpaused", "value": 3},
         {"name": "unload_filament", "value": 4},
         {"name": "attach_tool", "value": 5},
-        {"name": "calibrate_z", "value": 6}
+        {"name": "calibrate_z", "value": 6},
+        {"name": "close_door", "value": 7}
     ]
 }
 
