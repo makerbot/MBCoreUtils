@@ -528,6 +528,21 @@ def err_id_fill(error, loc_msg, id=None):
                 err_id_fill(sub_dict, loc_msg, id)
 
 
+def use_base_fill(error, loc_msg, base_dict):
+    """
+    Add a "base_message" field for bot_error_noboost.hh
+    so that we don't have to do any string formatting there.
+    """
+    base = error.get('use_base')
+    if base:
+        if base not in base_dict:
+            raise Exception('In %s, unknown use_base %s' % (loc_msg, base))
+        if 'pretty_name' not in error:
+            raise Exception('In %s, use_base requires pretty_name' % (loc_msg))
+        error['base_message'] = (base_dict[base]['message'] %
+                                 (error['id'], error['pretty_name']))
+
+
 def generate_context(env, target, source):
     for key in SWITCH_KEYS:
         error_dict['per_'+key] = True
@@ -537,12 +552,15 @@ def generate_context(env, target, source):
             raise Exception('Machine error %s cannot depend on toolhead source'
                             % error.get('name', repr(error)))
 
+    base_dict = {b['name']: b for b in error_dict['error_bases']}
+
     all_errors = []
     for dname in ('machine_errors', 'toolhead_errors'):
         for error in error_dict[dname]:
             loc_msg = '%s in %s' % (error.get('name', repr(error)), dname)
             validate_error(error, loc_msg)
             err_id_fill(error, loc_msg)
+            use_base_fill(error, loc_msg, base_dict)
             all_errors.append(error)
     error_dict['all_errors'] = all_errors
 
