@@ -121,11 +121,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
 # This could probably be handled more elegantly.
 #
 if ("MBCOREUTILS_BIRDWING" in os.environ):
-    # This is here to prevent "cannot find target 'install'"  errors.
-    # There may be a more logical thing to do with this alias
-    env.BWCopyStaticSettings(os.path.join(str(Dir("#/")), 'birdwing_codegen', 'static'))
-    path = os.path.join(str(Dir("#/")), 'obj', 'include')
-    Alias("install", path)
+    env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
 else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
