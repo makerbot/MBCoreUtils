@@ -122,6 +122,11 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
 #
 if ("MBCOREUTILS_BIRDWING" in os.environ):
     env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
+    # When our target is "install", we still need to build all
+    # local files.  These files are still required by install
+    # targets in other repositories.
+    path = os.path.join(str(Dir("#/")), 'obj', 'include')
+    Alias("install", path)
 else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
