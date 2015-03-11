@@ -45,4 +45,5 @@ _name_map = {
 
 invalid_tool = _name_map['invalid_id']
 
-valid_ids = set(t.id for t in _id_map.values() if t.valid())
+valid_ids = sorted(set(t.id for t in _id_map.values() if t.valid()))
+valid_tools = [Tool.from_id(i) for i in valid_ids]
