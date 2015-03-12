@@ -113,6 +113,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
             os.path.join(copyfrom, os.path.basename(header)),
             Copy("$TARGET", "$SOURCE")
         )
+
 # -- End Mustache-based codegen stuff -- #
 
 #
@@ -120,8 +121,10 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
 # This could probably be handled more elegantly.
 #
 if ("MBCOREUTILS_BIRDWING" in os.environ):
-    # This is here to prevent "cannot find target 'install'"  errors.
-    # There may be a more logical thing to do with this alias
+    env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
+    # When our target is "install", we still need to build all
+    # local files.  These files are still required by install
+    # targets in other repositories.
     path = os.path.join(str(Dir("#/")), 'obj', 'include')
     Alias("install", path)
 else:

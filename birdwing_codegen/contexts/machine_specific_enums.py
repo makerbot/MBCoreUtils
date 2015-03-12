@@ -66,10 +66,10 @@ def generate_context(env, target, source):
         with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
             machine_settings_config = json.load(f)
             tool_count = 0
-            if "Toolheads" in machine_settings_config:
-                for tool in machine_settings_config['Toolheads']:
+            if "toolheads" in machine_settings_config:
+                for tool in machine_settings_config['toolheads']:
                     tool_count += len(
-                        machine_settings_config["Toolheads"][tool]["Locations"]
+                        machine_settings_config["toolheads"][tool]["locations"]
                     )
             expected_toolhead_count_constant = {
                 "name": "expected_toolhead_count",
