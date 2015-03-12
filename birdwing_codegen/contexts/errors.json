@@ -72,7 +72,7 @@
          "name": "tool_not_calibrated",
          "pretty_name":"Smart Extruder Not Calibrated",
          "title": "Run Calibration",
-         "message": "Please run Z-Calibration before printing with this Smart Extruder",
+         "message": "Please run Homing Calibration before printing with this Smart Extruder",
          "error_type" : "tool_error",
          "error_action": "calibrate_z",
          "id": 1046
