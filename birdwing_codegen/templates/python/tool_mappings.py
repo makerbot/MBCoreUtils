@@ -33,9 +33,7 @@ class Tool(object):
 
 _id_map = {
     {{#tools}}
-        0x{{id}}: {'pretty_name' : u'{{pretty_name}}',
-                   'short_name' : u'{{name}}',
-                   'type_name': u'{{type_name}}'},
+        {{id}}: Tool({{id}}, u'{{type_name}}', u'{{name}}', u'{{pretty_name}}'),
 
     {{/tools}}
 }
@@ -44,12 +42,6 @@ _name_map = {
     {{#tools}}
         u'{{name}}': _id_map[{{id}}],
     {{/tools}}
-}
-
-id_to_material = {
-    {{#materials}}
-        {{id}} : "{{name}}",
-    {{/materials}}
 }
 
 invalid_tool = _name_map['invalid_id']

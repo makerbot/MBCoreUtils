@@ -218,6 +218,36 @@
             "id": 1043
         },
         {
+            "use_base": false,
+            "name": "print_extruder_mismatch",
+            "pretty_name": "Slice Incompatible: Extruder",
+            "title": "Print File Error",
+            "message": "This print file was sliced for a different extruder type. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1048
+        },
+        {
+            "use_base": false,
+            "name": "print_machine_mismatch",
+            "pretty_name": "Slice Incompatible: Machine",
+            "title": "Print File Error",
+            "message": "This print file was sliced for a different machine type. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1049
+        },
+        {
+            "use_base": false,
+            "name": "print_version_mismatch",
+            "pretty_name": "Slice Incompatible: Version",
+            "title": "Print File Error",
+            "message": "This print file is not compatible with this firmware. Please upgrade firmware. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1050
+        },
+        {
             "use_base" : false,
             "name" : "operation_timed_out",
             "pretty_name" : "Internal Timeout",

@@ -8,32 +8,34 @@
 
 namespace bwcoreutils {
 
+enum class TOOL : int {
+    {{#tools}}
+    {{name}} = {{id}},
+    {{/tools}}
+};
+
+enum class TYPE : int {
+    {{#types}}
+    {{name}},
+    {{/types}}
+};
+
+enum class MATERIALS : int {
+    {{#materials}}
+    {{name}} = {{id}},
+    {{/materials}}
+};
 // This class takes a tool_id and exposes metadata for that tool.
 // Primarily intended to be used for UI clients.
 // TODO(jacksonh) - use qt to make these translatable.
 class YonkersTool {
 public:
 
-    enum class TOOL : int {
-        {{#tools}}
-        {{name}} = {{id}},
-        {{/tools}}
-    };
-
-    enum class TYPE : int {
-        {{#types}}
-        {{name}},
-        {{/types}}
-    };
-
-    enum class MATERIALS : int {
-        {{#materials}}
-        {{name}} = {{id}},
-        {{/materials}}
-    };
 
     YonkersTool(uint8_t id) :
         m_tool(static_cast<TOOL>(id)) {}
+
+    YonkersTool(TOOL id) : m_tool(id) {}
     ~YonkersTool() {}
 
     std::string name() const {
