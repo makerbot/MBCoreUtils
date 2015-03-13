@@ -23,14 +23,15 @@ def generate_context(env, target, source):
     if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
         with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
             machine_config = json.load(f)
-            if 'Toolheads' in machine_config:
-                for tool in machine_config['Toolheads']:
-                    tool_dict = machine_config['Toolheads'][tool]
-                    for tool_num in tool_dict['Locations']:
+            if 'toolheads' in machine_config:
+                for tool in machine_config['toolheads']:
+                    tool_dict = machine_config['toolheads'][tool]
+                    for tool_num in tool_dict['locations']:
                         toolhead_metadata = {
-                            "name": tool,
+                            "name": ''.join([x.title()
+                                             for x in tool.split('_')]),
                             "index": tool_num,
-                            "program_floc": tool_dict['Program'],
+                            "program_floc": tool_dict['program'],
                             "toolhead_include": "{0}_toolhead_manager.hh"
                                                 .format(tool.lower())
                         }

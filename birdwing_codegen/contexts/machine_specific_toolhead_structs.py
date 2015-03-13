@@ -75,14 +75,15 @@ base_structs_dict = {
             ]
         }
     ],
-    "utility" : [
+    "utility": [
         {
             "name": "tool_usage",
             "fields": [
                 {"name": "retract_count", "type": "uint32", "default": "0"},
                 {"name": "extrusion_time_s", "type": "uint32", "default": "0"},
-                {"name": "extrusion_distance_mm", "type":"uint32", "default": "0"},
-                {"name": "refurb_count", "type":"uint8", "default": "0"}
+                {"name": "extrusion_distance_mm", "type": "uint32",
+                 "default": "0"},
+                {"name": "refurb_count", "type": "uint8", "default": "0"}
             ]
         }
     ]
@@ -101,10 +102,10 @@ def generate_context(env, target, source):
     if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
         with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
             machine_settings_config = json.load(f)
-            if 'Toolheads' in machine_settings_config:
-                for tool in machine_settings_config['Toolheads']:
-                    tool_dict = machine_settings_config['Toolheads'][tool]
-                    for tool_num in tool_dict['Locations']:
+            if 'toolheads' in machine_settings_config:
+                for tool in machine_settings_config['toolheads']:
+                    tool_dict = machine_settings_config['toolheads'][tool]
+                    for tool_num in tool_dict['locations']:
                         struct_field = {
                             "name": "toolhead_{0}_status".format(tool_num),
                             "type": "{0}_toolhead".format(tool.lower())
