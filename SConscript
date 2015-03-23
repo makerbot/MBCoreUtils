@@ -21,7 +21,7 @@ _recursive_file_glob = env.MBRecursiveFileGlob
 
 # -- Mustache-based codegen stuff -- #
 
-if 'MBCOREUTILS_BIRDWING' in os.environ:
+if 'BW_TOOLCHAIN_BUILD' in os.environ:
     # If we're building for birdwing, pull in the birdwing_install
     # tool so default arguments like 'machine' are properly initialized.
     env.Tool('birdwing_install')
@@ -83,7 +83,7 @@ env.MustacheCodegen(context_dir=os.path.join(str(Dir("#/")),
                     ext_deps=external_sources)
 
 
-if ("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac():
+if ("BW_TOOLCHAIN_BUILD" in os.environ) or env.MBIsLinux() or env.MBIsMac():
     # Add an empty command that makes the top-level directory target
     # depend on the header files. This ensures the static header files
     # are copied into the variant dir.
@@ -120,7 +120,7 @@ for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
 # Swap out some things if we are building for birdwing or desktop.
 # This could probably be handled more elegantly.
 #
-if ("MBCOREUTILS_BIRDWING" in os.environ):
+if ("BW_TOOLCHAIN_BUILD" in os.environ):
     env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
     # When our target is "install", we still need to build all
     # local files.  These files are still required by install
