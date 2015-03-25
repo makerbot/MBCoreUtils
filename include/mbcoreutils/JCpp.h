@@ -155,11 +155,11 @@ namespace JCpp {
                 static_cast<void>(What);
                 return deflt;
         }
-        virtual void CallBack(const std::string) = 0;
-        virtual void CallBack(CallBacker::payload&) = 0;
-        virtual void CallBack(CallBacker::payload&, CallBacker::payload&) = 0;
-        virtual void TickBack() = 0;
-        virtual bool GetRunningState() = 0;
+        virtual void CallBack(const std::string) {}
+        virtual void CallBack(CallBacker::payload&) {}
+        virtual void CallBack(CallBacker::payload&, CallBacker::payload&) {}
+        virtual void TickBack() {}
+        virtual bool GetRunningState() {}
 
         protected:
         PrimitiveBase* parent;
