@@ -116,6 +116,15 @@ class VectorVersion {
     return result;
   }
 
+  /// Return a Json cpp array of the version
+  Json::Value array() const {
+    Json::Value result;
+    for (const auto &v : m_vec) {
+      result.append(v);
+    }
+    return result;
+  }
+
   bool operator==(const VectorVersion &other) const {
     return cmp(other) == 0;
   }
