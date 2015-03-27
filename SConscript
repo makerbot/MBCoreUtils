@@ -9,6 +9,7 @@ env = Environment(
     tools=['default', 'mb_install',
            'mustache_codegen'],
     toolpath=['#../mw-scons-tools',
+              "#Install/mw-scons-tools",
               'site_scons',
               os.environ.setdefault('BWSCONSTOOLS_PATH',
                                     '#/../bw-scons-tools')])
