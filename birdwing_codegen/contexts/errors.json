@@ -232,7 +232,7 @@
             "name": "print_machine_mismatch",
             "pretty_name": "Slice Incompatible: Machine",
             "title": "Print File Error",
-            "message": "This print file was sliced for a different machine type. (Error %d)",
+            "message": "This print file was sliced for a different machine type. Please reslice for the correct printer. (Error %d)",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1049
@@ -242,7 +242,7 @@
             "name": "print_version_mismatch",
             "pretty_name": "Slice Incompatible: Version",
             "title": "Print File Error",
-            "message": "This print file is not compatible with this firmware. Please upgrade firmware. (Error %d)",
+            "message": "This print file is not compatible with this firmware version. Please upgrade firmware. (Error %d)",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1050
