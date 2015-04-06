@@ -248,6 +248,16 @@
             "id": 1050
         },
         {
+            "use_base": false,
+            "name": "print_raft_disabled",
+            "pretty_name": "Slice Incompatible: Raft",
+            "title": "Print File Error",
+            "message": "The selected print was sliced without a raft, but a raft is recommended for this type of printer. Please reslice with a raft. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1051
+        },
+        {
             "use_base" : false,
             "name" : "operation_timed_out",
             "pretty_name" : "Internal Timeout",
