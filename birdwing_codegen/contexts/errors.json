@@ -222,7 +222,7 @@
             "name": "print_extruder_mismatch",
             "pretty_name": "Slice Incompatible: Extruder",
             "title": "Print File Error",
-            "message": "This print file was sliced for a different extruder type. (Error %d)",
+            "message": "The selected print was sliced for a different type of Smart Extruder. Please reslice for the attached Smart Extruder. (Error %d)",
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1048
