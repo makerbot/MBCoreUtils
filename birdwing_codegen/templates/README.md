@@ -1,6 +1,6 @@
-# Template Languages
+# Codegen Templates
 
-Currently implemented template languages are:
+Templates in each folder are used in different parts of the stack:
 
 - "[machine_cpp](machine_cpp)"
   -  These templates are written in CPP and their output is primarily used by the machine-driver and other low-level parts of the firmware.  The majority (all?) of machine-specific context generation is for these templates.

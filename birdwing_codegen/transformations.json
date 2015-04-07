@@ -90,7 +90,15 @@
 				"LAMBDA": "lambda s: s.upper()",
 				"REPLACE_MATCHING_VALS_IN_KEYS": false
 			}
-		}
+		},
+
+        "kaiten_api": {
+			"type_MAPPINGS": {
+				"str": "std::string",
+				"list": "Json::Value",
+				"dict": "Json::Value"
+			}
+        }
 	},
 
 	"machine_cpp": {

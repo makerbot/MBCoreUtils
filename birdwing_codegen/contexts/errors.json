@@ -259,6 +259,15 @@
         },
         {
             "use_base" : false,
+            "name" : "insufficient_usb_space",
+            "pretty_name" : "Insufficient Disk Space",
+            "message": "There is not enough free space on the attached USB drive.",
+            "error_type": "none",
+            "error_action" : "acknowledge",
+            "id": 1051
+        },
+        {
+            "use_base" : false,
             "name" : "operation_timed_out",
             "pretty_name" : "Internal Timeout",
             "message": "Internal operation timed out. Please contact Support.",
