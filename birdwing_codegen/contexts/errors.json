@@ -255,7 +255,7 @@
             "message": "The selected print was sliced without a raft, but a raft is recommended for this type of printer. Please reslice with a raft. (Error %d)",
             "error_type": "none",
             "error_action": "acknowledge",
-            "id": 1051
+            "id": 1052
         },
         {
             "use_base" : false,
