@@ -70,5 +70,6 @@
         },
         "supported_extruders" : "--generated--",
         "attached_extruders" : "--generated--"
-    }
+    },
+    "chamber_temperature_default" : "--generated--"
 }
