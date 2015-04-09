@@ -130,6 +130,9 @@ namespace JCpp {
             assert(parent);
             return *parent;
         }
+        PrimitiveBase* Parent() const {
+            return parent;
+        }
         PrimitiveBase& GetTrunk() {
             if (parent) return parent->GetTrunk();
             return *this;
