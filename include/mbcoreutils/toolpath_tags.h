@@ -63,6 +63,7 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Long Retract";
         case kLongRestart:
             return "Long Restart";
+        case LAST:
         default:
             return "";
     }
