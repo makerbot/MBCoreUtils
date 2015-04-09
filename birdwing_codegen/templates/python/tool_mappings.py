@@ -33,7 +33,8 @@ class Tool(object):
 
 _id_map = {
     {{#tools}}
-        {{id}}: Tool({{id}}, u'{{type}}', u'{{name}}', u'{{pretty_name}}'),
+        {{id}}: Tool({{id}}, u'{{type_name}}', u'{{name}}', u'{{pretty_name}}'),
+
     {{/tools}}
 }
 
