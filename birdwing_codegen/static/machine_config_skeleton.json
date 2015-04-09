@@ -1,5 +1,5 @@
 {
-    "version": 1.0,
+    "version": "1.1.0",
     "bot_type": null,
     "makerbot_generation" : 5,
     "build_volume": {
@@ -15,8 +15,8 @@
     "gantry_configuration": {
         "max_outer_shell_speed": null,
         "max_inner_shell_speed": null,
-        "rapid_move_feed_rate_xy": null,
-        "rapid_move_feed_rate_z" : null
+        "travel_speed_xy": null,
+        "travel_speed_z" : null
     },
     "acceleration": {
         "split_move_distance_mm": null,

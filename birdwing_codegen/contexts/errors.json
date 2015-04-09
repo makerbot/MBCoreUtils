@@ -218,6 +218,46 @@
             "id": 1043
         },
         {
+            "use_base": false,
+            "name": "print_extruder_mismatch",
+            "pretty_name": "Slice Incompatible: Extruder",
+            "title": "Print File Error",
+            "message": "The selected print was sliced for a different type of Smart Extruder. Please reslice for the attached Smart Extruder. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge_or_continue",
+            "id": 1048
+        },
+        {
+            "use_base": false,
+            "name": "print_machine_mismatch",
+            "pretty_name": "Slice Incompatible: Machine",
+            "title": "Print File Error",
+            "message": "This print file was sliced for a different machine type. Please reslice for the correct printer. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1049
+        },
+        {
+            "use_base": false,
+            "name": "print_version_mismatch",
+            "pretty_name": "Slice Incompatible: Version",
+            "title": "Print File Error",
+            "message": "This print file is not compatible with this firmware version. Please upgrade firmware. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1050
+        },
+        {
+            "use_base": false,
+            "name": "print_raft_disabled",
+            "pretty_name": "Slice Incompatible: Raft",
+            "title": "Print File Error",
+            "message": "The selected print was sliced without a raft, but a raft is recommended for this type of printer. Please reslice with a raft. (Error %d)",
+            "error_type": "none",
+            "error_action": "acknowledge_or_continue",
+            "id": 1052
+        },
+        {
             "use_base" : false,
             "name" : "insufficient_usb_space",
             "pretty_name" : "Insufficient Disk Space",
@@ -451,6 +491,7 @@
         {"name": "zpaused", "value": 3},
         {"name": "unload_filament", "value": 4},
         {"name": "attach_tool", "value": 5},
-        {"name": "calibrate_z", "value": 6}
+        {"name": "calibrate_z", "value": 6},
+        {"name": "acknowledge_or_continue", "value": 7}
     ]
 }
