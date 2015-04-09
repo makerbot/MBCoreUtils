@@ -126,9 +126,6 @@ namespace JCpp {
                 static_cast<void>(_type);
                 return o;
         }
-        PrimitiveBase* Parent() const {
-            return parent;
-        }
         PrimitiveBase& GetParent() const {
             assert(parent);
             return *parent;
