@@ -9,6 +9,8 @@
         {"name": "mark_12_5", "pretty_name": "Smart Extruder 12.5", "id": 6, "type": "squid"},
         {"name": "mark_12_1", "pretty_name" : "Smart Extruder 12.1", "id": 7, "type": "squid"},
         {"name": "mark_13", "pretty_name" : "Smart Extruder 13.0", "id": 8, "type": "orca"},
-        {"name": "mark_12_2", "pretty_name" : "Smart Extruder 12.2", "id": 9, "type": "squid"}
+        {"name": "mark_12_2", "pretty_name" : "Smart Extruder 12.2", "id": 9, "type": "squid"},
+        {"name": "mark_12_3", "pretty_name": "Smart Extruder 12.3", "id": 10, "type": "squid"},
+        {"name": "marK_12_4", "pretty_name": "Smart Extruder 12.4", "id": 11, "type": "squid"}
     ]
 }
