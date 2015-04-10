@@ -96,6 +96,21 @@ public:
         return type() == rValue.type();
     }
 
+    static bool toolpaths_equivalent(const TYPE a, const TYPE b) {
+        switch(a) {
+            {{#types}}
+        case TYPE::{{name}}:
+            switch(b) {
+            {{#toolpath_equivalents}}
+            case TYPE::{{name}}: return true; break;
+            {{/toolpath_equivalents}}
+            case TYPE::{{name}}: return true; break;
+            default: return false; break;
+            }
+            {{/types}}
+        }
+    }
+
 private:
     TOOL m_tool;
 };
