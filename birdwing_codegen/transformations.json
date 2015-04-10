@@ -83,7 +83,13 @@
 			"name_TRANSFORM": {
 				"LAMBDA": "lambda s: s.upper()",
 				"REPLACE_MATCHING_VALS_IN_KEYS": false
-			}
+			},
+            "toolpath_equivalents": {
+                "name_TRANSFORM": {
+				    "LAMBDA": "lambda s: s.upper()",
+				    "REPLACE_MATCHING_VALS_IN_KEYS": false
+                }
+            }
 		},
 		"materials": {
 			"name_TRANSFORM": {

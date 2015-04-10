@@ -14,9 +14,9 @@
         {"name": "marK_12_4", "pretty_name": "Smart Extruder 12.4", "id": 11, "type_name": "squid"}
     ],
     "types": [
-        {"name": "squid", "key": "squid"},
-        {"name": "orca", "key": "orca"},
-        {"name": "unknown", "key": "unknown_type"}
+        {"name": "squid", "key": "squid", "toolpath_equivalents": [{"name": "orca"}]},
+        {"name": "orca", "key": "orca", "toolpath_equivalents": [{"name": "squid"}]},
+        {"name": "unknown", "key": "unknown_type", "toolpath_equivalents": []}
     ],
     "materials": [
         {"name": "pla", "id": 0},
