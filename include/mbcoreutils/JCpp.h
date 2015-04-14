@@ -97,7 +97,10 @@ namespace JCpp {
         virtual PrimitiveBase* generate
             (PrimitiveBase* creator, const std::string& _name,
 		const Json::ValueType& _type)
-		    { return generate(creator, _name); } 
+	{ 
+                static_cast<void>(_type);
+		return generate(creator, _name); 
+	} 
         virtual PrimitiveBase& operator()
             (std::string name, std::string value,
              const Json::ValueType& _type = Json::stringValue,
@@ -130,6 +133,9 @@ namespace JCpp {
             assert(parent);
             return *parent;
         }
+        PrimitiveBase* Parent() const {
+            return parent;
+        }
         PrimitiveBase& GetTrunk() {
             if (parent) return parent->GetTrunk();
             return *this;
@@ -155,11 +161,11 @@ namespace JCpp {
                 static_cast<void>(What);
                 return deflt;
         }
-        virtual void CallBack(const std::string) = 0;
-        virtual void CallBack(CallBacker::payload&) = 0;
-        virtual void CallBack(CallBacker::payload&, CallBacker::payload&) = 0;
-        virtual void TickBack() = 0;
-        virtual bool GetRunningState() = 0;
+        virtual void CallBack(const std::string) {}
+        virtual void CallBack(CallBacker::payload&) {}
+        virtual void CallBack(CallBacker::payload&, CallBacker::payload&) {}
+        virtual void TickBack() {}
+        virtual bool GetRunningState() {return true;}
 
         protected:
         PrimitiveBase* parent;
