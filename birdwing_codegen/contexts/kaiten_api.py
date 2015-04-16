@@ -34,9 +34,10 @@ def generate_context(env, target, source):
     # todo(jacksonh): check for env variable pointing to api_docgen.py
     apigen_path = os.path.join(os.pardir, os.pardir, 'Birdwing-Software',
                                'firmware', 'kaiten', 'api_docgen.py')
+    pythonpath = env.GetOption('python33')
     if os.path.exists(apigen_path):
         api = json.loads(subprocess.check_output(
-                         ['python3.3', apigen_path, '-l 3']))
+                         [pythonpath, apigen_path, '-l 3']))
         api_dict['kaiten_api'] = add_metadata(api)
     elif 'MBCOREUTILS_BIRDWING' in env:
         raise Exception('Unable to locate %s, required for birdwing builds!'
