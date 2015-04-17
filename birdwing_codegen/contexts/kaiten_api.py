@@ -34,10 +34,7 @@ def generate_context(env, target, source):
     # todo(jacksonh): check for env variable pointing to api_docgen.py
     apigen_path = os.path.join(os.pardir, os.pardir, 'Birdwing-Software',
                                'firmware', 'kaiten', 'api_docgen.py')
-    try:
-        pythonpath = env.GetOption('python33')
-    except Exception as e:
-        pythonpath = 'python'
+    pythonpath = env.get('PYTHON_33', 'python3.3')
     if os.path.exists(apigen_path):
         api = json.loads(subprocess.check_output(
                          [pythonpath, apigen_path, '-l 3']))
