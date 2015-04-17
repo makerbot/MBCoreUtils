@@ -18,8 +18,10 @@
 
 
 namespace CallBacker {
+    struct payload;
     struct Discovery {
         virtual ~Discovery() {}
+	virtual void operator()(const payload&){}
     };
 
     struct payload {
