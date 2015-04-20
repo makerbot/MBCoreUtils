@@ -34,13 +34,13 @@ enum Material {
 inline std::string stringFromMaterial(const Material material) {
   switch (material) {
     case kMaterialABS:
-      return "ABS";
+      return "abs";
     case kMaterialPLA:
-      return "PLA";
+      return "pla";
     case kMaterialHIPS:
-      return "HIPS";
+      return "hips";
     case kMaterialPCL:
-      return "PCL";
+      return "pcl";
     case kMaterialUnknown:
       break;
   }
