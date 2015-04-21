@@ -1,21 +1,21 @@
 {
     "tools": [
         {"name": "invalid_id", "pretty_name": "Unknown", "id": 0, "type_name": "unknown"},
-        {"name": "mark_11", "pretty_name": "Smart Extruder 11.0", "id": 1, "type_name": "squid"},
-        {"name": "mark_11_mod_1", "pretty_name": "Smart Extruder 11.1", "id": 2, "type_name": "squid"},
-        {"name": "mark_11_mod_2", "pretty_name": "Smart Extruder 11.2", "id": 3, "type_name": "squid"},
-        {"name": "mark_11_mod_3", "pretty_name": "Smart Extruder 11.3", "id": 4, "type_name": "squid"},
-        {"name": "mark_12", "pretty_name": "Smart Extruder 12.0", "id": 5, "type_name": "squid"},
-        {"name": "mark_12_5", "pretty_name": "Smart Extruder 12.5", "id": 6, "type_name": "squid"},
-        {"name": "mark_12_1", "pretty_name" : "Smart Extruder 12.1", "id": 7, "type_name": "squid"},
-        {"name": "mark_13", "pretty_name" : "Smart Extruder 13.0", "id": 8, "type_name": "orca"},
-        {"name": "mark_12_2", "pretty_name" : "Smart Extruder 12.2", "id": 9, "type_name": "squid"},
-        {"name": "mark_12_3", "pretty_name": "Smart Extruder 12.3", "id": 10, "type_name": "squid"},
-        {"name": "marK_12_4", "pretty_name": "Smart Extruder 12.4", "id": 11, "type_name": "squid"}
+        {"name": "mark_11", "pretty_name": "Smart Extruder 11.0", "id": 1, "type_name": "mk12"},
+        {"name": "mark_11_mod_1", "pretty_name": "Smart Extruder 11.1", "id": 2, "type_name": "mk12"},
+        {"name": "mark_11_mod_2", "pretty_name": "Smart Extruder 11.2", "id": 3, "type_name": "mk12"},
+        {"name": "mark_11_mod_3", "pretty_name": "Smart Extruder 11.3", "id": 4, "type_name": "mk12"},
+        {"name": "mark_12", "pretty_name": "Smart Extruder 12.0", "id": 5, "type_name": "mk12"},
+        {"name": "mark_12_5", "pretty_name": "Smart Extruder 12.5", "id": 6, "type_name": "mk12"},
+        {"name": "mark_12_1", "pretty_name" : "Smart Extruder 12.1", "id": 7, "type_name": "mk12"},
+        {"name": "mark_13", "pretty_name" : "Smart Extruder 13.0", "id": 8, "type_name": "mk13"},
+        {"name": "mark_12_2", "pretty_name" : "Smart Extruder 12.2", "id": 9, "type_name": "mk12"},
+        {"name": "mark_12_3", "pretty_name": "Smart Extruder 12.3", "id": 10, "type_name": "mk12"},
+        {"name": "marK_12_4", "pretty_name": "Smart Extruder 12.4", "id": 11, "type_name": "mk12"}
     ],
     "types": [
-        {"name": "squid", "key": "squid", "toolpath_equivalents": [{"name": "orca"}]},
-        {"name": "orca", "key": "orca", "toolpath_equivalents": [{"name": "squid"}]},
+        {"name": "mk12", "key": "mk12", "toolpath_equivalents": [{"name": "mk13"}]},
+        {"name": "mk13", "key": "mk13", "toolpath_equivalents": [{"name": "mk12"}]},
         {"name": "unknown", "key": "unknown_type", "toolpath_equivalents": []}
     ],
     "materials": [
