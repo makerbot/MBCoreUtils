@@ -16,7 +16,8 @@
         "max_outer_shell_speed": null,
         "max_inner_shell_speed": null,
         "travel_speed_xy": null,
-        "travel_speed_z" : null
+        "travel_speed_z" : null,
+        "max_fill_speed": null
     },
     "acceleration": {
         "split_move_distance_mm": null,
@@ -57,7 +58,6 @@
                     "retract_rate": null,
                     "restart_rate": null,
                     "max_flow_rate": null,
-                    "max_fill_speed": null,
                     "acceleration": {
                         "rate_mm_per_s_sq": null,
                         "min_speed_change_mm_per_s": null,
