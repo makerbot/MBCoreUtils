@@ -281,7 +281,6 @@
         {"use_base": "tool_problem", "name": "thermocouple_out_of_range", "pretty_name": "Thermocouple Out Of Range", "id": 66},
         {"use_base": "tool_problem", "name": "thermocouple_unplugged", "pretty_name": "Thermocouple Unplugged", "id": 67},
         {"use_base": "tool_problem", "name": "thermocouple_too_hot", "pretty_name": "Thermocouple Too Hot", "id": 68},
-        {"use_base": "tool_problem", "name": "thermocouple_communication_failure", "pretty_name": "Thermocouple Communication Failure", "id": 65},
         {"use_base": "tool_problem", "name" : "thermocouple_data_unchanging", "pretty_name" : "Thermocouple Data Not Changing", "id" : 75},
         {"use_base": "tool_problem", "name": "thermocouple_data_invalid", "pretty_name": "Thermocouple Data Invalid", "id": 69},
         {"use_base": "tool_critical", "name": "heater_short", "pretty_name": "Heater Short", "id": 50},
@@ -326,6 +325,16 @@
         {"use_base": "misc_error", "name": "empty_eeprom_cache", "pretty_name": "Empty EEPROM Cache", "id": 139},
         {"use_base": "misc_error", "name": "eeprom_write_failure", "pretty_name": "EEPROM Write Failure", "id": 140},
         {"use_base": "misc_error", "name": "eeprom_verify_failure", "pretty_name": "EEPROM Verify Failure", "id": 141},
+        {
+            "use_base": false,
+            "name": "thermocouple_communication_failure",
+            "pretty_name": "Thermocouple Communication Failure",
+            "title": "Extruder Error",
+            "message": "Your Smart Extruder has been disconnected (Error %d). Please remove and reattach the Smart Extruder.",
+            "error_type": "tool_error",
+            "error_action": "acknowledge",
+            "id": 65
+        },
         {
             "use_base": false,
             "name": "no_filament",
