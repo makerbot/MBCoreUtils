@@ -94,7 +94,7 @@ templates_root = os.path.join(BWCGEN_ROOT_DIR, 'templates')
 common_transformations_file = os.path.join(
     BWCGEN_ROOT_DIR, 'transformations.json')
 
-outdir_base = Dir(os.path.join('#/obj', BWCGEN_OUTPUT_DIR)).path
+outdir_base = Dir(os.path.join('#/obj', BWCGEN_OUTPUT_DIR)).abspath
 
 # TODO(ted): all this explicitness is a little messy.
 # Can I express the same thing in a cleaner way?
