@@ -61,9 +61,9 @@ def append_constant(c):
             enum['values'].append(c)
 
 
-def generate_context(env, target, source):
-    if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
-        with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
+def generate_context(**kwargs):
+    if 'BWMACHINE_SETTINGS' in kwargs:
+        with open(kwargs['BWMACHINE_SETTINGS']) as f:
             machine_settings_config = json.load(f)
             tool_count = 0
             if "toolheads" in machine_settings_config:
