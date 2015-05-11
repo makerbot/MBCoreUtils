@@ -292,6 +292,15 @@
             "error_type": "none",
             "error_action" : "acknowledge",
             "id":1054
+	},
+	{
+	    "use_base" : false,
+            "name" : "internet_connection_error",
+            "pretty_name" : "Internet Connection Error",
+            "message": "Could not connect to the Internet.",
+            "error_type": "none",
+            "error_action" : "acknowledge",
+            "id":1055
 	}
     ],
 
