@@ -99,23 +99,27 @@ outdir_base = Dir(os.path.join('#/obj', BWCGEN_OUTPUT_DIR)).abspath
 # TODO(ted): all this explicitness is a little messy.
 # Can I express the same thing in a cleaner way?
 
+bwcodegen_contexts = env.Glob(os.path.join(BWCGEN_ROOT_DIR,
+                                           'contexts', '*.py'))\
+    + env.Glob(os.path.join(BWCGEN_ROOT_DIR,
+                            'contexts', '*.json'))
 # Do the code gen.
 machine_cpp = env.MustacheCodegen(
-    contexts=env.Glob(os.path.join(BWCGEN_ROOT_DIR, 'contexts', '*')),
+    contexts=bwcodegen_contexts,
     templates=env.Glob(os.path.join(templates_root, 'machine_cpp', '*')),
     out_dir=os.path.join(outdir_base, 'machine_cpp'),
     transformations_file=common_transformations_file,
     dynamic_context_args=dynamic_context_args,
     ext_deps=external_sources)
 shared_cpp = env.MustacheCodegen(
-    contexts=env.Glob(os.path.join(BWCGEN_ROOT_DIR, 'contexts', '*')),
+    contexts=bwcodegen_contexts,
     templates=env.Glob(os.path.join(templates_root, 'shared_cpp', '*')),
     out_dir=os.path.join(outdir_base, 'shared_cpp'),
     transformations_file=common_transformations_file,
     dynamic_context_args=dynamic_context_args,
     ext_deps=external_sources)
 python_files = env.MustacheCodegen(
-    contexts=env.Glob(os.path.join(BWCGEN_ROOT_DIR, 'contexts', '*')),
+    contexts=bwcodegen_contexts,
     templates=env.Glob(os.path.join(templates_root, 'python', '*')),
     out_dir=os.path.join(outdir_base, 'python'),
     transformations_file=common_transformations_file,
