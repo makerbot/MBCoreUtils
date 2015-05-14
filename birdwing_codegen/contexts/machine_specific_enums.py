@@ -55,10 +55,11 @@ base_enums_dict = {
 import json
 
 
-def append_constant(c):
+def append_constant_once(c):
     for enum in base_enums_dict['enums']:
         if enum['name'] == 'constants':
-            enum['values'].append(c)
+            if c['name'] not in [n['name'] for n in enum['values']]:
+                enum['values'].append(c)
 
 
 def generate_context(**kwargs):
@@ -75,6 +76,6 @@ def generate_context(**kwargs):
                 "name": "expected_toolhead_count",
                 "value": tool_count
             }
-            append_constant(expected_toolhead_count_constant)
+            append_constant_once(expected_toolhead_count_constant)
 
     return base_enums_dict
