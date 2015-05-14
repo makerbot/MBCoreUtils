@@ -16,7 +16,11 @@ import json
 
 
 def append_machine_toolhead(toolhead_metadata):
-    base_toolhead_metadata_dict['machine_toolheads'].append(toolhead_metadata)
+    indices = map(lambda t: t['index'],
+                  base_toolhead_metadata_dict['machine_toolheads'])
+    if toolhead_metadata['index'] not in indices:
+        base_toolhead_metadata_dict['machine_toolheads']\
+            .append(toolhead_metadata)
 
 
 def generate_context(**kwargs):

@@ -95,7 +95,8 @@ import json
 def append_machine_response_field(field):
     for struct in base_structs_dict['structs']:
         if struct['name'] == 'machine_response':
-            struct['fields'].append(field)
+            if field['name'] not in map(lambda f: f['name'], struct['fields']):
+                struct['fields'].append(field)
 
 
 def generate_context(**kwargs):
