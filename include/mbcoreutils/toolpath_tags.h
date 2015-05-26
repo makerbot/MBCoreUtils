@@ -3,7 +3,7 @@
 
 namespace MakerBot {
 
-enum ToolpathTag {
+enum ToolpathTag : unsigned int{
     kAnchor = 0,
     kBacklashCompensation,
     kBridge,
@@ -77,6 +77,37 @@ inline int stringToToolpathTag(const std::string &str) {
     return -1;
 }
 
+enum AxisUnit {
+    kMilliMetre=0,
+    kMicroMetre,
+    kMilliLitre,
+    kMicroLitre,
+    kLast
+};
+
+inline std::string stringFromAxisUnit(const AxisUnit unit) {
+    switch(unit) {
+    case kMilliMetre:
+        return "mm";
+    case kMicroMetre:
+        return "um";
+    case kMilliLitre:
+        return "ml";
+    case kMicroLitre:
+        return "ul";
+    default:
+        return "";
+    }
 }
 
-#endif //INCLUDE_MBCOREUTILS_TOOLPATH_TAGS_H_
+inline int stringToAxisUnit(const std::string& str) {
+    for(int i = 0; i < kLast; i++) {
+        if (str == stringFromAxisUnit((AxisUnit)i)) {
+            return i;
+        }
+    }
+    return -1;
+}
+}
+   
+#endif // INCLUDE_MBCOREUTILS_TOOLPATH_TAGS_H_

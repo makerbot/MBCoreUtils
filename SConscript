@@ -4,15 +4,15 @@ import platform
 from SCons.Script import AddOption
 from SCons.Node import NodeList
 
+os.environ.setdefault('BWSCONSTOOLS_PATH', '#/../bw-scons-tools')
+
 env = Environment(
     ENV=os.environ,
-    tools=['default', 'mb_install',
-           'mustache_codegen'],
+    tools=['default', 'mb_install', 'mustache'],
     toolpath=['#../mw-scons-tools',
               "#Install/mw-scons-tools",
-              'site_scons',
-              os.environ.setdefault('BWSCONSTOOLS_PATH',
-                                    '#/../bw-scons-tools')])
+              '#/../mustache',
+              '#/../bw-scons-tools'])
 
 # MBRecursiveFileGlob is defined in both the mb_install tool, and the
 # birdwing_install tool, and both implementations work slightly differently.
@@ -70,50 +70,76 @@ external_sources = [env['MBCOREUTILS_BWMACHINE_SETTINGS']] if machine else None
 # Used in multiple places so might as well define it here
 templates_dir = os.path.join(str(Dir("#/")), BWCGEN_ROOT_DIR, 'templates')
 
+# For dynamic contexts
+dynamic_context_args = {
+    'APIGEN_PATH': os.path.join(
+        os.pardir,
+        os.pardir,
+        'Birdwing-Software',
+        'firmware',
+        'kaiten',
+        'api_docgen.py')
+}
+
+if 'MBCOREUTILS_BIRDWING' in os.environ:
+    dynamic_context_args['MBCOREUTILS_BIRDWING'] = True
+
+if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
+    dynamic_context_args['BWMACHINE_SETTINGS'] = (
+        env['MBCOREUTILS_BWMACHINE_SETTINGS'])
+
+templates_root = os.path.join(BWCGEN_ROOT_DIR, 'templates')
+# I'm not sure that this file should be split up, but it does seem odd
+# that it's shared by these three things
+common_transformations_file = os.path.join(
+    BWCGEN_ROOT_DIR, 'transformations.json')
+
+outdir_base = Dir(os.path.join('#/obj', BWCGEN_OUTPUT_DIR)).abspath
+
+# TODO(ted): all this explicitness is a little messy.
+# Can I express the same thing in a cleaner way?
+
+bwcodegen_contexts = env.Glob(os.path.join(BWCGEN_ROOT_DIR,
+                                           'contexts', '*.py'))\
+    + env.Glob(os.path.join(BWCGEN_ROOT_DIR,
+                            'contexts', '*.json'))
 # Do the code gen.
-env.MustacheCodegen(context_dir=os.path.join(str(Dir("#/")),
-                                             BWCGEN_ROOT_DIR,
-                                             'contexts'),
-                    template_dir=templates_dir,
-                    out_dir=os.path.join(str(Dir("#/")),
-                                         'obj',
-                                         BWCGEN_OUTPUT_DIR),
-                    transformations_file=os.path.join(str(Dir("#/")),
-                                                      BWCGEN_ROOT_DIR,
-                                                      'transformations.json'),
-                    ext_deps=external_sources)
+machine_cpp = env.MustacheCodegen(
+    contexts=bwcodegen_contexts,
+    templates=env.Glob(os.path.join(templates_root, 'machine_cpp', '*')),
+    out_dir=os.path.join(outdir_base, 'machine_cpp'),
+    transformations_file=common_transformations_file,
+    dynamic_context_args=dynamic_context_args,
+    ext_deps=external_sources)
+shared_cpp = env.MustacheCodegen(
+    contexts=bwcodegen_contexts,
+    templates=env.Glob(os.path.join(templates_root, 'shared_cpp', '*')),
+    out_dir=os.path.join(outdir_base, 'shared_cpp'),
+    transformations_file=common_transformations_file,
+    dynamic_context_args=dynamic_context_args,
+    ext_deps=external_sources)
+python_files = env.MustacheCodegen(
+    contexts=bwcodegen_contexts,
+    templates=env.Glob(os.path.join(templates_root, 'python', '*')),
+    out_dir=os.path.join(outdir_base, 'python'),
+    transformations_file=common_transformations_file,
+    dynamic_context_args=dynamic_context_args,
+    ext_deps=external_sources)
+
+# The birdwing build system needs these to get built when the target is install
+if ("MBCOREUTILS_BIRDWING" in os.environ):
+    Alias("install", [machine_cpp, shared_cpp, python_files])
 
 
-if ("MBCOREUTILS_BIRDWING" in os.environ) or env.MBIsLinux() or env.MBIsMac():
-    # Add an empty command that makes the top-level directory target
-    # depend on the header files. This ensures the static header files
-    # are copied into the variant dir.
-    env.Command('.', _recursive_file_glob('include', '*.h'), '')
-
-    copyto = os.path.join(str(Dir("#/")),
-                          'obj',
-                          'include',
-                          'bwcoreutils')
-else:
-    copyto = os.path.join(str(Dir("#/")),
-                          'include',
-                          'bwcoreutils')
-
-# Hack to copy codegen'd cpp files from obj/birdwing/shared_cpp to
-# the include/bwcoreutils directorty. This is necessary since a bunch
-# of projects already expect shared cpp birdwing headers to be there.
-# TODO(jacksonh) - remove this awful hack
-copyfrom = os.path.join(str(Dir("#/")),
-                        'obj',
-                        BWCGEN_OUTPUT_DIR,
-                        'shared_cpp')
-for header in os.listdir(os.path.join(templates_dir, 'shared_cpp')):
-    if header.endswith('.hh') or header.endswith('.h'):
-        env.Command(
-            os.path.join(copyto, os.path.basename(header)),
-            os.path.join(copyfrom, os.path.basename(header)),
-            Copy("$TARGET", "$SOURCE")
-        )
+# Not sure if these are even needed in this location.
+# Might be able to remove this and just install shared_cpp below.
+shared_includes = []
+for header in shared_cpp:
+    shared_includes += env.Command(
+        'include/bwcoreutils/${SOURCE.file}',
+        header,
+        Copy("$TARGET", "$SOURCE")
+    )
 
 # -- End Mustache-based codegen stuff -- #
 
@@ -132,7 +158,7 @@ else:
     # make_current_link=True is necessary for header-only libraries on mac
     env.MBInstallHeaders(env.Glob('include/mbcoreutils/*'),
                          'mbcoreutils', make_current_link=True)
-    env.MBInstallHeaders(env.Glob('include/bwcoreutils/*'),
+    env.MBInstallHeaders(shared_includes,
                          'bwcoreutils', make_current_link=True)
     if env.MBIsLinux():
         (distname, distversion, distid) = platform.linux_distribution()

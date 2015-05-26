@@ -30,16 +30,15 @@ def add_metadata(api):
     return api
 
 
-def generate_context(env, target, source):
-    # todo(jacksonh): check for env variable pointing to api_docgen.py
-    apigen_path = os.path.join(os.pardir, os.pardir, 'Birdwing-Software',
-                               'firmware', 'kaiten', 'api_docgen.py')
-    pythonpath = env.get('PYTHON_33', 'python3.3')
+def generate_context(**kwargs):
+    apigen_path = kwargs.get('APIGEN_PATH', '@no_apigen@')
+    pythonpath = os.environ.get('PYTHON_33', 'python3.3')
+
     if os.path.exists(apigen_path):
-        api = json.loads(subprocess.check_output(
-                         [pythonpath, apigen_path, '-l 3']))
+        api = json.loads(
+            subprocess.check_output([pythonpath, apigen_path, '-l 3']))
         api_dict['kaiten_api'] = add_metadata(api)
-    elif 'MBCOREUTILS_BIRDWING' in env:
+    elif 'MBCOREUTILS_BIRDWING' in kwargs:
         raise Exception('Unable to locate %s, required for birdwing builds!'
                         % apigen_path)
     return api_dict
