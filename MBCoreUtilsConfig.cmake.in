@@ -1,0 +1,29 @@
+# For use with CMakePackageConfigHelpers:
+# http://www.cmake.org/cmake/help/v2.8.12/cmake.html#module:CMakePackageConfigHelpers
+#
+# required vars:
+#   HEADER_INSTALL_DIR
+#   CONFIG_BASENAME
+
+@PACKAGE_INIT@
+
+# Add the headers
+include_directories("@PACKAGE_HEADER_INSTALL_DIR@")
+
+# adapted from http://www.cmake.org/pipermail/cmake/2011-June/045050.html
+# check that the user-requested components are
+# actually targets that are part of this build
+if(@CONFIG_BASENAME@_FIND_COMPONENTS)
+    foreach(component ${@CONFIG_BASENAME@_FIND_COMPONENTS})
+        if(NOT TARGET ${component})
+            set(@CONFIG_BASENAME@_${component}_FOUND FALSE)
+            if(@CONFIG_BASENAME@_FIND_REQUIRED_${component})
+                message(SEND_ERROR "@CONFIG_BASENAME@::${component} not available.")
+            endif()
+        else()
+            set(@CONFIG_BASENAME@_${component}_FOUND TRUE)
+        endif()
+    endforeach()
+endif()
+
+check_required_components(@CONFIG_BASENAME@)
