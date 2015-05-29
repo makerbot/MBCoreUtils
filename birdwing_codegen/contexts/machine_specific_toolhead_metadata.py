@@ -25,7 +25,7 @@ def append_machine_toolhead(toolhead_metadata):
 
 def generate_context(**kwargs):
     if 'BWMACHINE_SETTINGS' in kwargs:
-        with open(kwargs['BWMACHINE_SETTINGS']) as f:
+        with open(str(kwargs['BWMACHINE_SETTINGS'])) as f:
             machine_config = json.load(f)
             if 'toolheads' in machine_config:
                 for tool in machine_config['toolheads']:
