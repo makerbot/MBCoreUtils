@@ -2,6 +2,11 @@
     "version": "1.1.0",
     "bot_type": null,
     "makerbot_generation" : 5,
+    "max_speed_mm_per_second": {
+        "x": null,
+        "y": null,
+        "z": null
+    },
     "build_volume": {
         "x": null,
         "y": null,
@@ -20,6 +25,7 @@
         "max_fill_speed": null
     },
     "acceleration": {
+        "buffer_size": null,
         "split_move_distance_mm": null,
         "split_move_recursion_count": null,
         "rate_mm_per_s_sq": {
@@ -49,6 +55,7 @@
     "extruder_profiles": {
         "*" : {
             "nozzle_diameter": null,
+            "max_speed_mm_per_second": null,
             "materials": {
                 "*": {
                     "feed_diameter": null,
