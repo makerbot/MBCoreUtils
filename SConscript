@@ -127,6 +127,7 @@ for header in shared_cpp:
 #
 
 if env.BWShouldCrossBuild():
+    env.Alias('install', shared_includes)
     env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
 # When our target is "install", we still need to build all
 # local files.  These files are still required by install
