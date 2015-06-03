@@ -73,7 +73,7 @@ templates_root = os.path.join(BWCGEN_ROOT_DIR, 'templates')
 common_transformations_file = os.path.join(
     BWCGEN_ROOT_DIR, 'transformations.json')
 
-outdir_base = Dir(os.path.join('obj', BWCGEN_OUTPUT_DIR)).abspath
+outdir_base = 'obj/'+BWCGEN_OUTPUT_DIR
 
 # TODO(ted): all this explicitness is a little messy.
 # Can I express the same thing in a cleaner way?
@@ -131,5 +131,4 @@ if env.BWShouldCrossBuild():
 # When our target is "install", we still need to build all
 # local files.  These files are still required by install
 # targets in other repositories.
-path = os.path.join(str(Dir("#/")), 'obj', 'include')
-Alias("install", path)
+Alias("install", 'obj/include')
