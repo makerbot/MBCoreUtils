@@ -132,4 +132,4 @@ if env.BWShouldCrossBuild():
 # When our target is "install", we still need to build all
 # local files.  These files are still required by install
 # targets in other repositories.
-Alias("install", 'obj/include')
+Alias("install", 'include')
