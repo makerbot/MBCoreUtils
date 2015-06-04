@@ -73,3 +73,7 @@ install(
 install(
     DIRECTORY "${PROJECT_SOURCE_DIR}/include/mbcoreutils"
     DESTINATION "${HEADER_INSTALL_DIR}")
+
+install_docs(
+    FILES "${PROJECT_SOURCE_DIR}/README.md"
+    PREFIX MBCoreUtils)
