@@ -68,6 +68,8 @@
         {"use_base": "misc_error", "name": "file_not_found", "pretty_name": "File Not Found", "id": 1012},
         {"use_base": "misc_error", "name": "interface_led_comms_error", "pretty_name": "Interface Led Comms Error", "id": 288},
         {"use_base": "misc_error", "name": "power_monitor_i2c_failure", "pretty_name": "Power Monitor I2C Failure", "id": 295},
+        {"use_base": "misc_error", "name": "json_config_key_error", "pretty_name": "Configuration Key Error", "id": 1496},
+        {"use_base": "misc_error", "name": "json_config_value_error", "pretty_name": "Configuration Value Error", "id": 1497},
         {"use_base": false,
          "name": "tool_not_calibrated",
          "pretty_name":"Smart Extruder Not Calibrated",

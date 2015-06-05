@@ -63,13 +63,14 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Long Retract";
         case kLongRestart:
             return "Long Restart";
+        case LAST:
         default:
             return "";
     }
 }
 
 inline int stringToToolpathTag(const std::string &str) {
-    for(int i = 0; i < LAST; i++) {
+    for(unsigned i = 0; i < LAST; i++) {
         if (str == stringFromToolpathTag((ToolpathTag)i)) {
             return i;
         }
@@ -95,6 +96,7 @@ inline std::string stringFromAxisUnit(const AxisUnit unit) {
         return "ml";
     case kMicroLitre:
         return "ul";
+    case kLast:
     default:
         return "";
     }
