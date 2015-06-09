@@ -64,7 +64,7 @@ def append_constant_once(c):
 
 def generate_context(**kwargs):
     if 'BWMACHINE_SETTINGS' in kwargs:
-        with open(kwargs['BWMACHINE_SETTINGS']) as f:
+        with open(str(kwargs['BWMACHINE_SETTINGS'])) as f:
             machine_settings_config = json.load(f)
             tool_count = 0
             if "toolheads" in machine_settings_config:

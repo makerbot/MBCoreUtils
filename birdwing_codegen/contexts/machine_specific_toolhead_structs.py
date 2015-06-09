@@ -100,17 +100,15 @@ def append_machine_response_field(field):
 
 
 def generate_context(**kwargs):
-    if 'BWMACHINE_SETTINGS' in kwargs:
-        with open(kwargs['BWMACHINE_SETTINGS']) as f:
-            machine_settings_config = json.load(f)
-            if 'toolheads' in machine_settings_config:
-                for tool in machine_settings_config['toolheads']:
-                    tool_dict = machine_settings_config['toolheads'][tool]
-                    for tool_num in tool_dict['locations']:
-                        struct_field = {
-                            "name": "toolhead_{0}_status".format(tool_num),
-                            "type": "{0}_toolhead".format(tool.lower())
-                        }
-                        append_machine_response_field(struct_field)
-
+    with open(str(kwargs['BWMACHINE_SETTINGS'])) as f:
+        machine_settings_config = json.load(f)
+        if 'toolheads' in machine_settings_config:
+            for tool in machine_settings_config['toolheads']:
+                tool_dict = machine_settings_config['toolheads'][tool]
+                for tool_num in tool_dict['locations']:
+                    struct_field = {
+                        "name": "toolhead_{0}_status".format(tool_num),
+                        "type": "{0}_toolhead".format(tool.lower())
+                    }
+                    append_machine_response_field(struct_field)
     return base_structs_dict

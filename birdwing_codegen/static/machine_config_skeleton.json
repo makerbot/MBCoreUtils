@@ -17,6 +17,11 @@
         "y": null,
         "z": null
     },
+    "steps_per_mm": {
+        "x": null,
+        "y": null,
+        "z": null
+    },
     "gantry_configuration": {
         "max_outer_shell_speed": null,
         "max_inner_shell_speed": null,
@@ -56,6 +61,9 @@
         "*" : {
             "nozzle_diameter": null,
             "max_speed_mm_per_second": null,
+            "steps_per_mm": {
+                "a": null
+            },
             "materials": {
                 "*": {
                     "feed_diameter": null,
