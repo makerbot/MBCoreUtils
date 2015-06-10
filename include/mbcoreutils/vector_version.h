@@ -93,7 +93,6 @@ class VectorVersion {
         if (pos != std::string::npos) {
           auto strElem = str.substr(0, pos);
           int elem = std::stoi(strElem);
-          append(std::stoi(strElem));
           str = str.substr(pos+1, str.size());
         } else {
           append(std::stoi(str));
