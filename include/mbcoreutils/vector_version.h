@@ -84,6 +84,27 @@ class VectorVersion {
     }
   }
 
+  /// Create a version from a string
+  explicit VectorVersion(std::string str) {
+    int pos = 0;
+    while (!str.empty()) {
+      pos = str.find(".", pos);
+      try {
+        if (pos != std::string::npos) {
+          auto strElem = str.substr(0, pos);
+          int elem = std::stoi(strElem);
+          append(std::stoi(strElem));
+          str = str.substr(pos+1, str.size());
+        } else {
+          append(std::stoi(str));
+          break;
+        }
+      } catch (const std::exception &e) {
+        break;
+      }
+    }
+  }
+
   /// Return true if the version is empty, false otherwise
   bool empty() const {
     return m_vec.empty();
