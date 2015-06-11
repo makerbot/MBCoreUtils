@@ -14,22 +14,30 @@ if(${BIRDWING})
 endif()
 
 set(templates_dir
-    "${PROJECT_SOURCE_DIR}/birdwing_codegen/templates/shared_cpp")
+    "${PROJECT_SOURCE_DIR}/birdwing_codegen/templates")
 set(contexts_dir
     "${PROJECT_SOURCE_DIR}/birdwing_codegen/contexts")
 
 mustache_codegen(
     TEMPLATES
-        "${templates_dir}/all_errors.hh"
-        "${templates_dir}/bot_error.hh"
-        "${templates_dir}/bot_error_noqt.hh"
-        "${templates_dir}/ikrpccontroller.hh"
-        "${templates_dir}/kaitenstub.hh"
-        "${templates_dir}/tool_mappings.hh"
+        "${templates_dir}/shared_cpp/all_errors.hh"
+        "${templates_dir}/shared_cpp/bot_error.hh"
+        "${templates_dir}/shared_cpp/bot_error_noqt.hh"
+        "${templates_dir}/shared_cpp/ikrpccontroller.hh"
+        "${templates_dir}/shared_cpp/kaitenstub.hh"
+        "${templates_dir}/shared_cpp/tool_mappings.hh"
+        "${templates_dir}/machine_cpp/machine_definitions.hh"
+        "${templates_dir}/machine_cpp/machine_errors.hh"
+        "${templates_dir}/machine_cpp/machine_structs.hh"
+        "${templates_dir}/machine_cpp/toolhead_errors.hh"
+        "${templates_dir}/machine_cpp/toolhead_initialization.cc"
+        "${templates_dir}/machine_cpp/toolhead_toolidentifier.hh"
     CONTEXTS
         "${contexts_dir}/errors.json"
         "${contexts_dir}/kaiten_api.py"
         "${contexts_dir}/tool_metadata.json"
+        "${contexts_dir}/machine_specific_enums.py"
+        "${contexts_dir}/machine_specific_toolhead_metadata.py"
     TRANSFORMATIONS_FILE
         "${PROJECT_SOURCE_DIR}/birdwing_codegen/transformations.json"
     OUTPUT_DIR
