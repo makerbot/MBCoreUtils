@@ -7,6 +7,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <string>
+#include <sstream>
 #include <vector>
 
 #include "jsoncpp/json/value.h"
@@ -85,22 +86,15 @@ class VectorVersion {
   }
 
   /// Create a version from a string
-  explicit VectorVersion(std::string str) {
-    int pos = 0;
-    while (!str.empty()) {
-      pos = str.find(".", pos);
-      try {
-        if (pos != std::string::npos) {
-          auto strElem = str.substr(0, pos);
-          int elem = std::stoi(strElem);
-          str = str.substr(pos+1, str.size());
-        } else {
-          append(std::stoi(str));
-          break;
-        }
-      } catch (const std::exception &e) {
-        break;
+  explicit VectorVersion(const std::string &str) {
+    std::stringstream sstr(str);
+    std::string item;
+    try {
+      while (std::getline(sstr, item, '.')) {
+        append(std::stoi(item));
       }
+    } catch (...) {
+      throw std::runtime_error("VectorVersion: Bad version string: " + str);
     }
   }
 
