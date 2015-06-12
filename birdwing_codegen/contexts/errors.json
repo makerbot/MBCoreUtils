@@ -276,7 +276,34 @@
             "error_type": "none",
             "error_action" : "acknowledge",
             "id":1100
-        }
+        },
+	{
+	    "use_base" : false,
+            "name" : "firmware_update_check_error",
+            "pretty_name" : "Firmware Update Check Error",
+            "message": "Could not check for firmware updates. Please contact Support.",
+            "error_type": "none",
+            "error_action" : "acknowledge",
+            "id":1053
+	},
+	{
+	    "use_base" : false,
+            "name" : "firmware_download_error",
+            "pretty_name" : "Firmware Download Error",
+            "message": "Could not download firmware. Please contact Support.",
+            "error_type": "none",
+            "error_action" : "acknowledge",
+            "id":1054
+	},
+	{
+	    "use_base" : false,
+            "name" : "internet_connection_error",
+            "pretty_name" : "Internet Connection Error",
+            "message": "Could not connect to the Internet.",
+            "error_type": "none",
+            "error_action" : "acknowledge",
+            "id":1055
+	}
     ],
 
     "toolhead_errors": [
