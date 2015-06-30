@@ -48,31 +48,11 @@ mustache_codegen(
 # Because we don't actually use these files for anything else
 add_custom_target(codegen ALL DEPENDS ${codegenned_files})
 
-include(CMakePackageConfigHelpers)
-
-set(CONFIG_BASENAME "MBCoreUtils")
-set(CONFIG_FILENAME "${PROJECT_BINARY_DIR}/${CONFIG_BASENAME}Config.cmake")
-set(VERSION_CONFIG_FILENAME
-    "${PROJECT_BINARY_DIR}/${CONFIG_BASENAME}ConfigVersion.cmake")
-
-configure_package_config_file(
-    "MBCoreUtilsConfig.cmake.in"
-    "${CONFIG_FILENAME}"
-    INSTALL_DESTINATION "${FINDPACKAGE_CONFIG_INSTALL_DIR}"
-    PATH_VARS
-        HEADER_INSTALL_DIR
-        CONFIG_BASENAME)
-
-write_basic_package_version_file(
-    "${VERSION_CONFIG_FILENAME}"
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY SameMajorVersion)
-
-install(
-    FILES
-        "${CONFIG_FILENAME}"
-        "${VERSION_CONFIG_FILENAME}"
-    DESTINATION "${FINDPACKAGE_CONFIG_INSTALL_DIR}")
+generate_and_install_config(
+    NAME MBCoreUtils
+    ADDITIONAL_PATHS
+        MBCoreUtils_INCLUDE_DIRS ${HEADER_INSTALL_DIR}
+        BWCoreUtils_INCLUDE_DIRS ${HEADER_INSTALL_DIR})
 
 install(
     FILES ${codegenned_files}
