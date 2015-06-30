@@ -16,12 +16,16 @@ import json
 
 
 def append_machine_toolhead(toolhead_metadata):
-    base_toolhead_metadata_dict['machine_toolheads'].append(toolhead_metadata)
+    indices = map(lambda t: t['index'],
+                  base_toolhead_metadata_dict['machine_toolheads'])
+    if toolhead_metadata['index'] not in indices:
+        base_toolhead_metadata_dict['machine_toolheads']\
+            .append(toolhead_metadata)
 
 
-def generate_context(env, target, source):
-    if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
-        with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
+def generate_context(**kwargs):
+    if 'BWMACHINE_SETTINGS' in kwargs:
+        with open(str(kwargs['BWMACHINE_SETTINGS'])) as f:
             machine_config = json.load(f)
             if 'toolheads' in machine_config:
                 for tool in machine_config['toolheads']:

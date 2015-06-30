@@ -55,15 +55,16 @@ base_enums_dict = {
 import json
 
 
-def append_constant(c):
+def append_constant_once(c):
     for enum in base_enums_dict['enums']:
         if enum['name'] == 'constants':
-            enum['values'].append(c)
+            if c['name'] not in [n['name'] for n in enum['values']]:
+                enum['values'].append(c)
 
 
-def generate_context(env, target, source):
-    if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
-        with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
+def generate_context(**kwargs):
+    if 'BWMACHINE_SETTINGS' in kwargs:
+        with open(str(kwargs['BWMACHINE_SETTINGS'])) as f:
             machine_settings_config = json.load(f)
             tool_count = 0
             if "toolheads" in machine_settings_config:
@@ -75,6 +76,6 @@ def generate_context(env, target, source):
                 "name": "expected_toolhead_count",
                 "value": tool_count
             }
-            append_constant(expected_toolhead_count_constant)
+            append_constant_once(expected_toolhead_count_constant)
 
     return base_enums_dict

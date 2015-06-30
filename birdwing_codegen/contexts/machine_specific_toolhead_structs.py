@@ -95,21 +95,20 @@ import json
 def append_machine_response_field(field):
     for struct in base_structs_dict['structs']:
         if struct['name'] == 'machine_response':
-            struct['fields'].append(field)
+            if field['name'] not in map(lambda f: f['name'], struct['fields']):
+                struct['fields'].append(field)
 
 
-def generate_context(env, target, source):
-    if 'MBCOREUTILS_BWMACHINE_SETTINGS' in env:
-        with open(env['MBCOREUTILS_BWMACHINE_SETTINGS']) as f:
-            machine_settings_config = json.load(f)
-            if 'toolheads' in machine_settings_config:
-                for tool in machine_settings_config['toolheads']:
-                    tool_dict = machine_settings_config['toolheads'][tool]
-                    for tool_num in tool_dict['locations']:
-                        struct_field = {
-                            "name": "toolhead_{0}_status".format(tool_num),
-                            "type": "{0}_toolhead".format(tool.lower())
-                        }
-                        append_machine_response_field(struct_field)
-
+def generate_context(**kwargs):
+    with open(str(kwargs['BWMACHINE_SETTINGS'])) as f:
+        machine_settings_config = json.load(f)
+        if 'toolheads' in machine_settings_config:
+            for tool in machine_settings_config['toolheads']:
+                tool_dict = machine_settings_config['toolheads'][tool]
+                for tool_num in tool_dict['locations']:
+                    struct_field = {
+                        "name": "toolhead_{0}_status".format(tool_num),
+                        "type": "{0}_toolhead".format(tool.lower())
+                    }
+                    append_machine_response_field(struct_field)
     return base_structs_dict
