@@ -6,7 +6,7 @@
 #include <vector>
 
 namespace PrinterPanel {
-  const std::array<std::string, 3> AUTO_UNLOAD_CASES =  {
+  const std::array<std::string, {{num_auto_unload_cases}}> AUTO_UNLOAD_CASES =  {
   {{#auto_unload_cases}}
   "{{name}}",
   {{/auto_unload_cases}}
