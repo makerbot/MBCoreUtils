@@ -84,6 +84,23 @@ class Version {
       return build;
     }
 
+    //  Ignore build number
+     // compare this to another version.
+    // If this is less than other returns a negative number, greater than
+    //   returns a positive number, and equal to returns 0
+    int compareNoBuildNumber(const Version & other) const {
+      const int major = m_major - other.m_major;
+      if (0 != major)
+        return major;
+
+      const int minor = m_minor - other.m_minor;
+      if (0 != minor)
+        return minor;
+
+      const int point = m_point - other.m_point;
+        return point;
+    }
+
     int major() const {
       return m_major;
     }
