@@ -1,0 +1,14 @@
+{
+  "auto_unload_cases": [
+    {
+     "name": "all prints"
+    },
+    {
+     "name": "successful prints"
+    },
+    {
+     "name": "off"
+    }
+  ],
+  "num_auto_unload_cases": 3
+}
