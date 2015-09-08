@@ -105,9 +105,7 @@ python_files = env.MustacheCodegen(
     dynamic_context_args=dynamic_context_args,
     ext_deps=external_sources)
 
-# The birdwing build system needs these to get built when the target is install
-Alias("install", [machine_cpp, shared_cpp, python_files])
-
+env.Alias('install', [machine_cpp, shared_cpp, python_files])
 
 # Not sure if these are even needed in this location.
 # Might be able to remove this and just install shared_cpp below.

@@ -3,3 +3,4 @@ env = Environment(tools=['birdwing_install', 'birdwing_build'],
 
 env.SConscript('SConscript',
                variant_dir='.build-'+env.BWGetVariantDirSuffix())
+env.Default('install')
