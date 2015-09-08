@@ -7,6 +7,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <string>
+#include <sstream>
 #include <vector>
 
 #include "jsoncpp/json/value.h"
@@ -81,6 +82,19 @@ class VectorVersion {
       throw std::runtime_error(
           "VectorVersion: JSON input not an array: " +
           json.toStyledString());
+    }
+  }
+
+  /// Create a version from a string
+  explicit VectorVersion(const std::string &str) {
+    std::stringstream sstr(str);
+    std::string item;
+    try {
+      while (std::getline(sstr, item, '.')) {
+        append(std::stoi(item));
+      }
+    } catch (...) {
+      throw std::runtime_error("VectorVersion: Bad version string: " + str);
     }
   }
 

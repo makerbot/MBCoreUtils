@@ -1,5 +1,6 @@
-env = Environment(tools=['mb_sconstruct'],
-                  toolpath=['#/../mw-scons-tools',
-                            '#/Install/mw-scons-tools'])
+env = Environment(tools=['birdwing_install', 'birdwing_build'],
+                  toolpath=['#/../bw-scons-tools'])
 
-env.MBSConscript('SConscript')
+env.SConscript('SConscript',
+               variant_dir='.build-'+env.BWGetVariantDirSuffix())
+env.Default('install')
