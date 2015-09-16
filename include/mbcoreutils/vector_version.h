@@ -72,6 +72,12 @@ class VectorVersion {
         // older versions of json-cpp (BW-767)
         if (elem.isInt() && (elem.asInt() >= 0)) {
           append(elem.asInt());
+        } else if (elem.isString()) {
+            // We shouldn't crash on versions that have straings in them, since
+            // that IS allowed by semver; but this is a bit of a last second fix
+            // and vector_version is used EVERYWHERE, so we're not gonna mess
+            // with its semantics by parsing those strings and using them in
+            // equality checking or stringification, either.
         } else {
           throw std::runtime_error(
               "VectorVersion: JSON input array contains invalid type: " +
