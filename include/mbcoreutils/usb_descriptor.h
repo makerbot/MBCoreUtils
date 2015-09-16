@@ -21,6 +21,7 @@ class UsbDescriptor {
   typedef uint16_t VID;
   typedef uint16_t PID;
   typedef std::string Serial;
+  typedef uint16_t Port;
 
   /// Construct an invalid UsbDescriptor
   UsbDescriptor() {
@@ -33,9 +34,18 @@ class UsbDescriptor {
   }
 
   UsbDescriptor(const VID vid, const PID pid, const Serial &serial)
+    : m_vid(vid),
+      m_pid(pid),
+      m_serial(serial),
+      m_port_num(0) {
+}
+
+  UsbDescriptor(const VID vid, const PID pid, const Serial &serial,
+    const Port port)
       : m_vid(vid),
         m_pid(pid),
-        m_serial(serial) {
+        m_serial(serial),
+        m_port_num(port) {
   }
 
   /// Vender ID
@@ -53,6 +63,10 @@ class UsbDescriptor {
     return m_serial;
   }
 
+  Port port_num() const {
+    return m_port_num;
+  }
+
   /// Equality test against another UsbDescriptor
   ///
   /// As a special case, leading '0' characters (zero, not null) in
@@ -61,7 +75,8 @@ class UsbDescriptor {
   bool operator==(const UsbDescriptor &other) const {
     return ((m_vid == other.m_vid) &&
             (m_pid == other.m_pid) &&
-            (normalizedSerial() == other.normalizedSerial()));
+            (normalizedSerial() == other.normalizedSerial()) &&
+            (m_port_num == other.m_port_num));
   }
 
   std::string str() const {
@@ -74,7 +89,9 @@ class UsbDescriptor {
        << std::setw(4)
        << m_pid
        << ":"
-       << m_serial;
+       << m_serial
+       << ":"
+       << m_port_num;
     return ss.str();
   }
 
@@ -92,6 +109,7 @@ class UsbDescriptor {
   VID m_vid;
   PID m_pid;
   Serial m_serial;
+  Port m_port_num;
 };
 }
 
