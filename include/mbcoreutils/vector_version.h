@@ -78,6 +78,8 @@ class VectorVersion {
             // and vector_version is used EVERYWHERE, so we're not gonna mess
             // with its semantics by parsing those strings and using them in
             // equality checking or stringification, either.
+        } else if (elem.isNull()) {
+            // Same here
         } else {
           throw std::runtime_error(
               "VectorVersion: JSON input array contains invalid type: " +
