@@ -23,6 +23,8 @@ include/bwcoreutils/bot_error.hh
 include/bwcoreutils/tool_mappings.hh
 .build-host/
 .build-cross/
+.build-dev/
+error_translations.zip
 
 # makerbot cmake folders
 _build
