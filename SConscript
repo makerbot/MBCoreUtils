@@ -1,7 +1,9 @@
 import os
-
+import zipfile
 from SCons.Script import AddOption
 from SCons.Node import NodeList
+import SCons.Util
+
 
 os.environ.setdefault('BWSCONSTOOLS_PATH', '#/../bw-scons-tools')
 
@@ -127,6 +129,35 @@ for header in shared_cpp:
 if env.BWShouldCrossBuild():
     env.Alias('install', shared_includes)
     env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
+
+def build_translation_zip(env, target, source):
+    if SCons.Util.is_List(target):
+        target = target[0]
+    if not SCons.Util.is_List(source):
+        source = [source]
+    with zipfile.ZipFile(str(target), 'w') as myzip:
+        for s in source:
+            myzip.write(str(s), os.path.basename(str(s)))
+
+if env.BWShouldDevBuild():
+    env.BWDependsOnQt()
+    env.BWDependsOnQt()
+    languages = ['de', 'es', 'fr', 'ja', 'kr', 'zh', 'it']
+    translation_targets = map(lambda l: 'errors_'+l+'.ts', languages)
+    translation_target_dir = 'src'
+    translation_target_orig_dir\
+        = '#/translations'
+    translation_files = map(lambda l: translation_target_orig_dir+'/'+l,
+                            translation_targets)
+    update = env.Ts4(translation_files,
+                     shared_cpp)
+    env.Precious(translation_files)
+    env.Alias('translations', update)
+    translation_zip = env.Command('error_translations.zip',
+                                  translation_files,
+                                  build_translation_zip)
+    env.Alias('translations', translation_zip)
+
 # When our target is "install", we still need to build all
 # local files.  These files are still required by install
 # targets in other repositories.
