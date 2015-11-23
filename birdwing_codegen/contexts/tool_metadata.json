@@ -8,7 +8,7 @@
         {"name": "mark_12", "pretty_name": "Smart Extruder 12.0", "version": "12.0", "id": 5, "type_name": "mk12", "material_name": "PLA"},
         {"name": "mark_12_5", "pretty_name": "Smart Extruder 12.5", "version": "12.5", "id": 6, "type_name": "mk12", "material_name": "PLA"},
         {"name": "mark_12_1", "pretty_name" : "Smart Extruder 12.1", "version": "12.1", "id": 7, "type_name": "mk12", "material_name": "PLA"},
-        {"name": "mark_13", "pretty_name" : "Smart Extruder 13.0", "version": "13.0", "id": 8, "type_name": "mk13", "material_name": "PLA"},
+        {"name": "mark_13", "pretty_name" : "Smart Extruder +", "version": "13.0", "id": 8, "type_name": "mk13", "material_name": "PLA"},
         {"name": "mark_12_2", "pretty_name" : "Smart Extruder 12.2", "version": "12.2", "id": 9, "type_name": "mk12", "material_name": "PLA"},
         {"name": "mark_12_3", "pretty_name": "Smart Extruder 12.2.1", "version": "12.2.1", "id": 10, "type_name": "mk12", "material_name": "PLA"},
         {"name": "mark_12_4", "pretty_name": "Smart Extruder 12.3", "version": "12.3", "id": 11, "type_name": "mk12", "material_name": "PLA"},
