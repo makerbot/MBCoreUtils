@@ -83,7 +83,8 @@ base_structs_dict = {
                 {"name": "extrusion_time_s", "type": "uint32", "default": "0"},
                 {"name": "extrusion_distance_mm", "type": "uint32",
                  "default": "0"},
-                {"name": "refurb_count", "type": "uint8", "default": "0"}
+                {"name": "refurb_count", "type": "uint8", "default": "0"},
+                {"name": "serial", "type": "uint8", "default": "0"}
             ]
         }
     ]
