@@ -42,7 +42,8 @@ public:
     explicit BotError(Error errorCode) :
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
-        m_error(errorCode) {
+        m_error(errorCode),
+        m_isFancy(false) {
         init();
     }
 
@@ -53,7 +54,8 @@ public:
     explicit BotError(int errorCode) :
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
-        m_error(static_cast<Error>(errorCode)) {
+        m_error(static_cast<Error>(errorCode)),
+        m_isFancy(false) {
         init();
     }
 
@@ -157,7 +159,7 @@ private:
             {{/toolhead_errors}}
             {{#machine_errors}}
             case {{name}}:
-                {{#use_base}}
+            {{#use_base}}
                 d = get_base_defaults({{use_base}});
                 {{^title}}
                 m_title = d.title;
@@ -171,7 +173,7 @@ private:
                 {{^error_action}}
                 m_action = d.action;
                 {{/error_action}}
-                {{/use_base}}
+           {{/use_base}}
                 {{#title}}
                 m_title = QStringLiteral("{{{title}}}");
                 {{/title}}
@@ -198,6 +200,7 @@ private:
     ACTION m_action;
     QString m_title;
     Error m_error;
+    bool m_isFancy;
 
 };
 
