@@ -26,7 +26,7 @@ namespace bwcoreutils {
  */
 class BotError {
 public:
-
+    typedef std::vector<std::string> MESSAGE_ARGS;
     enum TYPE {
         {{#error_type_enum}}
         {{name}} = {{value}},
@@ -43,7 +43,7 @@ public:
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
         m_error(errorCode),
-        m_isFancy(false) {
+        m_messageArgs() {
         init();
     }
 
@@ -55,7 +55,7 @@ public:
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
         m_error(static_cast<Error>(errorCode)),
-        m_isFancy(false) {
+        m_messageArgs() {
         init();
     }
 
@@ -85,6 +85,10 @@ public:
         return m_error;
     }
 
+    MESSAGE_ARGS messageArgs() const {
+        return m_messageArgs;
+    }
+
 private:
 
 
@@ -100,7 +104,7 @@ private:
         title(title),
         message(message),
         type(type),
-        action(action) {}
+        action(action){}
 	ErrorDefaults() {}
         ~ErrorDefaults() {}
 
@@ -136,6 +140,9 @@ private:
                 {{^message}}
                 m_message = dummy.sprintf(d.message.c_str(), static_cast<int>(m_error), "{{{pretty_name}}}");
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{^error_type}}
                 m_type = d.type;
                 {{/error_type}}
@@ -149,6 +156,9 @@ private:
                 {{#message}}
                 m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{#error_type}}
                 m_type = {{error_type}};
                 {{/error_type}}
@@ -167,6 +177,9 @@ private:
                 {{^message}}
                 m_message = dummy.sprintf(d.message.c_str(), static_cast<int>(m_error), "{{{pretty_name}}}");
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{^error_type}}
                 m_type = d.type;
                 {{/error_type}}
@@ -180,6 +193,9 @@ private:
                 {{#message}}
                 m_message = dummy.sprintf("{{{message}}}", static_cast<int>(m_error));
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{#error_type}}
                 m_type = {{error_type}};
                 {{/error_type}}
@@ -200,8 +216,7 @@ private:
     ACTION m_action;
     QString m_title;
     Error m_error;
-    bool m_isFancy;
-
+    MESSAGE_ARGS m_messageArgs;
 };
 
 inline bool operator==(const BotError &lhs, const BotError &rhs) {return lhs.error() == rhs.error();}
