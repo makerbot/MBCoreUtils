@@ -52,7 +52,7 @@ generate_and_install_config(
     NAME MBCoreUtils
     ADDITIONAL_PATHS
         MBCoreUtils_INCLUDE_DIRS ${HEADER_INSTALL_DIR}
-        BWCoreUtils_INCLUDE_DIRS ${HEADER_INSTALL_DIR})
+        BWCoreUtils_INCLUDE_DIRS ${HEADER_INSTALL_DIR}/bwcoreutils)
 
 install(
     FILES ${codegenned_files}

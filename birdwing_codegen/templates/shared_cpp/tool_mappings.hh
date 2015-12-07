@@ -16,7 +16,7 @@ enum class TOOL : int {
 
 enum class TYPE : int {
     {{#types}}
-    {{name}},
+    {{key}} = {{id}},
     {{/types}}
 };
 
@@ -51,28 +51,31 @@ public:
 
     TYPE type() const {
         switch (m_tool) {
-            {{#tools}}
+        {{#tools}}
         case TOOL::{{name}}:
-            return TYPE::{{type_name}};
+        return TYPE::{{type_key}};
         {{/tools}}
         default:
-            return TYPE::UNKNOWN;
+            return TYPE::UNKNOWN_TYPE;
         }
     }
 
     static TYPE type_from_type_name(const std::string& type_name) {
         // This weird formatting brought to you by switch() only
         // knowing how to handle integral types for some reason
-        if(type_name == "") {
-            return TYPE::UNKNOWN;
-        }
         {{#types}}
-        else if(type_name == std::string("{{key}}")) {
-            return TYPE::{{name}}; }
+        if(type_name == std::string("{{key_string}}")
+           || type_name == std::string("{{name}}")) {
+            return TYPE::{{key}}; }
         {{/types}}
-        else {
-            return TYPE::UNKNOWN;
-        }
+        return TYPE::UNKNOWN_TYPE;
+    }
+
+    static std::string type_name_from_type(const TYPE type) {
+        {{#types}}
+        if(type == TYPE::{{key}}) { return "{{name}}";}
+        {{/types}}
+        return "Unknown";
     }
 
     static std::string material_from_material_type(const MATERIALS mat) {
@@ -99,15 +102,16 @@ public:
     static bool toolpaths_equivalent(const TYPE a, const TYPE b) {
         switch(a) {
             {{#types}}
-        case TYPE::{{name}}:
+        case TYPE::{{key}}:
             switch(b) {
             {{#toolpath_equivalents}}
-            case TYPE::{{name}}: return true; break;
+            case TYPE::{{key}}: return true; break;
             {{/toolpath_equivalents}}
-            case TYPE::{{name}}: return true; break;
+            case TYPE::{{key}}: return true; break;
             default: return false; break;
             }
             {{/types}}
+        default: return false; break;
         }
     }
 
