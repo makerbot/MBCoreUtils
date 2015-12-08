@@ -49,17 +49,6 @@ public:
         }
     }
 
-    std::string version() const {
-        switch (m_tool) {
-            {{#tools}}
-            case TOOL::{{name}}:
-                return "{{version}}";
-            {{/tools}}
-            default:
-                return "Unknown";
-        }
-    }
-
     std::string material() const {
         switch (m_tool) {
             {{#tools}}

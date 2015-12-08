@@ -24,7 +24,7 @@ namespace bwcoreutils {
 class BotError {
     Q_DECLARE_TR_FUNCTIONS(BotError)
 public:
-
+    typedef std::vector<std::string> MESSAGE_ARGS;
     enum TYPE {
         {{#error_type_enum}}
         {{name}} = {{value}},
@@ -40,7 +40,8 @@ public:
     explicit BotError(Error errorCode) :
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
-        m_error(errorCode) {
+        m_error(errorCode),
+        m_messageArgs() {
         init();
     }
 
@@ -51,7 +52,8 @@ public:
     explicit BotError(int errorCode) :
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
-        m_error(static_cast<Error>(errorCode)) {
+        m_error(static_cast<Error>(errorCode)),
+        m_messageArgs() {
         init();
     }
 
@@ -60,7 +62,8 @@ public:
         m_type(other.m_type),
         m_action(other.m_action),
         m_title(other.m_title),
-        m_error(other.m_error)
+        m_error(other.m_error),
+        m_messageArgs(other.m_messageArgs)
     {
     }
 
@@ -88,6 +91,10 @@ public:
 
     Error error() const {
         return m_error;
+    }
+
+    MESSAGE_ARGS messageArgs() const {
+        return m_messageArgs;
     }
 
 private:
@@ -141,6 +148,9 @@ private:
                 {{^message}}
                 m_message = dummy.sprintf(qPrintable(d.message), static_cast<int>(m_error), qPrintable(tr("{{{pretty_name}}}")));
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{^error_type}}
                 m_type = d.type;
                 {{/error_type}}
@@ -154,6 +164,9 @@ private:
                 {{#message}}
                 m_message = dummy.sprintf(qPrintable(tr("{{{message}}}")), static_cast<int>(m_error), "");
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{#error_type}}
                 m_type = {{error_type}};
                 {{/error_type}}
@@ -172,6 +185,9 @@ private:
                 {{^message}}
                 m_message = dummy.sprintf(qPrintable(d.message), static_cast<int>(m_error), qPrintable(tr("{{{pretty_name}}}")));
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{^error_type}}
                 m_type = d.type;
                 {{/error_type}}
@@ -185,6 +201,9 @@ private:
                 {{#message}}
                 m_message = dummy.sprintf(qPrintable(tr("{{{message}}}")), static_cast<int>(m_error), "");
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{#error_type}}
                 m_type = {{error_type}};
                 {{/error_type}}
@@ -205,7 +224,7 @@ private:
     ACTION m_action;
     QString m_title;
     Error m_error;
-
+    MESSAGE_ARGS m_messageArgs;
 };
 
 inline bool operator==(const BotError &lhs, const BotError &rhs) {return lhs.error() == rhs.error();}
