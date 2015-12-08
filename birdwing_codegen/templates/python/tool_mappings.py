@@ -16,6 +16,8 @@ class Tool(object):
     @property
     def type(self): return self._type
     @property
+    def type_pretty_name(self): return type_to_type_name[self._type]
+    @property
     def name(self): return self._name
     @property
     def pretty_name(self): return self._pretty_name
@@ -33,8 +35,7 @@ class Tool(object):
 
 _id_map = {
     {{#tools}}
-        {{id}}: Tool({{id}}, u'{{type_name}}', u'{{name}}', u'{{pretty_name}}'),
-
+        {{id}}: Tool({{id}}, u'{{type_key}}', u'{{name}}', u'{{pretty_name}}'),
     {{/tools}}
 }
 
@@ -48,3 +49,9 @@ invalid_tool = _name_map['invalid_id']
 
 valid_ids = sorted(set(t.id for t in _id_map.values() if t.valid()))
 valid_tools = [Tool.from_id(i) for i in valid_ids]
+type_to_type_name = {
+    {{#types}}
+        {{id}}: u'{{name}}',
+        u'{{key}}': u'{{name}}',
+    {{/types}}
+}
