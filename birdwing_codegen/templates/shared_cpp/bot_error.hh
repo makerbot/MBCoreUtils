@@ -68,6 +68,9 @@ public:
         return m_message;
     }
 
+    void setMessage(const QString& newMessage) {
+        m_message = newMessage;
+    }
     // Used to determine what thumbnail to display to the user
     TYPE type() const {
         return m_type;
