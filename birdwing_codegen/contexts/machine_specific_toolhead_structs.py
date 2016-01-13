@@ -16,7 +16,7 @@ base_structs_dict = {
             "inherits": "toolhead",
             "fields": [
                 {"name": "filament_fan_running", "type": "bool"},
-                {"name": "encoder_adc", "type": "uint16"},
+                {"name": "memory_space", "type": "uint16"},
                 {"name": "filament_presence", "type": "bool"},
                 {"name": "extrusion_percent", "type": "uint8"},
                 {"name": "filament_jam", "type": "bool"}
