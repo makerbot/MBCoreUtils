@@ -77,7 +77,8 @@
          "message": "Please run Homing Calibration before printing with this Smart Extruder",
          "error_type" : "tool_error",
          "error_action": "calibrate_z",
-         "id": 1046
+         "id": 1046,
+         "msg_no_errcode": true
         },
         {
             "use_base": false,
@@ -226,6 +227,7 @@
             "pretty_name": "Slice Incompatible: Extruder",
             "title": "Print File Error",
             "message": "The selected print was sliced for a %1, but a %2 is attached. Please reslice for a %2. (Error %d)",
+            "message_noqt": "The selected print was sliced for a %1%, but a %2% is attached. Please reslice for a %2%. (Error 1048)",
             "message_args": [{"arg": "file_tool"}, {"arg": "current_tool"}],
             "error_type": "none",
             "error_action": "acknowledge_or_continue",
@@ -268,7 +270,8 @@
             "message": "There is not enough free space on the attached USB drive.",
             "error_type": "none",
             "error_action" : "acknowledge",
-            "id": 1051
+            "id": 1051,
+            "msg_no_errcode": true
         },
         {
             "use_base" : false,
@@ -277,7 +280,8 @@
             "message": "Internal operation timed out. Please contact Support.",
             "error_type": "none",
             "error_action" : "acknowledge",
-            "id":1100
+            "id":1100,
+            "msg_no_errcode": true
         },
 	{
 	    "use_base" : false,
@@ -286,7 +290,8 @@
             "message": "Could not check for firmware updates. Please contact Support.",
             "error_type": "none",
             "error_action" : "acknowledge",
-            "id":1053
+            "id":1053,
+            "msg_no_errcode": true
 	},
 	{
 	    "use_base" : false,
@@ -295,7 +300,8 @@
             "message": "Could not download firmware. Please contact Support.",
             "error_type": "none",
             "error_action" : "acknowledge",
-            "id":1054
+            "id":1054,
+            "msg_no_errcode": true
 	},
 	{
 	    "use_base" : false,
@@ -304,7 +310,8 @@
             "message": "Could not connect to the Internet.",
             "error_type": "none",
             "error_action" : "acknowledge",
-            "id":1055
+            "id":1055,
+            "msg_no_errcode": true
 	}
     ],
 
@@ -394,7 +401,8 @@
             "message": "Your extruder cools down if the printer stays idle for a few minutes.",
             "error_type": "none",
             "error_action": "acknowledge",
-            "id": 56
+            "id": 56,
+            "msg_no_errcode": true
         },
         {
             "use_base": false,

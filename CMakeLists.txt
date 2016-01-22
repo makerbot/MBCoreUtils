@@ -21,6 +21,7 @@ set(contexts_dir
 mustache_codegen(
     TEMPLATES
         "${templates_dir}/shared_cpp/all_errors.hh"
+        "${templates_dir}/shared_cpp/all_errors_node.hh"
         "${templates_dir}/shared_cpp/bot_error.hh"
         "${templates_dir}/shared_cpp/bot_error_noqt.hh"
         "${templates_dir}/shared_cpp/ikrpccontroller.hh"
