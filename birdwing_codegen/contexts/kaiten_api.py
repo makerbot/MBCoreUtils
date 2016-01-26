@@ -32,11 +32,10 @@ def add_metadata(api):
 
 def generate_context(**kwargs):
     apigen_path = kwargs.get('APIGEN_PATH', '@no_apigen@')
-    pythonpath = os.environ.get('PYTHON_33', 'python3.3')
 
     if os.path.exists(apigen_path):
         api = json.loads(
-            subprocess.check_output([pythonpath, apigen_path, '-l 3']))
+            subprocess.check_output(['python3.4', apigen_path, '-l 3']))
         api_dict['kaiten_api'] = add_metadata(api)
     elif 'MBCOREUTILS_BIRDWING' in kwargs:
         raise Exception('Unable to locate %s, required for birdwing builds!'
