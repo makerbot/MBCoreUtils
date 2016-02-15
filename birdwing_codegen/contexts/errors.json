@@ -368,6 +368,16 @@
         },
         {
             "use_base": false,
+            "name": "unusual_stall_condition",
+            "pretty_name": "Stall Condition Detected",
+            "title": "Stall Condition Detected",
+            "message": "An unusual print error has occurred. To protect your extruder, the print was cancelled. Try the print again and this error will most likely not reoccur.",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 76
+        },
+        {
+            "use_base": false,
             "name": "no_filament",
             "pretty_name": "No Filament",
             "title": "Out of Filament",
