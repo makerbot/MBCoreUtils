@@ -40,8 +40,11 @@ generated_settings = env.File("#/.build-" +
                               env.BWGetVariantDirSuffix() +
                               '/' + BWCGEN_OUTPUT_DIR + '/' +
                               'printer_settings.json')
-
-env.BWGenSettings('printer_settings.json',
+bwsoft_path = '#/../../Birdwing-Software/firmware/settings/'
+base_file_path = bwsoft_path + 'printer_settings.json'
+override_file_path = base_file_path + '.' + env.GetOption('machine')
+env.BWGenSettings(base_file_path,
+                  override_file_path,
                   generated_settings)
 
 # Declare the machine-specific settings file as an external source
