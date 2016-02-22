@@ -108,7 +108,7 @@ private:
         message(message),
         type(type),
         action(action){}
-	ErrorDefaults() {}
+        ErrorDefaults() {}
         ~ErrorDefaults() {}
 
 
@@ -126,12 +126,13 @@ private:
                 return ErrorDefaults(QStringLiteral("{{{title}}}"), "{{{message}}}", {{error_type}}, {{error_action}});
             {{/error_bases}}
         }
-	return ErrorDefaults();
+        return ErrorDefaults();
     }
 
     void init() {
-	ErrorDefaults d;
-    QString dummy;
+        ErrorDefaults d;
+        const std::string errCodePlaceHolder("%d");
+        QString dummy;
         switch(m_error) {
             {{#toolhead_errors}}
             case {{name}}:
