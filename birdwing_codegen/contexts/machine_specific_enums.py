@@ -36,6 +36,18 @@ base_enums_dict = {
             ]
         },
         {
+            "name": "axis_name",
+            "values": [
+                {"name_upper_xform": "x", "value": 0},
+                {"name_upper_xform": "y", "value": 1},
+                {"name_upper_xform": "z", "value": 2},
+                {"name_upper_xform": "a", "value": 3},
+                {"name_upper_xform": "aa", "value": 4},
+                {"name_upper_xform": "b", "value": 5},
+                {"name_upper_xform": "bb", "value": 6}
+            ]
+        },
+        {
             "name": "constants",
             "values": [
                 {"name": "axis_count", "value": 4},

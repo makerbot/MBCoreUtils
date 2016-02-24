@@ -11,7 +11,6 @@
 			"uint64": "ctypes.c_uint64",
 			"uint8": "ctypes.c_uint8"
 		},
-
 		"structs": {
 			"name_TRANSFORM": {
 				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Struct'",
@@ -118,7 +117,12 @@
 			"int64": "int64_t",
 			"uint64": "uint64_t"
 		},
-
+        "axis_names": {
+            "axis_name_TRANSFORM": {
+                "LAMBDA": "lambda s: 'k' + s.upper()",
+                "REPLACE_MATCHING_VALS_IN_KEYS": ["axis_name"]
+            }
+        },
 		"structs": {
 			"name_TRANSFORM": {
 				"LAMBDA": "lambda s: s.title().replace('_', '') + 'Status'",
@@ -142,7 +146,11 @@
 				"name_TRANSFORM": {
 					"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
 					"REPLACE_MATCHING_VALS_IN_KEYS": false
-				}
+				},
+                "name_upper_xform_TRANSFORM": {
+                    "LAMBDA": "lambda s: 'k' + s.upper()",
+                    "REPLACE_MATCHING_VALS_IN_KEYS": false
+                }
 			}
 		},
 
