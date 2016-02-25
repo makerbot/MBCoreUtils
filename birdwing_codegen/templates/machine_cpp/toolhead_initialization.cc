@@ -14,7 +14,7 @@ void Machine::InitializeToolheads(){
     static time_t start;
     {{#machine_toolheads}}
 
-    toolhead_[{{index}}] = new {{name}}ToolheadManager({{index}});
+    toolhead_[{{index}}] = std::make_shared<{{name}}ToolheadManager>({{index}});
     heater_manager_->AddHeater(toolhead_[{{index}}]);
     toolhead_[{{index}}]->SetStatusStruct(&machine_status_.toolhead_{{index}}_status);
     toolhead_[{{index}}]->SetFilepath("{{program_floc}}");
