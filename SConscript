@@ -68,8 +68,6 @@ dynamic_context_args = {
 
 dynamic_context_args['MBCOREUTILS_BIRDWING'] = True
 
-dynamic_context_args['BWMACHINE_SETTINGS'] = generated_settings
-
 print("using dca " + str(dynamic_context_args))
 
 templates_root = os.path.join(BWCGEN_ROOT_DIR, 'templates')
