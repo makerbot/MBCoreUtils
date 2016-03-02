@@ -11,7 +11,7 @@ env = Environment(
     ENV=os.environ,
     tools=['default', 'mustache', 'birdwing_install',
            'birdwing_settingsgen', 'birdwing_build'],
-    toolpath=['#/../mustache',
+    toolpath=['#/../mustache/scons',
               '#/../bw-scons-tools'])
 
 # MBRecursiveFileGlob is defined in both the mb_install tool, and the
