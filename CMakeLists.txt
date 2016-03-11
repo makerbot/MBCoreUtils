@@ -31,10 +31,8 @@ mustache_codegen(
         "${templates_dir}/machine_cpp/toolhead_toolidentifier.hh"
     CONTEXTS
         "${contexts_dir}/errors.json"
-        "${contexts_dir}/kaiten_api.py"
         "${contexts_dir}/tool_metadata.json"
         "${contexts_dir}/machine_specific_enums.json"
-        "${contexts_dir}/machine_specific_toolhead_metadata.py"
     TRANSFORMATIONS_FILE
         "${PROJECT_SOURCE_DIR}/birdwing_codegen/transformations.json"
     OUTPUT_DIR
