@@ -9,11 +9,12 @@ namespace bwcoreutils {
 
 /*
  * This class takes an error code integer and provides details for UI
- * error handling.  Does not support string translation.  Requires C++11 and boost::format.
+ * error handling.  Does not support string translation.
+ * Requires C++11 and boost::format.
  */
 class BotError {
 public:
-
+    typedef std::vector<std::string> MESSAGE_ARGS;
     enum TYPE {
         {{#error_type_enum}}
         {{name}} = {{value}},
@@ -27,11 +28,10 @@ public:
     };
 
     explicit BotError(Error errorCode) :
-        m_message("Oops, we have a problem. Please update your firmware using MakerBot Desktop."),
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
-        m_title("System Error"),
-        m_error(errorCode) {
+        m_error(errorCode),
+        m_messageArgs() {
         init();
     }
 
@@ -40,11 +40,10 @@ public:
     // but MSVC 11 (2012) doesn't support that feature of c++11, so we'll have to
     // update this when we switch to a newer MSVC
     explicit BotError(int errorCode) :
-        m_message("Oops, we have a problem. Please update your firmware using MakerBot Desktop."),
         m_type(static_cast<TYPE>(0)),
         m_action(static_cast<ACTION>(0)),
-        m_title("System Error"),
-        m_error(static_cast<Error>(errorCode)) {
+        m_error(static_cast<Error>(errorCode)),
+        m_messageArgs() {
         init();
     }
 
@@ -55,6 +54,10 @@ public:
 
     std::string message() const {
         return m_message;
+    }
+
+    void setMessage(const std::string & newMessage) {
+        m_message = newMessage;
     }
 
     // Used to determine what thumbnail to display to the user
@@ -72,6 +75,10 @@ public:
 
     Error error() const {
         return m_error;
+    }
+
+    MESSAGE_ARGS messageArgs() const {
+        return m_messageArgs;
     }
 
 private:
@@ -108,7 +115,7 @@ private:
     }
 
     void init() {
-    ErrorDefaults d;
+        ErrorDefaults d;
         switch(m_error) {
             {{#toolhead_errors}}
             case {{name}}:
@@ -120,6 +127,9 @@ private:
                 {{^message}}
                 m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{^error_type}}
                 m_type = d.type;
                 {{/error_type}}
@@ -131,8 +141,16 @@ private:
                 m_title = "{{{title}}}";
                 {{/title}}
                 {{#message}}
+                {{^msg_no_errcode}}
                 m_message = (boost::format("{{{message}}}") % static_cast<int>(m_error)).str();
+                {{/msg_no_errcode}}
+                {{#msg_no_errcode}}
+                m_message = "{{{message}}}";
+                {{/msg_no_errcode}}
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{#error_type}}
                 m_type = {{{error_type}}};
                 {{/error_type}}
@@ -151,6 +169,9 @@ private:
                 {{^message}}
                 m_message = (boost::format(d.message) % static_cast<int>(m_error) % "{{{pretty_name}}}").str();
                 {{/message}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{^error_type}}
                 m_type = d.type;
                 {{/error_type}}
@@ -161,9 +182,22 @@ private:
                 {{#title}}
                 m_title = "{{{title}}}";
                 {{/title}}
+                {{^message_noqt}}
                 {{#message}}
+                {{^msg_no_errcode}}
                 m_message = (boost::format("{{{message}}}") % static_cast<int>(m_error)).str();
+                {{/msg_no_errcode}}
+                {{#msg_no_errcode}}
+                m_message = "{{{message}}}";
+                {{/msg_no_errcode}}
                 {{/message}}
+                {{/message_noqt}}
+                {{#message_noqt}}
+                m_message = "{{{message_noqt}}}";
+                {{/message_noqt}}
+                {{#message_args}}
+                m_messageArgs.push_back("{{{arg}}}");
+                {{/message_args}}
                 {{#error_type}}
                 m_type = {{{error_type}}};
                 {{/error_type}}
@@ -182,6 +216,7 @@ private:
     ACTION m_action;
     std::string m_title;
     Error m_error;
+    MESSAGE_ARGS m_messageArgs;
 
 };
 
