@@ -312,7 +312,17 @@
             "error_action" : "acknowledge",
             "id":1055,
             "msg_no_errcode": true
-	}
+	},
+    {
+        "use_base": false,
+            "name": "printing_url_error",
+            "pretty_name": "Invalid URL",
+            "title": "Invalid URL",
+            "message": "There was a problem downloading the .makerbot file from the URL provided.",
+            "error_type": "none",
+            "error_action": "acknowledge",
+            "id": 1056
+    }
     ],
 
     "toolhead_errors": [
