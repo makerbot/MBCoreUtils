@@ -325,6 +325,16 @@
     },
     {
         "use_base": false,
+        "name": "wifi_ethernet_connected",
+        "pretty_name": "Ethernet Connected During Wifi Setup",
+        "title": "Wireless Configuration Error",
+        "message": "Wireless configuration cannot proceed while a network cable is plugged in.",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 905
+    },
+    {
+        "use_base": false,
         "fancy_message": true,
         "name": "wifi_no_such_ssid",
         "pretty_name": "Wireless Network Not Found",
