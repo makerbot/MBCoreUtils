@@ -338,7 +338,7 @@
         "name": "wifi_no_such_ssid",
         "pretty_name": "Wireless Network Not Found",
         "title": "Wireless Network Not Found",
-        "message": "The specified wireless network could not be found (Error 1060)",
+        "message": "The specified wireless network could not be found (Error 904)",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 904
@@ -348,7 +348,7 @@
         "name": "wifi_password_required",
         "pretty_name": "Wireless Netowrk Requires Password",
         "title": "Wireless Network Error",
-        "message": "The specified wireless network requires a password (Error 1061)",
+        "message": "The specified wireless network requires a password (Error 903)",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 903
@@ -358,7 +358,7 @@
         "name": "wifi_password_invalid",
         "pretty_name": "Wireless Network Password Invalid",
         "title": "Wireless Network Error",
-        "message": "The password specified for the wireless network is invalid (Error 1062)",
+        "message": "The password specified for the wireless network is invalid (Error 902)",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 902
@@ -368,7 +368,7 @@
         "name": "wifi_ssid_required",
         "pretty_name": "Wireless Network SSID Required",
         "title": "Wireless Network Error",
-        "message": "The SSID of the wireless network must be specified  (Error 1063).",
+        "message": "The SSID of the wireless network must be specified  (Error 901).",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 901
@@ -378,7 +378,7 @@
         "name": "wifi_general_error",
         "pretty_name": "Wireless Network General Error",
         "title": "Wireless Network Error",
-        "message": "There was a problem connecting to the network  (Error 1064).",
+        "message": "There was a problem connecting to the network  (Error 900).",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 900
