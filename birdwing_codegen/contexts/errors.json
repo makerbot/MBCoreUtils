@@ -322,6 +322,66 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 1056
+    },
+    {
+        "use_base": false,
+        "name": "wifi_ethernet_connected",
+        "pretty_name": "Ethernet Connected During Wifi Setup",
+        "title": "Wireless Configuration Error",
+        "message": "Wireless configuration cannot proceed while a network cable is plugged in.",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 905
+    },
+    {
+        "use_base": false,
+        "name": "wifi_no_such_ssid",
+        "pretty_name": "Wireless Network Not Found",
+        "title": "Wireless Network Not Found",
+        "message": "The specified wireless network could not be found (Error 904)",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 904
+    },
+    {
+        "use_base": false,
+        "name": "wifi_password_required",
+        "pretty_name": "Wireless Netowrk Requires Password",
+        "title": "Wireless Network Error",
+        "message": "The specified wireless network requires a password (Error 903)",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 903
+    },
+    {
+        "use_base": false,
+        "name": "wifi_password_invalid",
+        "pretty_name": "Wireless Network Password Invalid",
+        "title": "Wireless Network Error",
+        "message": "The password specified for the wireless network is invalid (Error 902)",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 902
+    },
+    {
+        "use_base": false,
+        "name": "wifi_ssid_required",
+        "pretty_name": "Wireless Network SSID Required",
+        "title": "Wireless Network Error",
+        "message": "The SSID of the wireless network must be specified  (Error 901).",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 901
+    },
+    {
+        "use_base": false,
+        "name": "wifi_general_error",
+        "pretty_name": "Wireless Network General Error",
+        "title": "Wireless Network Error",
+        "message": "There was a problem connecting to the network  (Error 900).",
+        "error_type": "none",
+        "error_action": "acknowledge",
+        "id": 900
     }
     ],
 
