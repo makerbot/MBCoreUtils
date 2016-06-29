@@ -1,0 +1,59 @@
+{
+    "enums": [
+        {
+            "name": "leveling_states",
+            "values": [
+                {"name": "too_high", "value": 1},
+                {"name": "too_low", "value": 0},
+                {"name": "wrong_way", "value": 3},
+                {"name": "just_right", "value": 2}
+            ]
+        },
+        {
+            "name": "leveling_knobs",
+            "values": [
+                {"name": "Knob1", "value": 1},
+                {"name": "Fixed", "value": 0},
+                {"name": "Knob2", "value": 2}
+            ]
+        },
+        {
+            "name": "power_monitor_rail",
+            "values": [
+                {"name": "5v", "value": 0},
+                {"name": "12v", "value": 1}
+            ]
+        },
+        {
+            "name": "power_monitor_value",
+            "values": [
+                {"name": "Current", "value": 0},
+                {"name": "Voltage", "value": 1}
+            ]
+        },
+        {   
+            "name": "axis_name",
+            "values": [
+                {"name_upper_xform": "x", "value": 0},
+                {"name_upper_xform": "y", "value": 1},
+                {"name_upper_xform": "z", "value": 2},
+                {"name_upper_xform": "a", "value": 3},
+                {"name_upper_xform": "aa", "value": 4},
+                {"name_upper_xform": "b", "value": 5},
+                {"name_upper_xform": "bb", "value": 6}
+            ]
+        },  
+        {
+            "name": "constants",
+            "values": [
+                {"name": "axis_count", "value": 4},
+                {"name": "warning_threshold", "value": 500},
+                {"name": "toolhead_warning_threshold", "value": 128},
+                {"name": "pru_buffer_size", "value": 1170},
+                {"name": "machine_error_threshold", "value": 2000},
+                {"name": "toolhead_version_bytes", "value": 2},
+                {"name": "process_error_threshold", "value": 1000}
+            ]
+        }
+    ]
+}
