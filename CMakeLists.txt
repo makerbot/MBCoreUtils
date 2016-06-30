@@ -24,9 +24,9 @@ if(${BIRDWING})
         install(FILES
             "${PROJECT_SOURCE_DIR}/birdwing_codegen/static/machine_config_skeleton.json"
             DESTINATION "rootfs/usr/settings")
-        set(python_install_dir "rootfs/${LIB_INSTALL_DIR}/python3.4/site-packages/kaiten")
+        set(python_install_dir "rootfs/${LIB_INSTALL_DIR}/python3.4/kaiten")
     else()
-        set(python_install_dir "host/${LIB_INSTALL_DIR}/python3.4/site-packages/kaiten")
+        set(python_install_dir "host/${LIB_INSTALL_DIR}/python3.4/kaiten")
     endif()
     set(BW_TEMPLATES
         "${templates_dir}/shared_cpp/bot_error_translateable.hh"
