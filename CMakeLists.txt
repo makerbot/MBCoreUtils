@@ -21,13 +21,16 @@ set(_CONTEXTS
 
 if(${BIRDWING})
     if(${MB_CROSS})
-        install(FILES
-            "${PROJECT_SOURCE_DIR}/birdwing_codegen/static/machine_config_skeleton.json"
-            DESTINATION "rootfs/usr/settings")
-        set(python_install_dir "rootfs/${LIB_INSTALL_DIR}/python3.4/kaiten")
+        set(ROOT rootfs)
     else()
-        set(python_install_dir "host/${LIB_INSTALL_DIR}/python3.4/kaiten")
+        set(ROOT host)
     endif()
+    set(python_install_dir "${ROOT}/${LIB_INSTALL_DIR}/python3.4/mbcoreutils")
+    set(static_birdwing_dir
+        "${PROJECT_SOURCE_DIR}/birdwing_codegen/static")
+    install(FILES
+        "${static_birdwing_dir}/machine_config_skeleton.json"
+        DESTINATION "${ROOT}/usr/settings")
     set(BW_TEMPLATES
         "${templates_dir}/shared_cpp/bot_error_translateable.hh"
         "${templates_dir}/shared_cpp/common_settings.hh")
@@ -79,8 +82,10 @@ add_custom_target(codegen ALL DEPENDS ${codegenned_files})
 generate_and_install_config(
     NAME MBCoreUtils
     ADDITIONAL_PATHS
-        MBCoreUtils_INCLUDE_DIRS ${header_install_root}${HEADER_INSTALL_DIR}
-        BWCoreUtils_INCLUDE_DIRS ${header_install_root}${HEADER_INSTALL_DIR}/bwcoreutils)
+        MBCoreUtils_INCLUDE_DIRS
+            ${header_install_root}${HEADER_INSTALL_DIR}
+        BWCoreUtils_INCLUDE_DIRS
+            ${header_install_root}${HEADER_INSTALL_DIR}/bwcoreutils)
 
 install(
     FILES ${codegenned_files}

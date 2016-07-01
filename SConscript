@@ -89,6 +89,11 @@ if env.BWShouldCrossBuild():
     env.Alias('install', shared_includes)
     env.BWInstall('/usr/settings', Glob('#/birdwing_codegen/static/*'))
 
+# Install all of our python files as an "mbcoreutils" python package
+for py_file in python_files:
+    env.BWPyInstallPkg(str(py_file), subpkg='mbcoreutils')
+
+
 def build_translation_zip(env, target, source):
     if SCons.Util.is_List(target):
         target = target[0]
