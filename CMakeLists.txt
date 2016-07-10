@@ -31,9 +31,6 @@ if(${BIRDWING})
     install(FILES
         "${static_birdwing_dir}/machine_config_skeleton.json"
         DESTINATION "${ROOT}/usr/settings")
-    set(BW_TEMPLATES
-        "${templates_dir}/shared_cpp/bot_error_translateable.hh"
-        "${templates_dir}/shared_cpp/common_settings.hh")
     mustache_codegen(
         TEMPLATES
             "${templates_dir}/python/common_settings.py"
@@ -61,12 +58,13 @@ mustache_codegen(
         "${templates_dir}/shared_cpp/all_errors_node.hh"
         "${templates_dir}/shared_cpp/bot_error.hh"
         "${templates_dir}/shared_cpp/bot_error_noqt.hh"
+        "${templates_dir}/shared_cpp/bot_error_translateable.hh"
+        "${templates_dir}/shared_cpp/common_settings.hh"
         "${templates_dir}/shared_cpp/tool_mappings.hh"
         "${templates_dir}/machine_cpp/machine_definitions.hh"
         "${templates_dir}/machine_cpp/machine_errors.hh"
         "${templates_dir}/machine_cpp/toolhead_errors.hh"
         "${templates_dir}/machine_cpp/toolhead_toolidentifier.hh"
-        "${BW_TEMPLATES}"
     CONTEXTS
         "${_CONTEXTS}"
     TRANSFORMATIONS_FILE
@@ -91,11 +89,11 @@ install(
     FILES ${codegenned_files}
     DESTINATION "${header_install_root}${HEADER_INSTALL_DIR}/bwcoreutils")
 
-if(NOT DEFINED BIRDWING)
-    install(
-        DIRECTORY "${PROJECT_SOURCE_DIR}/include/mbcoreutils"
-        DESTINATION "${header_install_root}${HEADER_INSTALL_DIR}")
+install(
+    DIRECTORY "${PROJECT_SOURCE_DIR}/include/mbcoreutils"
+    DESTINATION "${header_install_root}${HEADER_INSTALL_DIR}")
 
+if(NOT DEFINED BIRDWING)
     install_docs(
         FILES "${PROJECT_SOURCE_DIR}/README.md"
         PREFIX MBCoreUtils)
