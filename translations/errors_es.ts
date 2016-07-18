@@ -9,76 +9,76 @@
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="500"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="536"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="542"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1086"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1107"/>
         <source>Extruder Error</source>
         <translation>Error de Extruder</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="145"/>
         <source>Oops, we have a problem with your Smart Extruder (Error %d: %s). Please disconnect and reconnect your Smart Extruder.</source>
-        <translation type="Vaya, tenemos un problema con su Smart Extruder (error %d: %s). Por favor, desconecte y vuelva a conectar su Smart Extruder"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="147"/>
         <source>Oops, we have a problem with your Smart Extruder (Error %d: %s). Please visit our Support page at Makerbot.com/support.</source>
-        <translation type="Vaya, tenemos un problema con su Smart Extruder (error %d: %s). Por favor, visite nuestra página de Asistencia en Makerebot.com/support."></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="149"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="151"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1068"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1089"/>
         <source>Homing Error</source>
         <translation>Error de hospedaje</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="149"/>
         <source>Homing failed (Error %d: %s). Please try again.</source>
-        <translation type="Error de hospedaje (error %d: %s). Por favor, pruebe de nuevo"></translation>e
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="151"/>
         <source>Homing failed (Error %d: %s). Your extruder nozzle may be stuck. Please try again.</source>
-        <translation type="Error de hospedaje (error %d: %s). La boquilla de su extrusor podría estar atascada. Por favor, pruebe de nuevo"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="153"/>
         <source>Print Error</source>
-        <translation type="Error de impresión"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="153"/>
         <source>Invalid print file (Error %d: %s). Please try to prepare again in MakerBot Desktop.</source>
-        <translation type="Archivo de impresión no válido (error %d: %s). Por favor, pruebe a preparar de nuevo en MakerBot Desktop"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="155"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="157"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="161"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="723"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1233"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1254"/>
         <source>System Error</source>
         <translation>Error del sistema</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="155"/>
         <source>Oops, we have a problem (Error %d: %s). Please update your firmware using MakerBot Desktop.</source>
-        <translation type="Vaya, tenemos un problema (error %d: %s). Por favor, actualice su firmware usando MakerBot Desktop"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="157"/>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="161"/>
         <source>Oops, we have a problem (Error %d: %s).</source>
-        <translation type="Vaya, tenemos un problema (error %d: %s)."></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="159"/>
         <source>Chamber Error</source>
-        <translation type="Error de cámara"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="159"/>
         <source>There is a problem with your chamber heater (Error %d: %s). Please visit our Support page at Makerbot.com/support.</source>
-        <translation type="Hay un problema con su calentador de cámara (error %d: %s). Por favor, visite nuestra página de Asistencia en Makerbot.com/support."></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="173"/>
@@ -318,21 +318,21 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="501"/>
         <source>Your Smart Extruder has been disconnected (Error %d). Please remove and reattach the Smart Extruder.</source>
-        <translation type="Se ha desconectado su Smart Extruder (error %d). Por favor, retire y vuelva a colocar el Smart Extruder"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="506"/>
         <source>Stall Condition Detected</source>
-        <translation type="Se ha detectado estado de encasillado"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="507"/>
         <source>An unusual print error has occurred. To protect your extruder, the print was cancelled. Try the print again and this error will most likely not reoccur.</source>
-        <translation type="Ha habido un error de impresión anormal. Para proteger su extrusor, se ha cancelado la impresión. Pruebe de nuevo la impresión y probablemente no volverá a ocurrir este error"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="512"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1116"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1137"/>
         <source>Out of Filament</source>
         <translation>Sin filamento</translation>
     </message>
@@ -489,7 +489,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="681"/>
         <source>Print File Corrupt</source>
-        <translation type="Archivo de impresión corrupto"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="688"/>
@@ -713,289 +713,304 @@
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1003"/>
+        <source>Remote Full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1010"/>
+        <source>Local Buffer Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1017"/>
+        <source>Keep Calling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1024"/>
         <source>Machine Driver Failure</source>
         <translation>Machine Driver Failure</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1010"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1031"/>
         <source>Invalid Endstop Type</source>
         <translation>Tipo de tope no válido</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1017"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1038"/>
         <source>File Not Found</source>
         <translation>Archivo no encontrado</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1024"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1045"/>
         <source>Interface Led Comms Error</source>
         <translation>Interface Led Comms Error</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1031"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1052"/>
         <source>Power Monitor I2C Failure</source>
         <translation>Falla en monitor de alimentación I2C</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1038"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1059"/>
         <source>Configuration Key Error</source>
-        <translation type="Error de clave de configuración"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1045"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1066"/>
         <source>Configuration Value Error</source>
-        <translation type="Error de valor de configuración"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1050"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1071"/>
         <source>Run Calibration</source>
         <translation>Ejecutar calibración</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1051"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1072"/>
         <source>Please run Homing Calibration before printing with this Smart Extruder</source>
-        <translation type="Por favor, ejecute la Calibración de hospedaje antes de imprimir con este Smart Extruder"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1056"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1077"/>
         <source>No Build Plate</source>
         <translation>No hay placa de fabricación</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1057"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1078"/>
         <source>Please ensure your build plate is properly attached (Warning %d).</source>
-        <translation type="Por favor, asegúrese de que su placa de fabricación está fijada adecuadamente (advertencia %d)."></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1062"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1083"/>
         <source>Carriage Program Failed</source>
         <translation>Error en programa de transporte</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1063"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1084"/>
         <source>The extruder carriage cannot be programmed (Error %d). Please visit our Support page at Makerbot.com/support.</source>
-        <translation type="El carro del extrusor no ha podido programarse (error %d). Por favor, visite nuestra página de Asistencia en Makerbot.com/support"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1069"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1090"/>
         <source>Homing failed (Error %d). Your Smart Extruder is not communicating. Please try again.</source>
-        <translation type="Fallo de hospedaje (error %d). Su Smart Extruder no se está comunicando. Por favor, pruebe de nuevo"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1074"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1095"/>
         <source>Leveling Error</source>
         <translation>Error de nivelación</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1075"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1096"/>
         <source>Leveling failed (Error %d). Your extruder nozzle may be stuck. Please try again.</source>
-        <translation type="Fallo de nivelación (error %d). La boquilla de su extrusor podría estar atascada. Por favor, pruebe de nuevo"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1080"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1101"/>
         <source>Clear Filament</source>
         <translation>Despejar filamento</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1081"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1102"/>
         <source>Please remove filament from the Smart Extruder before proceeding (Warning %d).</source>
-        <translation type="Por favor, retire el filamento del Smart Extruder antes de continuar (Advertencia %d)."></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1087"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1108"/>
         <source>Smart Extruder Connect Failed (Error %d).  Please disconnect your Smart Extruder and try again.</source>
-        <translation type="Fallo al conectar Smart Extruder (error %d). Por favor, desconecte su Smart Extruder y pruebe de nuevo."></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1092"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1113"/>
         <source>Chamber Program Failed</source>
         <translation>Error en programa de cámara</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1093"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1114"/>
         <source>The build chamber heater controller cannot be programmed (Error %d). Please visit our Support page at Makerbot.com/support.</source>
-        <translation type="El controlador del calentador de cámara de fabricación no se puede programar (error %d). Por favor, visite nuestra página de Asistencia en Makerbot.com/support"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1098"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1119"/>
         <source>Print Paused</source>
         <translation>Impresión en pausa</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1099"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1120"/>
         <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
-        <translation type="Impresión pausada. (¿Esto probablemente no debería ser un error? #checkoutmysushitho %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1104"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1125"/>
         <source>File Error</source>
         <translation>Error de archivo</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1105"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1126"/>
         <source>Error %d: Please make sure that your .makerbot file is prepared for the correct printer type.</source>
-        <translation type="Error %d: Por favor, asegúrese de que su archivo .makerbot está preparado para el tipo de impresora correcto"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1110"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1131"/>
         <source>Heating Error</source>
         <translation>Error en calentamiento</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1111"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1132"/>
         <source>DO NOT touch the extruder as it may be very hot (Error %d). Please visit our Support page at Makerbot.com/support.</source>
-        <translation type="NO toque el extrusor, ya que podría estar muy caliente (error %d). Por favor, visite nuestra página de Asistencia en Makerbot.com/support"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1117"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1138"/>
         <source>Please wait while your Smart Extruder unloads any leftover filament. (Warning %d)</source>
-        <translation type="Por favor, espere mientras su Smart Extruder descarga cualquier filamento restante. (Advertencia %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1122"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1143"/>
         <source>No Filament</source>
         <translation>No hay filamento</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1123"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1144"/>
         <source>Please load filament before starting your print. (Warning %d)</source>
-        <translation type="Por favor, cargue filamento antes de comenzar su impresión. (Advertencia %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1128"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1149"/>
         <source>Network Error</source>
         <translation>Error en red</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1129"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1150"/>
         <source>There was a problem communicating with MakerBot Cloud Services. Please try your print again later. (Warning %d)</source>
-        <translation type="Ha habido un problema al comunicarse con MakerBot Cloud Services. Por favor, pruebe su impresión de nuevo más tarde (Advertencia %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1134"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1155"/>
         <source>Slicing Error</source>
         <translation>Error de segmentación</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1135"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1156"/>
         <source>Failed to slice your layout for printing. Please try again later. (Warning %d)</source>
-        <translation type="Fallo al cortar su esquema para la impresión. Por favor, pruebe de nuevo más tarde. .(Advertencia %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1140"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1148"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1154"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1160"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1161"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1169"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1175"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1181"/>
         <source>Print File Error</source>
         <translation>Error de archivo de impresión</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1141"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1162"/>
         <source>The selected print was sliced for a %1, but a %2 is attached. Please reslice for a %2. (Error %d)</source>
-        <translation type="La impresión seleccionada ha sido cortada para un %1, pero hay fijado un %2. Por favor, vuelva a cortar para un %2. (Error %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1149"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1170"/>
         <source>This print file was sliced for a different machine type. Please reslice for the correct printer. (Error %d)</source>
-        <translation type="El archivo de impresión ha sido cortado para un tipo de máquina diferente. Por favor, vuelva a cortar par ala impresora correcta. (Error %d"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1155"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1176"/>
         <source>This print file is not compatible with this firmware version. Please upgrade firmware. (Error %d)</source>
-        <translation type="El archivo de impresión no es compatible con esta versión de firmware. Por favor, actualice el firmware. (Error %d)"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1161"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1182"/>
         <source>The selected print was sliced without a raft, but a raft is recommended for this type of printer. Please reslice with a raft. (Error %d)</source>
-        <translation type="La impresión seleccionada fue cortada sin un raft (base), pero se recomienda un raft para este tipo de impresora. Por favor, vuelva a cortar con un raft"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1166"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1187"/>
         <source>There is not enough free space on the attached USB drive.</source>
         <translation>No hay suficiente espacio libre en la unidad USB conectada.</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1171"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1192"/>
         <source>Internal operation timed out. Please contact Support.</source>
         <translation>Se agotó el tiempo de espera de una operación interna. Póngase en contacto con el servicio de soporte técnico.</translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1176"/>
-        <source>Could not check for firmware updates. Please contact Support.</source>
-        <translation type="No se ha podido comprobar si hay actualizaciones de firmware. Por favor, contacte con la Asistencia"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1181"/>
-        <source>Could not download firmware. Please contact Support.</source>
-        <translation type="No se ha podido descargar el firmware. Por favor, contacte con la Asistencia"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1186"/>
-        <source>Could not connect to the Internet.</source>
-        <translation type="No se ha podido conectar a Internet"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1191"/>
-        <source>Invalid URL</source>
-        <translation type="URL no válida"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1192"/>
-        <source>There was a problem downloading the .makerbot file from the URL provided.</source>
-        <translation type="Ha habido un problema al descargar el archivo .makerbot desde la URL proporcionada"></translation>
-    </message>
-    <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1197"/>
+        <source>Could not check for firmware updates. Please contact Support.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1202"/>
+        <source>Could not download firmware. Please contact Support.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1207"/>
+        <source>Could not connect to the Internet.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1212"/>
+        <source>Invalid URL</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1213"/>
+        <source>There was a problem downloading the .makerbot file from the URL provided.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1218"/>
         <source>Wireless Configuration Error</source>
-        <translation type="Error de configuración inalámbrica"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1198"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1219"/>
         <source>Wireless configuration cannot proceed while a network cable is plugged in.</source>
-        <translation type="La configuración inalámbrica no puede continuar mientras haya conectado un cable de red"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1203"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1224"/>
         <source>Wireless Network Not Found</source>
-        <translation type="No se ha encontrado la red inalámbrica"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1204"/>
-        <source>The specified wireless network could not be found (Error 904)</source>
-        <translation type="No se ha encontrado la red inalámbrica especificada (error 904)"></translation>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1225"/>
+        <source>The specified wireless network could not be found (Error %d)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1209"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1215"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1221"/>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1227"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1231"/>
+        <source>The specified wireless network requires a password (Error %d)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1237"/>
+        <source>The password specified for the wireless network is invalid (Error %d)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1243"/>
+        <source>The SSID of the wireless network must be specified  (Error %d).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1249"/>
+        <source>There was a problem connecting to the network  (Error %d).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1230"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1236"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1242"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1248"/>
         <source>Wireless Network Error</source>
-        <translation type="Error de red inalámbrica"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1210"/>
-        <source>The specified wireless network requires a password (Error 903)</source>
-        <translation type="La red inalámbrica especificada requiere una contraseña (error 903)"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1216"/>
-        <source>The password specified for the wireless network is invalid (Error 902)</source>
-        <translation type="La contraseña especificada para la red inalámbrica no es válida (error 902)"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1222"/>
-        <source>The SSID of the wireless network must be specified  (Error 901).</source>
-        <translation type="Se debe especificar la SSID de la red inalámbrica (error 901)"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1228"/>
-        <source>There was a problem connecting to the network  (Error 900).</source>
-        <translation type="Ha habido un problema al conectarse a la red (error 900)"></translation>
-    </message>
-    <message>
-        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1234"/>
+        <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1255"/>
         <source>Oops, we have a problem. Please update your firmware using MakerBot Desktop.</source>
-        <translation type="Vaya, tenemos un problema. Por favor, actualice su firmware usando MakerBot Desktop"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
