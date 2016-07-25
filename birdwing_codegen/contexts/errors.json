@@ -203,6 +203,15 @@
             "error_action": "change_filament",
             "id": 1040
         },
+	{
+	    "use_base": false,
+	    "name": "recoverable_filament_jam",
+	    "title": "Temporary Filament Jam",
+	    "message": "Clearing extruder to resolve temporary filament jam.",
+	    "error_type": "filament_error",
+	    "error_action": "acknowledge",
+	    "id": 1057
+	},
         {
             "use_base": false,
             "name": "printing_network_error",
