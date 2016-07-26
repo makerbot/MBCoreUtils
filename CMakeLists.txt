@@ -6,8 +6,6 @@ project(MBCoreUtils NONE)
 find_package(MBCMakeTools REQUIRED)
 find_package(Mustache REQUIRED)
 
-get_header_prefix_root(header_install_root)
-
 set(templates_dir
     "${PROJECT_SOURCE_DIR}/birdwing_codegen/templates")
 set(contexts_dir
@@ -20,17 +18,11 @@ set(_CONTEXTS
 
 
 if(${BIRDWING})
-    if(${MB_CROSS})
-        set(ROOT rootfs)
-    else()
-        set(ROOT host)
-    endif()
-    set(python_install_dir "${ROOT}/${LIB_INSTALL_DIR}/python3.4/mbcoreutils")
     set(static_birdwing_dir
         "${PROJECT_SOURCE_DIR}/birdwing_codegen/static")
     install(FILES
         "${static_birdwing_dir}/machine_config_skeleton.json"
-        DESTINATION "${ROOT}/usr/settings")
+        DESTINATION "${USER_EDITABLE_CONFIG_INSTALL_DIR}")
     mustache_codegen(
         TEMPLATES
             "${templates_dir}/python/common_settings.py"
@@ -49,7 +41,7 @@ if(${BIRDWING})
     add_custom_target(python_codgen ALL DEPENDS ${codegenned_files_python})
     install(
         FILES ${codegenned_files_python}
-        DESTINATION ${python_install_dir})
+        DESTINATION ${PY34_MODULE_DIR}/mbcoreutils)
 endif()
 
 mustache_codegen(
@@ -81,20 +73,18 @@ generate_and_install_config(
     NAME MBCoreUtils
     ADDITIONAL_PATHS
         MBCoreUtils_INCLUDE_DIRS
-            ${header_install_root}${HEADER_INSTALL_DIR}
+            ${HEADER_INSTALL_DIR}
         BWCoreUtils_INCLUDE_DIRS
-            ${header_install_root}${HEADER_INSTALL_DIR}/bwcoreutils)
+            ${HEADER_INSTALL_DIR}/bwcoreutils)
 
 install(
     FILES ${codegenned_files}
-    DESTINATION "${header_install_root}${HEADER_INSTALL_DIR}/bwcoreutils")
+    DESTINATION "${HEADER_INSTALL_DIR}/bwcoreutils")
 
 install(
     DIRECTORY "${PROJECT_SOURCE_DIR}/include/mbcoreutils"
-    DESTINATION "${header_install_root}${HEADER_INSTALL_DIR}")
+    DESTINATION "${HEADER_INSTALL_DIR}")
 
-if(NOT DEFINED BIRDWING)
-    install_docs(
-        FILES "${PROJECT_SOURCE_DIR}/README.md"
-        PREFIX MBCoreUtils)
-endif()
+install_docs(
+  FILES "${PROJECT_SOURCE_DIR}/README.md"
+  PREFIX MBCoreUtils)
