@@ -63,6 +63,9 @@
         {"use_base": "misc_error", "name": "machine_driver_closed", "pretty_name": "Machine Driver Closed", "id": 274},
         {"use_base": "misc_error", "name": "not_implemented", "pretty_name": "Not Implemented", "id": 300},
         {"use_base": "misc_error", "name": "not_ready", "pretty_name": "Not Ready", "id": 266},
+	{"use_base": "misc_error", "name": "remote_full", "pretty_name": "Remote Full", "id": 273},
+	{"use_base": "misc_error", "name": "local_empty", "pretty_name": "Local Buffer Empty", "id": 276},
+	{"use_base": "misc_error", "name": "keep_calling", "pretty_name": "Keep Calling", "id": 282},
         {"use_base": "misc_error", "name": "machine_driver_failure", "pretty_name": "Machine Driver Failure", "id": 1501},
         {"use_base": "misc_error", "name": "invalid_endstop_type", "pretty_name": "Invalid Endstop Type", "id": 1035},
         {"use_base": "misc_error", "name": "file_not_found", "pretty_name": "File Not Found", "id": 1012},
@@ -200,6 +203,15 @@
             "error_action": "change_filament",
             "id": 1040
         },
+	{
+	    "use_base": false,
+	    "name": "recoverable_filament_jam",
+	    "title": "Temporary Filament Jam",
+	    "message": "Clearing extruder to resolve temporary filament jam.",
+	    "error_type": "filament_error",
+	    "error_action": "acknowledge",
+	    "id": 1057
+	},
         {
             "use_base": false,
             "name": "printing_network_error",
@@ -321,7 +333,8 @@
             "message": "There was a problem downloading the .makerbot file from the URL provided.",
             "error_type": "none",
             "error_action": "acknowledge",
-            "id": 1056
+            "id": 1056,
+            "msg_no_errcode": true
     },
     {
         "use_base": false,
@@ -331,14 +344,15 @@
         "message": "Wireless configuration cannot proceed while a network cable is plugged in.",
         "error_type": "none",
         "error_action": "acknowledge",
-        "id": 905
+        "id": 905,
+        "msg_no_errcode": true
     },
     {
         "use_base": false,
         "name": "wifi_no_such_ssid",
         "pretty_name": "Wireless Network Not Found",
         "title": "Wireless Network Not Found",
-        "message": "The specified wireless network could not be found (Error 904)",
+        "message": "The specified wireless network could not be found (Error %d)",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 904
@@ -348,7 +362,7 @@
         "name": "wifi_password_required",
         "pretty_name": "Wireless Netowrk Requires Password",
         "title": "Wireless Network Error",
-        "message": "The specified wireless network requires a password (Error 903)",
+        "message": "The specified wireless network requires a password (Error %d)",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 903
@@ -358,7 +372,7 @@
         "name": "wifi_password_invalid",
         "pretty_name": "Wireless Network Password Invalid",
         "title": "Wireless Network Error",
-        "message": "The password specified for the wireless network is invalid (Error 902)",
+        "message": "The password specified for the wireless network is invalid (Error %d)",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 902
@@ -368,7 +382,7 @@
         "name": "wifi_ssid_required",
         "pretty_name": "Wireless Network SSID Required",
         "title": "Wireless Network Error",
-        "message": "The SSID of the wireless network must be specified  (Error 901).",
+        "message": "The SSID of the wireless network must be specified  (Error %d).",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 901
@@ -378,7 +392,7 @@
         "name": "wifi_general_error",
         "pretty_name": "Wireless Network General Error",
         "title": "Wireless Network Error",
-        "message": "There was a problem connecting to the network  (Error 900).",
+        "message": "There was a problem connecting to the network  (Error %d).",
         "error_type": "none",
         "error_action": "acknowledge",
         "id": 900
@@ -451,7 +465,8 @@
             "message": "An unusual print error has occurred. To protect your extruder, the print was cancelled. Try the print again and this error will most likely not reoccur.",
             "error_type": "none",
             "error_action": "acknowledge",
-            "id": 76
+            "id": 76,
+            "msg_no_errcode": true
         },
         {
             "use_base": false,

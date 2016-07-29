@@ -30,3 +30,5 @@ error_translations.zip
 _build
 _build64
 _build_debug
+_build_cross
+_build_host
