@@ -985,5 +985,13 @@
         <source>There was a problem connecting to the network  (Error %d).</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Temporary Filament Jam</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing extruder to resolve temporary filament jam.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
