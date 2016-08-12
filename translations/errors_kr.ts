@@ -316,7 +316,7 @@
     <message>
         <source>An unusual print error has occurred. To protect your extruder, the print was cancelled. Try the print again and this error will most likely not reoccur.</source>
         <translatorcomment>BotError</translatorcomment>
-        <translation>특수한 프린트 오류가 발생했습니다. 압출기를 보호하려면, 프린트가 취소됩니다. 다시 프린트를 시도하고 이 오류가 다시 일어날 것 같지 않습니다.</translation>
+        <translation>특수한 프린트 오류가 발생했습니다. 압출기를 보호하려면, 프린트가 취소됩니다. 다시 프린트를 시도하면 이 오류가 다시 일어날 것 같지 않습니다.</translation>
     </message>
     <message>
         <source>Out of Filament</source>
@@ -811,7 +811,7 @@
     <message>
         <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
         <translatorcomment>BotError</translatorcomment>
-        <translation>프린트가 일시 정지되었습니다. (TODO-이는 오류가 될 수 없습니까? #checkoutmysushitho %d)</translation>
+        <translation>프린트가 일시 정지되었습니다. (TODO-이는 오류가 아닐 수도 있습니다. #checkoutmysushitho %d)</translation>
     </message>
     <message>
         <source>File Error</source>
@@ -876,7 +876,7 @@
     <message>
         <source>The selected print was sliced for a %1, but a %2 is attached. Please reslice for a %2. (Error %d)</source>
         <translatorcomment>BotError</translatorcomment>
-        <translation>선택한 프린트가 %1에 대해 슬라이스되었지만, %2(은)는 장착되었습니다. %2에 대해 다시 슬라이스하십시오. (오류 %d)</translation>
+        <translation>선택한 프린트가 %1에 대해 슬라이스되었지만, %2(이)가 장착되었습니다. %2에 대해 다시 슬라이스하십시오. (오류 %d)</translation>
     </message>
     <message>
         <source>This print file was sliced for a different machine type. Please reslice for the correct printer. (Error %d)</source>
@@ -891,7 +891,7 @@
     <message>
         <source>The selected print was sliced without a raft, but a raft is recommended for this type of printer. Please reslice with a raft. (Error %d)</source>
         <translatorcomment>BotError</translatorcomment>
-        <translation>선택한 프린트가 래프트없이 슬라이스 되었지만,이 프린터는 래프트를 선택하는 유형을 권장합니다. 하지 않습니다. 래프트를 선택하고 다시 슬라이스하십시오. (오류 %d)</translation>
+        <translation>선택한 프린트가 래프트없이 슬라이스 되었지만,이 프린터는 래프트를 선택하는 유형을 권장합니다. 래프트를 선택하고 다시 슬라이스하십시오. (오류 %d)</translation>
     </message>
     <message>
         <source>There is not enough free space on the attached USB drive.</source>
@@ -955,43 +955,35 @@
     </message>
     <message>
         <source>Remote Full</source>
-        <translation type="unfinished"></translation>
+        <translation>리모트 꽉 참</translation>
     </message>
     <message>
         <source>Local Buffer Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>버퍼 비어 있음</translation>
     </message>
     <message>
         <source>Keep Calling</source>
-        <translation type="unfinished"></translation>
+        <translation>요청 지속</translation>
     </message>
     <message>
         <source>The specified wireless network could not be found (Error %d)</source>
-        <translation type="unfinished"></translation>
+        <translation>이 세부 무선 네트웤을 찾을수 없음 (오류 %d)</translation>
     </message>
     <message>
         <source>The specified wireless network requires a password (Error %d)</source>
-        <translation type="unfinished"></translation>
+        <translation>이 세부 무선 네트웤에 연결하려면 패스워드 필요 (오류 %d)</translation>
     </message>
     <message>
         <source>The password specified for the wireless network is invalid (Error %d)</source>
-        <translation type="unfinished"></translation>
+        <translation>이 세부 무선 네트웤의 패스워드 불일치 (오류 %d)</translation>
     </message>
     <message>
         <source>The SSID of the wireless network must be specified  (Error %d).</source>
-        <translation type="unfinished"></translation>
+        <translation>세부 무선 네트웤의 SSID 구성 필요 (오류 %d).</translation>
     </message>
     <message>
         <source>There was a problem connecting to the network  (Error %d).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Temporary Filament Jam</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clearing extruder to resolve temporary filament jam.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">네트웤에 연결하는데 문제 발생 (오류 %d).</translation>
     </message>
 </context>
 </TS>
