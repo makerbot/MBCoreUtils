@@ -106,7 +106,7 @@ def build_translation_zip(env, target, source):
 if env.BWShouldDevBuild():
     env.BWDependsOnQt()
     env.BWDependsOnQt()
-    languages = ['de', 'es', 'fr', 'ja', 'kr', 'zh', 'it', 'pr']
+    languages = ['de', 'es', 'fr', 'ja', 'kr', 'zh', 'it', 'pr', 'es_la']
     translation_targets = map(lambda l: 'errors_'+l+'.ts', languages)
     translation_target_dir = 'src'
     translation_target_orig_dir\
