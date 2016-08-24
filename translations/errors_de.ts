@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de_DE">
 <context>
@@ -714,17 +713,17 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1003"/>
         <source>Remote Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Remote voll</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1010"/>
         <source>Local Buffer Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokaler Puffer leer</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1017"/>
         <source>Keep Calling</source>
-        <translation type="unfinished"></translation>
+        <translation>Anrufen fortsetzen</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1024"/>
@@ -838,7 +837,7 @@
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1120"/>
-        <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
+        <source>Paused your print. (TODO-This probably shouldn't be an error? #checkoutmysushitho %d)</source>
         <translation>Ihr Druck wurde pausiert. (TODO - Das sollte vermutlich kein Fehler sein? #abersiehdirmeinsushian %d)</translation>
     </message>
     <message>
@@ -977,27 +976,27 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1225"/>
         <source>The specified wireless network could not be found (Error %d)</source>
-        <translation type="unfinished"></translation>
+        <translation>Das angegebene Drahtlosnetzwerk konnte nicht gefunden werden (Fehler %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1231"/>
         <source>The specified wireless network requires a password (Error %d)</source>
-        <translation type="unfinished"></translation>
+        <translation>Das angegebene Drahtlosnetzwerk erfordert ein Passwort (Fehler %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1237"/>
         <source>The password specified for the wireless network is invalid (Error %d)</source>
-        <translation type="unfinished"></translation>
+        <translation>Das für das Drahtlosnetzwerk eingegebene Passwort ist ungültig (Fehler %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1243"/>
         <source>The SSID of the wireless network must be specified  (Error %d).</source>
-        <translation type="unfinished"></translation>
+        <translation>Die SSID des Drahtlosnetzwerkes muss angegeben werden (Fehler %d).</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1249"/>
         <source>There was a problem connecting to the network  (Error %d).</source>
-        <translation type="unfinished"></translation>
+        <translation>Bei der Verbindungserstellung mit dem Netzwerk gab es ein Problem (Fehler %d).</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1230"/>
