@@ -33,14 +33,13 @@
         },
         {   
             "name": "axis_name",
+            "do_stringify?": true,
             "values": [
-                {"name_upper_xform": "x", "value": 0},
-                {"name_upper_xform": "y", "value": 1},
-                {"name_upper_xform": "z", "value": 2},
-                {"name_upper_xform": "a", "value": 3},
-                {"name_upper_xform": "aa", "value": 4},
-                {"name_upper_xform": "b", "value": 5},
-                {"name_upper_xform": "bb", "value": 6}
+                {"name_upper_xform": "x", "value": 0, "settings-key": "x"},
+                {"name_upper_xform": "y", "value": 1, "settings-key": "y"},
+                {"name_upper_xform": "z", "value": 2, "settings-key": "z"},
+                {"name_upper_xform": "a", "value": 3, "settings-key": "a"},
+                {"name_upper_xform": "b", "value": 4, "settings-key": "b"}
             ]
         },  
         {
