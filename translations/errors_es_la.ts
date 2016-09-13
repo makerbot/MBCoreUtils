@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="es_ES">
 <context>
@@ -837,8 +838,8 @@
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1120"/>
-        <source>Paused your print. (TODO-This probably shouldn't be an error? #checkoutmysushitho %d)</source>
-        <translation>Se pausó su impresión (TODO-Esto probablemente no debe ser un error #revisamisushi %d)</translation>
+        <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
+        <translation type="unfinished">Se pausó su impresión (TODO-Esto probablemente no debe ser un error #revisamisushi %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1125"/>

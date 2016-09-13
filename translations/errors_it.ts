@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="it_IT">
 <context>
@@ -15,12 +16,12 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="145"/>
         <source>Oops, we have a problem with your Smart Extruder (Error %d: %s). Please disconnect and reconnect your Smart Extruder.</source>
-        <translation type="unfinished">Oops, si è verificato un problema con il tuo Smart Extruder (Errore %d). Disconnetti e riconnetti il tuo Smart Extruder.</translation>
+        <translation>Oops, si è verificato un problema con il tuo Smart Extruder (Errore %d %s). Disconnetti e riconnetti il tuo Smart Extruder.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="147"/>
         <source>Oops, we have a problem with your Smart Extruder (Error %d: %s). Please visit our Support page at Makerbot.com/support.</source>
-        <translation>Oops, abbiamo un problema con il tuo Smart Extruder (Errore %d: %s). Visita la nostra pagina del supporto su Makerbot.com/support.</translation>
+        <translation>Oops, abbiamo un problema con il tuo Smart Extruder (Errore %d: %s). Visita la nostra pagina di supporto su Makerbot.com/support.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="149"/>
@@ -37,7 +38,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="151"/>
         <source>Homing failed (Error %d: %s). Your extruder nozzle may be stuck. Please try again.</source>
-        <translation>Ritorno alla base fallito (Errore %d: %s). L'ugello del tuo estrusore potrebbe essere bloccato. Riprova.</translation>
+        <translation>Ritorno alla base fallito (Errore %d: %s). L&apos;ugello del tuo estrusore potrebbe essere bloccato. Riprova.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="153"/>
@@ -217,7 +218,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="362"/>
         <source>Heater Over Temp</source>
-        <translation>Sovratemp riscaldatore</translation>
+        <translation>Riscaldatore surriscaldato</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="369"/>
@@ -237,7 +238,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="390"/>
         <source>Eeprom Slave Missed Value</source>
-        <translation>Valore mancato slave EEPROM</translation>
+        <translation>Valore &quot;Slave EEPROM&quot; mancante</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="397"/>
@@ -247,7 +248,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="404"/>
         <source>Invalid Encoder Resolution</source>
-        <translation>Risoluzione codificatore non valida</translation>
+        <translation>Risoluzione Encoder non valida</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="411"/>
@@ -358,12 +359,12 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="525"/>
         <source>Your extruder cools down if the printer stays idle for a few minutes.</source>
-        <translation>L'estrusore si raffredda se la stampante rimane inattiva per alcuni minuti.</translation>
+        <translation>L&apos;estrusore si raffredda se la stampante rimane inattiva per alcuni minuti.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="530"/>
         <source>Filament Jam</source>
-        <translation>Filamento inceppato</translation>
+        <translation>Filamento Inceppato</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="531"/>
@@ -398,27 +399,27 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="555"/>
         <source>The extruder carriage is disconnected from the machine (Error %d). Please visit our Support page at Makerbot.com/support.</source>
-        <translation>Il carrello dell'estrusore è scollegato dalla macchina (Errore %d). Visitare la nostra pagina di Supporto sul sito Makerbot.com/support.</translation>
+        <translation>Il carrello dell&apos;estrusore è scollegato dalla macchina (Errore %d). Visitare la nostra pagina di Supporto sul sito Makerbot.com/support.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="562"/>
         <source>Toolhead No Response</source>
-        <translation>Nessuna risposta testa portautensile</translation>
+        <translation>Nessuna risposta dalla testa portautensile</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="569"/>
         <source>Toolhead Malformed Packet</source>
-        <translation>Testa portautensile pacchetto malformato</translation>
+        <translation>Pacchetto testa portautensile malformato</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="576"/>
         <source>Toolhead Mismatch Api Version</source>
-        <translation>Non corrispondenza versione API testa portautensile</translation>
+        <translation>Versione API testa portautensile non corrispondente</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="583"/>
         <source>Could Not Send Toolhead Command</source>
-        <translation>Impossibile inviare comando testa portautensile</translation>
+        <translation>Impossibile inviare comando alla testa portautensile</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="590"/>
@@ -468,7 +469,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="653"/>
         <source>Bad Hes Waveforms</source>
-        <translation>Forme d'onda Hes non corrette</translation>
+        <translation>Forme d&apos;onda Hes non corrette</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="660"/>
@@ -528,7 +529,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="744"/>
         <source>Heat Zero Temperature</source>
-        <translation>Temperatura riscaldamento zero</translation>
+        <translation>Temperatura riscaldamento a zero</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="751"/>
@@ -788,7 +789,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1084"/>
         <source>The extruder carriage cannot be programmed (Error %d). Please visit our Support page at Makerbot.com/support.</source>
-        <translation>Il carrello dell'estrusore non può essere programmato (Errore %d). Visita la nostra pagina di Supporto sul sito Makerbot.com/support.</translation>
+        <translation>Il carrello dell&apos;estrusore non può essere programmato (Errore %d). Visita la nostra pagina di Supporto sul sito Makerbot.com/support.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1090"/>
@@ -803,7 +804,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1096"/>
         <source>Leveling failed (Error %d). Your extruder nozzle may be stuck. Please try again.</source>
-        <translation>Livellamento fallito (Errore %d). L'ugello del tuo estrusore potrebbe essere bloccato. Riprova.</translation>
+        <translation>Livellamento fallito (Errore %d). L&apos;ugello del tuo estrusore potrebbe essere bloccato. Riprova.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1101"/>
@@ -837,7 +838,7 @@
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1120"/>
-        <source>Paused your print. (TODO-This probably shouldn't be an error? #checkoutmysushitho %d)</source>
+        <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
         <translation>Messo in pausa la tua stampa. (DA FARE - Questo probabilmente non dovrebbe essere un errore? #checkoutmysushitho %d)</translation>
     </message>
     <message>
@@ -858,7 +859,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1132"/>
         <source>DO NOT touch the extruder as it may be very hot (Error %d). Please visit our Support page at Makerbot.com/support.</source>
-        <translation>NON toccare l'estrusore in quanto potrebbe essere molto caldo (Errore %d). Visita la nostra pagina di Supporto sul sito Makerbot.com/support.</translation>
+        <translation>NON toccare l&apos;estrusore in quanto potrebbe essere molto caldo (Errore %d). Visita la nostra pagina di Supporto sul sito Makerbot.com/support.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1138"/>
@@ -906,7 +907,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1162"/>
         <source>The selected print was sliced for a %1, but a %2 is attached. Please reslice for a %2. (Error %d)</source>
-        <translation>La stampa selezionata è stata divisa per un %l, ma un %2 è allegato. Per favore ridividi per un %2. (Errore %d)</translation>
+        <translation>La stampa selezionata è stata preparata per uno %1, ma è collegato uno %2. Per favore re-slice per un %2. (Errore %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1170"/>
@@ -921,12 +922,12 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1182"/>
         <source>The selected print was sliced without a raft, but a raft is recommended for this type of printer. Please reslice with a raft. (Error %d)</source>
-        <translation>La stampa selezionata è stata suddivisa senza un elemento divisore, ma questo elemento è raccomandato per questo tipo di stampante. Per favore dividi di nuovo con un divisore. (Errore %d)</translation>
+        <translation>La stampa selezionata è stata preparata senza una Base, ma questo elemento è raccomandato per questo tipo di stampante. Per favore prepara di nuovo con una Base. (Errore %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1187"/>
         <source>There is not enough free space on the attached USB drive.</source>
-        <translation>Non c'è abbastanza spazio libero sull'unità USB collegata.</translation>
+        <translation>Non c&apos;è abbastanza spazio libero sull&apos;unità USB collegata.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1192"/>
@@ -956,7 +957,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1213"/>
         <source>There was a problem downloading the .makerbot file from the URL provided.</source>
-        <translation>Si è verificato un problema nello scaricare il file .makerbot dall'URL dato.</translation>
+        <translation>Si è verificato un problema nello scaricare il file .makerbot dall&apos;URL dato.</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1218"/>
@@ -991,7 +992,7 @@
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1243"/>
         <source>The SSID of the wireless network must be specified  (Error %d).</source>
-        <translation>L'SSID della rete wireless deve essere specificato (Errore %d).</translation>
+        <translation>L&apos;SSID della rete wireless deve essere specificato (Errore %d).</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1249"/>

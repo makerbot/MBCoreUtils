@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="en_US">
 <context>
     <name>BotError</name>
     <message>
@@ -837,8 +838,8 @@
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1120"/>
-        <source>Paused your print. (TODO-This probably shouldn't be an error? #checkoutmysushitho %d)</source>
-        <translation>Sua impressão foi pausada. (O Que Fazer - Isso provavelmente não deve ser um erro. %d)</translation>
+        <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
+        <translation type="unfinished">Sua impressão foi pausada. (O Que Fazer - Isso provavelmente não deve ser um erro. %d)</translation>
     </message>
     <message>
         <location filename="../.build-dev/obj/birdwing/shared_cpp/bot_error_translateable.hh" line="1125"/>
