@@ -29,7 +29,9 @@
         {"name": "mark_12_7", "pretty_name": "Smart Extruder 12.6", "id": 13,
          "type_key": "mk12", "material_name": "PLA"},
         {"name": "mark_13_impla", "pretty_name": "Tough PLA Smart Extruder+", "id": 14,
-         "type_key": "mk13_impla", "material_name": "IM-PLA"}
+         "type_key": "mk13_impla", "material_name": "IM-PLA"},
+        {"name": "mk14_0", "pretty_name": "Shiny Octo Parakeet", "id": 100,
+         "type_key": "mk14", "material_name": "PLA"}
     ],
     "types": [
         {"name": "Unknown",
@@ -51,6 +53,11 @@
          "key": "mk13_impla",
          "key_string": "mk13_impla",
          "id": 3,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+        {"name": "Shiny Octo Parakeet",
+         "key": "mk14",
+         "key_string": "mk14",
+         "id": 4,
          "toolpath_equivalents": [{"key": "unknown_type"}]}
     ],
     "materials": [
