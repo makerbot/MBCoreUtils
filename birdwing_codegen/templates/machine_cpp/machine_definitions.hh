@@ -3,6 +3,7 @@
 #ifndef MACHINE_DEFINITIONS_HH
 #define MACHINE_DEFINITIONS_HH
 #ifndef BRONX
+#include <set>
 #include <array>
 #include <string>
 #endif
@@ -45,11 +46,14 @@ inline std::string ToString({{name}} val) {
 {{/enums}}
 
  #ifndef BRONX
+// Still need this for Birdwing-Machine for now
+typedef std::set<AxisName> AxisSet;
+
 inline std::array<machine::AxisName, 3> GantryAxes() {
     return {machine::kX, machine::kY, machine::kZ};
 }
 
-inline std::array<machine::AxisName, 2> ExruderAxes() {
+inline std::array<machine::AxisName, 2> ExtruderAxes() {
     return {machine::kA, machine::kB};
 }
  #endif
