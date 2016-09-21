@@ -811,7 +811,7 @@
     <message>
         <source>Paused your print. (TODO-This probably shouldn&apos;t be an error? #checkoutmysushitho %d)</source>
         <translatorcomment>BotError</translatorcomment>
-        <translation>프린트가 일시 정지되었습니다. (TODO-이는 오류가 아닐 수도 있습니다. #checkoutmysushitho %d)</translation>
+        <translation type="unfinished">프린트가 일시 정지되었습니다. (TODO-이는 오류가 아닐 수도 있습니다. #checkoutmysushitho %d)</translation>
     </message>
     <message>
         <source>File Error</source>
@@ -983,7 +983,7 @@
     </message>
     <message>
         <source>There was a problem connecting to the network  (Error %d).</source>
-        <translation type="unfinished">네트웤에 연결하는데 문제 발생 (오류 %d).</translation>
+        <translation>네트웤에 연결하는데 문제 발생 (오류 %d).</translation>
     </message>
 </context>
 </TS>
