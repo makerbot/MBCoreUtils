@@ -4,6 +4,8 @@
 #define MACHINE_DEFINITIONS_HH
 #ifndef BRONX
 #include <set>
+#include <array>
+#include <string>
 #endif
 
 namespace machine {
@@ -20,11 +22,40 @@ enum {{name}} {
 	{{/values}}
 }; //enum {{name}}
 
-{{/enums}}
-
 #ifndef BRONX
-typedef std::set<AxisName> AxisSet;
+{{#do_stringify?}}
+inline std::string ToString({{name}} val) {
+    switch(val) {
+	{{#values}}
+    {{#name_upper_xform}}
+    case {{name_upper_xform}}: return "{{settings-key}}";
+    {{/name_upper_xform}}
+    {{^name_upper_xform}}
+	case {{name}}: return "{{settings-key}}";
+    {{/name_upper_xform}}
+	{{/values}}
+    default: return std::string("<invalid axis ")
+        + std::to_string(static_cast<int>(val)) + ">";
+    }
+}
+ {{/do_stringify?}}
+
+
 #endif
 
+{{/enums}}
+
+ #ifndef BRONX
+// Still need this for Birdwing-Machine for now
+typedef std::set<AxisName> AxisSet;
+
+inline std::array<machine::AxisName, 3> GantryAxes() {
+    return {machine::kX, machine::kY, machine::kZ};
+}
+
+inline std::array<machine::AxisName, 2> ExtruderAxes() {
+    return {machine::kA, machine::kB};
+}
+ #endif
 } //namespace
 #endif // MACHINE_DEFINITIONS_HH
