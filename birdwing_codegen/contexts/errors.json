@@ -56,6 +56,7 @@
         {"use_base": "misc_error", "name": "diagnostics_unknown_state_error", "pretty_name": "Diagnostics Unknown State Error", "id": 296},
         {"use_base": "misc_error", "name": "invalid_axis", "pretty_name": "Invalid Axis", "id": 265},
         {"use_base": "misc_error", "name": "ok", "pretty_name": "Ok", "id": 256},
+        {"use_base": "misc_error", "name": "invalid_fan_duty", "pretty_name": "Invalid Fan Duty", "id": 283},
         {"use_base": "misc_error", "name": "diagnostis_uknown_test_error", "pretty_name": "Diagnostis Uknown Test Error", "id": 298},
         {"use_base": "misc_error", "name": "invalid_heater_index", "pretty_name": "Invalid Heater Index", "id": 268},
         {"use_base": "misc_error", "name": "zero_length_move", "pretty_name": "Zero Length Move", "id": 271},
