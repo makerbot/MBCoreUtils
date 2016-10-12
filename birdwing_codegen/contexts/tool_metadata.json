@@ -29,7 +29,9 @@
         {"name": "mark_12_7", "pretty_name": "Smart Extruder 12.6", "id": 13,
          "type_key": "mk12", "material_name": "PLA"},
         {"name": "mark_13_impla", "pretty_name": "Tough PLA Smart Extruder+", "id": 14,
-         "type_key": "mk13_impla", "material_name": "IM-PLA"}
+         "type_key": "mk13_impla", "material_name": "IM-PLA"},
+        {"name": "mark_13_ninjaflex", "pretty_name": "Wiggly Smart Extruder+", "id": 15,
+         "type_key": "mk13_ninjaflex", "material_name": "NINJAFLEX"}
     ],
     "types": [
         {"name": "Unknown",
@@ -51,11 +53,18 @@
          "key": "mk13_impla",
          "key_string": "mk13_impla",
          "id": 3,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+        {"name": "Wiggly Smart Extruder+",
+         "key": "mk13_ninjaflex",
+         "key_string": "mk13_ninjaflex",
+         "id": 4,
          "toolpath_equivalents": [{"key": "unknown_type"}]}
+
     ],
     "materials": [
         {"name": "PLA", "id": 0},
         {"name": "IMPLA", "id": 1},
+        {"name": "NINJAFLEX", "id":2},
         {"name": "unknown", "id": -1}
     ]
 }
