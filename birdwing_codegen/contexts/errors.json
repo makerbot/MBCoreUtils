@@ -436,6 +436,7 @@
         {"use_base": "misc_error", "name": "hes_log_full", "pretty_name": "HES Log Full", "id": 82},
         {"use_base": "misc_error", "name": "invalid_tool_index", "pretty_name": "Invalid Tool Index", "id": 79},
         {"use_base": "misc_error", "name": "malformed_packet", "pretty_name": "Malformed Packet", "id": 78},
+        {"use_base": "misc_error", "name": "malformed_tool_packet", "pretty_name": "Malformed Tool Packet", "id": 77},
         {"use_base": "misc_error", "name": "tool_buffer_full", "pretty_name": "Tool Buffer Full", "id": 90},
         {"use_base": "misc_error", "name": "toolhead_buffer_full", "pretty_name": "Toolhead Buffer Full", "id": 91},
         {"use_base": "misc_error", "name": "heater_open", "pretty_name": "Heater Open", "id": 71},
