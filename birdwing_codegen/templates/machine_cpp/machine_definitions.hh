@@ -12,30 +12,45 @@ namespace machine {
 
 {{#enums}}
 enum {{name}} {
-	{{#values}}
+    {{#values}}
     {{#name_upper_xform}}
     {{name_upper_xform}} = {{value}},
     {{/name_upper_xform}}
     {{^name_upper_xform}}
-	{{name}} = {{value}},
+    {{name}} = {{value}},
     {{/name_upper_xform}}
-	{{/values}}
+    {{/values}}
 }; //enum {{name}}
 
 #ifndef BRONX
 {{#do_stringify?}}
 inline std::string ToString({{name}} val) {
     switch(val) {
-	{{#values}}
+    {{#values}}
     {{#name_upper_xform}}
     case {{name_upper_xform}}: return "{{settings-key}}";
     {{/name_upper_xform}}
     {{^name_upper_xform}}
-	case {{name}}: return "{{settings-key}}";
+    case {{name}}: return "{{settings-key}}";
     {{/name_upper_xform}}
-	{{/values}}
+    {{/values}}
     default: return std::string("<invalid axis ")
         + std::to_string(static_cast<int>(val)) + ">";
+    }
+}
+inline {{name}} FromString(const std::string& val) {
+    if (false) {
+    {{#values}}
+    } else if (val == "{{settings-key}}") {
+        {{#name_upper_xform}}
+        return {{name_upper_xform}};
+        {{/name_upper_xform}}
+        {{^name_upper_xform}}
+        return {{name}};
+         {{/name_upper_xform}}
+    {{/values}}
+    } else {
+        return static_cast<{{name}}>(-1);
     }
 }
  {{/do_stringify?}}
