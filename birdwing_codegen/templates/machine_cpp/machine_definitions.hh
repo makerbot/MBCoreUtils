@@ -54,7 +54,12 @@ inline {{name}} FromString(const std::string& val) {
     }
 }
  {{/do_stringify?}}
-
+inline {{name}} Next{{name}}(const {{name}}& c) {
+    return static_cast<{{name}}>(static_cast<size_t>(c)+1);
+}
+inline {{name}} Previous{{name}}(const {{name}}& c) {
+    return static_cast<{{name}}>(static_cast<size_t>(c)-1);
+}
 
 #endif
 
