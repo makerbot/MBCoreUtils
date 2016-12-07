@@ -27,8 +27,4 @@ include/bwcoreutils/tool_mappings.hh
 error_translations.zip
 
 # makerbot cmake folders
-_build
-_build64
-_build_debug
-_build_cross
-_build_host
+/_build*/
