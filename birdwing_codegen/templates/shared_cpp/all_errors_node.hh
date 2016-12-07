@@ -4,8 +4,9 @@
 // Copyright 2016 MakerBot Industries
 
 namespace bwcoreutils{
-v8::Local<v8::Object> bwErrorActionsEnum(v8::Isolate * isolate) {
-  auto actions = v8::Object::New(isolate);
+
+v8::Local<v8::FunctionTemplate> bwErrorActionsEnum(v8::Isolate * isolate) {
+  auto actions = v8::FunctionTemplate::New(isolate);
   {{#error_action_enum}}
   actions->Set(
       v8::String::NewFromUtf8(isolate, "{{name}}"),
@@ -15,8 +16,8 @@ v8::Local<v8::Object> bwErrorActionsEnum(v8::Isolate * isolate) {
   return actions;
 }
 
-v8::Local<v8::Object> bwErrorTypesEnum(v8::Isolate * isolate) {
-  auto types = v8::Object::New(isolate);
+v8::Local<v8::FunctionTemplate> bwErrorTypesEnum(v8::Isolate * isolate) {
+  auto types = v8::FunctionTemplate::New(isolate);
   {{#error_type_enum}}
   types->Set(
       v8::String::NewFromUtf8(isolate, "{{name}}"),
@@ -26,8 +27,8 @@ v8::Local<v8::Object> bwErrorTypesEnum(v8::Isolate * isolate) {
   return types;
 }
 
-v8::Local<v8::Object> bwErrorsEnum(v8::Isolate * isolate) {
-  auto errors = v8::Object::New(isolate);
+v8::Local<v8::FunctionTemplate> bwErrorsEnum(v8::Isolate * isolate) {
+  auto errors = v8::FunctionTemplate::New(isolate);
   {{#machine_errors}}
   errors->Set(
       v8::String::NewFromUtf8(isolate, "{{name}}"),
