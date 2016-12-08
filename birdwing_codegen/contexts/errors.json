@@ -59,6 +59,8 @@
         {"use_base": "misc_error", "name": "invalid_fan_duty", "pretty_name": "Invalid Fan Duty", "id": 283},
         {"use_base": "misc_error", "name": "diagnostis_uknown_test_error", "pretty_name": "Diagnostis Uknown Test Error", "id": 298},
         {"use_base": "misc_error", "name": "invalid_heater_index", "pretty_name": "Invalid Heater Index", "id": 268},
+        {"use_base": "misc_error", "name": "invalid_program_path", "pretty_name": "Invalid Program Path", "id": 289},
+        {"use_base": "misc_error", "name": "tool_program_failed", "pretty_name": "Tool Program Failed", "id": 290},
         {"use_base": "misc_error", "name": "zero_length_move", "pretty_name": "Zero Length Move", "id": 271},
         {"use_base": "misc_error", "name": "file_transfer_timeout", "pretty_name": "File Transfer Timeout", "id": 1030},
         {"use_base": "misc_error", "name": "machine_driver_closed", "pretty_name": "Machine Driver Closed", "id": 274},
