@@ -460,6 +460,7 @@
         {"use_base": "misc_error", "name": "eeprom_verify_failure", "pretty_name": "EEPROM Verify Failure", "id": 141},
         {"use_base": "misc_error", "name": "program_not_started", "pretty_name": "Program Not Started", "id": 142},
         {"use_base": "misc_error", "name": "program_completed", "pretty_name": "Program Completed", "id": 143},
+        {"use_base": "misc_error", "name": "serious_internal_error", "pretty_name": "Serious Internal Error", "id": 144},
         {
             "use_base": false,
             "name": "thermocouple_communication_failure",
