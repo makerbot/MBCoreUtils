@@ -33,6 +33,10 @@ class Tool(object):
     def from_id(id):
         return _id_map.get(id, invalid_tool)
 
+    def __repr__(self):
+        return "<Tool: id {}, rev {}>".format(self.id,
+                                              self.type_pretty_name)
+
 _id_map = {
     {{#tools}}
         {{id}}: Tool({{id}}, u'{{type_key}}', u'{{name}}', u'{{pretty_name}}'),
