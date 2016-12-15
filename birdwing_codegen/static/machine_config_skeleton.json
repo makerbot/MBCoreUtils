@@ -62,7 +62,7 @@
             "nozzle_diameter": null,
             "max_speed_mm_per_second": null,
             "steps_per_mm": {
-                "a": null
+                "-": null
             },
             "materials": {
                 "*": {
