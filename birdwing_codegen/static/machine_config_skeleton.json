@@ -78,7 +78,7 @@
                         "min_speed_change_mm_per_s": null,
                         "max_speed_change_mm_per_s": null,
                         "impulse_speed_limit_mm_per_s": null,
-                        "slip_compensation_table": null
+                        "slip_compensation_table": {"a": null}
                     }
                 }
             }
