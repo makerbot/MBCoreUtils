@@ -8,6 +8,7 @@
         {"use_base": "tool_critical", "name": "toolhead_feeder_sleep_interrupted", "pretty_name": "Toolhead Feeder Sleep Interrupted", "id": 1037},
         {"use_base" : "tool_critical", "name" : "eeprom_update_failed", "pretty_name": "Smart Extruder Update Failed", "id":1045},
         {"use_base": "homing_problem", "name": "homing_not_completed", "pretty_name": "Homing Not Completed", "id": 1016},
+        {"use_base": "homing_problem", "name": "hes_no_contact", "pretty_name": "Hes made no contact", "id":  1058},
         {"use_base": "homing_problem", "name": "unknown_homing_method", "pretty_name": "Unknown Homing Method", "id": 1025},
         {"use_base": "homing_problem", "name": "no_hes_log", "pretty_name": "No Hes Log", "id": 1023},
         {"use_base": "homing_problem", "name": "homing_timed_out", "pretty_name": "Homing Timed Out", "id": 1013},
