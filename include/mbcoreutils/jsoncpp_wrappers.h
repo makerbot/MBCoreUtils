@@ -26,9 +26,9 @@ namespace SafeJson {
     // types
 
     template<typename KeyType>
-    bool type_correct(const Json::Value& val,
-                      const KeyType& key,
-                      Json::ValueType type) {
+    inline bool type_correct(const Json::Value& val,
+                             const KeyType& key,
+                             Json::ValueType type) {
         return val.isObject()
             && val.isMember(key)
             && !val[key].isNull()
@@ -37,9 +37,9 @@ namespace SafeJson {
 
     // Overloads for Json::ArrayIndex and int that check if val is an array
     template<>
-    bool type_correct<Json::ArrayIndex>(const Json::Value& val,
-                                        const Json::ArrayIndex& idx,
-                                        Json::ValueType type) {
+    inline bool type_correct<Json::ArrayIndex>(const Json::Value& val,
+                                               const Json::ArrayIndex& idx,
+                                               Json::ValueType type) {
         return val.isArray()
             && val.isValidIndex(idx)
             && !val[idx].isNull()
@@ -47,9 +47,9 @@ namespace SafeJson {
     }
 
     template<>
-    bool type_correct<int>(const Json::Value& val,
-                           const int& idx,
-                           Json::ValueType type) {
+    inline bool type_correct<int>(const Json::Value& val,
+                                  const int& idx,
+                                  Json::ValueType type) {
         return type_correct(val, Json::ArrayIndex(idx), type);
     }
 
