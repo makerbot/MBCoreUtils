@@ -39,7 +39,9 @@
                 {"name_upper_xform": "y", "value": 1, "settings-key": "y"},
                 {"name_upper_xform": "z", "value": 2, "settings-key": "z"},
                 {"name_upper_xform": "a", "value": 3, "settings-key": "a"},
-                {"name_upper_xform": "b", "value": 4, "settings-key": "b"}
+                {"name_upper_xform": "b", "value": 4, "settings-key": "b"},
+                {"name_upper_xform": "aa", "value": 5, "settings-key": "aa"},
+                {"name_upper_xform": "bb", "value": 6, "settings-key": "bb"}
             ]
         },  
         {
