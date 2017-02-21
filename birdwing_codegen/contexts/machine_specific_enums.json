@@ -55,6 +55,16 @@
                 {"name": "toolhead_version_bytes", "value": 2},
                 {"name": "process_error_threshold", "value": 1000}
             ]
+        },
+        {
+            "name": "axis_type",
+            "do_stringify?": true,
+            "values": [
+                {"name_upper_xform": "deactivated", "value": 0, "settings-key": "deactivated"},
+                {"name_upper_xform": "gantry", "value": 1, "settings-key": "gantry"},
+                {"name_upper_xform": "extruder", "value": 2, "settings-key": "extruder"},
+                {"name_upper_xform": "assist", "value":3, "settings-key": "assist"}
+            ]
         }
     ]
 }
