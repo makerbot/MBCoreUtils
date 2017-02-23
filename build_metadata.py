@@ -8,13 +8,13 @@ else:
         artifactory_utils.ArtifactSelector(
             project="Toolchain-Release",
             revision="develop",
-            version="4.*",
+            version="^4.6",
             debug=False,
             stable_required=True),
         artifactory_utils.ArtifactSelector(
             project="mustache",
-            revision="master",
-            version="1.2.*",
+            revision="develop",
+            version="^1.2",
             debug=False,
             stable_required=True)
     ]
