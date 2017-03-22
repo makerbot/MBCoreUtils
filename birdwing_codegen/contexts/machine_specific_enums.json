@@ -55,6 +55,14 @@
                 {"name": "toolhead_version_bytes", "value": 2},
                 {"name": "process_error_threshold", "value": 1000}
             ]
+        },
+        {
+            "name": "hes_mode",
+            "do_stringify?": true,
+            "values": [
+                {"name": "free_run", "value": 0, "settings-key": "free_run"},
+                {"name": "fixed_length", "value": 1, "settings-key": "fixed_length"}
+            ]
         }
     ]
 }

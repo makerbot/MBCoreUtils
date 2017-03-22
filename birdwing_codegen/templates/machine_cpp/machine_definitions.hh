@@ -38,7 +38,7 @@ inline std::string ToString({{name}} val) {
         + std::to_string(static_cast<int>(val)) + ">";
     }
 }
-inline {{name}} FromString(const std::string& val) {
+inline {{name}} {{name}}FromString(const std::string& val) {
     if (false) {
     {{#values}}
     } else if (val == "{{settings-key}}") {
