@@ -77,6 +77,7 @@
         {"use_base": "misc_error", "name": "power_monitor_i2c_failure", "pretty_name": "Power Monitor I2C Failure", "id": 295},
         {"use_base": "misc_error", "name": "json_config_key_error", "pretty_name": "Configuration Key Error", "id": 1496},
         {"use_base": "misc_error", "name": "json_config_value_error", "pretty_name": "Configuration Value Error", "id": 1497},
+        {"use_base": "misc_error", "name": "hes_reversed", "pretty_name": "Hes Magnet Reversed", "id": 1059},
         {"use_base": false,
          "name": "tool_not_calibrated",
          "pretty_name":"Smart Extruder Not Calibrated",
