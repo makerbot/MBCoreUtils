@@ -24,7 +24,8 @@
                 {"name": "5v", "value": 0, "settings-key": "5v"},
                 {"name": "12v", "value": 1, "settings-key": "12v"},
                 {"name": "3v3", "value": 2, "settings-key": "3v3"},
-                {"name": "36v", "value": 3, "settings-key": "36v"}
+                {"name": "3v3Standby", "value": 3, "settings-key": "3v3Standby"},
+                {"name": "36v", "value": 4, "settings-key": "36v"}
             ]
         },
         {
