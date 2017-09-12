@@ -54,6 +54,7 @@
         {"use_base": "misc_error", "name": "bad_tool_count_config", "pretty_name": "Bad Tool Count Config", "id": 299},
         {"use_base": "misc_error", "name": "resume_complete", "pretty_name": "Resume Complete", "id": 301},
         {"use_base": "misc_error", "name": "suspend_index_not_found", "pretty_name": "Suspend Index Not Found", "id": 1018},
+        {"use_base": "misc_error", "name": "power_monitor_adc_failure", "pretty_name": "Power Monitor ADC Failure", "id": 1026},
         {"use_base": "misc_error", "name": "diagnostics_unknown_state_error", "pretty_name": "Diagnostics Unknown State Error", "id": 296},
         {"use_base": "misc_error", "name": "invalid_axis", "pretty_name": "Invalid Axis", "id": 265},
         {"use_base": "misc_error", "name": "ok", "pretty_name": "Ok", "id": 256},

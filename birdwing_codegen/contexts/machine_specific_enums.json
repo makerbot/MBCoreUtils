@@ -19,16 +19,21 @@
         },
         {
             "name": "power_monitor_rail",
+            "do_stringify?": true,
             "values": [
-                {"name": "5v", "value": 0},
-                {"name": "12v", "value": 1}
+                {"name": "5v", "value": 0, "settings-key": "5v"},
+                {"name": "12v", "value": 1, "settings-key": "12v"},
+                {"name": "3v3", "value": 2, "settings-key": "3v3"},
+                {"name": "3v3Standby", "value": 3, "settings-key": "3v3Standby"},
+                {"name": "36v", "value": 4, "settings-key": "36v"}
             ]
         },
         {
             "name": "power_monitor_value",
+            "do_stringify?": true,
             "values": [
-                {"name": "Current", "value": 0},
-                {"name": "Voltage", "value": 1}
+                {"name": "Current", "value": 0, "settings-key": "Current"},
+                {"name": "Voltage", "value": 1, "settings-key": "Voltage"}
             ]
         },
         {   
