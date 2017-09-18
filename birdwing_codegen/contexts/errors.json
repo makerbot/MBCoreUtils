@@ -80,6 +80,7 @@
         {"use_base": "misc_error", "name": "json_config_key_error", "pretty_name": "Configuration Key Error", "id": 1496},
         {"use_base": "misc_error", "name": "json_config_value_error", "pretty_name": "Configuration Value Error", "id": 1497},
         {"use_base": "misc_error", "name": "hes_reversed", "pretty_name": "Hes Magnet Reversed", "id": 1059},
+        {"use_base": "misc_error", "name": "log_hes_timed_out", "pretty_name": "Log HES Data Timed Out", "id": 1060},
         {"use_base": false,
          "name": "tool_not_calibrated",
          "pretty_name":"Smart Extruder Not Calibrated",
