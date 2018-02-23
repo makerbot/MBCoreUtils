@@ -466,6 +466,10 @@
         {"use_base": "misc_error", "name": "program_not_started", "pretty_name": "Program Not Started", "id": 142},
         {"use_base": "misc_error", "name": "program_completed", "pretty_name": "Program Completed", "id": 143},
         {"use_base": "misc_error", "name": "serious_internal_error", "pretty_name": "Serious Internal Error", "id": 144},
+        {"use_base": "filament_bay_error", "name": "nfc_scan_failure", "pretty_name": "NFC Scan Failure", "id": 145},
+        {"use_base": "filament_bay_error", "name": "no_nfc_tags_found", "pretty_name": "No NFC Tags Found", "id": 146},
+        {"use_base": "filament_bay_error", "name": "nfc_read_failure", "pretty_name": "Nfc Read Failure", "id": 147},
+        {"use_base": "filament_bay_error", "name": "nfc_write_failure", "pretty_name": "Nfc Write Failure", "id": 148},
         {
             "use_base": false,
             "name": "thermocouple_communication_failure",
@@ -630,6 +634,13 @@
         {
             "name": "misc_error",
             "title": "System Error",
+            "message": "Oops, we have a problem (Error %d: %s).",
+            "error_type": "none",
+            "error_action": "acknowledge"
+        },
+        {
+            "name": "filament_bay_error",
+            "title": "Filament Bay Error",
             "message": "Oops, we have a problem (Error %d: %s).",
             "error_type": "none",
             "error_action": "acknowledge"
