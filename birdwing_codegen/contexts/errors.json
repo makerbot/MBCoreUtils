@@ -513,6 +513,16 @@
         },
         {
             "use_base": false,
+            "name": "lid_interlock_triggered",
+            "pretty_name": "Lid Interlock Triggered",
+            "title": "Top Lid Open",
+            "message": "The top lid is open (Warning %d). Please close the lid to continue.",
+            "error_type": "chamber_error",
+            "error_action": "acknowledge",
+            "id": 45
+        },
+        {
+            "use_base": false,
             "name": "heater_hold_watchdog_triggered",
             "pretty_name": "Heater Hold Watchdog Triggered",
             "title": "Extruder Cooling",
