@@ -447,6 +447,7 @@
         {"use_base": "misc_error", "name": "tool_buffer_full", "pretty_name": "Tool Buffer Full", "id": 90},
         {"use_base": "misc_error", "name": "toolhead_buffer_full", "pretty_name": "Toolhead Buffer Full", "id": 91},
         {"use_base": "misc_error", "name": "heater_open", "pretty_name": "Heater Open", "id": 71},
+        {"use_base": "misc_error", "name": "drawer_no_filament", "pretty_name": "Drawer Out Of Filament", "id": 83},
         {"use_base": "misc_error", "name": "invalid_response", "pretty_name": "Invalid Response", "id": 12},
         {"use_base": "misc_error", "name": "eeprom_slave_missed_value", "pretty_name": "Eeprom Slave Missed Value", "id": 133},
         {"use_base": "misc_error", "name": "eeprom_fatal_internal_error", "pretty_name": "Eeprom Fatal Internal Error", "id": 136},
