@@ -81,6 +81,7 @@
         {"use_base": "misc_error", "name": "json_config_value_error", "pretty_name": "Configuration Value Error", "id": 1497},
         {"use_base": "misc_error", "name": "hes_reversed", "pretty_name": "Hes Magnet Reversed", "id": 1059},
         {"use_base": "misc_error", "name": "log_hes_timed_out", "pretty_name": "Log HES Data Timed Out", "id": 1060},
+        {"use_base": "filament_bay_error", "name": "assist_motor_over_temp", "pretty_name": "Assist Motor is Over Temperature and has timed out.", "id": 1070},
         {"use_base": "filament_bay_error", "name": "no_nfc_tags_found", "pretty_name": "No NFC Tags Found", "id": 1061},
         {"use_base": false,
          "name": "tool_not_calibrated",
