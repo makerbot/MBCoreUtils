@@ -12,7 +12,6 @@
 #define INCLUDE_MBCOREUTILS_JSONCPP_WRAPPERS_H_
 
 #include <jsoncpp/json/json.h>
-#include <cstdint>
 #include <limits>
 #include <memory>
 #include <string>
@@ -100,14 +99,22 @@ class Value {
      * variable if the variable type is compatible with the wrapped value.
      * Overloads are provided for a usefully large selection of built in types.
      */
-    void assignTo(int8_t * v) { assignToInt(v); }
-    void assignTo(uint8_t * v) { assignToInt(v); }
-    void assignTo(int16_t * v) { assignToInt(v); }
-    void assignTo(uint16_t * v) { assignToInt(v); }
-    void assignTo(int32_t * v) { assignToInt(v); }
-    void assignTo(uint32_t * v) { assignToInt(v); }
-    void assignTo(int64_t * v) { assignToInt(v); }
-    void assignTo(uint64_t * v) { assignToInt(v); }
+    // We need to actually use the fundamental C++ types here, because we need
+    // to cover any integer types that we use in any codebase using this, but
+    // we also can't duplicate any types here or we would create ambiguous
+    // overloads (this has to support all compilers that we use which may use
+    // different mappings of type aliases to these fundamental types.
+    void assignTo(char * v) { assignToInt(v); }
+    void assignTo(signed char * v) { assignToInt(v); }
+    void assignTo(unsigned char * v) { assignToInt(v); }
+    void assignTo(short * v) { assignToInt(v); }  // NOLINT
+    void assignTo(unsigned short * v) { assignToInt(v); }  // NOLINT
+    void assignTo(int * v) { assignToInt(v); }
+    void assignTo(unsigned int * v) { assignToInt(v); }
+    void assignTo(long * v) { assignToInt(v); }  // NOLINT
+    void assignTo(unsigned long * v) { assignToInt(v); }  // NOLINT
+    void assignTo(long long * v) { assignToInt(v); }  // NOLINT
+    void assignTo(unsigned long long * v) { assignToInt(v); }  // NOLINT
 
     void assignTo(float * v) {
         if (!v_.isNumeric()) {
