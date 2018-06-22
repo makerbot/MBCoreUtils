@@ -95,9 +95,9 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
           return "BeadMode User1";
         case kBeadModeUser2:
           return "BeadMode User2";
-        case kBeadModeUser1:
+        case kBeadModeUser3:
           return "BeadMode User3";
-        case kBeadModeUser1:
+        case kBeadModeUser4:
           return "BeadMode User4";
         case LAST:
         default:
