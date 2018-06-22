@@ -22,6 +22,22 @@ enum ToolpathTag : unsigned int{
     kFlick,
     kLongRetract,
     kLongRestart,
+
+	kBeadModeExternal,
+	kBeadModeExternalThick,
+	kBeadModeExternalThicker,
+	kBeadModeExternalThickest,
+
+	kBeadModeInternal,
+	kBeadModeInternalThick,
+	kBeadModeInternalThicker,
+	kBeadModeInternalThickest,
+
+	kBeadModeUser1,
+	kBeadModeUser2,
+	kBeadModeUser3,
+	kBeadModeUser4,
+
     LAST
 };
 
@@ -63,6 +79,34 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Long Retract";
         case kLongRestart:
             return "Long Restart";
+
+		case kBeadModeExternal:
+			return "BeadMode External";
+		case kBeadModeExternalThick:
+			return "BeadMode External Thick";
+		case kBeadModeExternalThicker:
+			return "BeadMode External Thicker";
+		case kBeadModeExternalThickest:
+			return "BeadMode External Thickest";
+
+		case kBeadModeInternal:
+			return "BeadMode Internal";
+		case kBeadModeInternalThick:
+			return "BeadMode Internal Thick";
+		case kBeadModeInternalThicker:
+			return "BeadMode Internal Thicker";
+		case kBeadModeInternalThickest:
+			return "BeadMode Internal Thickest";
+
+		case kBeadModeUser1:
+			return "BeadMode User1";
+		case kBeadModeUser2:
+			return "BeadMode User2";
+		case kBeadModeUser1:
+			return "BeadMode User3";
+		case kBeadModeUser1:
+			return "BeadMode User4";
+
         case LAST:
         default:
             return "";
