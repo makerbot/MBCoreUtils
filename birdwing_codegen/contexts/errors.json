@@ -442,6 +442,7 @@
         {"use_base": "chamber_problem", "name": "chamber_thermistor_disconnected", "pretty_name": "Chamber Thermistor Disconnected", "id": 96},
         {"use_base": "tool_critical", "name": "heater_over_temp", "pretty_name": "Heater Over Temp", "id": 74},
         {"use_base": "chamber_problem", "name": "chamber_temperature_overrun", "pretty_name": "Chamber Temperature Overrun", "id": 100},
+        {"use_base": "chamber_problem", "name": "i2c_comm_error", "pretty_name": "I2C Communication Error", "id": 101},
         {"use_base": "misc_error", "name": "hes_log_full", "pretty_name": "HES Log Full", "id": 82},
         {"use_base": "misc_error", "name": "invalid_tool_index", "pretty_name": "Invalid Tool Index", "id": 79},
         {"use_base": "misc_error", "name": "malformed_packet", "pretty_name": "Malformed Packet", "id": 78},
