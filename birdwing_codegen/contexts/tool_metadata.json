@@ -48,8 +48,10 @@
          "type_key": "mk13_impla", "material_name": "Tough PLA"},
         {"name": "mark_13_experimental", "pretty_name": "Experimental Extruder", "id": 99,
          "type_key": "mk13", "material_name": "PLA"},
-        {"name": "mk14_0", "pretty_name": "Shiny Octo Parakeet", "id": 100,
-         "type_key": "mk14", "material_name": "PLA"}
+        {"name": "mk14_0", "pretty_name": "Model 1 Performance Extruder", "id": 100,
+         "type_key": "mk14", "material_name": "PLA"},
+        {"name": "mk14_s_0", "pretty_name": "Support 2 Performance Extruder", "id": 100,
+         "type_key": "mk14_s", "material_name": "PVA"}
     ],
     "types": [
         {"name": "Unknown",
