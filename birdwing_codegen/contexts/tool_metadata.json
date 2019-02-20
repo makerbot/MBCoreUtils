@@ -74,15 +74,21 @@
          "key_string": "mk13_impla",
          "id": 3,
          "toolpath_equivalents": [{"key": "unknown_type"}]},
-        {"name": "Shiny Octo Parakeet",
+        {"name": "Model 1 Performance Extruder",
          "key": "mk14",
          "key_string": "mk14",
          "id": 4,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+        {"name": "Support 2 Performance Extruder",
+         "key": "mk14_s",
+         "key_string": "mk14_s",
+         "id": 5,
          "toolpath_equivalents": [{"key": "unknown_type"}]}
     ],
     "materials": [
         {"name": "PLA", "id": 0},
         {"name": "IMPLA", "id": 1},
+        {"name": "PVA", "id": 2},
         {"name": "unknown", "id": -1}
     ]
 }
