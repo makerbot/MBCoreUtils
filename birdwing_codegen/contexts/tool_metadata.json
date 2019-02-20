@@ -50,7 +50,7 @@
          "type_key": "mk13", "material_name": "PLA"},
         {"name": "mk14_0", "pretty_name": "Model 1 Performance Extruder", "id": 100,
          "type_key": "mk14", "material_name": "PLA"},
-        {"name": "mk14_s_0", "pretty_name": "Support 2 Performance Extruder", "id": 100,
+        {"name": "mk14_s_0", "pretty_name": "Support 2 Performance Extruder", "id": 101,
          "type_key": "mk14_s", "material_name": "PVA"}
     ],
     "types": [
