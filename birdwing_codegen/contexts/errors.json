@@ -473,6 +473,7 @@
         {"use_base": "filament_bay_error", "name": "nfc_scan_failure", "pretty_name": "NFC Scan Failure", "id": 145},
         {"use_base": "filament_bay_error", "name": "nfc_read_failure", "pretty_name": "NFC Read Failure", "id": 147},
         {"use_base": "filament_bay_error", "name": "nfc_write_failure", "pretty_name": "NFC Write Failure", "id": 148},
+        {"use_base": "filament_bay_error", "name": "nfc_uid_mismatch", "pretty_name": "NFC UID Mismatch", "id": 149},
         {
             "use_base": false,
             "name": "thermocouple_communication_failure",
