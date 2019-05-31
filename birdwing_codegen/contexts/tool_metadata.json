@@ -51,7 +51,11 @@
         {"name": "mk14_0", "pretty_name": "Model 1 Performance Extruder", "id": 100,
          "type_key": "mk14", "material_name": "PLA"},
         {"name": "mk14_s_0", "pretty_name": "Support 2 Performance Extruder", "id": 101,
-         "type_key": "mk14_s", "material_name": "PVA"}
+         "type_key": "mk14_s", "material_name": "PVA"},
+        {"name": "mk14_hot_0", "pretty_name": "Model 1 Performance Extruder", "id": 102,
+         "type_key": "mk14_hot", "material_name": "ABS"},
+        {"name": "mk14_hot_s_0", "pretty_name": "Support 2 Performance Extruder", "id": 103,
+         "type_key": "mk14_hot_s", "material_name": "SR30"}
     ],
     "types": [
         {"name": "Unknown",
@@ -83,6 +87,16 @@
          "key": "mk14_s",
          "key_string": "mk14_s",
          "id": 5,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+        {"name": "Model 1 Performance Extruder",
+         "key": "mk14_hot",
+         "key_string": "mk14_hot",
+         "id": 6,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+        {"name": "Support 2 Performance Extruder",
+         "key": "mk14_hot_s",
+         "key_string": "mk14_hot_s",
+         "id": 7,
          "toolpath_equivalents": [{"key": "unknown_type"}]}
     ],
     "materials": [
