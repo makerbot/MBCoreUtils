@@ -20,6 +20,7 @@ enum ToolpathTag : unsigned int {
     kRetract,
     kRestart,
     kFlick,
+    kPurge,
     kLongRetract,
     kLongRestart,
     kBeadModeExternal,
@@ -71,6 +72,8 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Restart";
         case kFlick:
             return "Flick";
+        case kPurge:
+            return "Purge";
         case kLongRetract:
             return "Long Retract";
         case kLongRestart:
