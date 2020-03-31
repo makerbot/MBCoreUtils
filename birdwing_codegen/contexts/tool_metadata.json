@@ -61,7 +61,6 @@
         {"name": "mk14_c_0", "pretty_name": "Composites Extruder", "id": 105,
          "type_key": "mk14_c", "material_name": "Nylon CF"}
     ],
-    ],
     "types": [
         {"name": "Unknown",
          "key": "unknown_type",
