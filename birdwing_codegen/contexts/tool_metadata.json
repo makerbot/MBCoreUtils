@@ -57,7 +57,9 @@
         {"name": "mk14_hot_s_0", "pretty_name": "Support 2XA Performance Extruder", "id": 103,
          "type_key": "mk14_hot_s", "material_name": "SR30"},
         {"name": "mk14_e_0", "pretty_name": "Labs Experimental Extruder", "id": 104,
-         "type_key": "mk14_e", "material_name": "ABS"}
+         "type_key": "mk14_e", "material_name": "ABS"},
+        {"name": "mk14_c_0", "pretty_name": "Composites Extruder", "id": 105,
+         "type_key": "mk14_c", "material_name": "Nylon CF"}
     ],
     "types": [
         {"name": "Unknown",
@@ -104,6 +106,11 @@
          "key": "mk14_e",
          "key_string": "mk14_e",
          "id": 8,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+         {"name": "Composites Extruder",
+         "key": "mk14_c",
+         "key_string": "mk14_c",
+         "id": 9,
          "toolpath_equivalents": [{"key": "unknown_type"}]}
     ],
     "materials": [
