@@ -1,0 +1,74 @@
+name: Update printer-error-map
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - "birdwing_codegen/contexts/errors.json"
+
+env:
+  PRINTER_ERRORS_REPO: "${{ github.repository_owner }}/printer-error-map"
+
+jobs:
+  update_printer_errors:
+    name: Push update to printer-error-map
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Check out MBCoreUtils
+      uses: actions/checkout@v2
+      with:
+        path: "MBCoreUtils"
+
+    - name: Check out printer-error-map
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.PRINTER_ERRORS_REPO }}
+        ref: "develop"
+        path: "printer-error-map"
+        # Need to use the bot token here because the default
+        # token only has access to MBCoreUtils
+        token: ${{ secrets.BOT_TOKEN }}
+
+    - name: Set up Node 14
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    
+    - name: Run error transformer
+      working-directory: "printer-error-map/tools/transform-errors"
+      run: node index $GITHUB_WORKSPACE/MBCoreUtils/birdwing_codegen/contexts/errors.json $GITHUB_WORKSPACE/printer-error-map/index.js
+    
+    - name: Commit changes to printer-error-map
+      working-directory: "printer-error-map"
+      run: |
+        git config --local user.email "github-action@users.noreply.github.com"
+        git config --local user.name "GitHub Action [bot]"
+        git checkout -b error-update-${{ steps.slug.outputs.sha8 }}
+        git add -A
+        git commit -m "chore: Update printer errors" -m "This was automatically generated from MBCoreUtils commit ${{ github.sha }}"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.BOT_TOKEN }}
+        branch: error-update-${{ steps.slug.outputs.sha8 }}
+        repository: ${{ env.PRINTER_ERRORS_REPO }}
+        directory: printer-error-map
+    
+    - name: Open pull request
+      run: |
+        curl -X POST "https://api.github.com/repos/${{ env.PRINTER_ERRORS_REPO }}/pulls" \
+        -H "Authorization: token ${{ secrets.BOT_TOKEN }}" \
+        -H "Content-Type: application/json" \
+        --data-raw '{
+          "title": "Error update for MBCoreUtils commit ${{ steps.slug.outputs.sha8 }}",
+          "head": "error-update-${{ steps.slug.outputs.sha8 }}",
+          "base": "develop",
+          "body": "**Hello humans!** I have come with a PR from MBCoreUtils. The commit ${{ github.repository }}@${{ github.sha }} updated the errors.json and I'\''d like you to take a look at my changes before they are published. Thanks!",
+          "maintainer_can_modify": true
+        }'
