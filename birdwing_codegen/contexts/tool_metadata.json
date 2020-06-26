@@ -58,7 +58,7 @@
          "type_key": "mk14_hot_s", "material_name": "SR30"},
         {"name": "mk14_e_0", "pretty_name": "Labs Experimental Extruder", "id": 104,
          "type_key": "mk14_e", "material_name": "ABS"},
-        {"name": "mk14_c_0", "pretty_name": "Composites Extruder", "id": 105,
+        {"name": "mk14_c_0", "pretty_name": "Model 1C Composites Extruder", "id": 105,
          "type_key": "mk14_c", "material_name": "Nylon CF"}
     ],
     "types": [
@@ -107,7 +107,7 @@
          "key_string": "mk14_e",
          "id": 8,
          "toolpath_equivalents": [{"key": "unknown_type"}]},
-         {"name": "Composites Extruder",
+         {"name": "Model 1C Composites Extruder",
          "key": "mk14_c",
          "key_string": "mk14_c",
          "id": 9,
