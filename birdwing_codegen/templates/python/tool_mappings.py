@@ -55,3 +55,8 @@ type_to_type_name = {
         u'{{key}}': u'{{name}}',
     {{/types}}
 }
+type_to_type_key = {
+    {{#types}}
+        {{id}}: u'{{key}}',
+    {{/types}}
+}
