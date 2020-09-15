@@ -1,5 +1,8 @@
+// Copyright MakerBot 2020
 #ifndef INCLUDE_MBCOREUTILS_TOOLPATH_TAGS_H_
 #define INCLUDE_MBCOREUTILS_TOOLPATH_TAGS_H_
+
+#include <string>
 
 namespace MakerBot {
 
@@ -9,7 +12,7 @@ enum ToolpathTag : unsigned int {
     kBridge,
     kBrims,
     kConnection,
-    kFlickMove,  //Not sure why there is Flick and FlickMove
+    kFlickMove,  // Not sure why there is Flick and FlickMove
     kInfill,
     kInset,
     kOutline,
@@ -115,7 +118,7 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
 }
 
 inline int stringToToolpathTag(const std::string &str) {
-    for(unsigned i = 0; i < LAST; i++) {
+    for (unsigned i = 0; i < LAST; i++) {
         if (str == stringFromToolpathTag((ToolpathTag)i)) {
             return i;
         }
@@ -124,7 +127,7 @@ inline int stringToToolpathTag(const std::string &str) {
 }
 
 enum AxisUnit {
-    kMilliMetre=0,
+    kMilliMetre = 0,
     kMicroMetre,
     kMilliLitre,
     kMicroLitre,
@@ -132,7 +135,7 @@ enum AxisUnit {
 };
 
 inline std::string stringFromAxisUnit(const AxisUnit unit) {
-    switch(unit) {
+    switch (unit) {
     case kMilliMetre:
         return "mm";
     case kMicroMetre:
@@ -148,7 +151,7 @@ inline std::string stringFromAxisUnit(const AxisUnit unit) {
 }
 
 inline int stringToAxisUnit(const std::string& str) {
-    for(int i = 0; i < kLast; i++) {
+    for (int i = 0; i < kLast; i++) {
         if (str == stringFromAxisUnit((AxisUnit)i)) {
             return i;
         }
@@ -156,5 +159,5 @@ inline int stringToAxisUnit(const std::string& str) {
     return -1;
 }
 }
-   
-#endif // INCLUDE_MBCOREUTILS_TOOLPATH_TAGS_H_
+
+#endif  // INCLUDE_MBCOREUTILS_TOOLPATH_TAGS_H_
