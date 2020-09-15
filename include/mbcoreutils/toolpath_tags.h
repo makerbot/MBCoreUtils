@@ -7,6 +7,7 @@ enum ToolpathTag : unsigned int {
     kAnchor = 0,
     kBacklashCompensation,
     kBridge,
+    kBrims,
     kConnection,
     kFlickMove,  //Not sure why there is Flick and FlickMove
     kInfill,
@@ -19,6 +20,7 @@ enum ToolpathTag : unsigned int {
     kSupport,
     kRetract,
     kRestart,
+    kRaft,
     kFlick,
     kPurge,
     kLongRetract,
@@ -46,6 +48,8 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Backlash Compensation";
         case kBridge:
             return "Bridge";
+        case kBrims:
+            return "Brims";
         case kConnection:
             return "Connection";
         case kFlickMove:
@@ -70,6 +74,8 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Retract";
         case kRestart:
             return "Restart";
+        case kRaft:
+            return "Raft";
         case kFlick:
             return "Flick";
         case kPurge:
