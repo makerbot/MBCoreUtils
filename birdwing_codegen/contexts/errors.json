@@ -201,7 +201,7 @@
             "message": "Please wait while your Smart Extruder unloads any leftover filament. (Warning %d)",
             "error_type": "filament_error",
             "error_action": "change_filament",
-            "id": 1041 
+            "id": 1041
         },
         {
             "use_base": false,
@@ -585,6 +585,16 @@
             "error_type": "none",
             "error_action": "acknowledge",
             "id": 16
+        },
+        {
+            "use_base" : false,
+            "name" : "toolhead_toggle_failure",
+            "pretty_name" : "Toolhead Toggle Failure",
+            "title" : "Toggle Failure",
+            "message": "Failed to toggle the toolhead. Please contact support.",
+            "error_type": "none",
+            "error_action" : "acknowledge",
+            "id": 84
         }
     ],
 
