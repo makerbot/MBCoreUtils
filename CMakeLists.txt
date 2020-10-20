@@ -57,6 +57,7 @@ mustache_codegen(
         "${templates_dir}/machine_cpp/machine_errors.hh"
         "${templates_dir}/machine_cpp/toolhead_errors.hh"
         "${templates_dir}/machine_cpp/toolhead_toolidentifier.hh"
+        "${templates_dir}/machine_cpp/extruder_common.hh"
     CONTEXTS
         "${_CONTEXTS}"
     TRANSFORMATIONS_FILE
