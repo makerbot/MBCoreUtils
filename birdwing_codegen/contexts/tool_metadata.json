@@ -59,7 +59,9 @@
         {"name": "mk14_e_0", "pretty_name": "Labs Experimental Extruder", "id": 104,
          "type_key": "mk14_e", "material_name": "ABS"},
         {"name": "mk14_c_0", "pretty_name": "Model 1C Composites Extruder", "id": 105,
-         "type_key": "mk14_c", "material_name": "Nylon CF"}
+         "type_key": "mk14_c", "material_name": "Nylon CF"},
+        {"name": "mk14_hot_e_0", "pretty_name": "High Temp Experimental Extruder", "id": 106,
+         "type_key": "mk14_hot_e", "material_name": "ABS"}
     ],
     "types": [
         {"name": "Unknown",
@@ -111,6 +113,11 @@
          "key": "mk14_c",
          "key_string": "mk14_c",
          "id": 9,
+         "toolpath_equivalents": [{"key": "unknown_type"}]},
+         {"name": "High Temp Experimental Extruder",
+         "key": "mk14_hot_e",
+         "key_string": "mk14_hot_e",
+         "id": 10,
          "toolpath_equivalents": [{"key": "unknown_type"}]}
     ],
     "materials": [
