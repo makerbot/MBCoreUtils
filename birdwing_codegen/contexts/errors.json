@@ -474,7 +474,7 @@
         {"use_base": "filament_bay_error", "name": "nfc_read_failure", "pretty_name": "NFC Read Failure", "id": 147},
         {"use_base": "filament_bay_error", "name": "nfc_write_failure", "pretty_name": "NFC Write Failure", "id": 148},
         {"use_base": "filament_bay_error", "name": "nfc_uid_mismatch", "pretty_name": "NFC UID Mismatch", "id": 149},
-        {"use_base": "misc_error", "name": "hepa_filter_disconnected", "pretty_name": "HEPA Filter Lid Disconnected", "id": 700},
+        {"use_base": "misc_error", "name": "hepa_filter_disconnected", "pretty_name": "HEPA Filter Lid Disconnected", "id": 200},
         {
             "use_base": false,
             "name": "thermocouple_communication_failure",
