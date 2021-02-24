@@ -59,6 +59,8 @@
         {"use_base": "misc_error", "name": "invalid_axis", "pretty_name": "Invalid Axis", "id": 265},
         {"use_base": "misc_error", "name": "ok", "pretty_name": "Ok", "id": 256},
         {"use_base": "misc_error", "name": "invalid_fan_duty", "pretty_name": "Invalid Fan Duty", "id": 283},
+        {"use_base": "misc_error", "name": "invalid_hardware_version", "pretty_name": "Invalid Hardware Version", "id": 286},
+        {"use_base": "misc_error", "name": "invalid_heater_duty", "pretty_name": "Invalid Heater Duty", "id": 285},
         {"use_base": "misc_error", "name": "top_bunk_fan_failure", "pretty_name": "Top Bunk Fan Failure", "id": 284},
         {"use_base": "misc_error", "name": "diagnostis_uknown_test_error", "pretty_name": "Diagnostis Uknown Test Error", "id": 298},
         {"use_base": "misc_error", "name": "invalid_heater_index", "pretty_name": "Invalid Heater Index", "id": 268},
