@@ -12,18 +12,23 @@ enum ToolpathTag : unsigned int {
     kBridge,
     kBrims,
     kConnection,
+    kFillRoofSurface,
     kFlickMove,  // Not sure why there is Flick and FlickMove
+    kFloor,
     kInfill,
     kInset,
     kOutline,
     kLeakyTravelMove,
     kTravelMove,
     kTrailingExtrusionMove,
+    kSolid,
+    kSparse,
     kSpur,
     kSupport,
     kRetract,
     kRestart,
     kRaft,
+    kRoof,
     kFlick,
     kPurge,
     kLongRetract,
@@ -55,8 +60,12 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Brims";
         case kConnection:
             return "Connection";
+        case kFillRoofSurface:
+            return "Fill Roof Surface";
         case kFlickMove:
             return "Flick Move";
+        case kFloor:
+            return "Floor";
         case kInfill:
             return "Infill";
         case kInset:
@@ -69,6 +78,10 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Travel Move";
         case kTrailingExtrusionMove:
             return "Trailing Extrusion Move";
+        case kSolid:
+            return "Solid";
+        case kSparse:
+            return "Sparse";
         case kSpur:
             return "Spur";
         case kSupport:
@@ -83,6 +96,8 @@ inline std::string stringFromToolpathTag(const ToolpathTag tag) {
             return "Flick";
         case kPurge:
             return "Purge";
+        case kRoof:
+            return "Roof";
         case kLongRetract:
             return "Long Retract";
         case kLongRestart:
