@@ -71,6 +71,7 @@
         {"use_base": "misc_error", "name": "machine_driver_closed", "pretty_name": "Machine Driver Closed", "id": 274},
         {"use_base": "misc_error", "name": "not_implemented", "pretty_name": "Not Implemented", "id": 300},
         {"use_base": "misc_error", "name": "not_ready", "pretty_name": "Not Ready", "id": 266},
+        {"use_base": "misc_error", "name": "invalid_parameter", "pretty_name": "Invalid Parameter", "id": 302},
 	{"use_base": "misc_error", "name": "remote_full", "pretty_name": "Remote Full", "id": 273},
 	{"use_base": "misc_error", "name": "local_empty", "pretty_name": "Local Buffer Empty", "id": 276},
 	{"use_base": "misc_error", "name": "keep_calling", "pretty_name": "Keep Calling", "id": 282},
