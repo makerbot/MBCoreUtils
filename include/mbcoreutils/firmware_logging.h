@@ -25,17 +25,6 @@
 
 #pragma GCC diagnostic pop
 
-// We require that short filenames be passed in from the build system in order
-// to use logging, as full file paths ruin the readability of the logs.  For
-// libraries where all source files that log are in a single directory (which
-// really should be all of them), the flag to be added here can be written as
-// -D__FILENAME__='\"$(subst ${DIR}/,,$(abspath $<))\"', where DIR is the
-// full path to this directory (usually ${CMAKE_CURRENT_SOURCE_DIR} plus zero
-// or more subdirectories).
-#ifndef __FILENAME__
-#error Short filenames must be defined to use logging
-#endif
-
 // We require a logging channel name to be defined in order to use logging.
 // It is generally recommended to pass this in from the build system to create
 // one channel name per library.  Note that we don't actually use this as the
@@ -52,8 +41,8 @@
 // statement.
 #define LOG(level) \
     BOOST_LOG_SEV(Logging::general::get(), boost::log::trivial::level) << "["\
-    << __LOGGING_CHANNEL__ << "] [" << __FILENAME__ << ":" << __LINE__ << ":"\
-    << __func__ << "] "
+    << __LOGGING_CHANNEL__ << "] [" << Logging::getFilename(__FILE__) << ":"\
+    << __LINE__ << ":" << __func__ << "] "
 
 // The main API entry point for telemetry logging
 #define TELEM(level) \
@@ -90,6 +79,16 @@ namespace Logging {
     // and a telemetry log that writes to a telemetry file, so we create two
     // log sources with different channel names, and then two log sinks that
     // always filter only the channel names that we want to log.
+
+    // C++11 constexpr function to reduce a full file path to a filename.
+    constexpr size_t getAfterSlashIdx(
+            const char * file, size_t idx, size_t res) {
+        return file[idx] ? getAfterSlashIdx(file, idx + 1,
+            file[idx] == '/' ? idx + 1 : res) : res;
+    }
+    constexpr const char * getFilename(const char * file) {
+        return file + getAfterSlashIdx(file, 0, 0);
+    }
 
     // Typedef for logging sources
     typedef boost::log::sources::severity_channel_logger
@@ -198,6 +197,6 @@ namespace Logging {
         }
         boost::log::add_common_attributes();
     }
-};
+}
 
 #endif  // INCLUDE_MBCOREUTILS_FIRMWARE_LOGGING_H_
