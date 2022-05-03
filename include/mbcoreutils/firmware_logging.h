@@ -17,31 +17,30 @@
 #include <boost/log/expressions.hpp>
 #include <boost/log/sinks/text_file_backend.hpp>
 #include <boost/log/utility/setup.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/range/iterator_range.hpp>
 
 #include <locale>
 #include <algorithm>
 #include <sstream>
 #include <string>
+#include <list>
 
 #pragma GCC diagnostic pop
 
-// We require a logging channel name to be defined in order to use logging.
-// It is generally recommended to pass this in from the build system to create
-// one channel name per library.  Note that we don't actually use this as the
-// logging channel, but we just manually include this in the log message.
-#ifndef __LOGGING_CHANNEL__
-#error Logging channel must be defined to use logging
-#else
+// We require a logging context string to be defined in order to use logging.
+// The context string is supposed to identify the firmware component generating
+// the log message, so it should either be a single short static string or a
+// short static string with an index appended (via <<) when we have two or more
+// components sharing the same code.
+#ifndef LOGGING_CONTEXT
+#error Logging context must be defined to use logging
 #endif
 
-// The main API entry point for standard logging.  This includes file and line
-// number information, so to wrap this call, either another macro should be
-// used to directly call this, or the TODO function below should be called
-// with this information passed in from the original source of the logging
-// statement.
+// The main API entry point for standard logging
 #define LOG(level) \
     BOOST_LOG_SEV(Logging::general::get(), boost::log::trivial::level) << "["\
-    << __LOGGING_CHANNEL__ << "] [" << Logging::getFilename(__FILE__) << ":"\
+    << LOGGING_CONTEXT << "] [" << Logging::getFilename(__FILE__) << ":"\
     << __LINE__ << ":" << __func__ << "] "
 
 // The main API entry point for telemetry logging
@@ -57,10 +56,6 @@ namespace Logging {
     // possible to the configured level via the Change*Level functions, but we
     // want to make sure that we log any errors that happen before we load these
     // configurations.
-    //
-    // TODO(chris): The size caps for each individual log are not being honored,
-    //   instead the smallest value passed will be used a a size cap for both
-    //   logs combined.
     inline void Initialize(const std::string& folder_name,
         int general_size_mb, const std::string& general_file_name,
         int telemetry_size_mb, const std::string& telemetry_file_name);
@@ -161,38 +156,124 @@ namespace Logging {
         ChangeLevel(telemetry_backend(), "telemetry", sev);
     }
 
+    // Custom collector class to get around two problems:
+    //  - We want to collect general and telemetry logs independently
+    //  - We want to remove the oldest log by number, not timestamp
+    class Collector : public boost::log::sinks::file::collector {
+      public:
+        Collector(const std::string & target_dir,
+                const std::string & file_name, int size_mb)
+              : logs_dir_(target_dir),
+                prefix_(file_name + "_"),
+                total_size_(0),
+                max_size_(size_mb * 1024 * 1024) {
+            boost::filesystem::create_directories(logs_dir_);
+        }
+
+        void store_file(boost::filesystem::path const & src_path) override {
+            std::string name(src_path.filename().string());
+            int64_t lognum = parse_filename(name);
+            if (lognum < 0) {
+                // We generated a filename which we can't parse, so there is
+                // a programming error somewhere if we get here.
+                LOG(error) << "Can't parse log number from " << name;
+                return;
+            }
+            int64_t size = boost::filesystem::file_size(src_path);
+            auto it(files_.begin());
+            while (it != files_.end() && total_size_ + size > max_size_) {
+                auto filename(prefix_ + std::to_string(it->num) + ".log");
+                auto path(logs_dir_ / filename);
+                if (boost::filesystem::is_regular_file(path)) {
+                    boost::system::error_code ec;
+                    boost::filesystem::remove(path, ec);
+                }
+                total_size_ -= it->size;
+                files_.erase(it++);
+            }
+            total_size_ += size;
+            files_.push_back({lognum, size});
+        }
+
+        uintmax_t scan_for_files(boost::log::sinks::file::scan_method method,
+                boost::filesystem::path const & pattern,
+                unsigned int * counter) override {
+            if (method == boost::log::sinks::file::no_scan) return 0;
+            if (!boost::filesystem::is_directory(logs_dir_)) return 0;
+            for (auto const & entry : boost::make_iterator_range(
+                    boost::filesystem::directory_iterator(logs_dir_), {})) {
+                if (entry.status().type() != boost::filesystem::regular_file)
+                    continue;
+                std::string name(entry.path().filename().string());
+                int64_t lognum = parse_filename(name);
+                if (lognum < 0) continue;
+                int64_t size = boost::filesystem::file_size(entry.path());
+                total_size_ += size;
+                files_.push_back({lognum, size});
+            }
+            files_.sort([](const fileinfo & a, const fileinfo & b) {
+                return a.num < b.num;
+            });
+            if (counter) *counter = files_.back().num;
+            return files_.size();
+        }
+
+      private:
+        boost::filesystem::path logs_dir_;
+        std::string prefix_;
+        struct fileinfo {
+            int64_t num;
+            int64_t size;
+        };
+        std::list<fileinfo> files_;
+        uint64_t total_size_, max_size_;
+
+        // If name is a log filename that we would generate (format is
+        // prefix_X.logs where X is a non-negative integer that is not
+        // ridiculously large or contain extra leading zeros), return
+        // the number of that log.  Otherwise return -1.
+        int64_t parse_filename(const std::string & name) {
+            if (name.size() < prefix_.size() + 5) return -1;
+            if (name.substr(0, prefix_.size()) != prefix_) return -1;
+            if (name.substr(name.size() - 4) != ".logs") return -1;
+            auto x = name.substr(prefix_.size(), name.size() - 4);
+            if (x.size() > 18 || x.size() > 1 && x[0] == '0') return -1;
+            int64_t lognum = 0;
+            for (auto & c : x) {
+                if (c < '0' || c > '9') return -1;
+                lognum = lognum * 10 + c - '0';
+            }
+            return lognum;
+        }
+    };
+
+    inline backend_ptr MakeBackend(const std::string& folder_name,
+            int size_mb, const std::string& file_name, const char * format) {
+        std::string target = std::string("/home/logs/") + folder_name;
+        std::string path = target + "/" + file_name + "_%N.log";
+        backend_ptr backend(boost::log::add_file_log(
+            boost::log::keywords::file_name = path.c_str(),
+            boost::log::keywords::open_mode = std::ios::out | std::ios::app,
+            boost::log::keywords::rotation_size = 1024 * 1024,
+            boost::log::keywords::auto_flush = true,
+            boost::log::keywords::format = format));
+        backend->locked_backend()->set_file_collector(
+            boost::make_shared<Collector>(target, file_name, size_mb));
+        backend->locked_backend()->scan_for_files();
+        return backend;
+    }
+
     inline void Initialize(const std::string& folder_name,
             int general_size_mb, const std::string& general_file_name,
             int telemetry_size_mb, const std::string& telemetry_file_name) {
-        std::string general_path = std::string("/home/logs/") + folder_name
-            + "/" + general_file_name + "_%N.log";
-        std::string target = std::string("/home/logs/") + folder_name;
-        std::string telemetry_path = std::string("/home/logs/") + folder_name
-            + "/" + telemetry_file_name + "_%N.log";
         if (!general_backend()) {
-            general_backend() = boost::log::add_file_log(
-                boost::log::keywords::file_name = general_path.c_str(),
-                boost::log::keywords::open_mode = std::ios::out | std::ios::app,
-                // rotate files every 1MB
-                boost::log::keywords::rotation_size = 1024 * 1024,
-                // flush logfile to disk on write
-                boost::log::keywords::auto_flush = true,
-                boost::log::keywords::target = target.c_str(),
-                boost::log::keywords::max_size = general_size_mb * 1024*1024,
-                boost::log::keywords::format = "[%TimeStamp%]: %Message%");
+            general_backend() = MakeBackend(folder_name, general_size_mb,
+                general_file_name, "[%TimeStamp%]: %Message%");
             ChangeGeneralLevel("info");
         }
         if (!telemetry_backend()) {
-            telemetry_backend() = boost::log::add_file_log(
-                boost::log::keywords::file_name = telemetry_path.c_str(),
-                boost::log::keywords::open_mode = std::ios::out | std::ios::app,
-                // rotate files every 1MB
-                boost::log::keywords::rotation_size = 1024 * 1024,
-                // flush logfile to disk on write
-                boost::log::keywords::auto_flush = true,
-                boost::log::keywords::target = target.c_str(),
-                boost::log::keywords::max_size = telemetry_size_mb * 1024*1024,
-                boost::log::keywords::format = "%TimeStamp%,%Message%");
+            telemetry_backend() = MakeBackend(folder_name, telemetry_size_mb,
+                telemetry_file_name, "%TimeStamp%,%Message%");
             ChangeTelemetryLevel("off");
         }
         boost::log::add_common_attributes();
