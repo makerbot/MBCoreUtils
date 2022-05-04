@@ -17,6 +17,7 @@
 #include <boost/log/expressions.hpp>
 #include <boost/log/sinks/text_file_backend.hpp>
 #include <boost/log/utility/setup.hpp>
+#include <boost/log/utility/setup/formatter_parser.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/range/iterator_range.hpp>
 
@@ -89,9 +90,10 @@ namespace Logging {
     typedef boost::log::sources::severity_channel_logger
         <boost::log::trivial::severity_level, std::string> log_class;
 
-    // Typedef for logging sinks
-    typedef boost::shared_ptr<boost::log::sinks::synchronous_sink  // NOLINT
-        <boost::log::sinks::text_file_backend > > backend_ptr;
+    // Typedefs for logging sinks
+    typedef boost::log::sinks::synchronous_sink
+        <boost::log::sinks::text_file_backend> backend;
+    typedef boost::shared_ptr<backend> backend_ptr;
 
     // Use local statics to ensure that only one instance of each pointer is
     // ever created by the linker.
@@ -214,7 +216,9 @@ namespace Logging {
             files_.sort([](const fileinfo & a, const fileinfo & b) {
                 return a.num < b.num;
             });
-            if (counter) *counter = files_.back().num;
+            if (counter && !files_.empty()) {
+                *counter = files_.back().num + 1;
+            }
             return files_.size();
         }
 
@@ -233,10 +237,11 @@ namespace Logging {
         // ridiculously large or contain extra leading zeros), return
         // the number of that log.  Otherwise return -1.
         int64_t parse_filename(const std::string & name) {
-            if (name.size() < prefix_.size() + 5) return -1;
-            if (name.substr(0, prefix_.size()) != prefix_) return -1;
-            if (name.substr(name.size() - 4) != ".logs") return -1;
-            auto x = name.substr(prefix_.size(), name.size() - 4);
+            auto pSize(prefix_.size());
+            if (name.size() < pSize + 5) return -1;
+            if (name.substr(0, pSize) != prefix_) return -1;
+            if (name.substr(name.size() - 4) != ".log") return -1;
+            auto x = name.substr(pSize, name.size() - 4 - pSize);
             if (x.size() > 18 || x.size() > 1 && x[0] == '0') return -1;
             int64_t lognum = 0;
             for (auto & c : x) {
@@ -251,15 +256,16 @@ namespace Logging {
             int size_mb, const std::string& file_name, const char * format) {
         std::string target = std::string("/home/logs/") + folder_name;
         std::string path = target + "/" + file_name + "_%N.log";
-        backend_ptr backend(boost::log::add_file_log(
+        backend_ptr backend(boost::make_shared<backend>(
             boost::log::keywords::file_name = path.c_str(),
             boost::log::keywords::open_mode = std::ios::out | std::ios::app,
             boost::log::keywords::rotation_size = 1024 * 1024,
-            boost::log::keywords::auto_flush = true,
-            boost::log::keywords::format = format));
+            boost::log::keywords::auto_flush = true));
         backend->locked_backend()->set_file_collector(
             boost::make_shared<Collector>(target, file_name, size_mb));
         backend->locked_backend()->scan_for_files();
+        backend->set_formatter(boost::log::parse_formatter(format));
+        boost::log::core::get()->add_sink(backend);
         return backend;
     }
 
