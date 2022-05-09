@@ -16,8 +16,10 @@
 #include <boost/log/trivial.hpp>
 #include <boost/log/expressions.hpp>
 #include <boost/log/sinks/text_file_backend.hpp>
-#include <boost/log/utility/setup.hpp>
-#include <boost/log/utility/setup/formatter_parser.hpp>
+#include <boost/log/attributes/attribute.hpp>
+#include <boost/log/attributes/attribute_value.hpp>
+#include <boost/log/attributes/attribute_value_impl.hpp>
+#include <boost/log/attributes/attribute_cast.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/range/iterator_range.hpp>
 
@@ -26,6 +28,9 @@
 #include <sstream>
 #include <string>
 #include <list>
+#include <chrono>
+#include <iomanip>
+#include <ctime>
 
 #pragma GCC diagnostic pop
 
@@ -252,8 +257,9 @@ namespace Logging {
         }
     };
 
-    inline backend_ptr MakeBackend(const std::string& folder_name,
-            int size_mb, const std::string& file_name, const char * format) {
+    template<typename FmtT>
+    backend_ptr MakeBackend(const std::string& folder_name,
+            int size_mb, const std::string& file_name, FmtT format) {
         std::string target = std::string("/home/logs/") + folder_name;
         std::string path = target + "/" + file_name + "_%N.log";
         backend_ptr backend(boost::make_shared<backend>(
@@ -264,25 +270,86 @@ namespace Logging {
         backend->locked_backend()->set_file_collector(
             boost::make_shared<Collector>(target, file_name, size_mb));
         backend->locked_backend()->scan_for_files();
-        backend->set_formatter(boost::log::parse_formatter(format));
+        backend->set_formatter(format);
         boost::log::core::get()->add_sink(backend);
         return backend;
     }
+
+    // A class to retrieve the current time with the local timezone and
+    // monotonic time since boot -- this is attached as an attribute to
+    // every log record we produce.
+    struct Time {
+        uint64_t monotonic_us;
+        uint32_t local_us;
+        std::tm localtime;
+        Time() {
+            using namespace std::chrono;  // NOLINT
+            auto mnow = steady_clock::now().time_since_epoch();
+            auto now = system_clock::now();
+            monotonic_us = duration_cast<microseconds>(mnow).count();
+            auto usTotal = duration_cast<microseconds>(now.time_since_epoch());
+            local_us = (usTotal % 1000000).count();
+            auto time = system_clock::to_time_t(now);
+            localtime = *std::localtime(&time);  // NOLINT
+        }
+    };
+}
+
+// We provide an overload of the std::ostream << operator so that Boost logging
+// will automatically know how to format our timestamps.  The format is a ISO
+// 8601 timestamp with microseconds, then a single space, then a decimal number
+// number of seconds since boot with microsecond accuracy.
+//
+// Host compiled versions of firmware that are build on older platforms do not
+// implement the c++11 feature std::put_time.  We don't really need this feature
+// for unit tests so we just output nothing in this case.
+namespace std {
+    inline ostream & operator<<(ostream & os, const Logging::Time & t) {
+#if !defined(__GNUC__) || (__GNUC__ >= 5)
+        os << std::put_time(&t.localtime, "%FT%T.");
+        os << std::setfill('0') << std::setw(6) << t.local_us << std::setw(0);
+        os << std::put_time(&t.localtime, "%z ") << t.monotonic_us / 1000000;
+        os << "." << std::setw(6) << t.monotonic_us % 1000000 << std::setw(0);
+#endif
+        return os;
+    }
+}
+
+namespace Logging {
+    // Implement an attribute for a timestamp with timezone
+    class timestamp_impl : public boost::log::attribute::impl {
+      public:
+        boost::log::attribute_value get_value() {
+            return boost::log::attributes::make_attribute_value(Time());
+        }
+    };
+    class timestamp : public boost::log::attribute {
+      public:
+        timestamp() : boost::log::attribute(new timestamp_impl()) {}
+        explicit timestamp(boost::log::attributes::cast_source const& source)
+          : boost::log::attribute(source.as< timestamp_impl >()) {}
+    };
 
     inline void Initialize(const std::string& folder_name,
             int general_size_mb, const std::string& general_file_name,
             int telemetry_size_mb, const std::string& telemetry_file_name) {
         if (!general_backend()) {
-            general_backend() = MakeBackend(folder_name, general_size_mb,
-                general_file_name, "[%TimeStamp%]: %Message%");
+            general_backend() = MakeBackend(
+                folder_name, general_size_mb, general_file_name,
+                boost::log::expressions::stream << "[" <<
+                boost::log::expressions::attr<Time>("TimeStamp") <<
+                "]: " << boost::log::expressions::smessage);
             ChangeGeneralLevel("info");
         }
         if (!telemetry_backend()) {
-            telemetry_backend() = MakeBackend(folder_name, telemetry_size_mb,
-                telemetry_file_name, "%TimeStamp%,%Message%");
+            telemetry_backend() = MakeBackend(
+                folder_name, telemetry_size_mb, telemetry_file_name,
+                boost::log::expressions::stream <<
+                boost::log::expressions::attr<Time>("TimeStamp") <<
+                "," << boost::log::expressions::smessage);
             ChangeTelemetryLevel("off");
         }
-        boost::log::add_common_attributes();
+        boost::log::core::get()->add_global_attribute("TimeStamp", timestamp());
     }
 }
 
