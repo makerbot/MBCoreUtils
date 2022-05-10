@@ -25,7 +25,7 @@
 
 #include <locale>
 #include <algorithm>
-#include <sstream>
+#include <fstream>  // NOLINT
 #include <string>
 #include <list>
 #include <chrono>
@@ -91,6 +91,19 @@ namespace Logging {
         return file + getAfterSlashIdx(file, 0, 0);
     }
 
+    // Return a string that uniquely identifies the current boot.  We use this
+    // in a unique log entry that we write at the start of each log.  This may
+    // produce an empty string when not run on the actual firmware.
+    inline std::string GetBootID() {
+        std::ifstream f(
+            "/proc/sys/kernel/random/boot_id", std::ios_base::binary);
+        if (!f.good()) return std::string();
+        std::string res(64, 0);
+        f.read(&res[0], 64);
+        res.resize(f.gcount());
+        return res;
+    }
+
     // Typedef for logging sources
     typedef boost::log::sources::severity_channel_logger
         <boost::log::trivial::severity_level, std::string> log_class;
@@ -131,36 +144,47 @@ namespace Logging {
             boost::log::expressions::attr<std::string>("Channel") == channel);
     }
 
-    // Generic function to map string severities to boost severities
-    inline void ChangeLevel(
+    // Generic function to map string severities to boost severities and then
+    // set a filter on the given backend for that severity + channel.  Returns
+    // true if we set a level other than off.
+    inline bool ChangeLevel(
         backend_ptr & backend, const char * channel, const std::string & sev) {
-        if (backend) {
-            backend->reset_filter();
-            std::string lower(sev.size(), ' ');
-            std::transform(sev.cbegin(), sev.cend(), lower.begin(),
-                           [](char c) {return std::tolower(c, std::locale());});
-            if (lower == "debug") {
-                SetLevel<boost::log::trivial::debug>(backend, channel);
-            } else if (lower == "info") {
-                SetLevel<boost::log::trivial::info>(backend, channel);
-            } else if (lower == "warning") {
-                SetLevel<boost::log::trivial::warning>(backend, channel);
-            } else if (lower == "error") {
-                SetLevel<boost::log::trivial::error>(backend, channel);
-            } else if (lower == "off") {
-                SetLevel<boost::log::trivial::fatal>(backend, channel);
-            } else {
-                LOG(warning) << "Invalid log specifier: " << sev;
-                SetLevel<boost::log::trivial::trace>(backend, channel);
-            }
+        if (!backend) return false;
+        backend->reset_filter();
+        std::string lower(sev.size(), ' ');
+        std::transform(sev.cbegin(), sev.cend(), lower.begin(),
+                       [](char c) {return std::tolower(c, std::locale());});
+        if (lower == "debug") {
+            SetLevel<boost::log::trivial::debug>(backend, channel);
+        } else if (lower == "info") {
+            SetLevel<boost::log::trivial::info>(backend, channel);
+        } else if (lower == "warning") {
+            SetLevel<boost::log::trivial::warning>(backend, channel);
+        } else if (lower == "error") {
+            SetLevel<boost::log::trivial::error>(backend, channel);
+        } else if (lower == "off") {
+            SetLevel<boost::log::trivial::fatal>(backend, channel);
+            return false;
+        } else {
+            LOG(warning) << "Invalid log specifier: " << sev;
+            SetLevel<boost::log::trivial::trace>(backend, channel);
         }
+        return true;
     }
 
     inline void ChangeGeneralLevel(const std::string& sev) {
         ChangeLevel(general_backend(), "general", sev);
     }
+
+    // This also logs an initialization entry the first time we set it to
+    // a level other than off.  The entry may be ignored if a level above
+    // info is set but we don't have any telemetry above the info level.
     inline void ChangeTelemetryLevel(const std::string& sev) {
-        ChangeLevel(telemetry_backend(), "telemetry", sev);
+        static bool log_init = true;
+        if (ChangeLevel(telemetry_backend(), "telemetry", sev) && log_init) {
+            TELEM(info) << "TELEMINIT," << GetBootID();
+            log_init = true;
+        }
     }
 
     // Custom collector class to get around two problems:
@@ -350,6 +374,7 @@ namespace Logging {
             ChangeTelemetryLevel("off");
         }
         boost::log::core::get()->add_global_attribute("TimeStamp", timestamp());
+        LOG(info) << "Logging initialized on boot " << GetBootID();
     }
 }
 
