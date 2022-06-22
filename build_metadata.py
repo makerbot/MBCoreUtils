@@ -7,13 +7,13 @@ else:
     dependencies = [
         artifactory_utils.ArtifactSelector(
             project="Toolchain-Release",
-            revision="ReleaseMorepork1.12",
+            revision="develop",
             version="^4.6",
             debug=False,
             stable_required=True),
         artifactory_utils.ArtifactSelector(
             project="mustache",
-            revision="ReleaseMorepork1.12",
+            revision="develop",
             version="^1.2",
             debug=False,
             stable_required=True)
