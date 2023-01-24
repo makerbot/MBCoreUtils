@@ -1,3 +1,4 @@
+build/
 obj/
 debian/libmbcoreutils*
 debian/files
@@ -16,11 +17,7 @@ debian/*substvars*
 # birdwing autogen
 birdwing/machine_errors.py
 birdwing/toolhead_errors.py
-include/bwcoreutils/all_errors.hh
-include/bwcoreutils/machine_errors.hh
-include/bwcoreutils/toolhead_errors.hh
-include/bwcoreutils/bot_error.hh
-include/bwcoreutils/tool_mappings.hh
+include/bwcoreutils/*.hh
 .build-host/
 .build-cross/
 .build-dev/
