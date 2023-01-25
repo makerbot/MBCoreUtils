@@ -3,6 +3,7 @@ from os import listdir
 from os.path import isfile, join, splitext, basename
 from pystache import Renderer
 import json
+from jackson_mustache_codegen import transform_context
 
 
 def get_files_from_dir(directory: str, extension: str ='') -> list[str]:
@@ -41,13 +42,16 @@ def load_all_contexts(context_dirs: list[str]) -> list[dict]:
     return contexts
 
 
-def mass_mustache_render(contents_dirs: list[str], context_dirs: list[str], output_dir: str) -> None:
+def mass_mustache_render(contents_dirs: list[str], context_dirs: list[str], context_transform: dict = None, output_dir: str = None) -> None:
+    if output_dir is None:
+        output_dir = os.getcwd()
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
     contexts = load_all_contexts(context_dirs)
+    transformed_contexts = [transform_context(foo, context_transform) for foo in contexts]
     for dir in contents_dirs:
         content_files = get_files_from_dir(dir)
         for content_file in content_files:
             filename = basename(content_file)
             outpath = join(output_dir, filename)
-            generate_mustached_file(content_file, contexts, outpath)
+            generate_mustached_file(content_file, transformed_contexts, outpath)

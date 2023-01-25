@@ -3,6 +3,7 @@
 from os.path import join
 from conans import ConanFile, CMake
 from pystache_utils import mass_mustache_render
+import json
 # from .pystache_utils import mass_mustache_render
 
 
@@ -15,6 +16,8 @@ class MBCoreUtilsConan(ConanFile):
     requires = "jsoncpp/[>=1.9.5]"
     exports = [
         "pystache_utils.py",
+        "jackson_mustache_codegen.py",
+        "birdwing_codegen/transformations.json",
         "birdwing_codegen/contexts/*.json",
         "birdwing_codegen/templates/machine_cpp/*.hh",
         "birdwing_codegen/templates/shared_cpp/*.hh",
@@ -24,19 +27,21 @@ class MBCoreUtilsConan(ConanFile):
     generators = "CMakeDeps"
 
     def pystache_generate_birdwing(self):
-        content_dirs = [
-            join(self.source_folder, 'birdwing_codegen/templates/machine_cpp'),
-            join(self.source_folder, 'birdwing_codegen/templates/shared_cpp')
-        ]
-        context_dirs = [
-            join(self.source_folder, 'birdwing_codegen/contexts')
-        ]
-        mustache_generated_outdir = join(self.source_folder, 'include/bwcoreutils')
+        with open("birdwing_codegen/transformations.json", "r") as ff:
+            context_transformations = json.load(ff)
         mass_mustache_render(
-            content_dirs,
-            context_dirs,
-            mustache_generated_outdir
+            contents_dirs=['birdwing_codegen/templates/machine_cpp'],
+            context_dirs=['birdwing_codegen/contexts'],
+            context_transform=context_transformations['machine_cpp'],
+            output_dir='include/bwcoreutils'
         )
+        mass_mustache_render(
+            contents_dirs=['birdwing_codegen/templates/shared_cpp'],
+            context_dirs=['birdwing_codegen/contexts'],
+            context_transform=context_transformations['shared_cpp'],
+            output_dir='include/bwcoreutils'
+        )
+
 
     def build(self):
         self.pystache_generate_birdwing()
@@ -49,4 +54,4 @@ class MBCoreUtilsConan(ConanFile):
         self.copy("include/*.h")
         self.copy("include/*.hh")
 
-    # SS todo: add linking test via CMake
+    # SS TODO: add linking test via CMake

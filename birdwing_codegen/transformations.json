@@ -1,0 +1,181 @@
+{
+    "python": {
+	"type_MAPPINGS": {
+	    "bool": "ctypes.c_bool",
+	    "int16": "ctypes.c_int16",
+	    "int32": "ctypes.c_int32",
+	    "int64": "ctypes.c_int64",
+	    "int8": "ctypes.c_int8",
+	    "uint16": "ctypes.c_uint16",
+	    "uint32": "ctypes.c_uint32",
+	    "uint64": "ctypes.c_uint64",
+	    "uint8": "ctypes.c_uint8"
+	},
+	"structs": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.title().replace('_', '') + 'Struct'",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
+	    }
+	},
+	"utility": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.title().replace('_', '') + 'Struct'",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["type"]
+	    }
+	}
+    },
+
+    "shared_cpp": {
+	"type_MAPPINGS": {
+	    "int8": "int8_t",
+	    "uint8": "uint8_t",
+	    "int16": "int16_t",
+	    "uint16": "uint16_t",
+	    "int32": "int32_t",
+	    "uint32": "uint32_t",
+	    "int64": "int64_t",
+	    "uint64": "uint64_t"
+	},
+
+	"machine_errors": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    }
+	},
+	"toolhead_errors": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    }
+	},
+	"error_bases": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.upper()",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["use_base"]
+	    }
+	},
+	"error_type_enum": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.upper()",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["error_type"]
+	    }
+	},
+	"error_action_enum": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.upper()",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["error_action"]
+	    }
+	},
+
+	"tools": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.upper()",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    },
+            "type_key_TRANSFORM": {
+                "LAMBDA": "lambda s: s.upper()",
+                "REPLACE_MATCHING_VALS_IN_KEYS": false
+            }
+	},
+	"types": {
+	    "key_TRANSFORM": {
+		"LAMBDA": "lambda s: s.upper()",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    },
+            "toolpath_equivalents": {
+                "key_TRANSFORM": {
+		    "LAMBDA": "lambda s: s.upper()",
+		    "REPLACE_MATCHING_VALS_IN_KEYS": false
+                }
+            }
+	},
+	"materials": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.upper()",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    }
+	},
+
+        "kaiten_api": {
+	    "type_MAPPINGS": {
+		"str": "std::string",
+		"list": "Json::Value",
+		"dict": "Json::Value"
+	    }
+        }
+    },
+
+    "machine_cpp": {
+	"type_MAPPINGS": {
+	    "int8": "int8_t",
+	    "uint8": "uint8_t",
+	    "int16": "int16_t",
+	    "uint16": "uint16_t",
+	    "int32": "int32_t",
+	    "uint32": "uint32_t",
+	    "int64": "int64_t",
+	    "uint64": "uint64_t"
+	},
+        "axis_names": {
+            "axis_name_TRANSFORM": {
+                "LAMBDA": "lambda s: 'k' + s.upper()",
+                "REPLACE_MATCHING_VALS_IN_KEYS": ["axis_name"]
+            }
+        },
+	"structs": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.title().replace('_', '') + 'Status'",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
+	    }
+	},
+
+	"utility": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["type", "inherits"]
+	    }
+	},
+
+	"enums": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": ["type"]
+	    },
+	    "values": {
+		"name_TRANSFORM": {
+		    "LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		    "REPLACE_MATCHING_VALS_IN_KEYS": false
+		},
+                "name_upper_xform_TRANSFORM": {
+                    "LAMBDA": "lambda s: 'k' + s.upper()",
+                    "REPLACE_MATCHING_VALS_IN_KEYS": false
+                }
+	    }
+	},
+
+	"machine_errors": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    }
+	},
+	"toolhead_errors": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    }
+	},
+
+	"tools": {
+	    "name_TRANSFORM": {
+		"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    },
+	    "type_TRANSFORM": {
+		"LAMBDA": "lambda s: 'k' + s.title().replace('_', '')",
+		"REPLACE_MATCHING_VALS_IN_KEYS": false
+	    }
+	}
+    }
+}
