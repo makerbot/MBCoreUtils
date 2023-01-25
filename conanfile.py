@@ -2,7 +2,7 @@
 
 from os.path import join
 from conans import ConanFile, CMake
-from pystache_utils import mass_mustache_render
+from pystache_utils import mass_mustache_render, get_files_from_dir
 import json
 # from .pystache_utils import mass_mustache_render
 
@@ -27,17 +27,33 @@ class MBCoreUtilsConan(ConanFile):
     generators = "CMakeDeps"
 
     def pystache_generate_birdwing(self):
+        contexts = [
+            "birdwing_codegen/contexts/errors.json",
+            "birdwing_codegen/contexts/tool_metadata.json",
+            "birdwing_codegen/contexts/machine_specific_enums.json",
+            "birdwing_codegen/contexts/common_settings.json"
+        ]
         with open("birdwing_codegen/transformations.json", "r") as ff:
             context_transformations = json.load(ff)
+        #
+        machine_cpp_templates = get_files_from_dir(
+            "birdwing_codegen/templates/machine_cpp",
+            extension=".hh"
+        )
         mass_mustache_render(
-            contents_dirs=['birdwing_codegen/templates/machine_cpp'],
-            context_dirs=['birdwing_codegen/contexts'],
+            template_paths=machine_cpp_templates,
+            context_paths=contexts,
             context_transform=context_transformations['machine_cpp'],
             output_dir='include/bwcoreutils'
         )
+        #
+        shared_cpp_templates = get_files_from_dir(
+            "birdwing_codegen/templates/shared_cpp",
+            extension=".hh"
+        )
         mass_mustache_render(
-            contents_dirs=['birdwing_codegen/templates/shared_cpp'],
-            context_dirs=['birdwing_codegen/contexts'],
+            template_paths=shared_cpp_templates,
+            context_paths=contexts,
             context_transform=context_transformations['shared_cpp'],
             output_dir='include/bwcoreutils'
         )
