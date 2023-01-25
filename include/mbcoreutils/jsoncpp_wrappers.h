@@ -11,7 +11,7 @@
 #ifndef INCLUDE_MBCOREUTILS_JSONCPP_WRAPPERS_H_
 #define INCLUDE_MBCOREUTILS_JSONCPP_WRAPPERS_H_
 
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 #include <limits>
 #include <memory>
 #include <string>
