@@ -64,7 +64,6 @@ class MBCoreUtilsConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.pystache_generate_birdwing()
         self.copy("include/*.h")
         self.copy("include/*.hh")
 
