@@ -1,10 +1,8 @@
 #  Copyright (c) 2023 UltiMaker B.V.
 
-from os.path import join
 from conans import ConanFile, CMake
 from pystache_utils import mass_mustache_render, get_files_from_dir
 import json
-# from .pystache_utils import mass_mustache_render
 
 
 required_conan_version = ">=1.56.0"
