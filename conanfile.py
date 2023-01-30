@@ -32,18 +32,18 @@ class MBCoreUtilsConan(ConanFile):
             "birdwing_codegen/contexts/machine_specific_enums.json",
             "birdwing_codegen/contexts/common_settings.json"
         ]
-        conanfile_script_dir = os.path.dirname(__file__)
-        context_paths = [os.path.join(conanfile_script_dir, foo) for foo in contexts]
-        transform_file_path = os.path.join(conanfile_script_dir, "birdwing_codegen/transformations.json")
+        base_dir = self.build_folder
+        context_paths = [os.path.join(base_dir, foo) for foo in contexts]
+        transform_file_path = os.path.join(base_dir, "birdwing_codegen/transformations.json")
         with open(transform_file_path, "r") as ff:
             context_transformations = json.load(ff)
         #
-        machine_cpp_templates_dir = os.path.join(conanfile_script_dir, "birdwing_codegen/templates/machine_cpp")
+        machine_cpp_templates_dir = os.path.join(base_dir, "birdwing_codegen/templates/machine_cpp")
         machine_cpp_templates = get_files_from_dir(
             machine_cpp_templates_dir,
             extension=".hh"
         )
-        bwcoreutils_dir = os.path.join(conanfile_script_dir, "include/bwcoreutils")
+        bwcoreutils_dir = os.path.join(base_dir, "include/bwcoreutils")
         mass_mustache_render(
             template_paths=machine_cpp_templates,
             context_paths=context_paths,
@@ -51,7 +51,7 @@ class MBCoreUtilsConan(ConanFile):
             output_dir=bwcoreutils_dir
         )
         #
-        shared_cpp_templates_dir = os.path.join(conanfile_script_dir, "birdwing_codegen/templates/shared_cpp")
+        shared_cpp_templates_dir = os.path.join(base_dir, "birdwing_codegen/templates/shared_cpp")
         shared_cpp_templates = get_files_from_dir(
             shared_cpp_templates_dir,
             extension=".hh"
