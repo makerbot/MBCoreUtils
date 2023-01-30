@@ -35,8 +35,7 @@ def mass_mustache_render(template_paths: list[str], context_paths: list[str], co
                          output_dir: str = None) -> None:
     if output_dir is None:
         output_dir = os.getcwd()
-    if not os.path.exists(output_dir):
-        os.mkdir(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
     contexts = [read_json(foo) for foo in context_paths]
     transformed_contexts = [transform_context(foo, context_transform) for foo in contexts]
     total_context = {}

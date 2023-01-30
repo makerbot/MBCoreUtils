@@ -40,7 +40,7 @@
 // short static string with an index appended (via <<) when we have two or more
 // components sharing the same code.
 #ifndef LOGGING_CONTEXT
-#error Logging context must be defined to use logging
+#define LOGGING_CONTEXT "No logging context was provided"
 #endif
 
 // The main API entry point for standard logging
