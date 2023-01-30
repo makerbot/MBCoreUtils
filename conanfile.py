@@ -1,5 +1,6 @@
 #  Copyright (c) 2023 UltiMaker B.V.
 
+import os
 from conans import ConanFile, CMake
 from pystache_utils import mass_mustache_render, get_files_from_dir
 import json
@@ -31,29 +32,35 @@ class MBCoreUtilsConan(ConanFile):
             "birdwing_codegen/contexts/machine_specific_enums.json",
             "birdwing_codegen/contexts/common_settings.json"
         ]
-        with open("birdwing_codegen/transformations.json", "r") as ff:
+        conanfile_script_dir = os.path.dirname(__file__)
+        context_paths = [os.path.join(conanfile_script_dir, foo) for foo in contexts]
+        transform_file_path = os.path.join(conanfile_script_dir, "birdwing_codegen/transformations.json")
+        with open(transform_file_path, "r") as ff:
             context_transformations = json.load(ff)
         #
+        machine_cpp_templates_dir = os.path.join(conanfile_script_dir, "birdwing_codegen/templates/machine_cpp")
         machine_cpp_templates = get_files_from_dir(
-            "birdwing_codegen/templates/machine_cpp",
+            machine_cpp_templates_dir,
             extension=".hh"
         )
+        bwcoreutils_dir = os.path.join(conanfile_script_dir, "include/bwcoreutils")
         mass_mustache_render(
             template_paths=machine_cpp_templates,
-            context_paths=contexts,
+            context_paths=context_paths,
             context_transform=context_transformations['machine_cpp'],
-            output_dir='include/bwcoreutils'
+            output_dir=bwcoreutils_dir
         )
         #
+        shared_cpp_templates_dir = os.path.join(conanfile_script_dir, "birdwing_codegen/templates/shared_cpp")
         shared_cpp_templates = get_files_from_dir(
-            "birdwing_codegen/templates/shared_cpp",
+            shared_cpp_templates_dir,
             extension=".hh"
         )
         mass_mustache_render(
             template_paths=shared_cpp_templates,
-            context_paths=contexts,
+            context_paths=context_paths,
             context_transform=context_transformations['shared_cpp'],
-            output_dir='include/bwcoreutils'
+            output_dir=bwcoreutils_dir
         )
 
 
