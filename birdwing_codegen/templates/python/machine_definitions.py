@@ -3,5 +3,5 @@
 import ctypes
 
 <%#enums%>
-<%name%> = {<%#values%>u'<%name%>':<%value%>,<%/values%>}
+<%enum_name%> = {<%#values%>u'<%name%>':<%value%>,<%/values%>}
 <%/enums%>

@@ -138,7 +138,7 @@
 	},
 
 	"enums": {
-	    "name_TRANSFORM": {
+	    "enum_name_TRANSFORM": {
 		"LAMBDA": "lambda s: s.title().replace('_', '')",
 		"REPLACE_MATCHING_VALS_IN_KEYS": ["type"]
 	    },

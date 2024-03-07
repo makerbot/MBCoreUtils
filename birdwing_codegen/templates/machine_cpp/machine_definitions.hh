@@ -11,25 +11,25 @@
 namespace machine {
 
 {{#enums}}
-enum {{name}} {
+enum {{enum_name}} {
     {{#values}}
-    {{#name_upper_xform}}
+    {{^name}}
     {{name_upper_xform}} = {{value}},
-    {{/name_upper_xform}}
+    {{/name}}
     {{^name_upper_xform}}
     {{name}} = {{value}},
     {{/name_upper_xform}}
     {{/values}}
-}; //enum {{name}}
+}; //enum {{enum_name}}
 
 #ifndef BRONX
 {{#do_stringify?}}
-inline std::string ToString({{name}} val) {
+inline std::string ToString({{enum_name}} val) {
     switch(val) {
     {{#values}}
-    {{#name_upper_xform}}
+    {{^name}}
     case {{name_upper_xform}}: return "{{settings-key}}";
-    {{/name_upper_xform}}
+    {{/name}}
     {{^name_upper_xform}}
     case {{name}}: return "{{settings-key}}";
     {{/name_upper_xform}}
@@ -38,27 +38,27 @@ inline std::string ToString({{name}} val) {
         + std::to_string(static_cast<int>(val)) + ">";
     }
 }
-inline {{name}} {{name}}FromString(const std::string& val) {
+inline {{enum_name}} {{enum_name}}FromString(const std::string& val) {
     if (false) {
     {{#values}}
     } else if (val == "{{settings-key}}") {
-        {{#name_upper_xform}}
+        {{^name}}
         return {{name_upper_xform}};
-        {{/name_upper_xform}}
+        {{/name}}
         {{^name_upper_xform}}
         return {{name}};
          {{/name_upper_xform}}
     {{/values}}
     } else {
-        return static_cast<{{name}}>(-1);
+        return static_cast<{{enum_name}}>(-1);
     }
 }
  {{/do_stringify?}}
-inline {{name}} Next{{name}}(const {{name}}& c) {
-    return static_cast<{{name}}>(static_cast<size_t>(c)+1);
+inline {{enum_name}} Next{{enum_name}}(const {{enum_name}}& c) {
+    return static_cast<{{enum_name}}>(static_cast<size_t>(c)+1);
 }
-inline {{name}} Previous{{name}}(const {{name}}& c) {
-    return static_cast<{{name}}>(static_cast<size_t>(c)-1);
+inline {{enum_name}} Previous{{enum_name}}(const {{enum_name}}& c) {
+    return static_cast<{{enum_name}}>(static_cast<size_t>(c)-1);
 }
 
 #endif
