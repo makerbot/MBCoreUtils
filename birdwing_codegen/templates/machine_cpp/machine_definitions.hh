@@ -20,7 +20,7 @@ enum {{enum_name}} {
     {{name}} = {{value}},
     {{/name_upper_xform}}
     {{/values}}
-}; //enum {{name}}
+}; //enum {{enum_name}}
 
 #ifndef BRONX
 {{#do_stringify?}}
