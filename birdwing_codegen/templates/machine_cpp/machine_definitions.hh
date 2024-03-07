@@ -13,9 +13,9 @@ namespace machine {
 {{#enums}}
 enum {{name}} {
     {{#values}}
-    {{#name_upper_xform}}
+    {{^name}}
     {{name_upper_xform}} = {{value}},
-    {{/name_upper_xform}}
+    {{/name}}
     {{^name_upper_xform}}
     {{name}} = {{value}},
     {{/name_upper_xform}}
@@ -27,9 +27,9 @@ enum {{name}} {
 inline std::string ToString({{name}} val) {
     switch(val) {
     {{#values}}
-    {{#name_upper_xform}}
+    {{^name}}
     case {{name_upper_xform}}: return "{{settings-key}}";
-    {{/name_upper_xform}}
+    {{/name}}
     {{^name_upper_xform}}
     case {{name}}: return "{{settings-key}}";
     {{/name_upper_xform}}
@@ -42,9 +42,9 @@ inline {{name}} {{name}}FromString(const std::string& val) {
     if (false) {
     {{#values}}
     } else if (val == "{{settings-key}}") {
-        {{#name_upper_xform}}
+        {{^name}}
         return {{name_upper_xform}};
-        {{/name_upper_xform}}
+        {{/name}}
         {{^name_upper_xform}}
         return {{name}};
          {{/name_upper_xform}}
