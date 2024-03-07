@@ -14,6 +14,7 @@
 #include <jsoncpp/json/json.h>
 #include <limits>
 #include <memory>
+#include <set>
 #include <string>
 #include <vector>
 #include <utility>
@@ -173,6 +174,19 @@ class Value {
         }
         (*this)[0].assignTo(&v->first);
         (*this)[1].assignTo(&v->second);
+    }
+
+    /** @brief Retrieve all keys from an object node */
+    void assignTo(std::set<std::string> * v) {
+        if (!v_.isObject()) {
+            TypeError("object");
+            return;
+        }
+        auto keys = v_.getMemberNames();
+        v->clear();
+        for (const auto & key : keys) {
+            v->insert(key);
+        }
     }
 
     /** @brief Currying operator to ignore missing values
