@@ -1,7 +1,7 @@
 {
     "enums": [
         {
-            "name": "leveling_states",
+            "enum_name": "leveling_states",
             "values": [
                 {"name": "too_high", "value": 1},
                 {"name": "too_low", "value": 0},
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "name": "leveling_knobs",
+            "enum_name": "leveling_knobs",
             "values": [
                 {"name": "Knob1", "value": 1},
                 {"name": "Fixed", "value": 0},
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "name": "power_monitor_rail",
+            "enum_name": "power_monitor_rail",
             "do_stringify?": true,
             "values": [
                 {"name": "5v", "value": 0, "settings-key": "5v"},
@@ -31,7 +31,7 @@
             ]
         },
         {
-            "name": "power_monitor_value",
+            "enum_name": "power_monitor_value",
             "do_stringify?": true,
             "values": [
                 {"name": "Current", "value": 0, "settings-key": "Current"},
@@ -39,7 +39,7 @@
             ]
         },
         {   
-            "name": "axis_name",
+            "enum_name": "axis_name",
             "do_stringify?": true,
             "values": [
                 {"name_upper_xform": "x", "value": 0, "settings-key": "x"},
@@ -52,7 +52,7 @@
             ]
         },  
         {
-            "name": "constants",
+            "enum_name": "constants",
             "values": [
                 {"name": "axis_count", "value": 4},
                 {"name": "warning_threshold", "value": 500},
@@ -64,7 +64,7 @@
             ]
         },
         {
-            "name": "hes_mode",
+            "enum_name": "hes_mode",
             "do_stringify?": true,
             "values": [
                 {"name": "free_run", "value": 0, "settings-key": "free_run"},
